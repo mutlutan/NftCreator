@@ -1,0 +1,196 @@
+﻿
+<div id='viewDashboard'>
+    <div class="titleDashboard h1 m-0" style="opacity:0.03; position:absolute; user-select:none; right:30px; bottom:15px;">
+    </div>
+
+    <div class="row mnDash" style="user-select:none;">
+    </div>
+</div>
+
+<style>
+    #viewDashboard .mnDash {
+        color: dimgrey;
+    }
+
+        #viewDashboard .mnDash .mnDashItem {
+            padding: 0px 15px 15px 0px;
+        }
+
+            #viewDashboard .mnDash .mnDashItem .mnDashItemWrapper {
+                border: 1px solid gainsboro;
+                box-shadow: 0px 0px 5px #ccc;
+                /*transition: all 0.2s;*/
+            }
+
+                #viewDashboard .mnDash .mnDashItem .mnDashItemWrapper:hover {
+                    box-shadow: 1px 5px 10px #ccc;
+                }
+
+            #viewDashboard .mnDash .mnDashItem .mnDashItemContent {
+                padding: 0px 15px 15px 15px;
+            }
+
+            #viewDashboard .mnDash .mnDashItem .mnDashBody {
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+
+            #viewDashboard .mnDash .mnDashItem .mnDashHeader {
+            }
+
+            #viewDashboard .mnDash .mnDashItem .mnDashBodyTextContainer {
+                transition: all 0.5s;
+            }
+</style>
+
+<script>
+
+    window.viewDashboard = function () {
+        var self = {};
+        self.opt = null;
+        self.area = 'Tem';
+        self.title = 'xTem.TemDashboard.Title';
+        self.selector = '#viewDashboard';
+        self.primaryKey = 'Id';
+        self.tableName = 'TemDashboard';
+        self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+        self.dashList = [];
+
+        function fGetDashList() {
+            $.ajax({
+                url: "/Tem/DwaTem/GetDashList",
+                type: "GET", dataType: "json",
+                success: function (result, textStatus, jqXHR) {
+                    //sonuç
+                    self.dashList = result;
+                    //Create Elements
+                    fCreateElements();
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    mnAlert.error(jqXHR.responseText);
+                }
+            });
+        }
+
+        function fCreateElements() {
+
+            var $mnDash = $(self.selector).find('.mnDash');
+            $mnDash.empty();
+
+            $(self.dashList).each(function (index, item) {
+                var tempDashItem = '';
+
+                if (item.TemplateName == 'tn1') {
+
+                    var href = item.Url.length > 0 ? 'href="' + item.Url + '"' : "";
+
+                    tempDashItem += '<div class="col-md-6 col-lg-4 mnDashItem mn-opacity-070 mn-opacity-hover-1" data-id="' + item.Id + '" >';
+                    tempDashItem += ' <a ' + href + ' class="w-100 text-decoration-none" data-url="' + item.Url + '" style="color: inherit;" >';
+                    tempDashItem += '   <div class="mnDashItemWrapper">';
+                    tempDashItem += '       <div class="mnDashItemContent">';
+                    tempDashItem += '           <div class="row mnDashHeader">';
+                    tempDashItem += '               <div class="col d-flex" >';
+                    tempDashItem += '                   <span class="h5 text-truncate w-100 font-weight-light" style="padding-top:5px;">' + item.Title + '</span>';
+                    tempDashItem += '                   <button name="btnRefresh" class="btn btn-light pull-right" style="opacity:0.5;"> <i class="fa fa-refresh "></i> </button>';
+                    tempDashItem += '               </div>';
+                    tempDashItem += '           </div>';
+                    tempDashItem += '';
+                    tempDashItem += '           <hr style="margin-bottom: 10px;margin-top: 0px;" />';
+                    tempDashItem += '';
+                    tempDashItem += '           <div class="row mnDashBody" >';
+                    tempDashItem += '               <div class="col-1">';
+                    tempDashItem += '                   <i class="fa fa-4x ' + item.IconClass + '" style="' + item.IconStyle + '"></i>';
+                    tempDashItem += '               </div>';
+                    tempDashItem += '               <div class="col-10 text-right mnDashBodyTextContainer">';
+                    tempDashItem += '               ...';
+                    tempDashItem += '               </div>';
+                    tempDashItem += '           </div>';
+                    tempDashItem += '       </div>';
+                    tempDashItem += '   </div>';
+                    tempDashItem += ' </a>';
+                    tempDashItem += '</div>';
+                }
+                else if (item.TemplateName == 'tn2') {
+                    tempDashItem += '               ...';
+                } else {
+                    tempDashItem += '               ...';
+                }
+
+                $mnDash.append(tempDashItem);
+
+                fRefreshDashItem(item.Id);
+            });
+        }
+
+        function fRefreshDashItem(dashId) {
+            var $elmDash = $(self.selector).find('.mnDash .mnDashItem[data-id=' + dashId + ']');
+
+            $.ajax({
+                url: "/Tem/DwaTem/GetDashData", data: { _dashId: dashId },
+                type: "GET", dataType: "json",
+                success: function (result, textStatus, jqXHR) {
+                    var tempDashBodyText = "";
+
+                    for (var i in result) {
+                        tempDashBodyText += '<div class="text-truncate" style="padding-top:15px; font-size:1.2em;">';
+                        tempDashBodyText += '    <span class="font-weight-light  ' + result[i].TextCssClass + '" >' + result[i].Text + '</span>&emsp;<span class="">' + result[i].Value1 + '</span>&emsp;<span class="">' + result[i].Value2 + '</span>';
+                        tempDashBodyText += '</div>';
+                    }
+
+                    $elmDash.find(".mnDashBodyTextContainer").html(tempDashBodyText);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    $elmDash.find(".mnDashBodyTextContainer").html("");
+                }
+            });
+        }
+
+        function fRefreshAllItem() {
+            $(self.dashList).each(function (index, item) {
+                setTimeout(function () {
+                    fRefreshDashItem(item.Id);
+                }, 100);
+            });
+        }
+
+
+
+        self.prepare = function () {
+
+            //Get Dash List
+            fGetDashList();
+
+            //Dash event
+            $(self.selector).find('.mnDash').on("click", ".mnDashItem .mnDashHeader [name=btnRefresh]", function (e) {
+                e.stopPropagation();
+                e.preventDefault();
+                var $elmDash = $(this).closest(".mnDashItem");
+                $elmDash.find(".mnDashBodyTextContainer").html("");
+                var dashId = $elmDash.attr("data-id");
+                fRefreshDashItem(dashId);
+            });
+
+            //$(self.selector).find('.mnDash').on("click", ".mnDashItem", function (e) {
+            //    e.stopPropagation();
+            //    var url = $(e.currentTarget).attr("data-url");
+            //    if (url.length > 0) {
+            //        mnRouter.router.navigate(url);
+            //    }
+            //});
+
+            $(self.selector).find('.titleDashboard').html(mnApp.appName);
+
+            // Language
+            mnLang.TranslateWithSelector(self.selector);
+        };
+
+        self.beforeShow = function (_opt) {
+            self.opt = $.extend({}, _opt);
+
+            fRefreshAllItem();
+        };
+
+        return self;
+    }();
+
+</script>

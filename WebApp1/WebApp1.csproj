@@ -1,0 +1,127 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <PropertyGroup Label="Globals">
+    <SccProjectName>SAK</SccProjectName>
+    <SccProvider>SAK</SccProvider>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccLocalPath>SAK</SccLocalPath>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+    <Version>1.0</Version>
+    <AssemblyVersion>1.0</AssemblyVersion>
+    <FileVersion>1.0.0.0</FileVersion>
+    <Company>Serce Teknoloji Yazılım</Company>
+    <Product>Robotik Kodlama Portal</Product>
+    <Authors>Mutlu MUTLUTAN</Authors>
+    <NeutralLanguage>en</NeutralLanguage>
+    <NoWin32Manifest>true</NoWin32Manifest>
+    <UserSecretsId>8074bf19-ad31-49ae-a8ec-4a40a99eb06b</UserSecretsId>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+    <PlatformTarget>x64</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Areas\Rob\**" />
+    <Compile Remove="logs\**" />
+    <Compile Remove="wwwroot\Areas\Rob\**" />
+    <Content Remove="Areas\Rob\**" />
+    <Content Remove="logs\**" />
+    <Content Remove="wwwroot\Areas\Rob\**" />
+    <EmbeddedResource Remove="Areas\Rob\**" />
+    <EmbeddedResource Remove="logs\**" />
+    <EmbeddedResource Remove="wwwroot\Areas\Rob\**" />
+    <None Remove="Areas\Rob\**" />
+    <None Remove="logs\**" />
+    <None Remove="wwwroot\Areas\Rob\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="C:\Users\user1\.nuget\packages\dotnetcore.npoi\1.2.3\contentFiles\any\netstandard2.0\NOTICE.TXT" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="SqlScript\111_Tem_Create.sql" />
+    <None Remove="SqlScript\112_Tem_Insert.sql" />
+    <None Remove="SqlScript\211_Nft_Create.sql" />
+    <None Remove="SqlScript\212_Nft_Insert.sql" />
+    <None Remove="swagger.xml" />
+    <None Remove="wa_2017.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="swagger.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="SqlScript\212_Nft_Insert.sql" />
+    <EmbeddedResource Include="SqlScript\211_Nft_Create.sql" />
+    <EmbeddedResource Include="SqlScript\112_Tem_Insert.sql" />
+    <EmbeddedResource Include="SqlScript\111_Tem_Create.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.0.123" />
+    <PackageReference Include="DatabaseSchemaReader" Version="2.7.11" />
+    <PackageReference Include="DotNetCore.NPOI" Version="1.2.3" />
+    <PackageReference Include="Iyzipay" Version="2.1.39" />
+    <PackageReference Include="MailKit" Version="2.15.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.DynamicLinq" Version="5.2.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+	<PackageReference Include="RestSharp" Version="106.13.0" />
+	<PackageReference Include="Shyjus.BrowserDetector" Version="2.0.0" />
+	<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
+	<PackageReference Include="System.Drawing.Common" Version="5.0.2" />
+	<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2021.3.914" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Areas\Nft\Controllers\" />
+    <Folder Include="Areas\Nft\Dmo\" />
+    <Folder Include="Areas\Nft\Dto\" />
+    <Folder Include="Areas\Nft\Models\" />
+    <Folder Include="wwwroot\Areas\Nft\Views\" />
+    <Folder Include="wwwroot\Data\Files\" />
+    <Folder Include="wwwroot\Downloads\" />
+    <Folder Include="wwwroot\img\mail\" />
+    <Folder Include="wwwroot\img\file\" />
+    <Folder Include="wwwroot\img\giris\" />
+    <Folder Include="wwwroot\img\photo\" />
+    <Folder Include="wwwroot\lib\jszip\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Areas\CodeGen\Views\Home\Index.cshtml" />
+    <None Include="Areas\CodeGen\Views\Home\TableOption.cshtml" />
+    <None Include="Areas\CodeGen\Views\Shared\_Layout.cshtml" />
+    <None Include="Areas\CodeGen\Views\_ViewImports.cshtml" />
+    <None Include="wwwroot\lib\magnify\js\jquery.magnify-mobile.js" />
+    <None Include="wwwroot\lib\magnify\js\jquery.magnify.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\Ogrenci\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Update\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Update\Apply.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="wwwroot\tr\media\yataylogo.png">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\Data\Files\**\*" CopyToPublishDirectory="Never" />
+    <Content Update="wwwroot\Data\Thumbs\**\*" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <AllowUntrustedCertificate>True</AllowUntrustedCertificate>
+  </PropertyGroup>
+  
+</Project>

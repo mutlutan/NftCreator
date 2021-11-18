@@ -1,0 +1,353 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemMesajForForm'>
+    <div id='divButtonGroup' class='mnButtonGroup float-right'>
+        <button id='btnKaydet' type='button' class='btn btn-outline-success text-nowrap' data-langkey-title='xLng.Kaydet' style='position:absolute; right:0px;'> <i class='fa fa-save'></i> </button>
+    </div>
+
+    <div style='padding-bottom:15px;'>
+        <div id='tabstrip'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemMesaj.FormViewTab.I'></span> </li>
+            </ul>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+                     <div name='divUstId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMesaj.UstId'></label>
+                         <div class='col-sm-8'>
+                             <input name='UstId' data-bind='value:UstId' />
+                             <span class='k-invalid-msg' data-for='UstId'></span>
+                         </div>
+                     </div>
+
+                     <div name='divGondericiId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMesaj.GondericiId'></label>
+                         <div class='col-sm-8'>
+                             <input name='GondericiId' data-bind='value:GondericiId' />
+                             <span class='k-invalid-msg' data-for='GondericiId'></span>
+                         </div>
+                     </div>
+
+                     <div name='divAliciId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMesaj.AliciId'></label>
+                         <div class='col-sm-8'>
+                             <input name='AliciId' data-bind='value:AliciId' />
+                             <span class='k-invalid-msg' data-for='AliciId'></span>
+                         </div>
+                     </div>
+
+                     <div name='divBaslik' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMesaj.Baslik'></label>
+                         <div class='col-sm-8'>
+                             <input name='Baslik' type='text' class='k-textbox' data-bind='value:Baslik' data-langkey-placeholder='xTem.TemMesaj.Baslik'  autocomplete='off' />
+                         </div>
+                     </div>
+
+                     <div name='divIcerik' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMesaj.Icerik'></label>
+                         <div class='col-sm-8'>
+                             <input name='Icerik' type='text' class='k-textbox' data-bind='value:Icerik' data-langkey-placeholder='xTem.TemMesaj.Icerik'  autocomplete='off' />
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ window.TemMesajForForm = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemMesaj.Title';
+     self.selector = '#TemMesajForForm';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemMesaj';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null },
+                         UstId: { type: 'number' },
+                         GondericiId: { type: 'number' },
+                         AliciId: { type: 'number' },
+                         Baslik: { type: 'string' },
+                         Icerik: { type: 'string' },
+                         CcGondericiIdAd: { type: 'string' },
+                         CcAliciIdAd: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 //this.cancelChanges();
+             },
+             requestStart: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), true); //progress On
+                 });
+             },
+             requestEnd: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), false); //progress Off
+                 });
+
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+
+                     if (e.response.Data.length > 0) {
+                         var row = e.response.Data[0];
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].UstId = result.UstId;
+                                 e.items[0].GondericiId = result.GondericiId;
+                                 e.items[0].AliciId = result.AliciId;
+                                 e.items[0].Baslik = result.Baslik;
+                                 e.items[0].Icerik = result.Icerik;
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcGondericiIdAd = result.CcGondericiIdAd;
+                                 e.items[0].CcAliciIdAd = result.CcAliciIdAd;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                     // Bind
+                     kendo.bind($(self.selector), e.items[0]);
+                     self.validator.validate();
+                 }
+
+                 // Yetki
+                 fYetkiUygula();
+
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateFormElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         //validator
+         let formElm = $(self.selector).find('.mnFormElementContainer');
+         self.validator = mnApp.createValidator(formElm, mnApp.validatorErrorTemplateIconMsg);
+
+         //butonlar
+         $(self.selector).find('#btnKaydet').click(function (e) {
+             mnApi.controlDisableWait($(e.target));
+             if (self.validator.validate()) {
+                 if (self.dataSource.at(0).dirty) {
+                     self.dataSource.sync();
+                 } else {
+                     mnAlert.warning(mnLang.TranslateWithWord('xLng.KayyittaDegisiklikYapmadiniz'));
+                 }
+             } else {
+                 mnAlert.warning(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+             }
+         });
+
+         //Diğer Form elementleri
+         $(self.selector).find('[name=UstId]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+         $(self.selector).find('[name=GondericiId]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.listLoad({
+                 TableName: 'TemKullanici',
+                 ValueField: 'Id',
+                 TextField: 'Ad',
+                 OtherFields: '',
+                 Filters: [
+                     { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                 ],
+                 Sorts: [
+                                 { Field: 'Ad', Dir: 'asc' }
+                 ]
+             }),
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+         $(self.selector).find('[name=AliciId]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.listLoad({
+                 TableName: 'TemKullanici',
+                 ValueField: 'Id',
+                 TextField: 'Ad',
+                 OtherFields: '',
+                 Filters: [
+                     { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                 ],
+                 Sorts: [
+                                 { Field: 'Ad', Dir: 'asc' }
+                 ]
+             }),
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+     }
+
+     function fSetAtributeFormElements() {
+         $(self.selector).find('[name=UstId]').attr('required', 'required');
+         $(self.selector).find('[name=GondericiId]').attr('required', 'required');
+         $(self.selector).find('[name=AliciId]').attr('required', 'required');
+     }
+
+     function fYetkiUygula() {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+
+         //ek yetkiler için)
+         //...
+
+         //Form İçin
+         if (_C || _U) {
+             $(self.selector).find('#btnKaydet').show();
+         } else {
+             $(self.selector).find('#btnKaydet').hide();
+         }
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'UstId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'GondericiId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'AliciId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Baslik', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Icerik', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+     }
+
+
+     function fGorunurlukUygula(dataItem) {
+
+        if (dataItem != null && dataItem != undefined) {
+        }
+     }
+
+     self.prepare = function () {
+         // form element atribute set
+         fSetAtributeFormElements();
+         // DataSource
+         fCreateDataSource();
+         // form Elementler
+         fCreateFormElements();
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+
+         if (self.opt.qprms.Id !== null && self.opt.qprms.Id > 0) {
+             self.dataSource.filter({ field: self.primaryKey, operator: 'eq', value: self.opt.qprms.Id });
+         } else {
+             self.dataSource.data([]); // eski data varsa işleme girmemesi için
+             self.dataSource.add();
+         }
+
+         self.tabstrip.select(0);
+     };
+
+     return self;
+ }();
+</script>

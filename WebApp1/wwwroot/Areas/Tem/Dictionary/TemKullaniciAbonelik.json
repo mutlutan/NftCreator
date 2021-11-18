@@ -1,0 +1,117 @@
+[
+ {
+     "key" : "xTem.TemKullaniciAbonelik.Title",
+     "value": {
+         "tr": "Kullanıcı Abonelik"
+,
+         "en": "User Subscription"
+     }
+ },
+ {
+     "key" : "xTem.TemKullaniciAbonelik.ShortTitle",
+     "value": {
+         "tr": "Abonelik"
+,
+         "en": "Subscription"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.KullaniciId",
+     "value": {
+         "tr": "Kullanıcı"
+,
+         "en": "User"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.AbonelikDurumId",
+     "value": {
+         "tr": "Abonelik Durum"
+,
+         "en": "Subscription Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.AbonelikUrunPlanId",
+     "value": {
+         "tr": "Abonelik Ürün Plan"
+,
+         "en": "Subscription Product Plan"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.Jeton",
+     "value": {
+         "tr": "Jeton"
+,
+         "en": "Token"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.OdemeFormuBilgileri",
+     "value": {
+         "tr": "Ödeme Formu Bilgileri"
+,
+         "en": "Checkout Form Info"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.InsertUserId",
+     "value": {
+         "tr": "Ekleyen Kullanıcı"
+,
+         "en": "User Who Added"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.UpdateUserId",
+     "value": {
+         "tr": "Değiştiren Kullanıcı"
+,
+         "en": "User Who Changed"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.InsertDateTime",
+     "value": {
+         "tr": "Eklenme Zamanı"
+,
+         "en": "Time To Add"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelik.UpdateDateTime",
+     "value": {
+         "tr": "Değiştirme Zamanı"
+,
+         "en": "Update Time"
+     }
+ }
+]

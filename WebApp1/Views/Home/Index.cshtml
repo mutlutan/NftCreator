@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = "_Layout";
+}
+
+<div id="viewHome" style="">
+
+</div>
+
+<style>
+    #viewHome .mnPageViewContent {
+        padding: 0px;
+    }
+</style>
+
+
+<script>
+
+    window.addEventListener('load', (event) => {
+        viewHome.prepare();
+    });
+
+    window.viewHome = function () {
+        var self = {};
+        self.selector = "#viewHome";
+
+
+        self.prepare = function () {
+            // Language
+            mnLang.TranslateWithSelector(self.selector);
+        };
+
+        $(window).on("resize", function () {
+
+        });
+
+        return self;
+    }();
+
+</script>

@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xTem.TemMesaj.Title",
+     "value": {
+         "tr": "Mesajlar"
+,
+         "en": "Messages"
+     }
+ },
+ {
+     "key" : "xTem.TemMesaj.ShortTitle",
+     "value": {
+         "tr": "Mesajlar"
+,
+         "en": "Messages"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.UstId",
+     "value": {
+         "tr": "Üst"
+,
+         "en": "Parent"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.GondericiId",
+     "value": {
+         "tr": "Gönderici"
+,
+         "en": "Sender"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.AliciId",
+     "value": {
+         "tr": "Alıcı"
+,
+         "en": "Recipient"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.Baslik",
+     "value": {
+         "tr": "Baslik"
+,
+         "en": "Title"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMesaj.Icerik",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+]

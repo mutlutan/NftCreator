@@ -1,0 +1,259 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemAdresForTreeList'>
+    <div>
+        <div id='treeList' style='height:560px;'></div>
+    </div>
+</div>
+
+<script>
+    window.TemAdresForTreeList = function () {
+        var self = {};
+        self.opt = null;
+        self.area = 'Tem';
+        self.title = 'xTem.TemAdres.Title';
+        self.selector = '#TemAdresForTreeList';
+        self.primaryKey = 'Id';
+        self.tableName = 'TemAdres';
+        self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+        function fCreateDataSource() {
+            self.dataSource = new kendo.data.TreeListDataSource({
+                transport: {
+                    read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                    create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                    update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                    destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                    parameterMap: function (data, operation) {
+                        if (operation === 'read') {
+                            return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                        }
+                        else if (operation === 'create' || operation === 'update') {
+                            if (data.CcUstId > 0) {
+                                data.UstId = data.CcUstId;
+                            } else {
+                                data.UstId = 0;
+                            }
+                            return kendo.stringify(data);
+                        }
+                        else if (operation === 'destroy') {
+                            return { _id: data[self.primaryKey] };
+                        }
+                    }
+                },
+                schema: {
+                    errors: 'Errors', data: 'Data', aggregates: 'AggregateResults',
+                    model: {
+                        id: self.primaryKey,
+                        fields: {
+                            Id: { type: 'number', defaultValue: null },
+                            parentId: { type: 'number', field: 'CcUstId', nullable: true },
+                            hasChildren: { type: 'boolean', field: 'HasChildren' },
+                            CcUstId: { type: 'number', nullable: true },
+                            UstId: { type: 'number' },
+                            Kod: { type: 'string' },
+                            Ad: { type: 'string' }
+                        },
+                        expanded: false
+                    }
+                },
+                error: function (e) {
+                    if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                    this.cancelChanges();
+                },
+                requestStart: function (e) {},
+                requestEnd: function (e) {
+                    if (e.response !== undefined && e.response.Errors === null) {
+                        if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                            mnLookup.listRead(self.tableName);
+                        }
+
+                        if (e.type === 'create') {
+                            mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                        }
+
+                        if (e.type === 'update') {
+                            mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                        }
+
+                        if (e.type === 'destroy') {
+                            mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                        }
+                    }
+                },
+                change: function (e) {
+                    if (e.items[0] !== undefined) {
+                        if (e.items[0].get(self.primaryKey) === null) {
+                            $.ajax({
+                                url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                                success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].UstId = result.UstId;
+                                 e.items[0].Kod = result.Kod;
+                                 e.items[0].Ad = result.Ad;
+                                    e.items[0].CcUstId = result.CcUstId;
+
+                                 //computed alanların tanımlanması
+                                  //filterdan gelen default value set için
+                                     $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                   });
+                                 },
+                                error: function (xhr, status) {
+                                     mnErrorHandler.Handle(xhr);
+                                }
+                            });
+                        }
+                    }
+                    // ve gerekebilecek diğer işlemler
+                    //...
+                }
+            });
+        }
+
+        function fCreateTreeList() {
+            self.treeList = $(self.selector).find('#treeList').kendoTreeList({
+                autoBind: false, resizable: true, reorderable: true,
+                editable: {
+                    mode: 'inline', create: true, update: true, destroy: true
+                },
+                toolbar: [{ name: 'create', text: mnLang.TranslateWithWord('xLng.Ekle') }],
+                columns: [
+                    {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                        title: mnLang.TranslateWithWord('xTem.TemAdres.UstId'),
+                        field: 'UstId',
+                        format: '{0:n0}',
+                        width: '90px'
+                    },
+                    {
+                        expandable: true,
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                        title: mnLang.TranslateWithWord('xTem.TemAdres.Kod'),
+                        field: 'Kod',
+                        width: '130px'
+                    },
+                    {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                        title: mnLang.TranslateWithWord('xTem.TemAdres.Ad'),
+                        field: 'Ad',
+                        width: '130px'
+                    },
+                    {
+                        title: '', width: '170px',
+                        command: [
+                            { name: 'edit', buttonType: 'ImageAndText', text: ' ', attr: 'style="width:32px; padding-right:0px; margin-right:3px;" data-langkey-title="xLng.Duzelt" ' },
+                            { name: 'destroy', buttonType: 'ImageAndText', text: ' ', attr: 'style="width:32px; padding-right:0px; margin-right:3px;" data-langkey-title="xLng.Sil"' },
+                            { name: 'createchild', buttonType: 'ImageAndText', text: ' ', attr: 'style="width:32px; padding-right:0px; margin-right:3px;" data-langkey-title="xLng.Ekle"' }
+                        ]
+                    },
+                    {} //sona boş field
+                ],
+                messages: {
+                    commands: {edit: ' ',update: ' ', canceledit: ' ', createchild: ' ', destroy: ' ', excel: 'Excel', pdf: 'PDF'}
+                },
+                selectable: 'row',
+                change: function (e) {
+                    var selectedRows = this.select();
+                    var selectedDataItems = []; // selectedDataItems contains all selected data items
+                    for (var i = 0; i < selectedRows.length; i++) {
+                        var dataItem = this.dataItem(selectedRows[i]);
+                        selectedDataItems.push(dataItem);
+                    }
+                },
+                cancel: function (e) {
+                    e.sender.refresh();//sender:tree dir, databound da renklendirme ve button set etme var ise , gridde editedilebilir ise cancelden sonra rengi koruyamıyor bununla refresh ediyosun
+                },
+                dataBound: function (e) {
+                    var data = e.sender.dataSource.data();
+                    $.each(data, function (i, row) {
+                        var _tr = e.sender.wrapper.find('tr[data-uid=' + row.uid + ']');
+
+                        //enable disable button
+                        //mnApi.controlEnable(_tr.find('.k-grid-add'), false);
+                    });
+                    //yetki
+                    self.YetkiUygula(data);
+                },
+                dataSource: self.dataSource
+            }).getKendoTreeList();
+
+        };
+
+        self.YetkiUygula = function (_data) {
+            //Standart Yetkiler
+            var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+            var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+            var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+
+            //ek yetkiler için
+            //...
+
+        //form element görünümleri
+        var fieldList = [];
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFindElementContainer .mnFindElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+            //treeList ekle button için
+            mnApi.controlShowHide(self.treeList.wrapper.find('#btnEkle'), _C);
+
+            //treeList rows için
+            $.each(_data, function (i, row) {
+                var _tr = self.treeList.wrapper.find('tr[data-uid=' + row.uid + ']');
+                var tr_U = _U;
+                var tr_D = _D;
+
+                //update-delete button için
+             mnApi.controlEnable(_tr.find('.k-grid-edit'), tr_U);
+                mnApi.controlEnable(_tr.find('.k-tree-delete'), tr_D);
+
+                // ek yetkiler (row daki nesneler için)
+                //...
+
+                //row değerine göre yetkiler
+                //...
+
+            });
+        };
+
+        self.prepare = function () {
+            // DataSource
+            fCreateDataSource();
+
+            //View
+            fCreateTreeList();
+        };
+
+        self.beforeShow = function (_opt) {
+            self.opt = $.extend({}, _opt);
+
+            self.filter();
+
+
+        };
+
+        self.filter = function (_data) {
+            self.dataSource.filter(mnApp.find_options_ToFilterList(self));
+        };
+
+        self.close = function () {
+            if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+                $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+            } else {
+                $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+            }
+        };
+
+        return self;
+    }();
+</script>

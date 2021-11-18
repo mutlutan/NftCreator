@@ -1,0 +1,347 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemMailSablonForForm'>
+    <div id='divButtonGroup' class='mnButtonGroup float-right'>
+        <button id='btnKaydet' type='button' class='btn btn-outline-success text-nowrap' data-langkey-title='xLng.Kaydet' style='position:absolute; right:0px;'> <i class='fa fa-save'></i> </button>
+    </div>
+
+    <div style='padding-bottom:15px;'>
+        <div id='tabstrip'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemMailSablon.FormViewTab.I'></span> </li>
+                <li> <span data-langkey-text='xTem.TemMailSablon.FormViewTab.II'></span> </li>
+            </ul>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+                     <div name='divAlan' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xTem.TemMailSablon.Alan'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='Alan' class='k-textbox' data-bind='value:Alan' data-langkey-placeholder='xTem.TemMailSablon.Alan'  disabled  style='height:85px;' ></textarea>
+                         </div>
+                     </div>
+
+                     <div name='divKopya' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xTem.TemMailSablon.Kopya'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='Kopya' class='k-textbox' data-bind='value:Kopya' data-langkey-placeholder='xTem.TemMailSablon.Kopya'  style='height:85px;' ></textarea>
+                         </div>
+                     </div>
+
+                     <div name='divGizli' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xTem.TemMailSablon.Gizli'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='Gizli' class='k-textbox' data-bind='value:Gizli' data-langkey-placeholder='xTem.TemMailSablon.Gizli'  style='height:85px;' ></textarea>
+                         </div>
+                     </div>
+
+                     <div name='divKonu' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xTem.TemMailSablon.Konu'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='Konu' class='k-textbox' data-bind='value:Konu' data-langkey-placeholder='xTem.TemMailSablon.Konu'  disabled  style='height:85px;' ></textarea>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+                     <div name='divAntetId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemMailSablon.AntetId'></label>
+                         <div class='col-sm-8'>
+                             <input name='AntetId' data-bind='value:AntetId' />
+                             <span class='k-invalid-msg' data-for='AntetId'></span>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                </div>
+            </div>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+                     <div name='divIcerik' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xTem.TemMailSablon.Icerik'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='Icerik' type='text' class='k-textbox' data-bind='value:Icerik' data-langkey-placeholder='xTem.TemMailSablon.Icerik' style='height:520px;'></textarea>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ window.TemMailSablonForForm = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemMailSablon.Title';
+     self.selector = '#TemMailSablonForForm';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemMailSablon';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null },
+                         AntetId: { type: 'number' },
+                         Kopya: { type: 'string' },
+                         Gizli: { type: 'string' },
+                         Alan: { type: 'string', editable:false },
+                         Konu: { type: 'string', editable:false },
+                         Icerik: { type: 'string' },
+                         CcAntetIdAd: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 //this.cancelChanges();
+             },
+             requestStart: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), true); //progress On
+                 });
+             },
+             requestEnd: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), false); //progress Off
+                 });
+
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+
+                     if (e.response.Data.length > 0) {
+                         var row = e.response.Data[0];
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].AntetId = result.AntetId;
+                                 e.items[0].Kopya = result.Kopya;
+                                 e.items[0].Gizli = result.Gizli;
+                                 e.items[0].Alan = result.Alan;
+                                 e.items[0].Konu = result.Konu;
+                                 e.items[0].Icerik = result.Icerik;
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcAntetIdAd = result.CcAntetIdAd;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                     // Bind
+                     kendo.bind($(self.selector), e.items[0]);
+                     self.validator.validate();
+                 }
+
+                 // Yetki
+                 fYetkiUygula();
+
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateFormElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         //validator
+         let formElm = $(self.selector).find('.mnFormElementContainer');
+         self.validator = mnApp.createValidator(formElm, mnApp.validatorErrorTemplateIconMsg);
+
+         //butonlar
+         $(self.selector).find('#btnKaydet').click(function (e) {
+             mnApi.controlDisableWait($(e.target));
+             if (self.validator.validate()) {
+                 if (self.dataSource.at(0).dirty) {
+                     self.dataSource.sync();
+                 } else {
+                     mnAlert.warning(mnLang.TranslateWithWord('xLng.KayyittaDegisiklikYapmadiniz'));
+                 }
+             } else {
+                 mnAlert.warning(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+             }
+         });
+
+         //Diğer Form elementleri
+         $(self.selector).find('[name=AntetId]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.listLoad({
+                 TableName: 'TemMailAntet',
+                 ValueField: 'Id',
+                 TextField: 'Ad',
+                 OtherFields: '',
+                 Filters: [
+                     { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                 ],
+                 Sorts: [
+                                 { Field: 'Ad', Dir: 'asc' }
+                 ]
+             }),
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+         self.keIcerik = $(self.selector).find('[name=Icerik]').kendoEditor({
+             serialization: { entities: false },
+             tools: ['bold','italic','underline','strikethrough','justifyLeft','justifyCenter','justifyRight','justifyFull','insertUnorderedList','insertOrderedList','indent','outdent','createLink','unlink','insertImage','insertFile','subscript','superscript','tableWizard','createTable','addRowAbove','addRowBelow','addColumnLeft','addColumnRight','deleteRow','deleteColumn','viewHtml','formatting','cleanFormatting','fontName','fontSize','foreColor','backColor','print'],
+             resizable: { content: true }
+         }).getKendoEditor();
+
+     }
+
+     function fSetAtributeFormElements() {
+         $(self.selector).find('[name=AntetId]').attr('required', 'required');
+         $(self.selector).find('[name=Konu]').attr('required', 'required');
+     }
+
+     function fYetkiUygula() {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+
+         //ek yetkiler için)
+         //...
+
+         //Form İçin
+         if (_C || _U) {
+             $(self.selector).find('#btnKaydet').show();
+         } else {
+             $(self.selector).find('#btnKaydet').hide();
+         }
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'AntetId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Kopya', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Gizli', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Alan', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Konu', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Icerik', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+     }
+
+
+     function fGorunurlukUygula(dataItem) {
+
+        if (dataItem != null && dataItem != undefined) {
+        }
+     }
+
+     self.prepare = function () {
+         // form element atribute set
+         fSetAtributeFormElements();
+         // DataSource
+         fCreateDataSource();
+         // form Elementler
+         fCreateFormElements();
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+
+         if (self.opt.qprms.Id !== null && self.opt.qprms.Id > 0) {
+             self.dataSource.filter({ field: self.primaryKey, operator: 'eq', value: self.opt.qprms.Id });
+         } else {
+             self.dataSource.data([]); // eski data varsa işleme girmemesi için
+             self.dataSource.add();
+         }
+
+         self.tabstrip.select(0);
+     };
+
+     return self;
+ }();
+</script>

@@ -1,0 +1,99 @@
+[
+ {
+     "key" : "xTem.TemMailSablon.Title",
+     "value": {
+         "tr": "Mail Şablonu"
+,
+         "en": "Mail Template"
+     }
+ },
+ {
+     "key" : "xTem.TemMailSablon.ShortTitle",
+     "value": {
+         "tr": "Mail Şablonu"
+,
+         "en": "Mail Template"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.FormViewTab.II",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.AntetId",
+     "value": {
+         "tr": "Antet"
+,
+         "en": "Letterhead"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Alan",
+     "value": {
+         "tr": "Alan"
+,
+         "en": "Field"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Kopya",
+     "value": {
+         "tr": "Kopya (cc)"
+,
+         "en": "Copy (cc)"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Gizli",
+     "value": {
+         "tr": "Gizli (bcc)"
+,
+         "en": "Hidden (bcc)"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Konu",
+     "value": {
+         "tr": "Konu"
+,
+         "en": "Topic"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailSablon.Icerik",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+]

@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xBac.BacDers.Title",
+     "value": {
+         "tr": "Ders"
+,
+         "en": "Lesson"
+     }
+ },
+ {
+     "key" : "xBac.BacDers.ShortTitle",
+     "value": {
+         "tr": "Ders"
+,
+         "en": "Lesson"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.SimgeUrl",
+     "value": {
+         "tr": "Simge Url"
+,
+         "en": "Icon Url"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.Aciklama",
+     "value": {
+         "tr": "Açıklama"
+,
+         "en": "Explanation"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDers.VeriDili",
+     "value": {
+         "tr": "Veri Dili"
+,
+         "en": "Data Language"
+     }
+ }
+]

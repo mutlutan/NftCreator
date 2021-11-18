@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+@{
+    var AppVersion = WebApp1.Codes.MyApp.Version;
+    var AppCulture = ViewBag.Culture;
+    var AppLanguage = ViewBag.Language;
+
+}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>CodeGen</title>
+    <link rel="icon" href="/favicon.png" />
+
+    @*font-awesome*@
+    <link href="~/lib/font-awesome/css/font-awesome.min.css?@AppVersion" rel="stylesheet" />
+
+    @*bootstrap CSS*@
+    <link href="~/lib/bootstrap/4.6.0/css/bootstrap.min.css?@AppVersion" rel="stylesheet" />
+
+    @*jquery JS*@
+    <script src="~/lib/kendo/js/jquery.min.js?@AppVersion"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="~/lib/bootstrap/4.6.0/js/bootstrap.bundle.min.js?@AppVersion"></script>
+
+    @*kendo css - thema - bootstrap-v4*@
+    <link href="~/lib/kendo/styles/kendo.bootstrap-v4.min.css" rel="stylesheet" />
+    <link href="~/lib/my-style-bootstrap-v4.css?@AppVersion" rel="stylesheet" />
+
+    @*kendo js*@
+    @*<script src="~/lib/kendo/js/kendo.ui.core.min.js?@AppVersion"></script>*@
+    <script src="~/lib/kendo/js/kendo.all.min.js?@AppVersion"></script>
+    <script src="~/lib/kendo/js/kendo.aspnetmvc.min.js?@AppVersion"></script>
+    <script src="~/lib/kendo/js/cultures/kendo.culture.tr-TR.min.js?@AppVersion"></script>
+    <script src="~/lib/kendo/js/messages/kendo.messages.tr-TR.min.js?@AppVersion"></script>
+
+    @*mn*@
+    <script src="~/lib/mn/mnAlert.js?@AppVersion"></script>
+    <script src="~/lib/mn/mnLang.js?@AppVersion"></script>
+    <script src="~/lib/mn/mnLibs.js?@AppVersion"></script>
+    <script src="~/lib/mn/mnLookup.js?@AppVersion"></script>
+    <script src="~/lib/mn/mnNotification.js?@AppVersion"></script>
+    <script src="~/lib/mn/mnYetkiSablon.js?@AppVersion"></script>
+
+    <script>
+        $(document).ready(function () {
+            //kendo
+            kendo.culture("@AppCulture");
+
+            //mn
+            mnApp.prepare();
+            mnLang.prepare("@AppCulture");
+            mnNotification.prepare({autoHideAfter: 3500});
+            mnLookup.prepare();
+            mnYetkiSablon.prepare();
+        });
+    </script>
+</head>
+<body>
+    <div class="container-fluid">
+        @RenderBody()
+    </div>
+</body>
+</html>

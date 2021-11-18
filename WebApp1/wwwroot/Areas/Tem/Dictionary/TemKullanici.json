@@ -1,0 +1,126 @@
+[
+ {
+     "key" : "xTem.TemKullanici.Title",
+     "value": {
+         "tr": "Kullanıcılar"
+,
+         "en": "Users"
+     }
+ },
+ {
+     "key" : "xTem.TemKullanici.ShortTitle",
+     "value": {
+         "tr": "Kullanıcılar"
+,
+         "en": "Users"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.KayitZaman",
+     "value": {
+         "tr": "Kayıt Zamanı"
+,
+         "en": "Registration Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.SahipTur",
+     "value": {
+         "tr": "Sahip Türü"
+,
+         "en": "Owner Type"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.SahipId",
+     "value": {
+         "tr": "Sahip"
+,
+         "en": "Owner"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Ad",
+     "value": {
+         "tr": "Kullanıcı Adı"
+,
+         "en": "User Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Sifre",
+     "value": {
+         "tr": "Şifre"
+,
+         "en": "Password"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Rols",
+     "value": {
+         "tr": "Roller"
+,
+         "en": "Roles"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Resim",
+     "value": {
+         "tr": " "
+,
+         "en": " "
+     }
+ }
+]

@@ -1,0 +1,162 @@
+[
+ {
+     "key" : "xTem.TemMailHareket.Title",
+     "value": {
+         "tr": "Mail Hareket"
+,
+         "en": "Mail Transaction"
+     }
+ },
+ {
+     "key" : "xTem.TemMailHareket.ShortTitle",
+     "value": {
+         "tr": "Mail Hareket"
+,
+         "en": "Mail Transaction"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.FormViewTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.KayitZaman",
+     "value": {
+         "tr": "Kayıt Zamanı"
+,
+         "en": "Recording Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.SablonId",
+     "value": {
+         "tr": "Şablon"
+,
+         "en": "Template"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.DurumId",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.DenemeSayisi",
+     "value": {
+         "tr": "Deneme"
+,
+         "en": "Trial"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.SonDenemeZaman",
+     "value": {
+         "tr": "Son Deneme Zamanı"
+,
+         "en": "Last Trial Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Aciklama",
+     "value": {
+         "tr": "Açıklama (Log)"
+,
+         "en": "Description (Log)"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Adres",
+     "value": {
+         "tr": "Adres"
+,
+         "en": "Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Kopya",
+     "value": {
+         "tr": "Kopya"
+,
+         "en": "Copy"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Gizli",
+     "value": {
+         "tr": "Gizli"
+,
+         "en": "Hidden"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Konu",
+     "value": {
+         "tr": "Konu"
+,
+         "en": "Topic"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailHareket.Icerik",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+]

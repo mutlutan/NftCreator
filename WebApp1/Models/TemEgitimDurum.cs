@@ -1,0 +1,22 @@
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace WebApp1.Models
+{
+    public partial class TemEgitimDurum
+    {
+        public TemEgitimDurum()
+        {
+            TemKisi = new HashSet<TemKisi>();
+        }
+
+        public int Id { get; set; }
+        public bool Durum { get; set; }
+        public int Sira { get; set; }
+        public string Ad { get; set; }
+
+        public virtual ICollection<TemKisi> TemKisi { get; set; }
+    }
+}

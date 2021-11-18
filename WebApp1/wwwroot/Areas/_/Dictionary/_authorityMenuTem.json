@@ -1,0 +1,30 @@
+﻿[
+  {
+    "key": "xLng.Authority.Tem",
+    "value": {
+      "tr": "Temel",
+      "en": "Fundamental"
+    }
+  },
+  {
+    "key": "xLng.Authority.Tem.Tanim",
+    "value": {
+      "tr": "Tanımlar",
+      "en": "Definitions"
+    }
+  },
+  {
+    "key": "xLng.Authority.Tem.Abonelik",
+    "value": {
+      "tr": "Abonelik",
+      "en": "Subscription"
+    }
+  },
+  {
+    "key": "xLng.Authority.Tem.Logs",
+    "value": {
+      "tr": "Loglar",
+      "en": "Logs"
+    }
+  }
+]

@@ -1,0 +1,403 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='BacDuyuruForForm'>
+    <div id='divButtonGroup' class='mnButtonGroup float-right'>
+        <button id='btnKaydet' type='button' class='btn btn-outline-success text-nowrap' data-langkey-title='xLng.Kaydet' style='position:absolute; right:0px;'> <i class='fa fa-save'></i> </button>
+    </div>
+
+    <div style='padding-bottom:15px;'>
+        <div id='tabstrip'>
+            <ul>
+                <li> <span data-langkey-text='xBac.BacDuyuru.FormViewTab.I'></span> </li>
+                <li> <span data-langkey-text='xBac.BacDuyuru.FormViewTab.II'></span> </li>
+            </ul>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+                     <div name='divDurum' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label'></label>
+                         <div class='col-sm-8'>
+                            <label style='font-weight:normal;'>
+                                <input name='Durum' type='checkbox' data-bind='checked:Durum' style='width: 24px; height: 24px; vertical-align: middle;'  />
+                                <span data-langkey-Text='xBac.BacDuyuru.Durum'></span>
+                            </label>
+                         </div>
+                     </div>
+
+                     <div name='divTarihSaat' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xBac.BacDuyuru.TarihSaat'></label>
+                         <div class='col-sm-8'>
+                             <input name='TarihSaat' data-bind='value:TarihSaat' />
+                             <span class='k-invalid-msg' data-for='TarihSaat'></span>
+                         </div>
+                     </div>
+
+                     <div name='divDil' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xBac.BacDuyuru.Dil'></label>
+                         <div class='col-sm-8'>
+                             <input name='Dil' data-bind='value:Dil' />
+                             <span class='k-invalid-msg' data-for='Dil'></span>
+                         </div>
+                     </div>
+
+                     <div name='divBaslik' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xBac.BacDuyuru.Baslik'></label>
+                         <div class='col-sm-8'>
+                             <input name='Baslik' type='text' class='k-textbox' data-bind='value:Baslik' data-langkey-placeholder='xBac.BacDuyuru.Baslik'  autocomplete='off' />
+                         </div>
+                     </div>
+
+                     <div name='divIcerikOzet' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xBac.BacDuyuru.IcerikOzet'></label>
+                         <div class='col-sm-8'>
+                             <textarea name='IcerikOzet' class='k-textbox' data-bind='value:IcerikOzet' data-langkey-placeholder='xBac.BacDuyuru.IcerikOzet'  style='height:200px;' ></textarea>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                </div>
+            </div>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+                     <div name='divResimUrl' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xBac.BacDuyuru.ResimUrl'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <span name='ImageSearchEditWrapperResimUrl' class='mnSearchEdit k-textbox k-space-right w-100'>
+                                <input name='ResimUrl' type='hidden' data-bind='value:ResimUrl' />
+                                <input class='font-weight-light' type='text' data-bind='value:ResimUrl' data-langkey-placeholder='xBac.BacDuyuru.ResimUrl' />
+                                <a name='btnPreview' class='btn btn-link fa fa-picture-o'  onclick='(function () { this.event.stopPropagation(); })();' href='' target='_blank' data-bind='attr:{href:ResimUrl}'> </a>
+                                <button name='btnClear' class='btn btn-light fa fa-close'></button>
+                                <button name='btnSearch' class='btn btn-light fa fa-search'></button>
+                             </span>
+                             <span class='k-invalid-msg' data-for='ResimUrl'></span>
+                         </div>
+                     </div>
+
+                     <div name='divIcerikTam' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-md-2 col-form-label' data-langkey-text='xBac.BacDuyuru.IcerikTam'></label>
+                         <div class='col-sm-8 col-md-10'>
+                             <textarea name='IcerikTam' type='text' class='k-textbox' data-bind='value:IcerikTam' data-langkey-placeholder='xBac.BacDuyuru.IcerikTam' style='height:400px;'></textarea>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ window.BacDuyuruForForm = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Bac';
+     self.title = 'xBac.BacDuyuru.Title';
+     self.selector = '#BacDuyuruForForm';
+     self.primaryKey = 'Id';
+     self.tableName = 'BacDuyuru';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         data.TarihSaat = kendo.toString(data.TarihSaat, 's');
+                         data.InsertDateTime = kendo.toString(data.InsertDateTime, 's');
+                         data.UpdateDateTime = kendo.toString(data.UpdateDateTime, 's');
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null },
+                         Durum: { type: 'boolean' },
+                         TarihSaat: { type: 'date' },
+                         Dil: { type: 'string' },
+                         Baslik: { type: 'string' },
+                         ResimUrl: { type: 'string' },
+                         IcerikOzet: { type: 'string' },
+                         IcerikTam: { type: 'string' },
+                         InsertUserId: { type: 'number', editable:false },
+                         UpdateUserId: { type: 'number', editable:false },
+                         InsertDateTime: { type: 'date', editable:false },
+                         UpdateDateTime: { type: 'date', editable:false },
+                         CcDurum: { type: 'string' },
+                         CcDil: { type: 'string' },
+                         CcInsertUserId: { type: 'string' },
+                         CcUpdateUserId: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 //this.cancelChanges();
+             },
+             requestStart: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), true); //progress On
+                 });
+             },
+             requestEnd: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), false); //progress Off
+                 });
+
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+
+                     if (e.response.Data.length > 0) {
+                         var row = e.response.Data[0];
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].Durum = result.Durum;
+                                 e.items[0].TarihSaat = kendo.parseDate(result.TarihSaat);
+                                 e.items[0].Dil = result.Dil;
+                                 e.items[0].Baslik = result.Baslik;
+                                 e.items[0].ResimUrl = result.ResimUrl;
+                                 e.items[0].IcerikOzet = result.IcerikOzet;
+                                 e.items[0].IcerikTam = result.IcerikTam;
+                                 e.items[0].InsertUserId = result.InsertUserId;
+                                 e.items[0].UpdateUserId = result.UpdateUserId;
+                                 e.items[0].InsertDateTime = kendo.parseDate(result.InsertDateTime);
+                                 e.items[0].UpdateDateTime = kendo.parseDate(result.UpdateDateTime);
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcDil = result.CcDil;
+                                 e.items[0].CcInsertUserId = result.CcInsertUserId;
+                                 e.items[0].CcUpdateUserId = result.CcUpdateUserId;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                     // Bind
+                     kendo.bind($(self.selector), e.items[0]);
+                     self.validator.validate();
+                 }
+
+                 // Yetki
+                 fYetkiUygula();
+
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateFormElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         //validator
+         let formElm = $(self.selector).find('.mnFormElementContainer');
+         self.validator = mnApp.createValidator(formElm, mnApp.validatorErrorTemplateIconMsg);
+
+         //butonlar
+         $(self.selector).find('#btnKaydet').click(function (e) {
+             mnApi.controlDisableWait($(e.target));
+             if (self.validator.validate()) {
+                 if (self.dataSource.at(0).dirty) {
+                     self.dataSource.sync();
+                 } else {
+                     mnAlert.warning(mnLang.TranslateWithWord('xLng.KayyittaDegisiklikYapmadiniz'));
+                 }
+             } else {
+                 mnAlert.warning(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+             }
+         });
+
+         //Diğer Form elementleri
+         $(self.selector).find('[name=TarihSaat]').kendoDateTimePicker({
+             componentType: mnApp.kendoDateTimePiker_ComponentType,
+             dateInput: mnApp.kendoDateTimePiker_DateInput
+         }).getKendoDateTimePicker();
+
+         $(self.selector).find('[name=Dil]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.list.dsCultures,
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+         $(self.selector).find('[name=ImageSearchEditWrapperResimUrl] [name=btnSearch]').click(function (e) {
+             var dataItem = self.dataSource.at(0);
+             mnPageView.create({
+                areaName: '_',
+                viewFileName: 'viewGorseller',
+                viewName: 'viewGorseller',
+                subTitle: mnLang.TranslateWithWord('xLng.AramaIslemleri'),
+                onShow: function (e) {
+                    e.beforeShow({ 'ownerViewName':'BacDuyuruForForm' });
+                },
+                onClose: function (e) {
+                    if (e.opt.isSelected) {
+                        dataItem.set('ResimUrl', e.opt.selectedDataItem.FileUrl);
+                    }
+                    self.validator.validate();
+                }
+             });
+         });
+
+         $(self.selector).find('[name=ImageSearchEditWrapperResimUrl] [name=btnClear]').click(function (e) {
+            e.stopPropagation();
+            var dataItem = self.dataSource.at(0);
+            dataItem.set('ResimUrl', '');
+            self.validator.validate();
+         });
+
+         self.keIcerikTam = $(self.selector).find('[name=IcerikTam]').kendoEditor({
+             serialization: { entities: false },
+             tools: ['bold','italic','underline','strikethrough','justifyLeft','justifyCenter','justifyRight','justifyFull','insertUnorderedList','insertOrderedList','indent','outdent','createLink','unlink','insertImage','insertFile','subscript','superscript','tableWizard','createTable','addRowAbove','addRowBelow','addColumnLeft','addColumnRight','deleteRow','deleteColumn','viewHtml','formatting','cleanFormatting','fontName','fontSize','foreColor','backColor','print'],
+             resizable: { content: true }
+         }).getKendoEditor();
+
+     }
+
+     function fSetAtributeFormElements() {
+     }
+
+     function fYetkiUygula() {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+
+         //ek yetkiler için)
+         //...
+
+         //Form İçin
+         if (_C || _U) {
+             $(self.selector).find('#btnKaydet').show();
+         } else {
+             $(self.selector).find('#btnKaydet').hide();
+         }
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'TarihSaat', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Dil', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Baslik', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'ResimUrl', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'IcerikOzet', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'IcerikTam', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+     }
+
+
+     function fGorunurlukUygula(dataItem) {
+
+        if (dataItem != null && dataItem != undefined) {
+        }
+     }
+
+     self.prepare = function () {
+         // form element atribute set
+         fSetAtributeFormElements();
+         // DataSource
+         fCreateDataSource();
+         // form Elementler
+         fCreateFormElements();
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+
+         if (self.opt.qprms.Id !== null && self.opt.qprms.Id > 0) {
+             self.dataSource.filter({ field: self.primaryKey, operator: 'eq', value: self.opt.qprms.Id });
+         } else {
+             self.dataSource.data([]); // eski data varsa işleme girmemesi için
+             self.dataSource.add();
+         }
+
+         self.tabstrip.select(0);
+     };
+
+     return self;
+ }();
+</script>

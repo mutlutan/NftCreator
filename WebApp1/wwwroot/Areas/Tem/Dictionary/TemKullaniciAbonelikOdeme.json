@@ -1,0 +1,117 @@
+[
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.Title",
+     "value": {
+         "tr": "Kullanıcı Abonelik Ödeme"
+,
+         "en": "User Subscription Payment"
+     }
+ },
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.ShortTitle",
+     "value": {
+         "tr": "Ödemeler"
+,
+         "en": "Payments"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.KullaniciAbonelikId",
+     "value": {
+         "tr": "KullaniciAbonelikId"
+,
+         "en": "KullaniciAbonelikId"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.BaslamaTarihi",
+     "value": {
+         "tr": "Başlama Tarihi"
+,
+         "en": "Start Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.BitisTarihi",
+     "value": {
+         "tr": "Bitiş Tarihi"
+,
+         "en": "End Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.YanitIcerigi",
+     "value": {
+         "tr": "Yanıt İçeriği"
+,
+         "en": "Response Content"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.InsertUserId",
+     "value": {
+         "tr": "Ekleyen Kullanıcı"
+,
+         "en": "User Who Added"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.UpdateUserId",
+     "value": {
+         "tr": "Değiştiren Kullanıcı"
+,
+         "en": "User Who Changed"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.InsertDateTime",
+     "value": {
+         "tr": "Eklenme Zamanı"
+,
+         "en": "Time To Add"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciAbonelikOdeme.UpdateDateTime",
+     "value": {
+         "tr": "Değiştirme Zamanı"
+,
+         "en": "Update Time"
+     }
+ }
+]

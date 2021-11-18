@@ -1,0 +1,72 @@
+[
+ {
+     "key" : "xTem.TemKullaniciLisans.Title",
+     "value": {
+         "tr": "Kullanıcı Lisans"
+,
+         "en": "User License"
+     }
+ },
+ {
+     "key" : "xTem.TemKullaniciLisans.ShortTitle",
+     "value": {
+         "tr": "Lisans"
+,
+         "en": "License"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.KullaniciId",
+     "value": {
+         "tr": "Kullanıcı"
+,
+         "en": "User"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.BaslamaTarihi",
+     "value": {
+         "tr": "Başlama Tarihi"
+,
+         "en": "Start Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullaniciLisans.BitisTarihi",
+     "value": {
+         "tr": "Bitiş Tarihi"
+,
+         "en": "End Date"
+     }
+ }
+]

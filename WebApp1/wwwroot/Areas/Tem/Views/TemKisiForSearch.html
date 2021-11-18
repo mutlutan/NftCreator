@@ -1,0 +1,492 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemKisiForSearch'>
+    <div>
+        <div id='divButtonGroup' class='mnButtonGroup float-right' >
+            <button id='btnAra' type='button' class='btn btn-outline-warning text-nowrap mn-hover-color-white' data-langkey-title='xLng.Ara' style='position:absolute; right:0px;' > <i class='fa fa-binoculars'></i> <small data-langkey-text='xLng.Ara'></small> </button>
+        </div>
+    </div>
+    <div>
+        <div id='tabstrip' class='mnFindTab'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemKisi.SearchFindTab.I'></span> </li>
+                <li> <span data-langkey-text='xTem.TemKisi.SearchFindTab.II'></span> </li>
+                <li> <span data-langkey-text='xTem.TemKisi.SearchFindTab.III'></span> </li>
+            </ul>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divDurum' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKisi.Durum'></label>
+                        <input type='text' style='width:112px' data-find_option='auto' data-find_type='System.Boolean' data-find_field='Durum' data-find_operator='eq' />
+                    </span>
+
+                    <span name='divKimlikNumarasi' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKisi.KimlikNumarasi'></label>
+                        <input type='text' class='k-textbox' style='width:175px' data-find_option='auto' data-find_type='System.String' data-find_field='KimlikNumarasi' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divAd' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKisi.Ad'></label>
+                        <input type='text' class='k-textbox' style='width:200px' data-find_option='auto' data-find_type='System.String' data-find_field='Ad' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divSoyad' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKisi.Soyad'></label>
+                        <input type='text' class='k-textbox' style='width:200px' data-find_option='auto' data-find_type='System.String' data-find_field='Soyad' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divIlceId' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKisi.IlceId'></label>
+                        <input type='text' style='width:312px' data-find_option='auto' data-find_type='System.Int32' data-find_field='IlceId' data-find_operator='eq' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id='divGrid'></div>
+    </div>
+</div>
+
+<script>
+ window.TemKisiForSearch = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemKisi.Title';
+     self.selector = '#TemKisiForSearch';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemKisi';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         data.KayitZaman = kendo.toString(data.KayitZaman, 's');
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             sort: [
+             ],
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null  },
+                         Durum: { type: 'boolean' },
+                         KayitZaman: { type: 'date', editable:false },
+                         KimlikNumarasi: { type: 'string' },
+                         Ad: { type: 'string' },
+                         Soyad: { type: 'string' },
+                         Adres: { type: 'string' },
+                         IlceId: { type: 'number' },
+                         MobilTelefon: { type: 'string' },
+                         SabitTelefon: { type: 'string' },
+                         FaxNumarasi: { type: 'string' },
+                         MailAdres: { type: 'string' },
+                         EgitimDurumId: { type: 'number' },
+                         CinsiyetId: { type: 'number' },
+                         KanGrup: { type: 'string' },
+                         Aciklama: { type: 'string' },
+                         CcDurum: { type: 'string' },
+                         CcIlceId: { type: 'string' },
+                         CcEgitimDurumIdAd: { type: 'string' },
+                         CcCinsiyetIdAd: { type: 'string' },
+                         CcKanGrup: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 this.cancelChanges();
+             },
+             requestStart: function (e) {
+             },
+             requestEnd: function (e) {
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].Durum = result.Durum;
+                                 e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
+                                 e.items[0].KimlikNumarasi = result.KimlikNumarasi;
+                                 e.items[0].Ad = result.Ad;
+                                 e.items[0].Soyad = result.Soyad;
+                                 e.items[0].Adres = result.Adres;
+                                 e.items[0].IlceId = result.IlceId;
+                                 e.items[0].MobilTelefon = result.MobilTelefon;
+                                 e.items[0].SabitTelefon = result.SabitTelefon;
+                                 e.items[0].FaxNumarasi = result.FaxNumarasi;
+                                 e.items[0].MailAdres = result.MailAdres;
+                                 e.items[0].EgitimDurumId = result.EgitimDurumId;
+                                 e.items[0].CinsiyetId = result.CinsiyetId;
+                                 e.items[0].KanGrup = result.KanGrup;
+                                 e.items[0].Aciklama = result.Aciklama;
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcIlceId = result.CcIlceId;
+                                 e.items[0].CcEgitimDurumIdAd = result.CcEgitimDurumIdAd;
+                                 e.items[0].CcCinsiyetIdAd = result.CcCinsiyetIdAd;
+                                 e.items[0].CcKanGrup = result.CcKanGrup;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                 }
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateGrid() {
+         self.grid = $(self.selector).find('#divGrid').kendoGrid({
+             excel: { allPages: true },
+             excelExport: mnApp.exportGridWithTemplatesContentForKendo,
+             autoBind: false, resizable: true, reorderable: true,
+             sortable: { mode: 'multiple', allowUnsort: true, showIndexes: true },
+             pageable: {
+                 refresh: true, pageSizes: mnApp.gridPageSizes_default, buttonCount: 5, input: true,
+                 messages: { itemsPerPage: '' }
+             },
+             editable: {
+                 confirmation: true, mode: 'inline', createAt: 'bottom'
+             },
+             columns: [
+             {
+                 locked: true,
+                 title: '',
+                 width: '35px',
+                 command: [
+                     { template: '<button id="btnSecDon" class="btn btn-link btn-xs fa fa-download" style="padding:0px;" title="' + mnLang.TranslateWithWord("xLng.SecDon") + '"> </button>' }
+                 ]
+             },
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.Durum'),
+                 field: 'Durum',
+                 template: '#:CcDurum#',
+                 width: '90px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.KimlikNumarasi'),
+                 field: 'KimlikNumarasi',
+                 width: '175px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.Ad'),
+                 field: 'Ad',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '200px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.Soyad'),
+                 field: 'Soyad',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '200px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.Adres'),
+                 field: 'Adres',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.IlceId'),
+                 field: 'IlceId',
+                 template: '#:CcIlceId#',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '250px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKisi.FaxNumarasi'),
+                 field: 'FaxNumarasi',
+                 width: '130px'
+             },
+
+             {}
+             ],
+             edit: function (e) {
+                 mnApi.controlEnable(e.container.find('#btnSecDon'), false);
+
+                 var model=e.model;
+                 this.cancelRow();
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemKisiForForm',
+                     viewName: 'TemKisiForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': model.Id };
+                         e.beforeShow({'ownerViewName':'TemKisiForSearch', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             },
+             cancel: function (e) {
+                 if (e.model.id !== null) {
+                     e.sender.refresh(); //databound da renklendirme ve button set etme var ise ,cancelden sonra databound çalışmıyor(yetki,renk style ayarlanamıyor) bununla refresh ediyosun
+                 }
+             },
+             dataBound: function (e) {
+                var data = e.sender.dataSource.data();
+                 //yetki
+                 self.YetkiUygula(data);
+
+                 // Language
+                 mnLang.TranslateWithSelector(e.sender.wrapper);
+
+                 //SearchView selector enable/disable
+                 for (var i = 0; i < data.length; i++) {
+                     var dataItem = data[i];
+                     var bDisable = false;
+
+                     if (bDisable) {
+                        var tr = e.sender.wrapper.find('[data-uid=' + dataItem.uid + ']');
+                        mnApi.controlEnable(tr.find('#btnSecDon'), false);
+                        tr.find('#btnSecDon').closest('td').attr('title', mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+                     }
+                 }
+
+                 //row style
+             },
+             dataSource: self.dataSource
+         }).getKendoGrid();
+
+         self.grid.wrapper.find('#btnEkle').kendoButton({
+             icon: 'plus',
+             click: function () {
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemKisiForForm',
+                     viewName: 'TemKisiForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': null };
+                         e.beforeShow({'ownerViewName':'TemKisiForSearch', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             }
+         });
+
+         self.grid.wrapper.on('click', '#btnSecDon', function (e) {
+             e.preventDefault();
+             self.opt.isSelected = true;
+             var dataItem = self.grid.dataItem($(e.currentTarget).closest('tr'));
+             self.opt.selectedDataItem = dataItem;
+             self.close();
+         });
+
+         self.grid.wrapper.find('#btnSaveAsExcel').kendoButton({
+             icon: 'excel',
+             click: function () {
+                 kendo.ui.progress(self.grid.wrapper, true); //progress On
+                 self.grid.saveAsExcel();
+             }
+         });
+     }
+
+     function fCreateFindElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         // filter buton
+         $(self.selector).find('#btnAra').click(function (e) {
+             self.filter();
+         });
+
+         // filter tetikleyicileri
+         $(self.selector).find('[data-find_option]').keydown(function (e) {
+             if (e.which === 13) {
+                 e.preventDefault();
+                 self.filter();
+             }
+         });
+
+         // Filter elementleri
+         $(self.selector).find('[data-find_field=Durum]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.list.dsAktifPasif
+         }).getKendoDropDownList();
+
+         $(self.selector).find('[data-find_field=IlceId]').kendoDropDownList({
+             filter: 'contains',
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.list.dsUlkeSehirIlce
+         }).getKendoDropDownList();
+
+     }
+
+     self.YetkiUygula = function (_data) {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+         var _E = mnUser.isYetkili(self.tableName + '.D_E.');
+
+         //ek yetkiler için
+         //...
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'KimlikNumarasi', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Soyad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'IlceId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFindElementContainer .mnFindElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+         //grid ekle button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnEkle'), _C);
+         //grid exel button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnSaveAsExcel'), _E);
+
+         //grid rows için
+         $.each(_data, function (i, row) {
+             var _tr = self.grid.wrapper.find('tr[data-uid=' + row.uid + ']');
+             var tr_U = _U;
+             var tr_D = _D;
+
+             //update-delete button için
+             mnApi.controlEnable(_tr.find('.k-grid-delete'), tr_D);
+
+             // ek yetkiler (row daki nesneler için)
+             var btnDetay_TemKullanici_R = mnUser.isYetkili('TemKullanici.D_R.');
+             mnApi.controlEnable(_tr.find('.k-grid-btnDetay_TemKullanici'), btnDetay_TemKullanici_R);
+
+
+
+             //row değerine göre yetkiler
+             //...
+
+         });
+     };
+
+     self.prepare = function () {
+         // DataSource
+         fCreateDataSource();
+
+         // find Elementler
+         fCreateFindElements();
+
+         // Grid
+         fCreateGrid();
+
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+         self.opt.isSelected = false;
+
+         self.filter();
+
+         self.tabstrip.select(0);
+
+     };
+
+     self.filter = function (_data) {
+         self.dataSource.filter(mnApp.find_options_ToFilterList(self));
+     };
+
+     self.close = function () {
+         if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+             $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+         } else {
+             $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+         }
+     };
+
+     return self;
+ }();
+</script>

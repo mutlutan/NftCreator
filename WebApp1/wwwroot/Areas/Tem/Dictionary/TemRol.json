@@ -1,0 +1,72 @@
+[
+ {
+     "key" : "xTem.TemRol.Title",
+     "value": {
+         "tr": "Roller"
+,
+         "en": "Roles"
+     }
+ },
+ {
+     "key" : "xTem.TemRol.ShortTitle",
+     "value": {
+         "tr": "Roller"
+,
+         "en": "Roles"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.Sira",
+     "value": {
+         "tr": "Sıra"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRol.Yetki",
+     "value": {
+         "tr": "Yetki"
+,
+         "en": "Authority"
+     }
+ }
+]

@@ -1,0 +1,346 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WebApp1</name>
+    </assembly>
+    <members>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansUrun">
+            <summary>
+            Lisans Ürün
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansUrunResponse">
+            <summary>
+            Lisans Ürün isteğinin sonucu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunResponse.Sonuc">
+            <summary>
+            Sonuc değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunResponse.Mesaj">
+            <summary>
+            Sonuç mesajı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunResponse.LisansUrunList">
+            <summary>
+            Lisans Ürünler
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansUrunModul">
+            <summary>
+            Lisans Ürün Modul
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansUrunModulResponse">
+            <summary>
+            Lisans Ürün Modül isteğinin sonucu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunModulResponse.Sonuc">
+            <summary>
+            Sonuc değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunModulResponse.Mesaj">
+            <summary>
+            Sonuç mesajı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansUrunModulResponse.LisansUrunModulList">
+            <summary>
+            Lisans Ürünler
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansKayitRequest">
+            <summary>
+            Lisans kayıt isteği 
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.KullaniciAd">
+            <summary>
+            Satıcı kullanıcı adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.KullaniciSifre">
+            <summary>
+            Satıcı kullanıcı şifre
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.UrunId">
+            <summary>
+            Lisans kaydı yapılmak istenilen ürünün, Lisans sistemindeki ürün id
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.IsletmeKod">
+            <summary>
+            Lisans sistemdeki işletme(müşteri) kodu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.DonanimDeger">
+            <summary>
+            Donanımın değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitRequest.LisansAnahtar">
+            <summary>
+            Lisans kaydı yapabilmek için gerekli anahtar
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansSorguRequest">
+            <summary>
+            Lisans sorgu isteği 
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.UrunId">
+            <summary>
+            Lisanslamak istenilen ürünün, Lisans sistemindeki ürün id
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.IsletmeKod">
+            <summary>
+            Lisans sistemdeki işletme(müşteri) kodu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.DonanimDeger">
+            <summary>
+            Donanımın değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.DataVersiyon">
+            <summary>
+            Veritabanı versiyonu (Ürün Id gönderildiğinde kullanılır)
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.UygulamaVersiyon">
+            <summary>
+            Uygulama versiyonu (Ürün Id gönderildiğinde kullanılır)
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguRequest.OzelVeri">
+            <summary>
+            Görülmek istenilen veriler yollanır, sadece istek logda izlenebilir.
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansKayitResponse">
+            <summary>
+            Lisans kayıt isteğinin sonucu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitResponse.Sonuc">
+            <summary>
+            Sonuc değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitResponse.Mesaj">
+            <summary>
+            Sonuç mesajı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitResponse.UrunId">
+            <summary>
+            Görevin uygulanacagi ürün id si
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansKayitResponse.GorevIds">
+            <summary>
+            Görev EnmLisansKayitGorev
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansData">
+            <summary>
+            Lisans kayıt isteğinin sonuç içi lisans datası, şifreli gelen datanın modeli
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.SaticiAd">
+            <summary>
+            Lisansı satan satıcı adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.SaticiUnvan">
+            <summary>
+            Lisansı satan satıcı ünvanı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.UrunId">
+            <summary>
+            Lisanslanmış ürünün id si, Lisans sistemde kayıtlı ürün id si
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.Moduller">
+            <summary>
+            Lisanslanmış ürün modülleri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.KullaniciSayisi">
+            <summary>
+            Lisanslanmış kullanıcı sayısı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.DonanimDeger">
+            <summary>
+            Lisanslamanın yapıldığı donanım değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansDurumId">
+            <summary>
+            Lisansın durumu id, Lisanslı olup olmadığı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansTurId">
+            <summary>
+            Lisansın Tür id
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.SiparisTurId">
+            <summary>
+            Sipariş türü id
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.MinimumErisimGun">
+            <summary>
+            Minimum erişim günü, lisansın yaşam süresi
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.SonErisimZaman">
+            <summary>
+            İstemcinin lisans sisteme son eriştiği zaman
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansBaslangic">
+            <summary>
+            Lisansın başlama tarihi
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansBitis">
+            <summary>
+            Lisansın bitiş tarihi
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.GuncellemeBitis">
+            <summary>
+            Güncelleme almanın bitiş tarihi
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.IsletmeAd">
+            <summary>
+            Lisansı alan işletme adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.IsletmeUnvan">
+            <summary>
+            Lisansı alan işletme ünvanı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.UrunAd">
+            <summary>
+            Lisanslanan ürün adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansDurumAd">
+            <summary>
+            Lisans durumu adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.LisansTurAd">
+            <summary>
+            Lisans tür adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansData.SiparisTurAd">
+            <summary>
+            Sipariş tür adı
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.JsonLisans.UrunId">
+            <summary>
+            Lisanslanmış ürünün id si, Lisans sistemde kayıtlı ürün id si
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.JsonLisans.EncodedJson">
+            <summary>
+            Encoded lisans json text
+            </summary>
+        </member>
+        <member name="T:WebApp1.Areas.Lis.Codes.LisansSorguResponse">
+            <summary>
+            Lisans sorgu isteğinin sonucu
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguResponse.Sonuc">
+            <summary>
+            Sonuc değeri
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguResponse.Mesaj">
+            <summary>
+            Sonuç mesajı
+            </summary>
+        </member>
+        <member name="F:WebApp1.Areas.Lis.Codes.LisansSorguResponse.LisansList">
+            <summary>
+            Lisans kaydı verileri object
+            </summary>
+        </member>
+        <member name="P:WebApp1.Areas.Lis.Codes.LisansSorguResponse.JsonLisansList">
+            <summary>
+            Lisans kayıt verileri
+            </summary>
+        </member>
+        <member name="M:WebApp1.Areas.Lis.Controllers.LisController.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor,WebApp1.Models._DataContext)">
+            <summary>
+            Lisans Controller Constractor
+            </summary>
+            <param name="_accessor"></param>
+            <param name="_context"></param>
+        </member>
+        <member name="M:WebApp1.Areas.Lis.Controllers.LisController.UrunListesi(System.String)">
+            <summary>
+            Lisans sistemde kayıtlı ürünleri döndürür
+            </summary>
+            <param name="token">Metodu kullanmak için gerekli jeton</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApp1.Areas.Lis.Controllers.LisController.UrunModulListesi(System.String,System.Int32)">
+            <summary>
+            Lisans sistemde kayıtlı ürünün modüllerini döndürür
+            </summary>
+            <param name="token">Metodu kullanmak için gerekli jeton</param>
+            <param name="urunId">Modülleri istenen ürün id</param>
+            <returns></returns>
+        </member>
+        <member name="M:WebApp1.Areas.Lis.Controllers.LisController.UrunLisansKayit(WebApp1.Areas.Lis.Codes.LisansKayitRequest)">
+            <summary>
+            Ürün lisans kaydı yapan fonksiyonu
+            </summary>
+            <param name="request">İstek parametreleri</param>
+            <returns>Kayıt işlem sonucu</returns>
+        </member>
+        <member name="M:WebApp1.Areas.Lis.Controllers.LisController.UrunLisansSorgu(WebApp1.Areas.Lis.Codes.LisansSorguRequest)">
+            <summary>
+            Kayıtlı lisans kaydı sorgulayan fonksiyon
+            </summary>
+            <param name="request">İstek parametreleri</param>
+            <returns>Lisans durumunu gösteren json veri</returns>
+        </member>
+        <member name="M:WebApp1.Areas.Tem.Controllers.TemController.GetDateTime(System.String)">
+            <summary>
+            Sunucu tarih saatini öğrenmek için kullanılır.
+            </summary>
+            <returns>Sunucu Tarih Saat</returns>
+        </member>
+        <member name="M:WebApp1.Areas.Tem.Controllers.TemController.DovizKuruGetir(System.String,System.String,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Döviz kuru almak için kullanılır (Merkez bankası)
+            </summary>
+            <param name="paraBirimKod">Para birimi Kodu (Merkez bankasındaki kod)</param>
+            <param name="token">Metodu kullanmak için gerekli jeton</param>
+            /// <param name="yil">Döviz kuru tarihinin yılı</param>
+            <param name="ay">Döviz kuru tarihinin ayı</param>
+            <param name="gun">Döviz kuru tarihinin günü</param>
+            <returns>Döviz kuru bilgisi json olarak döner</returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,43 @@
+﻿@{
+    Layout = "_Layout";
+}
+
+<div id="viewUyeKayitOnay">
+    <div class="container">
+        <p class="h3">@ViewBag.Message</p>
+    </div>
+    <br />
+    <a href="/tr/iletisim.html" class="btn btn-link">
+        <span data-langkey-text="xLng.IletisimIcinTiklayiniz"></span>
+    </a>
+    <br />
+    <a href="/tr/index.html" class="btn btn-link">
+        <span data-langkey-text="xLng.GirisSayfasiIcinTiklayiniz"></span>
+    </a>
+</div>
+
+
+<script>
+
+    window.addEventListener('load', (event) => {
+        viewUyeKayitOnay.prepare();
+    });
+
+    window.viewUyeKayitOnay = function () {
+        var self = {};
+        self.selector = "#viewUyeKayitOnay";
+
+        self.prepare = function () {
+
+            // Language
+            mnLang.TranslateWithSelector(self.selector);
+        };
+
+        $(window).on("resize", function () {
+
+        });
+
+        return self;
+    }();
+
+</script>

@@ -1,0 +1,90 @@
+[
+ {
+     "key" : "xTem.TemSehir.Title",
+     "value": {
+         "tr": "Şehirler"
+,
+         "en": "Cities"
+     }
+ },
+ {
+     "key" : "xTem.TemSehir.ShortTitle",
+     "value": {
+         "tr": "Şehirler"
+,
+         "en": "Cities"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "ID"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.UlkeId",
+     "value": {
+         "tr": "UlkeId"
+,
+         "en": "UlkeId"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.Sira",
+     "value": {
+         "tr": "Sira"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.AlanKod",
+     "value": {
+         "tr": "Alan Kod"
+,
+         "en": "Area Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemSehir.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

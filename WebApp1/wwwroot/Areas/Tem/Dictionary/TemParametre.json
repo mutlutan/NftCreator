@@ -1,0 +1,396 @@
+[
+ {
+     "key" : "xTem.TemParametre.Title",
+     "value": {
+         "tr": "Parametreler"
+,
+         "en": "Params"
+     }
+ },
+ {
+     "key" : "xTem.TemParametre.ShortTitle",
+     "value": {
+         "tr": "Prm"
+,
+         "en": "Prm"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FormViewTab.I",
+     "value": {
+         "tr": "Kurum"
+,
+         "en": "Institution"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FormViewTab.II",
+     "value": {
+         "tr": "Genel"
+,
+         "en": "General"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FormViewTab.III",
+     "value": {
+         "tr": "Mail Sunucu"
+,
+         "en": "Mail Sunucu"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FormViewTab.V",
+     "value": {
+         "tr": "Log"
+,
+         "en": "Log"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FormViewTab.VI",
+     "value": {
+         "tr": "Yedek"
+,
+         "en": "Backup"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.UniqueVisit",
+     "value": {
+         "tr": "Tekil Giriş"
+,
+         "en": "Unique Visit"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.HostAddress",
+     "value": {
+         "tr": "Web Adresi"
+,
+         "en": "Host Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.LisansData",
+     "value": {
+         "tr": "Lisans"
+,
+         "en": "License"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.AuditLog",
+     "value": {
+         "tr": "Data Log"
+,
+         "en": "Audit Log"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.AuditLogTables",
+     "value": {
+         "tr": "Data Log Tabloları"
+,
+         "en": "Audit Log Tables"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumAd",
+     "value": {
+         "tr": "Kurum Ad"
+,
+         "en": "Institution Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumUnvan",
+     "value": {
+         "tr": "Kurum Ünvan"
+,
+         "en": "Institution Title"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumAdes",
+     "value": {
+         "tr": "Kurum Adres"
+,
+         "en": "Institution Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumSemtSehir",
+     "value": {
+         "tr": "Kurum Semt/Şehir"
+,
+         "en": "Institution Town/City"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumMail",
+     "value": {
+         "tr": "Kurum Mail"
+,
+         "en": "Corporate Mail"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumTelefon1",
+     "value": {
+         "tr": "Kurum Telefon1"
+,
+         "en": "Institution Phone1"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumTelefon2",
+     "value": {
+         "tr": "Kurum Telefon2"
+,
+         "en": "Institution Phone2"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumCep1",
+     "value": {
+         "tr": "Kurum Mobil1"
+,
+         "en": "Institution Mobile1"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumCep2",
+     "value": {
+         "tr": "Kurum Mobil2"
+,
+         "en": "Institution Mobile2"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumFax1",
+     "value": {
+         "tr": "Kurum Fax1"
+,
+         "en": "Institution Fax1"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumFax2",
+     "value": {
+         "tr": "Kurum Fax2"
+,
+         "en": "Institution Fax2"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.MailHost",
+     "value": {
+         "tr": "Mail Host Adres"
+,
+         "en": "Mail Host Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.MailPort",
+     "value": {
+         "tr": "Mail Port"
+,
+         "en": "Mail Port"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.MailEnableSsl",
+     "value": {
+         "tr": "Mail SSL"
+,
+         "en": "Mail SSL"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.MailUserName",
+     "value": {
+         "tr": "Mail Kullanıcı Adı"
+,
+         "en": "Mail User Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.MailPassword",
+     "value": {
+         "tr": "Mail Kullanıcı Şife"
+,
+         "en": "Mail Password"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumEnlem",
+     "value": {
+         "tr": "Kurum Enlem"
+,
+         "en": "Institution Latitude"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.KurumBoylam",
+     "value": {
+         "tr": "Kurum Boylam"
+,
+         "en": "Institution Longitude"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.DataBackupDurum",
+     "value": {
+         "tr": "Data Yedek Durum"
+,
+         "en": "Data Backup Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.DataBackupSaat",
+     "value": {
+         "tr": "Data Yedek Saat"
+,
+         "en": "Data Backup Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.IyzicoBaseUrl",
+     "value": {
+         "tr": "Iyzico Base Url"
+,
+         "en": "Iyzico Base Url"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.DataBackupTip",
+     "value": {
+         "tr": "Tip"
+,
+         "en": "Type"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.IyzicoApiKey",
+     "value": {
+         "tr": "Iyzico Api Key"
+,
+         "en": "Iyzico Api Key"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.DataBackupGun",
+     "value": {
+         "tr": "Gün"
+,
+         "en": "Day"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.IyzicoSecretKey",
+     "value": {
+         "tr": "Iyzico Secret Key"
+,
+         "en": "Iyzico Secret Key"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.DataBackupAyGunNo",
+     "value": {
+         "tr": "Ayın Günü"
+,
+         "en": "The Day of the Month"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FileBackupDurum",
+     "value": {
+         "tr": "Dosya Yedek Durum"
+,
+         "en": "File Backup Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FileBackupSaat",
+     "value": {
+         "tr": "Dosya Yedek Saat"
+,
+         "en": "File Backup Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FileBackupTip",
+     "value": {
+         "tr": "Tip"
+,
+         "en": "Type"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FileBackupGun",
+     "value": {
+         "tr": "Gün"
+,
+         "en": "Day"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParametre.FileBackupAyGunNo",
+     "value": {
+         "tr": "Ayın Günü"
+,
+         "en": "The Day of the Month"
+     }
+ }
+]

@@ -1,0 +1,144 @@
+[
+ {
+     "key" : "xBac.BacDuyuru.Title",
+     "value": {
+         "tr": "Duyuru"
+,
+         "en": "Anons"
+     }
+ },
+ {
+     "key" : "xBac.BacDuyuru.ShortTitle",
+     "value": {
+         "tr": "Duyuru"
+,
+         "en": "Anons"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.FormViewTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.TarihSaat",
+     "value": {
+         "tr": "Tarih Saat"
+,
+         "en": "Date Time"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.Dil",
+     "value": {
+         "tr": "Dil"
+,
+         "en": "Language"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.Baslik",
+     "value": {
+         "tr": "Başlık"
+,
+         "en": "Title"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.ResimUrl",
+     "value": {
+         "tr": "Resim Url"
+,
+         "en": "Image Url"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.IcerikOzet",
+     "value": {
+         "tr": "İçerik Özet"
+,
+         "en": "Content Summary"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.IcerikTam",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.InsertUserId",
+     "value": {
+         "tr": "Ekleyen Kullanıcı"
+,
+         "en": "User Who Added"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.UpdateUserId",
+     "value": {
+         "tr": "Değiştiren Kullanıcı"
+,
+         "en": "User Who Changed"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.InsertDateTime",
+     "value": {
+         "tr": "Eklenme Zamanı"
+,
+         "en": "Time To Add"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacDuyuru.UpdateDateTime",
+     "value": {
+         "tr": "Değiştirme Zamanı"
+,
+         "en": "Update Time"
+     }
+ }
+]

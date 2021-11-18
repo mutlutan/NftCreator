@@ -1,0 +1,72 @@
+[
+ {
+     "key" : "xTem.TemAdres.Title",
+     "value": {
+         "tr": "Adresler"
+,
+         "en": "Addresses"
+     }
+ },
+ {
+     "key" : "xTem.TemAdres.ShortTitle",
+     "value": {
+         "tr": ""
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.SearchFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.UstId",
+     "value": {
+         "tr": "Üst"
+,
+         "en": "Parent"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAdres.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

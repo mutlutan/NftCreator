@@ -1,0 +1,117 @@
+[
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Title",
+     "value": {
+         "tr": "Abonelik Ürün Plan"
+,
+         "en": "Subscription Product Plan"
+     }
+ },
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.ShortTitle",
+     "value": {
+         "tr": "Ürün Plan"
+,
+         "en": "Product Plan"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.AbonelikUrunId",
+     "value": {
+         "tr": "Abonelik Ürün"
+,
+         "en": "Subscription Product"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Sira",
+     "value": {
+         "tr": "Sıra"
+,
+         "en": "Queue"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.AbonelikDonemId",
+     "value": {
+         "tr": "Abonelik Dönem"
+,
+         "en": "Subscription Period"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Ucret",
+     "value": {
+         "tr": "Ücret"
+,
+         "en": "Fee"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.ParaBirimId",
+     "value": {
+         "tr": "Para Birim"
+,
+         "en": "Currency"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrunPlan.Aciklama",
+     "value": {
+         "tr": "Açıklama"
+,
+         "en": "Description"
+     }
+ }
+]

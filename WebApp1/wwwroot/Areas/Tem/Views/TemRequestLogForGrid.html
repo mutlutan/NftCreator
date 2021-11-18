@@ -1,0 +1,442 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemRequestLogForGrid'>
+    <div>
+        <div id='divButtonGroup' class='mnButtonGroup float-right' >
+            <button id='btnAra' type='button' class='btn btn-outline-warning text-nowrap mn-hover-color-white' data-langkey-title='xLng.Ara' style='position:absolute; right:0px;' > <i class='fa fa-binoculars'></i> <small data-langkey-text='xLng.Ara'></small> </button>
+        </div>
+    </div>
+    <div>
+        <div id='tabstrip' class='mnFindTab'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemRequestLog.GridFindTab.I'></span> </li>
+                <li> <span data-langkey-text='xTem.TemRequestLog.GridFindTab.II'></span> </li>
+                <li> <span data-langkey-text='xTem.TemRequestLog.GridFindTab.III'></span> </li>
+            </ul>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divOperationKod' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.OperationKod'></label>
+                        <input type='text' class='k-textbox' style='width:150px' data-find_option='auto' data-find_type='System.String' data-find_field='OperationKod' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divIpAddress' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.IpAddress'></label>
+                        <input type='text' class='k-textbox' style='width:130px' data-find_option='auto' data-find_type='System.String' data-find_field='IpAddress' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divSessionGuid' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.SessionGuid'></label>
+                        <input type='text' class='k-textbox' style='width:120px' data-find_option='auto' data-find_type='System.String' data-find_field='SessionGuid' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divRequestJson' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.RequestJson'></label>
+                        <input type='text' class='k-textbox' style='width:300px' data-find_option='auto' data-find_type='System.String' data-find_field='RequestJson' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divResponseJson' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.ResponseJson'></label>
+                        <input type='text' class='k-textbox' style='width:225px' data-find_option='auto' data-find_type='System.String' data-find_field='ResponseJson' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divOperationDate' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemRequestLog.OperationDate'></label>
+                        <input type='text' class='mr-2' style='width:195px' data-find_option='auto' data-find_type='System.DateTime' data-find_field='OperationDate' data-find_operator='gte' />
+                        <input type='text' style='width:195px' data-find_option='auto' data-find_type='System.DateTime' data-find_field='OperationDate' data-find_operator='lte' />
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id='divGrid'></div>
+    </div>
+</div>
+
+<script>
+ window.TemRequestLogForGrid = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemRequestLog.Title';
+     self.selector = '#TemRequestLogForGrid';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemRequestLog';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         data.OperationDate = kendo.toString(data.OperationDate, 's');
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             sort: [
+                 { field: 'OperationDate', dir: 'desc' }
+             ],
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null  },
+                         OperationDate: { type: 'date' },
+                         OperationKod: { type: 'string' },
+                         IpAddress: { type: 'string' },
+                         SessionGuid: { type: 'string' },
+                         RequestJson: { type: 'string' },
+                         ResponseJson: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 this.cancelChanges();
+             },
+             requestStart: function (e) {
+             },
+             requestEnd: function (e) {
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].OperationDate = kendo.parseDate(result.OperationDate);
+                                 e.items[0].OperationKod = result.OperationKod;
+                                 e.items[0].IpAddress = result.IpAddress;
+                                 e.items[0].SessionGuid = result.SessionGuid;
+                                 e.items[0].RequestJson = result.RequestJson;
+                                 e.items[0].ResponseJson = result.ResponseJson;
+                                 //computed alanların tanımlanması
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                 }
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateGrid() {
+         self.grid = $(self.selector).find('#divGrid').kendoGrid({
+             excel: { allPages: true },
+             excelExport: mnApp.exportGridWithTemplatesContentForKendo,
+             autoBind: false, resizable: true, reorderable: true,
+             sortable: { mode: 'multiple', allowUnsort: true, showIndexes: true },
+             pageable: {
+                 refresh: true, pageSizes: mnApp.gridPageSizes_default, buttonCount: 5, input: true,
+                 messages: { itemsPerPage: '' }
+             },
+             editable: {
+                 confirmation: true, mode: 'inline', createAt: 'bottom'
+             },
+             columns: [
+             {
+                 locked: true,
+                 headerTemplate: '<span id="btnEkle" style=" " title="' + mnLang.TranslateWithWord("xLng.Ekle") + '" ></span>'+'<span id="btnSaveAsExcel" style=" " title="' + mnLang.TranslateWithWord("xLng.SaveAsExcel") + '" ></span>',
+                 width: '95px',
+                 command: [
+                     { name: 'edit', buttonType: 'ImageAndText', text: { cancel: '', update: '', edit: '' }, attr: 'style=" " data-langkey-title="xLng.Duzelt" ' },
+                     { name: 'destroy', buttonType: 'ImageAndText', text: '', attr: 'style=" " data-langkey-title="xLng.Sil"' }
+                 ]
+             },
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.OperationDate'),
+                 field: 'OperationDate',
+                 format: '{0:g}',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.OperationKod'),
+                 field: 'OperationKod',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '150px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.IpAddress'),
+                 field: 'IpAddress',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.SessionGuid'),
+                 field: 'SessionGuid',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '120px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.RequestJson'),
+                 field: 'RequestJson',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '300px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemRequestLog.ResponseJson'),
+                 field: 'ResponseJson',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '225px'
+             },
+
+             {}
+             ],
+             edit: function (e) {
+                 var model=e.model;
+                 this.cancelRow();
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemRequestLogForForm',
+                     viewName: 'TemRequestLogForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': model.Id };
+                         e.beforeShow({'ownerViewName':'TemRequestLogForGrid', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             },
+             cancel: function (e) {
+                 if (e.model.id !== null) {
+                     e.sender.refresh(); //databound da renklendirme ve button set etme var ise ,cancelden sonra databound çalışmıyor(yetki,renk style ayarlanamıyor) bununla refresh ediyosun
+                 }
+             },
+             dataBound: function (e) {
+                var data = e.sender.dataSource.data();
+                 //yetki
+                 self.YetkiUygula(data);
+
+                 // Language
+                 mnLang.TranslateWithSelector(e.sender.wrapper);
+
+                 //row style
+             },
+             dataSource: self.dataSource
+         }).getKendoGrid();
+
+         self.grid.wrapper.find('#btnEkle').kendoButton({
+             icon: 'plus',
+             click: function () {
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemRequestLogForForm',
+                     viewName: 'TemRequestLogForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': null };
+                         e.beforeShow({'ownerViewName':'TemRequestLogForGrid', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             }
+         });
+
+         self.grid.wrapper.find('#btnSaveAsExcel').kendoButton({
+             icon: 'excel',
+             click: function () {
+                 kendo.ui.progress(self.grid.wrapper, true); //progress On
+                 self.grid.saveAsExcel();
+             }
+         });
+     }
+
+     function fCreateFindElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         // filter buton
+         $(self.selector).find('#btnAra').click(function (e) {
+             self.filter();
+         });
+
+         // filter tetikleyicileri
+         $(self.selector).find('[data-find_option]').keydown(function (e) {
+             if (e.which === 13) {
+                 e.preventDefault();
+                 self.filter();
+             }
+         });
+
+         // Filter elementleri
+         $(self.selector).find('[data-find_field=OperationDate]').kendoDateTimePicker({
+             componentType: mnApp.kendoDateTimePiker_ComponentType,
+             dateInput: mnApp.kendoDateTimePiker_DateInput,
+             close: function (e) {
+                 if ($(e.sender.wrapper).find('input').attr('data-find_operator') === 'lte') {
+                     var tarihSaat = this.value();
+                     if (tarihSaat !== null) {
+                         if (tarihSaat.getHours() === 0 || tarihSaat.getMinutes() === 0) {
+                             tarihSaat.setHours(23);
+                             tarihSaat.setMinutes(59);
+                         }
+                     }
+                     this.value(tarihSaat);
+                 }
+             }
+         }).getKendoDateTimePicker();
+
+         //find field lokal set edilmesi
+         kendo.widgetInstance($(self.selector).find('[data-find_field=OperationDate][data-find_operator=gte]')).value(mnApi.LocalDate());
+
+     }
+
+     self.YetkiUygula = function (_data) {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+         var _E = mnUser.isYetkili(self.tableName + '.D_E.');
+
+         //ek yetkiler için
+         //...
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'OperationDate', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'OperationKod', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'IpAddress', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'SessionGuid', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'RequestJson', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'ResponseJson', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFindElementContainer .mnFindElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+         //grid ekle button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnEkle'), _C);
+         //grid exel button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnSaveAsExcel'), _E);
+
+         //grid rows için
+         $.each(_data, function (i, row) {
+             var _tr = self.grid.wrapper.find('tr[data-uid=' + row.uid + ']');
+             var tr_U = _U;
+             var tr_D = _D;
+
+             //update-delete button için
+             mnApi.controlEnable(_tr.find('.k-grid-delete'), tr_D);
+
+
+             //row değerine göre yetkiler
+             //...
+
+         });
+     };
+
+     self.prepare = function () {
+         // DataSource
+         fCreateDataSource();
+
+         // find Elementler
+         fCreateFindElements();
+
+         // Grid
+         fCreateGrid();
+
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+
+         self.filter();
+
+         self.tabstrip.select(0);
+
+     };
+
+     self.filter = function (_data) {
+         self.dataSource.filter(mnApp.find_options_ToFilterList(self));
+     };
+
+     self.close = function () {
+         if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+             $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+         } else {
+             $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+         }
+     };
+
+     return self;
+ }();
+</script>

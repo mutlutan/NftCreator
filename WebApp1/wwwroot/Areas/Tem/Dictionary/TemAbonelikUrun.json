@@ -1,0 +1,72 @@
+[
+ {
+     "key" : "xTem.TemAbonelikUrun.Title",
+     "value": {
+         "tr": "Abonelik Ürün"
+,
+         "en": "Subscription Product"
+     }
+ },
+ {
+     "key" : "xTem.TemAbonelikUrun.ShortTitle",
+     "value": {
+         "tr": "Abonelik Ürün"
+,
+         "en": "Subscription Product"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.Sira",
+     "value": {
+         "tr": "Sıra"
+,
+         "en": "Queue"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAbonelikUrun.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

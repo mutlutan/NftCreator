@@ -1,0 +1,126 @@
+[
+ {
+     "key" : "xTem.TemOturumLog.Title",
+     "value": {
+         "tr": "Oturum Log"
+,
+         "en": "Session Log"
+     }
+ },
+ {
+     "key" : "xTem.TemOturumLog.ShortTitle",
+     "value": {
+         "tr": "Oturum Log"
+,
+         "en": "Session Log"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.GridFindTab.III",
+     "value": {
+         "tr": "III"
+,
+         "en": "III"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.GridFindTab.IV",
+     "value": {
+         "tr": "IV"
+,
+         "en": "IV"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.KullaniciId",
+     "value": {
+         "tr": "Kullanıcı"
+,
+         "en": "User"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.Tarayici",
+     "value": {
+         "tr": "Tarayıcı"
+,
+         "en": "Browser"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.InternetProtokolAdres",
+     "value": {
+         "tr": "IP Adres"
+,
+         "en": "IP Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.OturumGuid",
+     "value": {
+         "tr": "Oturum Guid"
+,
+         "en": "Session Guid"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.GirisZaman",
+     "value": {
+         "tr": "Giriş Zaman"
+,
+         "en": "Login Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemOturumLog.CikisZaman",
+     "value": {
+         "tr": "Çıkış Zaman"
+,
+         "en": "Exit Time"
+     }
+ }
+]

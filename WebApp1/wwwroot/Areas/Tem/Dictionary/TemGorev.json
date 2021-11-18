@@ -1,0 +1,72 @@
+[
+ {
+     "key" : "xTem.TemGorev.Title",
+     "value": {
+         "tr": "Görevler"
+,
+         "en": "Tasks"
+     }
+ },
+ {
+     "key" : "xTem.TemGorev.ShortTitle",
+     "value": {
+         "tr": ""
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.Sira",
+     "value": {
+         "tr": "Sira"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemGorev.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

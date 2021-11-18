@@ -1,0 +1,494 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemKullaniciForForm'>
+    <div id='divButtonGroup' class='mnButtonGroup float-right'>
+        <div class='dropdown' style='position:absolute; right:40px;'>
+            <button type='button' class='btn btn-outline-primary fa fa-ellipsis-h' data-toggle='dropdown' style='padding:2px 9px;'></button>
+            <div class='dropdown-menu rounded-0 mn-default-border-color mn-default-bg-color mn-default-text-color shadow ' style='padding:5px 0px;'>
+                <button id='btnDetayTemKullaniciLisans' class='dropdown-item mn-hover-color-blue'> <span data-langkey-text='xTem.TemKullaniciLisans.Title'></span> </button>
+
+                <button id='btnDetayTemKullaniciAbonelik' class='dropdown-item mn-hover-color-blue'> <span data-langkey-text='xTem.TemKullaniciAbonelik.Title'></span> </button>
+
+            </div>
+        </div>
+
+        <button id='btnKaydet' type='button' class='btn btn-outline-success text-nowrap' data-langkey-title='xLng.Kaydet' style='position:absolute; right:0px;'> <i class='fa fa-save'></i> </button>
+    </div>
+
+    <div style='padding-bottom:15px;'>
+        <div id='tabstrip'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemKullanici.FormViewTab.I'></span> </li>
+            </ul>
+        <div>
+            <div class='mnFormElementContainer row'>
+                     <div class='col-md-12'>
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+                     <div name='divDurum' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label'></label>
+                         <div class='col-sm-8'>
+                            <label style='font-weight:normal;'>
+                                <input name='Durum' type='checkbox' data-bind='checked:Durum' style='width: 24px; height: 24px; vertical-align: middle;'  />
+                                <span data-langkey-Text='xTem.TemKullanici.Durum'></span>
+                            </label>
+                         </div>
+                     </div>
+
+                     <div name='divKayitZaman' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.KayitZaman'></label>
+                         <div class='col-sm-8'>
+                             <input name='KayitZaman' data-bind='value:KayitZaman'  disabled />
+                             <span class='k-invalid-msg' data-for='KayitZaman'></span>
+                         </div>
+                     </div>
+
+                     <div name='divSahipTur' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.SahipTur'></label>
+                         <div class='col-sm-8'>
+                             <input name='SahipTur' data-bind='value:SahipTur' />
+                             <span class='k-invalid-msg' data-for='SahipTur'></span>
+                         </div>
+                     </div>
+
+                     <div name='divSahipId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.SahipId'></label>
+                         <div class='col-sm-8'>
+                             <input name='SahipId' type='number' data-bind='value:SahipId' data-langkey-placeholder='xTem.TemKullanici.SahipId' />
+                             <span class='k-invalid-msg' data-for='SahipId'></span>
+                         </div>
+                     </div>
+
+                     <div name='divAd' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Ad'></label>
+                         <div class='col-sm-8'>
+                             <input name='Ad' type='text' class='k-textbox' data-bind='value:Ad' data-langkey-placeholder='xTem.TemKullanici.Ad'  autocomplete='off' />
+                         </div>
+                     </div>
+
+                     <div name='divSifre' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Sifre'></label>
+                         <div class='col-sm-8'>
+                             <span name='ExternalResetPasswordButtonWrapperSifre' class='mnResetPasswordButton k-textbox k-space-right w-100'>
+                                <input name='Sifre' type='password' class='font-weight-light' data-bind='value:Sifre' data-langkey-placeholder='xTem.TemKullanici.Sifre'  autocomplete='off' />
+                                <button name='btnResetPassword' class='btn btn-light fa fa-refresh' data-langkey-title='xLng.SifreSifirla'></button>
+                             </span>
+                             <span class='k-invalid-msg' data-for='Sifre'></span>
+                         </div>
+                     </div>
+
+                     <div name='divRols' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Rols'></label>
+                         <div class='col-sm-8'>
+                             <input name='Rols' type='text' />
+                             <span class='k-invalid-msg' data-for='Rols'></span>
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                     <div class='col-lg-6 col-md-12'>
+                     <div name='divResim' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Resim'></label>
+                         <div class='col-sm-8' >
+                            <img name='Resim' data-bind='attr:{src:Resim}' style='border:1px solid silver; cursor:pointer; height:100px; width:90px; ' />
+                         </div>
+                     </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+ window.TemKullaniciForForm = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemKullanici.Title';
+     self.selector = '#TemKullaniciForForm';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemKullanici';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         data.KayitZaman = kendo.toString(data.KayitZaman, 's');
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null },
+                         Durum: { type: 'boolean' },
+                         KayitZaman: { type: 'date', editable:false },
+                         SahipTur: { type: 'number' },
+                         SahipId: { type: 'number' },
+                         Ad: { type: 'string' },
+                         Sifre: { type: 'string' },
+                         Rols: { type: 'string' },
+                         Resim: { type: 'string' },
+                         CcDurum: { type: 'string' },
+                         CcSahipTur: { type: 'string' },
+                         CcRolsAd: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 //this.cancelChanges();
+             },
+             requestStart: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), true); //progress On
+                 });
+             },
+             requestEnd: function (e) {
+                 setTimeout(function () {
+                     kendo.ui.progress($(self.selector), false); //progress Off
+                 });
+
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+
+                     self.msRols.value([]);
+                     if (e.response.Data.length > 0) {
+                         var row = e.response.Data[0];
+                         if (row.Rols !== null || undefined || '') {
+                             self.msRols.value(row.Rols.split(','));
+                         }
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].Durum = result.Durum;
+                                 e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
+                                 e.items[0].SahipTur = result.SahipTur;
+                                 e.items[0].SahipId = result.SahipId;
+                                 e.items[0].Ad = result.Ad;
+                                 e.items[0].Sifre = result.Sifre;
+                                 e.items[0].Rols = result.Rols;
+                                 e.items[0].Resim = result.Resim;
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcSahipTur = result.CcSahipTur;
+                                 e.items[0].CcRolsAd = result.CcRolsAd;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                                 //(multi select için)
+                                 self.msRols.value([]);
+                                 if (e.items[0].Rols !== null || undefined || '') {
+                                     self.msRols.value(e.items[0].Rols.split(','));
+                                 }
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                     // Bind
+                     kendo.bind($(self.selector), e.items[0]);
+                     self.validator.validate();
+                 }
+
+                 // Yetki
+                 fYetkiUygula();
+
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateFormElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         //validator
+         let formElm = $(self.selector).find('.mnFormElementContainer');
+         self.validator = mnApp.createValidator(formElm, mnApp.validatorErrorTemplateIconMsg);
+
+         //butonlar
+         $(self.selector).find('#btnKaydet').click(function (e) {
+             mnApi.controlDisableWait($(e.target));
+             if (self.validator.validate()) {
+                 if (self.dataSource.at(0).dirty) {
+                     self.dataSource.sync();
+                 } else {
+                     mnAlert.warning(mnLang.TranslateWithWord('xLng.KayyittaDegisiklikYapmadiniz'));
+                 }
+             } else {
+                 mnAlert.warning(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+             }
+         });
+
+         $(self.selector).find('#btnDetayTemKullaniciLisans').click(function (e) {
+            var dataItem = self.dataSource.at(0);
+            mnPageView.create({
+                areaName: 'Tem',
+                viewFileName: 'TemKullaniciLisansForGrid',
+                viewName: 'TemKullaniciLisansForGrid',
+                subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                onShow: function (e) {
+                    e.beforeShow({
+                        'ownerViewName': 'TemKullaniciForForm',
+                        'filters': [
+                            { 'filterColumnName': 'KullaniciId', 'filterOperator': 'eq', 'filterValue': dataItem.Id }
+                        ]
+                    });
+                }
+            });
+         });
+
+         $(self.selector).find('#btnDetayTemKullaniciAbonelik').click(function (e) {
+            var dataItem = self.dataSource.at(0);
+            mnPageView.create({
+                areaName: 'Tem',
+                viewFileName: 'TemKullaniciAbonelikForGrid',
+                viewName: 'TemKullaniciAbonelikForGrid',
+                subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                onShow: function (e) {
+                    e.beforeShow({
+                        'ownerViewName': 'TemKullaniciForForm',
+                        'filters': [
+                            { 'filterColumnName': 'KullaniciId', 'filterOperator': 'eq', 'filterValue': dataItem.Id }
+                        ]
+                    });
+                }
+            });
+         });
+
+         //Diğer Form elementleri
+         $(self.selector).find('[name=KayitZaman]').kendoDateTimePicker({
+             componentType: mnApp.kendoDateTimePiker_ComponentType,
+             dateInput: mnApp.kendoDateTimePiker_DateInput
+         }).getKendoDateTimePicker();
+
+         $(self.selector).find('[name=SahipTur]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.list.dsEnmSahipTurForDescription,
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoDropDownList();
+
+         $(self.selector).find('[name=SahipId]').kendoNumericTextBox({
+             format: 'n0', decimals: 0, min: 0, spinners: false, step: 0
+         }).getKendoNumericTextBox();
+
+         $(self.selector).find('[name=ExternalResetPasswordButtonWrapperSifre] [name=btnResetPassword]').click(function (e) {
+            e.stopPropagation();
+            if (confirm(mnLang.TranslateWithWord('xLng.SifreyiSifirlamakIstediginizdenEminmisiniz'))) {
+                var dataItem = self.dataSource.at(0);
+                var _data = {
+                    _id : dataItem.get(self.primaryKey)
+                };
+
+                $.ajax({
+                    url: self.apiUrlPrefix + '/ResetPasswordSifre',
+                    data: _data,
+                    type: 'POST', dataType: 'json',
+                    beforeSend: function (jqXHR, settings) {
+                        kendo.ui.progress($(self.selector), true); //progress On
+                    },
+                    success: function (result, textStatus, jqXHR) {
+                        kendo.ui.progress($(self.selector), false); //progress Off
+                        mnAlert.warning(result.Message);
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        kendo.ui.progress($(self.selector), false); //progress Off
+                        alert('(' + jqXHR.status + ') ' + jqXHR.statusText + ' ' + this.url);
+                    }
+                });
+            }
+
+         });
+
+         self.msRols = $(self.selector).find('[name=Rols]').kendoMultiSelect({
+             valuePrimitive: true,
+             autoClose: false,
+             optionLabel: { value: '', text: mnLang.TranslateWithWord('xLng.Seciniz') },
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.listLoad({
+                 TableName: 'TemRol',
+                 ValueField: 'Id',
+                 TextField: 'Ad',
+                 OtherFields: '',
+                 Filters: [
+                     { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                 ],
+                 Sorts: [
+                 ]
+             }),
+             change: function (e) {
+                 if (self.dataSource.at(0) !== undefined) {
+                     self.dataSource.at(0).set('Rols', this.value().join());
+                 }
+             },
+             open: function (e) {
+             },
+             close: function (e) {
+             }
+         }).getKendoMultiSelect();
+
+         $(self.selector).find('[name=Resim]').click(function (e) {
+             $elmImg = $("<input id='imageFile' type='file' accept='image/*' style='display:none;' />"); 
+             $elmImg.change(function () {
+                if (this.files && this.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function (e) {
+                        if (self.dataSource.at(0) !== undefined) {
+                            self.dataSource.at(0).set('Resim', e.target.result);
+                        }
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                    this.value = null; //aynı resmi tekrar seçtiğinde event çalışabilmesi için son seçileni siliyoruz value dan
+                }
+             });
+             $elmImg.click();
+         });
+
+     }
+
+     function fSetAtributeFormElements() {
+         $(self.selector).find('[name=KayitZaman]').attr('required', 'required');
+         $(self.selector).find('[name=SahipId]').attr('required', 'required');
+         $(self.selector).find('[name=Ad]').attr('required', 'required');
+     }
+
+     function fYetkiUygula() {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+
+             // menu buttons yetkiler için
+             var btnDetayTemKullaniciLisans_R = mnUser.isYetkili('TemKullaniciLisans.D_R.');
+             mnApi.controlEnable($(self.selector).find('#btnDetayTemKullaniciLisans'), btnDetayTemKullaniciLisans_R);
+
+             var btnDetayTemKullaniciAbonelik_R = mnUser.isYetkili('TemKullaniciAbonelik.D_R.');
+             mnApi.controlEnable($(self.selector).find('#btnDetayTemKullaniciAbonelik'), btnDetayTemKullaniciAbonelik_R);
+
+
+         //ek yetkiler için)
+         //...
+
+         //Form İçin
+         if (_C || _U) {
+             $(self.selector).find('#btnKaydet').show();
+         } else {
+             $(self.selector).find('#btnKaydet').hide();
+         }
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'KayitZaman', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'SahipTur', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'SahipId', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Sifre', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Resim', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+     }
+
+
+     function fGorunurlukUygula(dataItem) {
+
+        if (dataItem != null && dataItem != undefined) {
+        }
+     }
+
+     self.prepare = function () {
+         // form element atribute set
+         fSetAtributeFormElements();
+         // DataSource
+         fCreateDataSource();
+         // form Elementler
+         fCreateFormElements();
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+
+         if (self.opt.qprms.Id !== null && self.opt.qprms.Id > 0) {
+             self.dataSource.filter({ field: self.primaryKey, operator: 'eq', value: self.opt.qprms.Id });
+         } else {
+             self.dataSource.data([]); // eski data varsa işleme girmemesi için
+             self.dataSource.add();
+         }
+
+         self.tabstrip.select(0);
+     };
+
+     return self;
+ }();
+</script>

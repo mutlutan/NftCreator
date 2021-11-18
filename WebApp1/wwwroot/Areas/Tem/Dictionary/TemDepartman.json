@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xTem.TemDepartman.Title",
+     "value": {
+         "tr": "Departmanlar"
+,
+         "en": "Departments"
+     }
+ },
+ {
+     "key" : "xTem.TemDepartman.ShortTitle",
+     "value": {
+         "tr": ""
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.UstId",
+     "value": {
+         "tr": "Üst"
+,
+         "en": "Parent"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.Sira",
+     "value": {
+         "tr": "Sira"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemDepartman.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

@@ -1,0 +1,117 @@
+[
+ {
+     "key" : "xTem.TemParaBirim.Title",
+     "value": {
+         "tr": "Para Birim"
+,
+         "en": "Currency"
+     }
+ },
+ {
+     "key" : "xTem.TemParaBirim.ShortTitle",
+     "value": {
+         "tr": "Para Birim"
+,
+         "en": "Currency"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Updateable",
+     "value": {
+         "tr": "Güncelleştirilebilir"
+,
+         "en": "Updateable"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.UpdateDate",
+     "value": {
+         "tr": "Güncelleme Tarihi"
+,
+         "en": "Update Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.UpdateCode",
+     "value": {
+         "tr": "Güncelleştirme Kodu"
+,
+         "en": "Update Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Sira",
+     "value": {
+         "tr": "Sıra"
+,
+         "en": "Orde"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Simge",
+     "value": {
+         "tr": "Simge"
+,
+         "en": "Icon"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemParaBirim.AltBirim",
+     "value": {
+         "tr": "Alt Birim"
+,
+         "en": "Lower Unit"
+     }
+ }
+]

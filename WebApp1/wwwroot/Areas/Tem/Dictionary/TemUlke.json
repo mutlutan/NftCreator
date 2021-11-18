@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xTem.TemUlke.Title",
+     "value": {
+         "tr": "Ülkeler"
+,
+         "en": "Countries"
+     }
+ },
+ {
+     "key" : "xTem.TemUlke.ShortTitle",
+     "value": {
+         "tr": "Ülkeler"
+,
+         "en": "Countries"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "ID"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.Sira",
+     "value": {
+         "tr": "Sıra"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.AlanKod",
+     "value": {
+         "tr": "Alan Kod"
+,
+         "en": "Area Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemUlke.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

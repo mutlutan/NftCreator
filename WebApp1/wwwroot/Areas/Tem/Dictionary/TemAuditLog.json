@@ -1,0 +1,144 @@
+[
+ {
+     "key" : "xTem.TemAuditLog.Title",
+     "value": {
+         "tr": "Data Logları"
+,
+         "en": "Audit Log"
+     }
+ },
+ {
+     "key" : "xTem.TemAuditLog.ShortTitle",
+     "value": {
+         "tr": ""
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.GridFindTab.III",
+     "value": {
+         "tr": "III"
+,
+         "en": "III"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.OperationDate",
+     "value": {
+         "tr": "İşlem Zamanı"
+,
+         "en": "Operation Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.UserId",
+     "value": {
+         "tr": "Kullanıcı"
+,
+         "en": "User"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.IpAddress",
+     "value": {
+         "tr": "Ip Adres"
+,
+         "en": "Ip Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.OperationType",
+     "value": {
+         "tr": "Tip"
+,
+         "en": "Type"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.TableName",
+     "value": {
+         "tr": "Tablo Adı"
+,
+         "en": "TableName"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.PrimaryKeyField",
+     "value": {
+         "tr": "PKey Alanı"
+,
+         "en": "PKey Field"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.PrimaryKeyValue",
+     "value": {
+         "tr": "PKey Değeri"
+,
+         "en": "PKey Value"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.CurrentValues",
+     "value": {
+         "tr": "Şimdiki değerler"
+,
+         "en": "Current Values"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemAuditLog.OriginalValues",
+     "value": {
+         "tr": "Eski Değerler"
+,
+         "en": "Old Values"
+     }
+ }
+]

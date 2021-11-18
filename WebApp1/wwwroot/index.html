@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="yandex-verification" content="3d5719dd6c472b9b" />
+
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+
+    <title></title>
+
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+        }
+    </style>
+
+    <script>
+        document = (() => {
+
+            if (window.location.hostname == "localhost") {
+                window.location.assign(navigator.language.substr(0, 2) + "/index.html");
+            } else if (window.location.hostname == "ba.serceakademi.com") {
+                window.location.assign(navigator.language.substr(0, 2) + "/index.html");
+            } else {
+                window.location.assign("/Account");
+            }
+
+        })();
+
+    </script>
+</head>
+<body>
+    <!--<h1>Ana Sayfa</h1>-->
+</body>
+</html>

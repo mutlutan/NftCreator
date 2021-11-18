@@ -1,0 +1,90 @@
+[
+ {
+     "key" : "xBac.BacOgretmen.Title",
+     "value": {
+         "tr": "Öğretmen"
+,
+         "en": "Teacher"
+     }
+ },
+ {
+     "key" : "xBac.BacOgretmen.ShortTitle",
+     "value": {
+         "tr": "Öğretmen"
+,
+         "en": "Teacher"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.KayitZaman",
+     "value": {
+         "tr": "Kayıt Zaman"
+,
+         "en": "Recording Time"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.MobilTelefon",
+     "value": {
+         "tr": "Mobil Telefon"
+,
+         "en": "Mobile Phone"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.MailAdres",
+     "value": {
+         "tr": "Mail Adres"
+,
+         "en": "Mail Address"
+     }
+ }
+,
+ {
+     "key" : "xBac.BacOgretmen.Aciklama",
+     "value": {
+         "tr": "Açıklama"
+,
+         "en": "Explanation"
+     }
+ }
+]

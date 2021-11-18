@@ -1,0 +1,47 @@
+﻿
+
+<div id='viewFileManager'>
+    <div id="divFileManager"></div>
+</div>
+
+
+<style>
+    #viewFileManager #divFileManager{
+
+    }
+
+</style>
+
+
+<script>
+    window.viewFileManager = function () {
+        var self = {};
+        self.opt = null;
+        self.area = '_';
+        self.title = 'xLng.viewFileManager.Title';
+        self.selector = '#viewFileManager';
+
+       
+
+        self.prepare = function () {
+   
+            // Language
+            mnLang.TranslateWithSelector(self.selector);
+        };
+
+        self.beforeShow = function (_opt) {
+            self.opt = $.extend({}, _opt);
+            self.opt.isSelected = false;
+        };
+
+        self.close = function () {
+            if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+                $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+            } else {
+                $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+            }
+        };
+
+        return self;
+    }();
+</script>

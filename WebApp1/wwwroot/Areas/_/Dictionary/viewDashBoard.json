@@ -1,0 +1,44 @@
+﻿[
+  {
+    "key": "xLng.viewDashBoard.Aktif",
+    "value": {
+      "tr": "Aktif",
+      "en": "Active"
+    }
+  },
+  {
+    "key": "xLng.viewDashBoard.Pasif",
+    "value": {
+      "tr": "Pasif",
+      "en": "Passive"
+    }
+  },
+  {
+    "key": "xLng.viewDashBoard.Adet",
+    "value": {
+      "tr": "Adet",
+      "en": "Piece"
+    }
+  },
+  {
+    "key": "xLng.viewDashBoard.KullaniciSayisi",
+    "value": {
+      "tr": "Kullanıcı Sayısı",
+      "en": "Number of users"
+    }
+  },
+  {
+    "key": "xLng.viewDashBoard.OgretmenSayisi",
+    "value": {
+      "tr": "Öğretmen Sayısı",
+      "en": "Number of Teachers"
+    }
+  },
+  {
+    "key": "xLng.viewDashBoard.OgrenciSayisi",
+    "value": {
+      "tr": "Öğrenci Sayısı",
+      "en": "Number of Students"
+    }
+  }
+]

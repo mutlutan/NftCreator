@@ -1,0 +1,54 @@
+[
+ {
+     "key" : "xTem.TemMailAntet.Title",
+     "value": {
+         "tr": "Mail Antet"
+,
+         "en": "Mail Letterhead"
+     }
+ },
+ {
+     "key" : "xTem.TemMailAntet.ShortTitle",
+     "value": {
+         "tr": "Mail Antet"
+,
+         "en": "Mail Letterhead"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailAntet.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailAntet.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailAntet.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemMailAntet.Icerik",
+     "value": {
+         "tr": "İçerik"
+,
+         "en": "Content"
+     }
+ }
+]

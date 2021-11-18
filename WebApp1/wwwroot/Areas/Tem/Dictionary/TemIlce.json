@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xTem.TemIlce.Title",
+     "value": {
+         "tr": "İlçeler"
+,
+         "en": "Districts"
+     }
+ },
+ {
+     "key" : "xTem.TemIlce.ShortTitle",
+     "value": {
+         "tr": "İlçeler"
+,
+         "en": "Districts"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.SehirId",
+     "value": {
+         "tr": "SehirId"
+,
+         "en": "SehirId"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.Sira",
+     "value": {
+         "tr": "Sira"
+,
+         "en": "Order"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemIlce.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+]

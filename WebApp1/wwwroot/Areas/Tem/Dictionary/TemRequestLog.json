@@ -1,0 +1,117 @@
+[
+ {
+     "key" : "xTem.TemRequestLog.Title",
+     "value": {
+         "tr": "İstek Log"
+,
+         "en": "Request Log"
+     }
+ },
+ {
+     "key" : "xTem.TemRequestLog.ShortTitle",
+     "value": {
+         "tr": "İstek Log"
+,
+         "en": "Request Log"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.GridFindTab.III",
+     "value": {
+         "tr": "III"
+,
+         "en": "III"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": ""
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.OperationDate",
+     "value": {
+         "tr": "Tarih Saat"
+,
+         "en": "Date Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.OperationKod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.IpAddress",
+     "value": {
+         "tr": "Ip Adresi"
+,
+         "en": "Ip Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.SessionGuid",
+     "value": {
+         "tr": "Oturum Guid"
+,
+         "en": "Session Guid"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.RequestJson",
+     "value": {
+         "tr": "İstek Json"
+,
+         "en": "Request Json"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemRequestLog.ResponseJson",
+     "value": {
+         "tr": "Yanıt Json"
+,
+         "en": "Response"
+     }
+ }
+]

@@ -1,0 +1,234 @@
+[
+ {
+     "key" : "xTem.TemKisi.Title",
+     "value": {
+         "tr": "Kişiler"
+,
+         "en": "People"
+     }
+ },
+ {
+     "key" : "xTem.TemKisi.ShortTitle",
+     "value": {
+         "tr": "Kişiler"
+,
+         "en": "People"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.FormViewTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.GridFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.GridFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.GridFindTab.III",
+     "value": {
+         "tr": "III"
+,
+         "en": "III"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.SearchFindTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.SearchFindTab.II",
+     "value": {
+         "tr": "II"
+,
+         "en": "II"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.SearchFindTab.III",
+     "value": {
+         "tr": "III"
+,
+         "en": "III"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.KayitZaman",
+     "value": {
+         "tr": "Kayıt Zamanı"
+,
+         "en": "Add Time"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.KimlikNumarasi",
+     "value": {
+         "tr": "T.C.Kimlik No"
+,
+         "en": "T.C. Id No."
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Soyad",
+     "value": {
+         "tr": "Soyad / Ünvan"
+,
+         "en": "Surname / Title"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Adres",
+     "value": {
+         "tr": "Adres"
+,
+         "en": "Address"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.IlceId",
+     "value": {
+         "tr": "İlçe / Şehir / Ülke"
+,
+         "en": "County / City / Country"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.MobilTelefon",
+     "value": {
+         "tr": "Mobil Telefon"
+,
+         "en": "Mobile Phone"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.SabitTelefon",
+     "value": {
+         "tr": "Sabit Telefon"
+,
+         "en": "Land phone"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.FaxNumarasi",
+     "value": {
+         "tr": "Fax Numarası"
+,
+         "en": "Fax Number"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.MailAdres",
+     "value": {
+         "tr": "Mail Adres"
+,
+         "en": "Mail Adsress"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.EgitimDurumId",
+     "value": {
+         "tr": "Eğitim Durumu"
+,
+         "en": "Education Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.CinsiyetId",
+     "value": {
+         "tr": "Cinsiyet"
+,
+         "en": "Gender"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.KanGrup",
+     "value": {
+         "tr": "Kan grubu"
+,
+         "en": "Blood group"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKisi.Aciklama",
+     "value": {
+         "tr": "Açıklama"
+,
+         "en": "Explanation"
+     }
+ }
+]
