@@ -110,7 +110,7 @@
                             <label for="sSecurityCode" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.GuvenlikKodu"></span></label>
                             <div class="col-md-12">
                                 <div class="input-group" style="">
-                                    <input id="captchaImage" type="image" class="form-control" tabindex="-1" style="cursor:default; padding:1px; border:none; box-shadow:none; height:36px;" src="@ViewBag.CaptchaImage">
+                                    <input id="captchaImage" type="image" class="form-control" tabindex="-1" style="cursor:default; padding:1px; border:none; box-shadow:none; height:45px;" src="@ViewBag.CaptchaImage">
                                     <span class="input-group-btn" style="padding:2px;">
                                         <button id="btnSecurityCode" class="btn btn-link btn-sm mn-hover-color-orange" type="button" tabindex="-1" style="cursor:pointer; padding: 5px 9px;"><i class="fa fa-refresh"></i></button>
                                     </span>
@@ -164,11 +164,11 @@
                     <div class="px-5">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <div class="text-center d-none">
+                                <div class="text-center">
                                     <span class="font-weight-light small text-secondary" data-langkey-Text="xLng.TarayiciUyumMesaji"></span>
                                 </div>
 
-                                <div class="text-justify">
+                                <div class="text-justify d-none">
                                     <span class="font-weight-light text-danger" data-langkey-Text="xLng.GirisMesaji"></span>
                                 </div>
                             </div>
@@ -184,7 +184,7 @@
 
 <script>
 window.addEventListener('load', (event) => {
-    mnLang.CreateWidget("#languageStatus #langFlag"); // dil seçimi göstermek için
+    //mnLang.CreateWidget("#languageStatus #langFlag"); // dil seçimi göstermek için
     viewLogin.prepare();
 });
 

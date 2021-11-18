@@ -46,22 +46,6 @@
                          </div>
                      </div>
 
-                     <div name='divSahipTur' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.SahipTur'></label>
-                         <div class='col-sm-8'>
-                             <input name='SahipTur' data-bind='value:SahipTur' />
-                             <span class='k-invalid-msg' data-for='SahipTur'></span>
-                         </div>
-                     </div>
-
-                     <div name='divSahipId' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.SahipId'></label>
-                         <div class='col-sm-8'>
-                             <input name='SahipId' type='number' data-bind='value:SahipId' data-langkey-placeholder='xTem.TemKullanici.SahipId' />
-                             <span class='k-invalid-msg' data-for='SahipId'></span>
-                         </div>
-                     </div>
-
                      <div name='divAd' class='mnFormElementDiv form-group row'>
                          <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Ad'></label>
                          <div class='col-sm-8'>
@@ -148,14 +132,11 @@
                          Id: { type: 'number', defaultValue: null },
                          Durum: { type: 'boolean' },
                          KayitZaman: { type: 'date', editable:false },
-                         SahipTur: { type: 'number' },
-                         SahipId: { type: 'number' },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
                          Resim: { type: 'string' },
                          CcDurum: { type: 'string' },
-                         CcSahipTur: { type: 'string' },
                          CcRolsAd: { type: 'string' }
                      }
                  }
@@ -206,15 +187,12 @@
                                  e.items[0].Id = result.Id;
                                  e.items[0].Durum = result.Durum;
                                  e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
-                                 e.items[0].SahipTur = result.SahipTur;
-                                 e.items[0].SahipId = result.SahipId;
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
                                  e.items[0].Resim = result.Resim;
                                  //computed alanların tanımlanması
                                  e.items[0].CcDurum = result.CcDurum;
-                                 e.items[0].CcSahipTur = result.CcSahipTur;
                                  e.items[0].CcRolsAd = result.CcRolsAd;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
@@ -315,22 +293,6 @@
              dateInput: mnApp.kendoDateTimePiker_DateInput
          }).getKendoDateTimePicker();
 
-         $(self.selector).find('[name=SahipTur]').kendoDropDownList({
-             valuePrimitive: true,
-             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
-             dataValueField: 'value',
-             dataTextField: 'text',
-             dataSource: mnLookup.list.dsEnmSahipTurForDescription,
-             open: function (e) {
-             },
-             close: function (e) {
-             }
-         }).getKendoDropDownList();
-
-         $(self.selector).find('[name=SahipId]').kendoNumericTextBox({
-             format: 'n0', decimals: 0, min: 0, spinners: false, step: 0
-         }).getKendoNumericTextBox();
-
          $(self.selector).find('[name=ExternalResetPasswordButtonWrapperSifre] [name=btnResetPassword]').click(function (e) {
             e.stopPropagation();
             if (confirm(mnLang.TranslateWithWord('xLng.SifreyiSifirlamakIstediginizdenEminmisiniz'))) {
@@ -408,7 +370,6 @@
 
      function fSetAtributeFormElements() {
          $(self.selector).find('[name=KayitZaman]').attr('required', 'required');
-         $(self.selector).find('[name=SahipId]').attr('required', 'required');
          $(self.selector).find('[name=Ad]').attr('required', 'required');
      }
 
@@ -440,8 +401,6 @@
         var fieldList = [];
         fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'KayitZaman', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'SahipTur', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'SahipId', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Sifre', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });

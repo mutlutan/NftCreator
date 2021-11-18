@@ -1,0 +1,81 @@
+[
+ {
+     "key" : "xNft.NftProje.Title",
+     "value": {
+         "tr": "Proje"
+,
+         "en": "Project"
+     }
+ },
+ {
+     "key" : "xNft.NftProje.ShortTitle",
+     "value": {
+         "tr": "Proje"
+,
+         "en": "Project"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.FormViewTab.I",
+     "value": {
+         "tr": "I"
+,
+         "en": "I"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.Id",
+     "value": {
+         "tr": "Id"
+,
+         "en": "Id"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.GizliId",
+     "value": {
+         "tr": "Gizli Id"
+,
+         "en": "Hiden Id"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.Durum",
+     "value": {
+         "tr": "Durum"
+,
+         "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.TarihSaat",
+     "value": {
+         "tr": "Tarih Saat"
+,
+         "en": "Date Time"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.Ad",
+     "value": {
+         "tr": "Ad"
+,
+         "en": "Name"
+     }
+ }
+,
+ {
+     "key" : "xNft.NftProje.KullaniciId",
+     "value": {
+         "tr": "Kullanıcı"
+,
+         "en": "User"
+     }
+ }
+]

@@ -1,21 +1,21 @@
 
 <!-- Auto Generated user1 -->
 
-<div id='BacOgretmenForGrid'>
+<div id='NftProjeForGrid'>
     <div>
         <div id='divGrid'></div>
     </div>
 </div>
 
 <script>
- window.BacOgretmenForGrid = function () {
+ window.NftProjeForGrid = function () {
      var self = {};
      self.opt = null;
-     self.area = 'Bac';
-     self.title = 'xBac.BacOgretmen.Title';
-     self.selector = '#BacOgretmenForGrid';
+     self.area = 'Nft';
+     self.title = 'xNft.NftProje.Title';
+     self.selector = '#NftProjeForGrid';
      self.primaryKey = 'Id';
-     self.tableName = 'BacOgretmen';
+     self.tableName = 'NftProje';
      self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
 
      function fCreateDataSource() {
@@ -30,7 +30,7 @@
                          return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
                      }
                      else if (operation === 'create' || operation === 'update') {
-                         data.KayitZaman = kendo.toString(data.KayitZaman, 's');
+                         data.TarihSaat = kendo.toString(data.TarihSaat, 's');
                          return kendo.stringify(data);
                      }
                      else if (operation === 'destroy') {
@@ -47,13 +47,13 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null  },
+                         GizliId: { type: 'string' },
                          Durum: { type: 'boolean' },
-                         KayitZaman: { type: 'date' },
+                         TarihSaat: { type: 'date' },
                          Ad: { type: 'string' },
-                         MobilTelefon: { type: 'string' },
-                         MailAdres: { type: 'string' },
-                         Aciklama: { type: 'string' },
-                         CcDurum: { type: 'string' }
+                         KullaniciId: { type: 'number' },
+                         CcDurum: { type: 'string' },
+                         CcKullaniciIdAd: { type: 'string' }
                      }
                  }
              },
@@ -86,14 +86,14 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
+                                 e.items[0].GizliId = result.GizliId;
                                  e.items[0].Durum = result.Durum;
-                                 e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
+                                 e.items[0].TarihSaat = kendo.parseDate(result.TarihSaat);
                                  e.items[0].Ad = result.Ad;
-                                 e.items[0].MobilTelefon = result.MobilTelefon;
-                                 e.items[0].MailAdres = result.MailAdres;
-                                 e.items[0].Aciklama = result.Aciklama;
+                                 e.items[0].KullaniciId = result.KullaniciId;
                                  //computed alanların tanımlanması
                                  e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcKullaniciIdAd = result.CcKullaniciIdAd;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
                                      if (row.filterColumnName !== 'Id') {
@@ -139,7 +139,23 @@
              },
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.Durum'),
+                 title: mnLang.TranslateWithWord('xNft.NftProje.GizliId'),
+                 field: 'GizliId',
+                 attributes: { 'class': 'text-nowrap' },
+                 editor: function(container, options) { 
+                     var input = $('<input type="text"/>');
+                     input.attr('name', options.field);
+                     input.attr('required', 'required');
+                     $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
+                     input.appendTo(container);
+                     input.addClass('k-textbox');
+                 },
+                 width: '150px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xNft.NftProje.Durum'),
                  field: 'Durum',
                  template: '#:CcDurum#',
                  attributes: { 'class': 'text-nowrap' },
@@ -154,15 +170,13 @@
 
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.KayitZaman'),
-                 field: 'KayitZaman',
+                 title: mnLang.TranslateWithWord('xNft.NftProje.TarihSaat'),
+                 field: 'TarihSaat',
                  format: '{0:g}',
                  attributes: { 'class': 'text-nowrap' },
                  editor: function(container, options) { 
                      var input = $('<input type="text"/>');
                      input.attr('name', options.field);
-                     input.attr('required', 'required');
-                     $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
                      input.appendTo(container);
                      input.kendoDateTimePicker({
                          componentType: mnApp.kendoDateTimePiker_ComponentType,
@@ -175,7 +189,7 @@
 
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.Ad'),
+                 title: mnLang.TranslateWithWord('xNft.NftProje.Ad'),
                  field: 'Ad',
                  attributes: { 'class': 'text-nowrap' },
                  editor: function(container, options) { 
@@ -189,44 +203,41 @@
 
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.MobilTelefon'),
-                 field: 'MobilTelefon',
+                 title: mnLang.TranslateWithWord('xNft.NftProje.KullaniciId'),
+                 field: 'KullaniciId',
+                 template: '#:CcKullaniciIdAd#',
                  attributes: { 'class': 'text-nowrap' },
                  editor: function(container, options) { 
                      var input = $('<input type="text"/>');
                      input.attr('name', options.field);
+                     input.attr('required', 'required');
+                     $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
                      input.appendTo(container);
-                     input.addClass('k-textbox');
-                 },
-                 width: '130px'
-             },
+                     input.kendoDropDownList({
+                         valuePrimitive: true,
+                         optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+                         dataValueField: 'value',
+                         dataTextField: 'text',
+                         dataSource: mnLookup.listLoad({
+                             TableName: 'TemKullanici',
+                             ValueField: 'Id',
+                             TextField: 'Ad',
+                             OtherFields: '',
+                             Filters: [
+                                 { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                             ],
+                             Sorts: [
+                                 { Field: 'Ad', Dir: 'asc' }
+                             ]
+                         }),
+                         open: function (e) {
+                         },
+                         close: function (e) {
+                         }
+                     });
 
-             {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.MailAdres'),
-                 field: 'MailAdres',
-                 attributes: { 'class': 'text-nowrap' },
-                 editor: function(container, options) { 
-                     var input = $('<input type="text"/>');
-                     input.attr('name', options.field);
-                     input.appendTo(container);
-                     input.addClass('k-textbox');
                  },
-                 width: '130px'
-             },
-
-             {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xBac.BacOgretmen.Aciklama'),
-                 field: 'Aciklama',
-                 attributes: { 'class': 'text-nowrap' },
-                 editor: function(container, options) { 
-                     var input = $('<input type="text"/>');
-                     input.attr('name', options.field);
-                     input.appendTo(container);
-                     input.addClass('k-textbox');
-                 },
-                 width: '130px'
+                 width: '100px'
              },
 
              {}

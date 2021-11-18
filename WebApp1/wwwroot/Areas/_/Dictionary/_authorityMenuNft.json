@@ -1,0 +1,23 @@
+﻿[
+  {
+    "key": "xLng.Authority.Nft",
+    "value": {
+      "tr": "Nft",
+      "en": "Nft"
+    }
+  },
+  {
+    "key": "xLng.Authority.Nft.Tanim",
+    "value": {
+      "tr": "Tanımlar",
+      "en": "Definitions"
+    }
+  },
+  {
+    "key": "xLng.Authority.Nft.Islem",
+    "value": {
+      "tr": "İşlemler",
+      "en": "Transactions"
+    }
+  }
+]

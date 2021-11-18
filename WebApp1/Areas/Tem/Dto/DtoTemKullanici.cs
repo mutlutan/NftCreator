@@ -17,7 +17,6 @@ namespace WebApp1.Areas.Tem.Dto
         {
             get { return (this.Durum ? MyApp.TranslateTo("xLng.Aktif", this.dataContext.Language) : MyApp.TranslateTo("xLng.Pasif", this.dataContext.Language)); }
         }
-
         public string CcRolsAd{
             get {
                 string rV = string.Empty;

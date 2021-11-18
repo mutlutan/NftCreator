@@ -11,7 +11,6 @@
         <div id='tabstrip' class='mnFindTab'>
             <ul>
                 <li> <span data-langkey-text='xTem.TemKullanici.GridFindTab.I'></span> </li>
-                <li> <span data-langkey-text='xTem.TemKullanici.GridFindTab.II'></span> </li>
             </ul>
 
             <div style='padding:5px 0px;'>
@@ -29,16 +28,6 @@
                     <span name='divRols' class='mnFindElementDiv form-inline'>
                         <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.Rols'></label>
                         <input type='text' style='width:219px' data-find_option='auto' data-find_type='StringArray' data-find_field='Rols' data-find_operator='contains' />
-                    </span>
-
-                </div>
-            </div>
-
-            <div style='padding:5px 0px;'>
-                <div class='form-inline mnFindElementContainer'>
-                    <span name='divSahipId' class='mnFindElementDiv form-inline'>
-                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.SahipId'></label>
-                        <input type='text' style='width:112px' data-find_option='auto' data-find_type='System.Int32' data-find_field='SahipId' data-find_operator='eq' autocomplete='off' />
                     </span>
 
                 </div>
@@ -93,14 +82,11 @@
                          Id: { type: 'number', defaultValue: null  },
                          Durum: { type: 'boolean' },
                          KayitZaman: { type: 'date', editable:false },
-                         SahipTur: { type: 'number' },
-                         SahipId: { type: 'number' },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
                          Resim: { type: 'string' },
                          CcDurum: { type: 'string' },
-                         CcSahipTur: { type: 'string' },
                          CcRolsAd: { type: 'string' }
                      }
                  }
@@ -136,15 +122,12 @@
                                  e.items[0].Id = result.Id;
                                  e.items[0].Durum = result.Durum;
                                  e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
-                                 e.items[0].SahipTur = result.SahipTur;
-                                 e.items[0].SahipId = result.SahipId;
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
                                  e.items[0].Resim = result.Resim;
                                  //computed alanların tanımlanması
                                  e.items[0].CcDurum = result.CcDurum;
-                                 e.items[0].CcSahipTur = result.CcSahipTur;
                                  e.items[0].CcRolsAd = result.CcRolsAd;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
@@ -215,24 +198,6 @@
              },
 
              {
-                 hidden: ![11,21].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xTem.TemKullanici.SahipTur'),
-                 field: 'SahipTur',
-                 template: '#:CcSahipTur#',
-                 attributes: { 'class': 'text-nowrap' },
-                 width: '130px'
-             },
-
-             {
-                 hidden: ![11,21].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xTem.TemKullanici.SahipId'),
-                 field: 'SahipId',
-                 format: '{0:n0}',
-                 attributes: { 'class': 'text-nowrap' },
-                 width: '90px'
-             },
-
-             {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xTem.TemKullanici.Ad'),
                  field: 'Ad',
@@ -272,7 +237,7 @@
                      subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
                      onShow: function (e) {
                         var qprms = { 'Id': model.Id };
-                         e.beforeShow({'ownerViewName':'TemKullaniciForGrid', 'qprms': qprms, 'filters':self.opt.filters});
+                         e.beforeShow({'ownerViewName':'TemKullaniciForGrid', 'qprms': qprms });
                      },
                      onClose: function (e) {
                          self.dataSource.read();
@@ -314,7 +279,7 @@
                      subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
                      onShow: function (e) {
                         var qprms = { 'Id': null };
-                         e.beforeShow({'ownerViewName':'TemKullaniciForGrid', 'qprms': qprms, 'filters':self.opt.filters});
+                         e.beforeShow({'ownerViewName':'TemKullaniciForGrid', 'qprms': qprms });
                      },
                      onClose: function (e) {
                          self.dataSource.read();
@@ -426,10 +391,6 @@
              }
          }).getKendoMultiSelect();
 
-         $(self.selector).find('[data-find_field=SahipId]').kendoNumericTextBox({
-             format: 'n0', decimals: 0, min: 0, spinners: false, step: 0
-         }).getKendoNumericTextBox();
-
      }
 
      self.YetkiUygula = function (_data) {
@@ -445,7 +406,6 @@
         //form element görünümleri
         var fieldList = [];
         fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'SahipId', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
 

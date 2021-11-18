@@ -57,15 +57,13 @@ namespace WebApp1.Models
             {
                 entity.HasIndex(e => e.Durum, "IX_NftProje_Durum");
 
-                entity.HasIndex(e => e.Gid, "IX_NftProje_GId");
+                entity.HasIndex(e => e.GizliId, "IX_NftProje_GizliId");
 
                 entity.HasIndex(e => e.TarihSaat, "IX_NftProje_TarihSaat");
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Ad).HasMaxLength(250);
-
-                entity.Property(e => e.Gid).HasColumnName("GId");
 
                 entity.Property(e => e.TarihSaat).HasColumnType("datetime");
 

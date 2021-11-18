@@ -76,7 +76,7 @@ namespace WebApp1.Controllers
 
             ViewBag.Culture = this.userToken.Culture;
             ViewBag.Language = CultureInfo.GetCultureInfo(ViewBag.Culture).Parent.IetfLanguageTag;
-            ViewBag.Title = "Bright Academy";
+            ViewBag.Title = MyApp.AppName;
 
             ViewBag.LogoImageUrl = "/img/logo/logoYatay.png?v" + WebApp1.Codes.MyApp.Version;
 

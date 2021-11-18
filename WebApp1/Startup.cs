@@ -109,7 +109,7 @@ namespace WebApp1
 
             #region Use DefaultFiles/StaticFiles/FileServer Files
             // wwwroot dizini içindeki index.html default olarak açması için
-            app.UseDefaultFiles();
+            //app.UseDefaultFiles();
             #endregion
 
             #region mime-type eklemek için

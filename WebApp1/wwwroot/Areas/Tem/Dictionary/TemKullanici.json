@@ -35,15 +35,6 @@
  }
 ,
  {
-     "key" : "xTem.TemKullanici.GridFindTab.II",
-     "value": {
-         "tr": "II"
-,
-         "en": "II"
-     }
- }
-,
- {
      "key" : "xTem.TemKullanici.Id",
      "value": {
          "tr": "Id"
@@ -67,24 +58,6 @@
          "tr": "Kayıt Zamanı"
 ,
          "en": "Registration Date"
-     }
- }
-,
- {
-     "key" : "xTem.TemKullanici.SahipTur",
-     "value": {
-         "tr": "Sahip Türü"
-,
-         "en": "Owner Type"
-     }
- }
-,
- {
-     "key" : "xTem.TemKullanici.SahipId",
-     "value": {
-         "tr": "Sahip"
-,
-         "en": "Owner"
      }
  }
 ,
