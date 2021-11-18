@@ -34,29 +34,17 @@ namespace WebApp1.Areas.Tem.Controllers
 
             dashList.Add(new MyDashItem()
             {
-                Id = (int)EnmDashItem.OgretmenSayisi,
-                TemplateName = "tn1",
-                IconClass = "fa-address-card-o",
-                IconStyle = "color:goldenrod;",
-                Title = MyApp.TranslateTo("xLng.viewDashBoard.OgretmenSayisi", this.dataContext.Language),
-                RefreshTables = "RobOgretmen",
-                YetkiGrups = "11,21,31",
-                Url = "#/RobOgretmen"
-            });
-
-            dashList.Add(new MyDashItem()
-            {
-                Id = (int)EnmDashItem.OgrenciSayisi,
+                Id = (int)EnmDashItem.ProjeSayisi,
                 TemplateName = "tn1",
                 IconClass = "fa-child",
                 IconStyle = "color:deepskyblue;",
-                Title = MyApp.TranslateTo("xLng.viewDashBoard.OgrenciSayisi", this.dataContext.Language),
-                RefreshTables = "RobOgrenci",
-                YetkiGrups = "11,21,31,41",
+                Title = MyApp.TranslateTo("xLng.viewDashBoard.ProjeSayisi", this.dataContext.Language),
+                RefreshTables = "NftProje",
+                YetkiGrups = "11,21",
                 Url = "#/RobOgrenci"
             });
 
-            dashList = dashList.Where(c => c.YetkiGrups.Contains(((int)this.userToken.KullaniciSahipTur).MyToStr())).ToList();
+            dashList = dashList.Where(c => c.YetkiGrups.Contains(((int)this.userToken.YetkiGrup).MyToStr())).ToList();
 
             return Json(dashList);
         }
@@ -72,10 +60,6 @@ namespace WebApp1.Areas.Tem.Controllers
             {
                 //query
                 var query = this.dataContext.TemKullanici.Where(c => c.Id > 0);
-                if (this.userToken.KullaniciSahipTur != EnmSahipTur.Admin && this.userToken.KullaniciSahipId > 0)
-                {
-                    query = query.Where(c => c.SahipId == this.userToken.KullaniciSahipId);
-                }
 
                 //sonuç
                 var data = query.ToList();

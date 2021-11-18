@@ -7,16 +7,9 @@ namespace WebApp1.Models
 {
     public partial class TemCinsiyet
     {
-        public TemCinsiyet()
-        {
-            TemKisi = new HashSet<TemKisi>();
-        }
-
         public int Id { get; set; }
         public bool Durum { get; set; }
         public int Sira { get; set; }
         public string Ad { get; set; }
-
-        public virtual ICollection<TemKisi> TemKisi { get; set; }
     }
 }

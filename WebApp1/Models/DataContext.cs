@@ -17,6 +17,7 @@ namespace WebApp1.Models
         {
         }
 
+        public virtual DbSet<NftProje> NftProje { get; set; }
         public virtual DbSet<TemAbonelikDonem> TemAbonelikDonem { get; set; }
         public virtual DbSet<TemAbonelikDurum> TemAbonelikDurum { get; set; }
         public virtual DbSet<TemAbonelikUrun> TemAbonelikUrun { get; set; }
@@ -29,8 +30,6 @@ namespace WebApp1.Models
         public virtual DbSet<TemEgitimDurum> TemEgitimDurum { get; set; }
         public virtual DbSet<TemGorev> TemGorev { get; set; }
         public virtual DbSet<TemIlce> TemIlce { get; set; }
-        public virtual DbSet<TemKisi> TemKisi { get; set; }
-        public virtual DbSet<TemKisiDepartmanGorev> TemKisiDepartmanGorev { get; set; }
         public virtual DbSet<TemKullanici> TemKullanici { get; set; }
         public virtual DbSet<TemKullaniciAbonelik> TemKullaniciAbonelik { get; set; }
         public virtual DbSet<TemKullaniciAbonelikOdeme> TemKullaniciAbonelikOdeme { get; set; }
@@ -53,6 +52,29 @@ namespace WebApp1.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Turkish_CI_AS");
+
+            modelBuilder.Entity<NftProje>(entity =>
+            {
+                entity.HasIndex(e => e.Durum, "IX_NftProje_Durum");
+
+                entity.HasIndex(e => e.Gid, "IX_NftProje_GId");
+
+                entity.HasIndex(e => e.TarihSaat, "IX_NftProje_TarihSaat");
+
+                entity.Property(e => e.Id).ValueGeneratedNever();
+
+                entity.Property(e => e.Ad).HasMaxLength(250);
+
+                entity.Property(e => e.Gid).HasColumnName("GId");
+
+                entity.Property(e => e.TarihSaat).HasColumnType("datetime");
+
+                entity.HasOne(d => d.Kullanici)
+                    .WithMany(p => p.NftProje)
+                    .HasForeignKey(d => d.KullaniciId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_NftProje_KullaniciId");
+            });
 
             modelBuilder.Entity<TemAbonelikDonem>(entity =>
             {
@@ -305,87 +327,10 @@ namespace WebApp1.Models
                     .HasConstraintName("FK_TemIlce_SehirId");
             });
 
-            modelBuilder.Entity<TemKisi>(entity =>
-            {
-                entity.HasIndex(e => e.Ad, "IX_TemKisi_Ad");
-
-                entity.HasIndex(e => e.Soyad, "IX_TemKisi_Soyad");
-
-                entity.HasIndex(e => e.KimlikNumarasi, "UX_TemKisi_KimlikNumarasi")
-                    .IsUnique()
-                    .HasFilter("([KimlikNumarasi] IS NOT NULL AND [KimlikNumarasi]<>'')");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Ad).HasMaxLength(100);
-
-                entity.Property(e => e.Adres).HasMaxLength(250);
-
-                entity.Property(e => e.FaxNumarasi).HasMaxLength(50);
-
-                entity.Property(e => e.KanGrup).HasMaxLength(10);
-
-                entity.Property(e => e.KayitZaman).HasColumnType("datetime");
-
-                entity.Property(e => e.KimlikNumarasi).HasMaxLength(50);
-
-                entity.Property(e => e.MailAdres).HasMaxLength(50);
-
-                entity.Property(e => e.MobilTelefon).HasMaxLength(50);
-
-                entity.Property(e => e.SabitTelefon).HasMaxLength(50);
-
-                entity.Property(e => e.Soyad).HasMaxLength(200);
-
-                entity.HasOne(d => d.Cinsiyet)
-                    .WithMany(p => p.TemKisi)
-                    .HasForeignKey(d => d.CinsiyetId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKisi_CinsiyetId");
-
-                entity.HasOne(d => d.EgitimDurum)
-                    .WithMany(p => p.TemKisi)
-                    .HasForeignKey(d => d.EgitimDurumId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKisi_EgitimDurumId");
-
-                entity.HasOne(d => d.Ilce)
-                    .WithMany(p => p.TemKisi)
-                    .HasForeignKey(d => d.IlceId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKisi_IlceId");
-            });
-
-            modelBuilder.Entity<TemKisiDepartmanGorev>(entity =>
-            {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.BaslangicTarih).HasColumnType("date");
-
-                entity.Property(e => e.BitisTarih).HasColumnType("date");
-
-                entity.HasOne(d => d.Departman)
-                    .WithMany(p => p.TemKisiDepartmanGorev)
-                    .HasForeignKey(d => d.DepartmanId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Fk_TemKisiDepartmanGorev_DepartmanId");
-
-                entity.HasOne(d => d.Gorev)
-                    .WithMany(p => p.TemKisiDepartmanGorev)
-                    .HasForeignKey(d => d.GorevId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Fk_TemKisiDepartmanGorev_GorevId");
-
-                entity.HasOne(d => d.Kisi)
-                    .WithMany(p => p.TemKisiDepartmanGorev)
-                    .HasForeignKey(d => d.KisiId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Fk_TemKisiDepartmanGorev_KisiId");
-            });
-
             modelBuilder.Entity<TemKullanici>(entity =>
             {
-                entity.HasIndex(e => e.SahipId, "IX_TemKullanici_SahipId");
+                entity.HasIndex(e => e.Ad, "UX_TemKullanici_Ad")
+                    .IsUnique();
 
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -758,6 +703,8 @@ namespace WebApp1.Models
                 entity.Property(e => e.Tarih).HasColumnType("datetime");
             });
 
+            modelBuilder.HasSequence<int>("sqNftProje");
+
             modelBuilder.HasSequence<int>("sqTemAbonelikUrun").StartsAt(101);
 
             modelBuilder.HasSequence<int>("sqTemAbonelikUrunPlan");
@@ -773,10 +720,6 @@ namespace WebApp1.Models
             modelBuilder.HasSequence<int>("sqTemGorev");
 
             modelBuilder.HasSequence<int>("sqTemIlce").StartsAt(1001);
-
-            modelBuilder.HasSequence<int>("sqTemKisi");
-
-            modelBuilder.HasSequence<int>("sqTemKisiDepartmanGorev");
 
             modelBuilder.HasSequence<int>("sqTemKullanici");
 

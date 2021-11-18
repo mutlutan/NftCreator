@@ -22,8 +22,6 @@ namespace WebApp1.Areas.Tem.Dmo
                  Id = s.Id,
                  Durum = s.Durum,
                  KayitZaman = s.KayitZaman,
-                 SahipTur = s.SahipTur,
-                 SahipId = s.SahipId,
                  Ad = s.Ad,
                  Sifre = string.Empty,
                  Rols = s.Rols,
@@ -39,7 +37,6 @@ namespace WebApp1.Areas.Tem.Dmo
          row.Id = 0;
          row.Durum = true;
          row.KayitZaman = DateTime.Now;
-         row.SahipId = 0;
 
          return row;
      }
@@ -71,8 +68,6 @@ namespace WebApp1.Areas.Tem.Dmo
          
          row.Durum = _model.Durum;
          row.KayitZaman = _model.KayitZaman;
-         row.SahipTur = _model.SahipTur;
-         row.SahipId = _model.SahipId;
          row.Ad = _model.Ad;
 
          if (!string.IsNullOrEmpty(_model.Sifre))

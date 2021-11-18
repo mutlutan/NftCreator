@@ -17,19 +17,7 @@ namespace WebApp1.Areas.Tem.Dto
         {
             get { return (this.Durum ? MyApp.TranslateTo("xLng.Aktif", this.dataContext.Language) : MyApp.TranslateTo("xLng.Pasif", this.dataContext.Language)); }
         }
-        public string CcSahipTur
-        {
-           get
-           {
-               string rV = string.Empty;
-               try
-               {
-                   rV = ((EnmSahipTur)this.SahipTur).MyGetDescription();
-               }
-               catch { }
-               return rV;
-           }
-        }
+
         public string CcRolsAd{
             get {
                 string rV = string.Empty;

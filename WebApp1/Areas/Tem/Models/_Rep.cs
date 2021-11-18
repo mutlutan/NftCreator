@@ -9,7 +9,6 @@ namespace WebApp1.Models
     {
         /*code_generator_property_start*/
         public Areas.Tem.Dmo.DmoTemParametre Areas_Tem_RepTemParametre { get; private set; }  /*auto generated*/
-        public Areas.Tem.Dmo.DmoTemKisi Areas_Tem_RepTemKisi { get; private set; }  /*auto generated*/
         public Areas.Tem.Dmo.DmoTemKullanici Areas_Tem_RepTemKullanici { get; private set; }  /*auto generated*/
         public Areas.Tem.Dmo.DmoTemRol Areas_Tem_RepTemRol { get; private set; }  /*auto generated*/
         public Areas.Tem.Dmo.DmoTemAuditLog Areas_Tem_RepTemAuditLog { get; private set; }  /*auto generated*/
@@ -37,7 +36,6 @@ namespace WebApp1.Models
         {
             /*code_generator_constructor_start*/
             this.Areas_Tem_RepTemParametre = new Areas.Tem.Dmo.DmoTemParametre(this.dataContext);  /*auto generated*/
-            this.Areas_Tem_RepTemKisi = new Areas.Tem.Dmo.DmoTemKisi(this.dataContext);  /*auto generated*/
             this.Areas_Tem_RepTemKullanici = new Areas.Tem.Dmo.DmoTemKullanici(this.dataContext);  /*auto generated*/
             this.Areas_Tem_RepTemRol = new Areas.Tem.Dmo.DmoTemRol(this.dataContext);  /*auto generated*/
             this.Areas_Tem_RepTemAuditLog = new Areas.Tem.Dmo.DmoTemAuditLog(this.dataContext);  /*auto generated*/

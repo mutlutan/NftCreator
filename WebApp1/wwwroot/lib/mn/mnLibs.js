@@ -527,9 +527,7 @@ window.mnUser = function () {
             sKullaniciResim: "",
             sUserName: "",
             sAdSoyad: "",
-            sKullaniciSahipTur: "",
             nYetkiGrup: 0,
-            nSahipId: 0,
             sUserYetki: "",
             nSemaVersiyon: 0,
             nLisansGun: 0

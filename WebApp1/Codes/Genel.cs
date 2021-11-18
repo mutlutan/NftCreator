@@ -45,11 +45,16 @@ namespace WebApp1.Codes
         EtkinlikKayit = 301,
     }
 
+    public enum EnmYetkiGrup
+    {
+        Admin = 11,
+        Personel = 12,
+        Musteri = 13
+    }
     public enum EnmRol
     {
         Admin = 1001,
-        Personel = 1101,
-        Ogretmen = 1102
+        Personel = 1101
     }
 
     public enum EnmZamanTur
@@ -57,19 +62,6 @@ namespace WebApp1.Codes
         Gunluk = 0,
         Haftalik = 1,
         Aylik = 2
-    }
-
-
-    public enum EnmSahipTur
-    {
-        [Description("")]
-        Admin = 11,
-
-        [Description("TemKisi")]
-        Personel = 21,
-
-        [Description("NftMusteri")]
-        Musteri = 31,
     }
 
     #endregion
@@ -85,8 +77,6 @@ namespace WebApp1.Codes
         public string OturumGuid { get; set; } = Guid.NewGuid().ToString();
         public string Culture { get; set; } = "en-US";
         public string Host { get; set; }
-        public EnmSahipTur KullaniciSahipTur { get; set; }
-        public int KullaniciSahipId { get; set; }
         public int UserId { get; set; }
         public string UserName { get; set; }
         public int LisansGun { get; set; }
@@ -94,6 +84,8 @@ namespace WebApp1.Codes
         public Boolean UserIsLogon { get; set; } = false;
         public Boolean UserIsGuest { get; set; } = false;
         public string UserRols { get; set; } = "";
+
+        public EnmYetkiGrup YetkiGrup { get; set; } 
     }
     #endregion
 
@@ -166,8 +158,7 @@ namespace WebApp1.Codes
     public enum EnmDashItem
     {
         KullaniciSayisi = 111,
-        OgretmenSayisi = 131,
-        OgrenciSayisi = 141,
+        ProjeSayisi = 121,
     }
 
     public class MyDashItem

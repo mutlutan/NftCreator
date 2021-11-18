@@ -64,15 +64,6 @@ window.TemAuthority =
                         ]
                     },
                     {
-                        id: "Tem.Tanim.TemKisi.", text: mnLang.f("xTem.TemKisi.Title"), hint: "", area: "Tem", rout: "TemKisi", params: "", showType: "Page", header: true, viewName: "TemKisiForGrid", cssClass: "fa fa-id-card-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21,31,41", items: [
-                            { id: "Tem.Tanim.TemKisi.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21,31,41", items: [] },
-                            { id: "Tem.Tanim.TemKisi.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemKisi.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemKisi.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemKisi.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
                         id: "Tem.Tanim.TemRol.", text: mnLang.f("xTem.TemRol.Title"), hint: "", area: "Tem", rout: "TemRol", params: "", showType: "Page", header: true, viewName: "TemRolForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
                             { id: "Tem.Tanim.TemRol.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
                             { id: "Tem.Tanim.TemRol.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },

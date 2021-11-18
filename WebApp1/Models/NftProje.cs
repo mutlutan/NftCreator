@@ -5,11 +5,15 @@ using System.Collections.Generic;
 
 namespace WebApp1.Models
 {
-    public partial class TemEgitimDurum
+    public partial class NftProje
     {
         public int Id { get; set; }
+        public Guid Gid { get; set; }
         public bool Durum { get; set; }
-        public int Sira { get; set; }
+        public DateTime? TarihSaat { get; set; }
         public string Ad { get; set; }
+        public int KullaniciId { get; set; }
+
+        public virtual TemKullanici Kullanici { get; set; }
     }
 }

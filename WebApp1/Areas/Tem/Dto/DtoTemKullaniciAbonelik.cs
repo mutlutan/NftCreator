@@ -25,7 +25,7 @@ namespace WebApp1.Areas.Tem.Dto
                {
                    Areas.Tem.Codes.TemBusiness temBusiness = new(this.dataContext);
                    var queryResult = this.dataContext.TemKullanici.Where(c => c.Id == this.InsertUserId)
-                   .Select(s => new { value = s.Id, text = s.Ad + " <" + temBusiness.GetKullaniciSahipAdSahipTur(s.Id) + ">" })
+                   .Select(s => new { value = s.Id, text = s.Ad })
                    .FirstOrDefault();
 
                    if (queryResult != null)
@@ -46,7 +46,7 @@ namespace WebApp1.Areas.Tem.Dto
                {
                    Areas.Tem.Codes.TemBusiness temBusiness = new(this.dataContext);
                    var queryResult = this.dataContext.TemKullanici.Where(c => c.Id == this.UpdateUserId)
-                   .Select(s => new { value = s.Id, text = s.Ad + " <" + temBusiness.GetKullaniciSahipAdSahipTur(s.Id) + ">" })
+                   .Select(s => new { value = s.Id, text = s.Ad })
                    .FirstOrDefault();
 
                    if (queryResult != null)

@@ -92,8 +92,6 @@ namespace WebApp1.Areas.Tem.Codes
                     s.Id,
                     s.Durum,
                     s.Ad,
-                    s.SahipId,
-                    s.SahipTur,
                     s.Resim,
                     s.Rols
                 })
@@ -102,25 +100,28 @@ namespace WebApp1.Areas.Tem.Codes
 
                 if (userModel != null)
                 {
-                    if (userModel.Durum == true && this.GetKullaniciSahipDurum(userModel.Id) == true)
+                    if (userModel.Durum == true)
                     {
                         response.Data.Culture = input.Culture;
                         response.Data.UserId = userModel.Id;
-                        response.Data.KullaniciSahipId = userModel.SahipId;
-                        response.Data.KullaniciSahipTur = (EnmSahipTur)userModel.SahipTur;
                         response.Data.UserName = userModel.Ad;
-                        response.Data.NameSurname = this.GetKullaniciSahipAd(userModel.Id);
+                        response.Data.NameSurname = userModel.Ad;
                         response.Data.LisansGun = this.GetKullaniciLisansGun(userModel.Id);
-
-                        if ((EnmSahipTur)userModel.SahipTur == EnmSahipTur.Admin || (EnmSahipTur)userModel.SahipTur == EnmSahipTur.Personel)
-                        {
-                            response.Data.LisansGun = 365;
-                        }
 
                         response.Data.UserIsLogon = true;
                         if (userModel.Rols.MyToStr().Contains("1001"))
                         {
-                            response.Data.KullaniciSahipTur = EnmSahipTur.Admin;
+                            response.Data.YetkiGrup = EnmYetkiGrup.Admin;
+                            response.Data.LisansGun = 365;
+                        }
+                        else if (userModel.Rols.MyToStr().Length > 0)
+                        {
+                            response.Data.YetkiGrup = EnmYetkiGrup.Personel;
+                            response.Data.LisansGun = 365;
+                        }
+                        else
+                        {
+                            response.Data.YetkiGrup = EnmYetkiGrup.Musteri;
                         }
 
                         Areas.Tem.Dto.DtoTemOturumLog dtoTemOturumLog = this.rep.Areas_Tem_RepTemOturumLog.GetByNew();
@@ -173,10 +174,7 @@ namespace WebApp1.Areas.Tem.Codes
                     KullaniciAd = s.Kullanici.Ad,
                     GirisZaman = s.GirisZaman,
                     CikisZaman = s.CikisZaman,
-                    Zaman = (s.CikisZaman - s.GirisZaman).Value.TotalMinutes.MyToInt(),
-                    SahipTur = s.Kullanici.SahipTur,
-                    SahipId = s.Kullanici.SahipId,
-                    Sahip = this.GetKullaniciSahipAdSahipTur(s.KullaniciId)
+                    Zaman = (s.CikisZaman - s.GirisZaman).Value.TotalMinutes.MyToInt()
                 }).ToList();
 
             response.Data = data;
@@ -259,36 +257,6 @@ namespace WebApp1.Areas.Tem.Codes
             return rV;
         }
 
-        public string GetKullaniciMailAdres(int _id)
-        {
-            string rV = "";
-            //Sahip bağlantısı olmayan kullanıcının adı, mail adresi olarak kullanılır. (bu kullanımda kullanıcı adı mail adresi içermelidir)
-            try
-            {
-                var kullanici = this.dataContext.TemKullanici
-                    .Where(c => c.Id > 0 && c.Id == _id)
-                    .FirstOrDefault();
-
-                if (kullanici != null)
-                {
-                    string tableName = ((EnmSahipTur)kullanici.SahipTur).MyGetDescription().MyToTrim();
-                    if (!string.IsNullOrEmpty(tableName) && tableName.Length > 1)
-                    {
-                        var sqlCommand = $"Select MailAdres From {tableName} Where Id={kullanici.SahipId}";
-                        var qResult = this.dataContext.GetDbConnection().Query<dynamic>(sqlCommand);
-                        rV = qResult.FirstOrDefault().MailAdres;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MyApp.WriteLogForMethodExceptionMessage(MethodBase.GetCurrentMethod(), ex);
-            }
-
-            return rV;
-        }
-
         public Boolean KullaniciMailAdresVarmi(string _mail)
         {
             Boolean rV = false;
@@ -343,8 +311,6 @@ namespace WebApp1.Areas.Tem.Codes
                 {
                     Durum = true,
                     KayitZaman = DateTime.Now,
-                    SahipTur = (int)EnmSahipTur.Musteri,
-                    SahipId = 0,
                     Ad = jsonObj.Mail.ToString(),
                     Sifre = jsonObj.Sifre.ToString()
                 };
@@ -352,7 +318,7 @@ namespace WebApp1.Areas.Tem.Codes
                 var sonuc = this.rep.SaveChanges();
 
                 response.Message.Add($"{MyApp.TranslateTo("xLng.Sayin", this.dataContext.Language)} {jsonObj.AdSoyad.ToString()} {MyApp.TranslateTo("xLng.KayitIslemiBasariylaYapilmistir", this.dataContext.Language)}");
-            
+
             }
             catch (Exception ex)
             {
@@ -377,84 +343,17 @@ namespace WebApp1.Areas.Tem.Codes
 
                 if (kullanici != null)
                 {
-                    string tableName = ((EnmSahipTur)kullanici.SahipTur).MyGetDescription().MyToTrim();
-                    if (!string.IsNullOrEmpty(tableName) && tableName.Length > 1)
+                    if (kullanici.Rols.MyToStr().Contains("1001"))
                     {
-                        var sqlCommand = $"Select Ad From {tableName} Where Id={kullanici.SahipId}";
-                        var qResult = this.dataContext.GetDbConnection().Query<dynamic>(sqlCommand);
-                        string sahipTur = ((EnmSahipTur)kullanici.SahipTur).MyToStr();
-                        rV = qResult.FirstOrDefault().Ad + $" ({sahipTur})";
+                        rV = EnmYetkiGrup.Admin.ToString();
                     }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MyApp.WriteLogForMethodExceptionMessage(MethodBase.GetCurrentMethod(), ex);
-            }
-
-            return rV;
-        }
-
-        public string GetKullaniciSahipAd(int _kullaniciId)
-        {
-            string rV = "";
-            //Sahip bağlantısı olan tablodan adı alınır, (sahip tablolarının Ad alanı olmalıdır)
-            try
-            {
-                var kullanici = this.dataContext.TemKullanici
-                    .Where(c => c.Id > 0 && c.Id == _kullaniciId)
-                    .FirstOrDefault();
-
-                if (kullanici != null)
-                {
-                    string tableName = ((EnmSahipTur)kullanici.SahipTur).MyGetDescription().MyToTrim();
-                    if (!string.IsNullOrEmpty(tableName) && tableName.Length > 1)
+                    else if (kullanici.Rols.MyToStr().Length > 0)
                     {
-                        var sqlCommand = $"Select Ad From {tableName} Where Id={kullanici.SahipId}";
-                        var qResult = this.dataContext.GetDbConnection().Query<dynamic>(sqlCommand);
-                        rV = qResult.FirstOrDefault().Ad;
+                        rV = EnmYetkiGrup.Personel.ToString();
                     }
                     else
                     {
-                        rV = kullanici.Ad;
-                    }
-                }
-
-            }
-            catch (Exception ex)
-            {
-                MyApp.WriteLogForMethodExceptionMessage(MethodBase.GetCurrentMethod(), ex);
-            }
-
-            return rV;
-        }
-
-        public Boolean GetKullaniciSahipDurum(int _id)
-        {
-            Boolean rV = false;
-            //Sahip bağlantısı olan tablodan adı alınır, (sahip tablolarının Ad alanı olmalıdır)
-            try
-            {
-                var kullanici = this.dataContext.TemKullanici
-                    .Where(c => c.Id > 0 && c.Id == _id)
-                    .FirstOrDefault();
-
-                if (kullanici != null)
-                {
-                    if (kullanici.SahipTur == (int)EnmSahipTur.Admin)
-                    {
-                        rV = true;
-                    }
-                    else
-                    {
-                        string tableName = ((EnmSahipTur)kullanici.SahipTur).MyGetDescription().MyToTrim();
-                        if (!string.IsNullOrEmpty(tableName) && tableName.Length > 1)
-                        {
-                            var sqlCommand = $"Select Durum From {tableName} Where Id={kullanici.SahipId}";
-                            var qResult = this.dataContext.GetDbConnection().Query<dynamic>(sqlCommand);
-                            rV = qResult.FirstOrDefault().Durum;
-                        }
+                        rV = EnmYetkiGrup.Musteri.ToString();
                     }
                 }
 
@@ -569,7 +468,7 @@ namespace WebApp1.Areas.Tem.Codes
                     var userYetki = this.GetKullaniciYetkiler(userId);
 
                     //admin vey a yönetici değil ise normal user ...
-                    if (kullanici.SahipTur == (int)EnmSahipTur.Admin)
+                    if (kullanici.Rols.MyToStr().Contains("1001"))
                     {
                         rV = true;
                     }

@@ -30,10 +30,10 @@ namespace WebApp1.Areas.Tem.Controllers
             {
                 var query = this.rep.Areas_Tem_RepTemKullanici.Get().Where(c => c.Id > 0);
 
-                //personel ise adminleri göremez
-                if (this.userToken.KullaniciSahipTur == EnmSahipTur.Personel)
+                //kullanýcý admin deðil ise adminleri göremez
+                if (this.userToken.YetkiGrup != EnmYetkiGrup.Admin)
                 {
-                    query = query.Where(c => c.SahipTur >= (int)EnmSahipTur.Personel);
+                    query = query.Where(c => c.Rols.Contains("1001") == false);
                 }
 
                 dsr = query.ToDataSourceResult(request);
@@ -61,14 +61,10 @@ namespace WebApp1.Areas.Tem.Controllers
             DataSourceResult dsr = new();
             try
             {
-                //admin deðil ise, kisi türlerine göre ekleyebilirler göre 
-                if (this.userToken.KullaniciSahipTur != EnmSahipTur.Admin && this.userToken.KullaniciSahipId > 0)
+                //admin deðil ise, rol ekleyemez
+                if (this.userToken.YetkiGrup != EnmYetkiGrup.Admin)
                 {
-                    dto.SahipId = this.userToken.KullaniciSahipId;
-                    if (userToken.KullaniciSahipTur == EnmSahipTur.Musteri)
-                    {
-                        dto.Rols = "";
-                    }
+                    dto.Rols = "";
                 }
 
                 int id = this.rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dto);
@@ -140,20 +136,20 @@ namespace WebApp1.Areas.Tem.Controllers
             Boolean rOk = false;
             try
             {
-                var dto = this.rep.Areas_Tem_RepTemKullanici.GetById(_id).FirstOrDefault();
+                var dtoKullanici = this.rep.Areas_Tem_RepTemKullanici.GetById(_id).FirstOrDefault();
 
-                if (dto != null)
+                if (dtoKullanici != null)
                 {
-                    string mailAdres = new Codes.TemBusiness(this.dataContext).GetKullaniciMailAdres(dto.Id);
+                    string mailAdres = dtoKullanici.Ad;
                     if (mailAdres.IsValidEmail())
                     {
-                        dto.Sifre = Guid.NewGuid().ToString().MyToUpper().Replace("-", "").Substring(0, 8);
+                        dtoKullanici.Sifre = Guid.NewGuid().ToString().MyToUpper().Replace("-", "").Substring(0, 8);
                         using (var mailHelper = new MyMailHelper(this.dataContext))
                         {
-                            mailHelper.SendMail_Sifre_Bildirim(mailAdres, dto.Sifre);
+                            mailHelper.SendMail_Sifre_Bildirim(mailAdres, dtoKullanici.Sifre);
                         }
 
-                        int id = this.rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dto);
+                        int id = this.rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dtoKullanici);
                         this.rep.SaveChanges();
                         rMessage += MyApp.TranslateTo("xLng.YeniSifreKayitliMailAdresineGonderildi", this.dataContext.Language);
                         rOk = true;

@@ -28,17 +28,10 @@
     }
   },
   {
-    "key": "xLng.viewDashBoard.OgretmenSayisi",
+    "key": "xLng.viewDashBoard.ProjeSayisi",
     "value": {
-      "tr": "Öğretmen Sayısı",
-      "en": "Number of Teachers"
-    }
-  },
-  {
-    "key": "xLng.viewDashBoard.OgrenciSayisi",
-    "value": {
-      "tr": "Öğrenci Sayısı",
-      "en": "Number of Students"
+      "tr": "Proje Sayısı",
+      "en": "Number of Projects"
     }
   }
 ]

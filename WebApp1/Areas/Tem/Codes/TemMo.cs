@@ -14,9 +14,7 @@ namespace WebApp1.Areas.Tem.Codes
         public DateTime? GirisZaman { get; set; }
         public DateTime? CikisZaman { get; set; }
         public int Zaman { get; set; }
-        public int SahipId { get; set; }
-        public int SahipTur { get; set; }
-        public string Sahip { get; set; }
+
     }
 
     #endregion

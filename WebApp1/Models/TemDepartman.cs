@@ -10,7 +10,6 @@ namespace WebApp1.Models
         public TemDepartman()
         {
             InverseUst = new HashSet<TemDepartman>();
-            TemKisiDepartmanGorev = new HashSet<TemKisiDepartmanGorev>();
         }
 
         public int Id { get; set; }
@@ -21,6 +20,5 @@ namespace WebApp1.Models
 
         public virtual TemDepartman Ust { get; set; }
         public virtual ICollection<TemDepartman> InverseUst { get; set; }
-        public virtual ICollection<TemKisiDepartmanGorev> TemKisiDepartmanGorev { get; set; }
     }
 }

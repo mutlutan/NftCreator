@@ -32,7 +32,7 @@ namespace WebApp1.Controllers
             {
                 return RedirectToAction("Index", "Account");
             }
-            else if (this.userToken.KullaniciSahipTur == EnmSahipTur.Musteri)
+            else if (this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
             {
                 return RedirectToAction("Index", "Home");
             }

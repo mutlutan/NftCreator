@@ -99,7 +99,7 @@ namespace WebApp1.Controllers
             DataSourceResult dsr = new();
             try
             {
-                var enumArray = (EnmSahipTur[])Enum.GetValues(typeof(EnmSahipTur));
+                var enumArray = (EnmYetkiGrup[])Enum.GetValues(typeof(EnmYetkiGrup));
                 var data = enumArray
                     .Select(s => new { value = (int)s, text = s.ToString() });
 
@@ -120,7 +120,7 @@ namespace WebApp1.Controllers
             DataSourceResult dsr = new();
             try
             {
-                var enumArray = (EnmSahipTur[])Enum.GetValues(typeof(EnmSahipTur));
+                var enumArray = (EnmYetkiGrup[])Enum.GetValues(typeof(EnmYetkiGrup));
                 var data = enumArray
                     .Select(s => new { value = (int)s, text = s.MyGetDescription() });
 
