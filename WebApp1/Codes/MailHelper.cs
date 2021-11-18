@@ -222,19 +222,6 @@ namespace WebApp1.Codes
             return this.SendMailForSablon((int)EnmMailSablon.IletisimBildirim, to, data);
         }
 
-        public Boolean SendMail_EtkinlikKayit_Bildirim(string _kurumAd, string _adSoyad, string _email, string _telefon, string _brans)
-        {
-            Dictionary<string, string> data = new() { };
-            data.Add("[#Etkinlik_KurumAd#]", _kurumAd);
-            data.Add("[#Etkinlik_AdSoyad#]", _adSoyad);
-            data.Add("[#Etkinlik_Mail#]", _email);
-            data.Add("[#Etkinlik_Telefon#]", _telefon);
-            data.Add("[#Etkinlik_Brans#]", _brans);
-
-            var to = new List<string>() { this.parametre.KurumMail.MyToStr() };
-            return this.SendMailForSablon((int)EnmMailSablon.EtkinlikKayit, to, data);
-        }
-
         public Boolean SendMail_UyeMailOnay(string mail, string adSoyad, string onayLinkValue)
         {
             Dictionary<string, string> data = new() { };
