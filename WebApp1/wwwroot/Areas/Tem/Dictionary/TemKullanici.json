@@ -44,6 +44,15 @@
  }
 ,
  {
+     "key" : "xTem.TemKullanici.GizliId",
+     "value": {
+         "tr": "Gizli Id"
+,
+         "en": "Hidden Id"
+     }
+ }
+,
+ {
      "key" : "xTem.TemKullanici.Durum",
      "value": {
          "tr": "Durum"

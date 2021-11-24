@@ -53,7 +53,7 @@ namespace WebApp1.Codes
                     {
                         if (grup.MyToTrim().Length > 0)
                         {
-                            if (grup.MyToTrim() == ((int)userToken.YetkiGrup).MyToStr())
+                            if (grup.MyToTrim() == userToken.YetkiGrup.MyToStr())
                             {
                                 grupGecerli = true;
                             }

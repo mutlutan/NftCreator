@@ -327,6 +327,8 @@ namespace WebApp1.Models
 
             modelBuilder.Entity<TemKullanici>(entity =>
             {
+                entity.HasIndex(e => e.GizliId, "IX_TemKullanici_GizliId");
+
                 entity.HasIndex(e => e.Ad, "UX_TemKullanici_Ad")
                     .IsUnique();
 

@@ -28,6 +28,13 @@
                     </div>
 
                      <div class='col-lg-6 col-md-12'>
+                     <div name='divGizliId' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.GizliId'></label>
+                         <div class='col-sm-8'>
+                             <input name='GizliId' type='text' class='k-textbox' data-bind='value:GizliId' data-langkey-placeholder='xTem.TemKullanici.GizliId'  disabled  autocomplete='off' />
+                         </div>
+                     </div>
+
                      <div name='divDurum' class='mnFormElementDiv form-group row'>
                          <label class='col-sm-4 col-form-label'></label>
                          <div class='col-sm-8'>
@@ -130,6 +137,7 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null },
+                         GizliId: { type: 'string', editable:false },
                          Durum: { type: 'boolean' },
                          KayitZaman: { type: 'date', editable:false },
                          Ad: { type: 'string' },
@@ -185,6 +193,7 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
+                                 e.items[0].GizliId = result.GizliId;
                                  e.items[0].Durum = result.Durum;
                                  e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
                                  e.items[0].Ad = result.Ad;
@@ -369,6 +378,7 @@
      }
 
      function fSetAtributeFormElements() {
+         $(self.selector).find('[name=GizliId]').attr('required', 'required');
          $(self.selector).find('[name=KayitZaman]').attr('required', 'required');
          $(self.selector).find('[name=Ad]').attr('required', 'required');
      }
@@ -399,6 +409,7 @@
 
         //form element görünümleri
         var fieldList = [];
+        fieldList.push({ 'Name': 'GizliId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'KayitZaman', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });

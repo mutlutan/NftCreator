@@ -52,13 +52,6 @@ namespace WebApp1.Controllers
             ViewBag.LogoClass = "";
             ViewBag.SloganClass = "d-none";
 
-            if (this.userToken.Host == "serceakademi.com")
-            {
-                ViewBag.Baslik = MyApp.AppName;
-                ViewBag.LogoClass = "d-none";
-                ViewBag.SloganClass = "";
-            }
-
             ViewBag.LogoImageUrl = "/img/logo/logoYatay.png?v" + WebApp1.Codes.MyApp.Version;
             ViewBag.GirisImageUrl = "/img/giris/login.png?v" + WebApp1.Codes.MyApp.Version;
 
@@ -68,7 +61,7 @@ namespace WebApp1.Controllers
 
             if (MyApp.Env.EnvironmentName == "Development")
             {
-                ViewBag.UserName = "admin"; // "öğrenci"; //"öğretmen"; //"admin";
+                ViewBag.UserName = "admin"; 
                 ViewBag.Password = "1";
                 ViewBag.SecurityCode = "1111";
             }

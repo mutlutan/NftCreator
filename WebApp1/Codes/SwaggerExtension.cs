@@ -19,13 +19,13 @@ namespace WebApp1.Codes
                 {
                     Version = "v1.01",
                     Title = MyApp.AppName + " api",
-                    Description = "Serçe Akademi Web Api",
-                    TermsOfService = new System.Uri("https://www.serceakademi.com"),
+                    Description = "nft Web Api",
+                    TermsOfService = new System.Uri("https://app.nftcreator.click"),
                     Contact = new OpenApiContact
                     {
                         //Name = "Mutlu MUTLUTAN",
                         Email = "mutlutan@outlook.com",
-                        Url = new Uri("http://serceakademi.com")
+                        Url = new Uri("https://app.nftcreator.click")
                     }
                 });
                 //c.DescribeAllEnumsAsStrings();

@@ -19,6 +19,7 @@ namespace WebApp1.Models
         }
 
         public int Id { get; set; }
+        public Guid GizliId { get; set; }
         public bool Durum { get; set; }
         public DateTime? KayitZaman { get; set; }
         public string Ad { get; set; }

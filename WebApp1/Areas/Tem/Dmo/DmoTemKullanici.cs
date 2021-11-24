@@ -20,6 +20,7 @@ namespace WebApp1.Areas.Tem.Dmo
              .Select(s => new DtoTemKullanici(this.dataContext)
              {
                  Id = s.Id,
+                 GizliId = s.GizliId,
                  Durum = s.Durum,
                  KayitZaman = s.KayitZaman,
                  Ad = s.Ad,
@@ -35,6 +36,7 @@ namespace WebApp1.Areas.Tem.Dmo
          DtoTemKullanici row = new(this.dataContext) { };
          // Burada field default değerleri veriliyor...
          row.Id = 0;
+         row.GizliId = Guid.NewGuid();
          row.Durum = true;
          row.KayitZaman = DateTime.Now;
 
@@ -66,6 +68,7 @@ namespace WebApp1.Areas.Tem.Dmo
              }
          }
          
+         row.GizliId = _model.GizliId;
          row.Durum = _model.Durum;
          row.KayitZaman = _model.KayitZaman;
          row.Ad = _model.Ad;

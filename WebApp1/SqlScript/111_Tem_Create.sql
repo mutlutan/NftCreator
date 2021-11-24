@@ -17,7 +17,7 @@
 		/*Birden Fazla Giriş Yapılabilir, giremez*/
 		UniqueVisit			BIT NOT NULL,
 
-		/*web sayfası adresi - local : http://localhost:5002  sunucu: https://www.serceakademi.com*/
+		/*web sayfası adresi - local : http://localhost:5002  sunucu: https://www.qq.com*/
 		HostAddress			NVARCHAR(100) NOT NULL,
 
 		/*Lisans*/
@@ -327,6 +327,7 @@
     CREATE TABLE dbo.TemKullanici(
 		Id			INT NOT NULL,
 
+		GizliId		UNIQUEIDENTIFIER NOT NULL,
 		Durum		BIT NOT NULL,
 		KayitZaman	DATETIME, /*Kayıt tarihi*/
 
@@ -338,10 +339,11 @@
 
 		CONSTRAINT PK_TemKullanici PRIMARY KEY (Id)
 	);
+	CREATE INDEX IX_TemKullanici_GizliId ON TemKullanici (GizliId);
 	CREATE UNIQUE INDEX UX_TemKullanici_Ad ON TemKullanici (Ad);
-	INSERT INTO TemKullanici (Id, Durum, Rols, Ad, Sifre) VALUES (0, 0, N'', N'', N'');
-	INSERT INTO TemKullanici (Id, KayitZaman, Durum, Rols, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, getdate(), 1, N'1001', N'admin', N'07');
-	INSERT INTO TemKullanici (Id, KayitZaman, Durum, Rols, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, getdate(), 1, N'1101', N'personel', N'07');
+	INSERT INTO TemKullanici (Id, GizliId, Durum, Rols, Ad, Sifre) VALUES (0, newid(), 0, N'', N'', N'');
+	INSERT INTO TemKullanici (Id, GizliId, KayitZaman, Durum, Rols, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, newid(), getdate(), 1, N'1001', N'admin', N'07');
+	INSERT INTO TemKullanici (Id, GizliId, KayitZaman, Durum, Rols, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, newid(), getdate(), 1, N'1101', N'personel', N'07');
 
 	/* Kullanici Şifre history*/
 	CREATE SEQUENCE dbo.sqTemKullaniciSifre AS INT START WITH 1 INCREMENT BY 1;

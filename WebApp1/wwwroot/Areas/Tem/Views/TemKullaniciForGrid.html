@@ -80,6 +80,7 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null  },
+                         GizliId: { type: 'string', editable:false },
                          Durum: { type: 'boolean' },
                          KayitZaman: { type: 'date', editable:false },
                          Ad: { type: 'string' },
@@ -120,6 +121,7 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
+                                 e.items[0].GizliId = result.GizliId;
                                  e.items[0].Durum = result.Durum;
                                  e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
                                  e.items[0].Ad = result.Ad;
@@ -181,6 +183,14 @@
                      { name: 'btnDetay_TemKullaniciAbonelik', buttonType: 'ImageAndText', text: mnLang.TranslateWithWord('xTem.TemKullaniciAbonelik.ShortTitle'), attr: 'class="btnDetay" data-langkey-title="xTem.TemKullaniciAbonelik.Title" ' },
                  ]
              },
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.GizliId'),
+                 field: 'GizliId',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '150px'
+             },
+
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xTem.TemKullanici.Durum'),
