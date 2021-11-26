@@ -9,7 +9,6 @@ namespace WebApp1.Models
     {
         public TemParaBirim()
         {
-            TemAbonelikUrunPlan = new HashSet<TemAbonelikUrunPlan>();
             TemDovizKurArsiv = new HashSet<TemDovizKurArsiv>();
         }
 
@@ -24,7 +23,6 @@ namespace WebApp1.Models
         public string Ad { get; set; }
         public string AltBirim { get; set; }
 
-        public virtual ICollection<TemAbonelikUrunPlan> TemAbonelikUrunPlan { get; set; }
         public virtual ICollection<TemDovizKurArsiv> TemDovizKurArsiv { get; set; }
     }
 }

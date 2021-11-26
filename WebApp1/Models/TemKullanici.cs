@@ -10,7 +10,6 @@ namespace WebApp1.Models
         public TemKullanici()
         {
             NftProje = new HashSet<NftProje>();
-            TemKullaniciAbonelik = new HashSet<TemKullaniciAbonelik>();
             TemKullaniciLisans = new HashSet<TemKullaniciLisans>();
             TemKullaniciSifre = new HashSet<TemKullaniciSifre>();
             TemMesajAlici = new HashSet<TemMesaj>();
@@ -28,7 +27,6 @@ namespace WebApp1.Models
         public string Resim { get; set; }
 
         public virtual ICollection<NftProje> NftProje { get; set; }
-        public virtual ICollection<TemKullaniciAbonelik> TemKullaniciAbonelik { get; set; }
         public virtual ICollection<TemKullaniciLisans> TemKullaniciLisans { get; set; }
         public virtual ICollection<TemKullaniciSifre> TemKullaniciSifre { get; set; }
         public virtual ICollection<TemMesaj> TemMesajAlici { get; set; }

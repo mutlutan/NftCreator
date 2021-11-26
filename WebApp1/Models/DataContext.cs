@@ -18,10 +18,6 @@ namespace WebApp1.Models
         }
 
         public virtual DbSet<NftProje> NftProje { get; set; }
-        public virtual DbSet<TemAbonelikDonem> TemAbonelikDonem { get; set; }
-        public virtual DbSet<TemAbonelikDurum> TemAbonelikDurum { get; set; }
-        public virtual DbSet<TemAbonelikUrun> TemAbonelikUrun { get; set; }
-        public virtual DbSet<TemAbonelikUrunPlan> TemAbonelikUrunPlan { get; set; }
         public virtual DbSet<TemAdres> TemAdres { get; set; }
         public virtual DbSet<TemAuditLog> TemAuditLog { get; set; }
         public virtual DbSet<TemCinsiyet> TemCinsiyet { get; set; }
@@ -31,8 +27,6 @@ namespace WebApp1.Models
         public virtual DbSet<TemGorev> TemGorev { get; set; }
         public virtual DbSet<TemIlce> TemIlce { get; set; }
         public virtual DbSet<TemKullanici> TemKullanici { get; set; }
-        public virtual DbSet<TemKullaniciAbonelik> TemKullaniciAbonelik { get; set; }
-        public virtual DbSet<TemKullaniciAbonelikOdeme> TemKullaniciAbonelikOdeme { get; set; }
         public virtual DbSet<TemKullaniciLisans> TemKullaniciLisans { get; set; }
         public virtual DbSet<TemKullaniciSifre> TemKullaniciSifre { get; set; }
         public virtual DbSet<TemMailAntet> TemMailAntet { get; set; }
@@ -72,87 +66,6 @@ namespace WebApp1.Models
                     .HasForeignKey(d => d.KullaniciId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_NftProje_KullaniciId");
-            });
-
-            modelBuilder.Entity<TemAbonelikDonem>(entity =>
-            {
-                entity.HasIndex(e => e.Durum, "IX_TemAbonelikDonem_Durum");
-
-                entity.HasIndex(e => e.Ad, "UX_TemAbonelikDonem_Ad")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Ad)
-                    .IsRequired()
-                    .HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<TemAbonelikDurum>(entity =>
-            {
-                entity.HasIndex(e => e.Durum, "IX_TemAbonelikDurum_Durum");
-
-                entity.HasIndex(e => e.Ad, "UX_TemAbonelikDurum_Ad")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Aciklama).HasMaxLength(250);
-
-                entity.Property(e => e.Ad)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Kod)
-                    .IsRequired()
-                    .HasMaxLength(20);
-            });
-
-            modelBuilder.Entity<TemAbonelikUrun>(entity =>
-            {
-                entity.HasIndex(e => e.Durum, "IX_TemAbonelikUrun_Durum");
-
-                entity.HasIndex(e => e.Ad, "UX_TemAbonelikUrun_Ad")
-                    .IsUnique();
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Ad).HasMaxLength(50);
-
-                entity.Property(e => e.Kod).HasMaxLength(50);
-            });
-
-            modelBuilder.Entity<TemAbonelikUrunPlan>(entity =>
-            {
-                entity.HasIndex(e => e.AbonelikUrunId, "IX_TemAbonelikUrunPlan_AbonelikUrunId");
-
-                entity.HasIndex(e => e.Durum, "IX_TemAbonelikUrunPlan_Durum");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Ad).HasMaxLength(50);
-
-                entity.Property(e => e.Kod).HasMaxLength(50);
-
-                entity.Property(e => e.Ucret).HasColumnType("decimal(18, 2)");
-
-                entity.HasOne(d => d.AbonelikDonem)
-                    .WithMany(p => p.TemAbonelikUrunPlan)
-                    .HasForeignKey(d => d.AbonelikDonemId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemAbonelikUrun_AbonelikDonemId");
-
-                entity.HasOne(d => d.AbonelikUrun)
-                    .WithMany(p => p.TemAbonelikUrunPlan)
-                    .HasForeignKey(d => d.AbonelikUrunId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemAbonelikUrun_AbonelikUrunId");
-
-                entity.HasOne(d => d.ParaBirim)
-                    .WithMany(p => p.TemAbonelikUrunPlan)
-                    .HasForeignKey(d => d.ParaBirimId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemAbonelikUrun_ParaBirimId");
             });
 
             modelBuilder.Entity<TemAdres>(entity =>
@@ -339,62 +252,6 @@ namespace WebApp1.Models
                 entity.Property(e => e.KayitZaman).HasColumnType("datetime");
 
                 entity.Property(e => e.Sifre).HasMaxLength(100);
-            });
-
-            modelBuilder.Entity<TemKullaniciAbonelik>(entity =>
-            {
-                entity.HasIndex(e => e.AbonelikDurumId, "IX_TemKullaniciAbonelik_AbonelikDurumId");
-
-                entity.HasIndex(e => e.AbonelikUrunPlanId, "IX_TemKullaniciAbonelik_AbonelikUrunPlanId");
-
-                entity.HasIndex(e => e.KullaniciId, "IX_TemKullaniciAbonelik_KullaniciId");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.InsertDateTime).HasColumnType("datetime");
-
-                entity.Property(e => e.Jeton).HasMaxLength(50);
-
-                entity.Property(e => e.UpdateDateTime).HasColumnType("datetime");
-
-                entity.HasOne(d => d.AbonelikDurum)
-                    .WithMany(p => p.TemKullaniciAbonelik)
-                    .HasForeignKey(d => d.AbonelikDurumId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKullaniciAbonelik_AbonelikDurumId");
-
-                entity.HasOne(d => d.AbonelikUrunPlan)
-                    .WithMany(p => p.TemKullaniciAbonelik)
-                    .HasForeignKey(d => d.AbonelikUrunPlanId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKullaniciAbonelik_AbonelikUrunPlanId");
-
-                entity.HasOne(d => d.Kullanici)
-                    .WithMany(p => p.TemKullaniciAbonelik)
-                    .HasForeignKey(d => d.KullaniciId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKullaniciAbonelik_KullaniciId");
-            });
-
-            modelBuilder.Entity<TemKullaniciAbonelikOdeme>(entity =>
-            {
-                entity.HasIndex(e => e.KullaniciAbonelikId, "IX_TemKullaniciAbonelikOdeme_KullaniciAbonelikId");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.BaslamaTarihi).HasColumnType("date");
-
-                entity.Property(e => e.BitisTarihi).HasColumnType("date");
-
-                entity.Property(e => e.InsertDateTime).HasColumnType("datetime");
-
-                entity.Property(e => e.UpdateDateTime).HasColumnType("datetime");
-
-                entity.HasOne(d => d.KullaniciAbonelik)
-                    .WithMany(p => p.TemKullaniciAbonelikOdeme)
-                    .HasForeignKey(d => d.KullaniciAbonelikId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_TemKullaniciAbonelikOdeme_KullaniciAbonelikId");
             });
 
             modelBuilder.Entity<TemKullaniciLisans>(entity =>
@@ -705,10 +562,6 @@ namespace WebApp1.Models
 
             modelBuilder.HasSequence<int>("sqNftProje");
 
-            modelBuilder.HasSequence<int>("sqTemAbonelikUrun").StartsAt(101);
-
-            modelBuilder.HasSequence<int>("sqTemAbonelikUrunPlan");
-
             modelBuilder.HasSequence<int>("sqTemAdres");
 
             modelBuilder.HasSequence<int>("sqTemAuditLog");
@@ -722,10 +575,6 @@ namespace WebApp1.Models
             modelBuilder.HasSequence<int>("sqTemIlce").StartsAt(1001);
 
             modelBuilder.HasSequence<int>("sqTemKullanici");
-
-            modelBuilder.HasSequence<int>("sqTemKullaniciAbonelik");
-
-            modelBuilder.HasSequence<int>("sqTemKullaniciAbonelikOdeme");
 
             modelBuilder.HasSequence<int>("sqTemKullaniciLisans");
 

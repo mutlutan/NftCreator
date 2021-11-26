@@ -25,10 +25,6 @@ namespace WebApp1.Models
         public Areas.Tem.Dmo.DmoTemRequestLog Areas_Tem_RepTemRequestLog { get; private set; }  /*auto generated*/
         public Areas.Tem.Dmo.DmoTemParaBirim Areas_Tem_RepTemParaBirim { get; private set; }  /*auto generated*/
         public Areas.Tem.Dmo.DmoTemKullaniciLisans Areas_Tem_RepTemKullaniciLisans { get; private set; }  /*auto generated*/
-        public Areas.Tem.Dmo.DmoTemAbonelikUrun Areas_Tem_RepTemAbonelikUrun { get; private set; }  /*auto generated*//*27.12.2020 01:13:39*/
-        public Areas.Tem.Dmo.DmoTemAbonelikUrunPlan Areas_Tem_RepTemAbonelikUrunPlan { get; private set; }  /*auto generated*//*27.12.2020 01:16:34*/
-        public Areas.Tem.Dmo.DmoTemKullaniciAbonelik Areas_Tem_RepTemKullaniciAbonelik { get; private set; }  /*auto generated*//*27.12.2020 01:19:57*/
-        public Areas.Tem.Dmo.DmoTemKullaniciAbonelikOdeme Areas_Tem_RepTemKullaniciAbonelikOdeme { get; private set; }  /*auto generated*//*03.01.2021 14:16:48*/
         public Areas.Tem.Dmo.DmoTemMesaj Areas_Tem_RepTemMesaj { get; private set; }  /*auto generated*//*01.11.2021 23:41:45*/
         /*code_generator_property_end*/
 
@@ -52,10 +48,6 @@ namespace WebApp1.Models
             this.Areas_Tem_RepTemRequestLog = new Areas.Tem.Dmo.DmoTemRequestLog(this.dataContext);  /*auto generated*/
             this.Areas_Tem_RepTemParaBirim = new Areas.Tem.Dmo.DmoTemParaBirim(this.dataContext);  /*auto generated*/
             this.Areas_Tem_RepTemKullaniciLisans = new Areas.Tem.Dmo.DmoTemKullaniciLisans(this.dataContext);  /*auto generated*/
-            this.Areas_Tem_RepTemAbonelikUrun = new Areas.Tem.Dmo.DmoTemAbonelikUrun(this.dataContext);  /*auto generated*//*27.12.2020 01:13:39*/
-            this.Areas_Tem_RepTemAbonelikUrunPlan = new Areas.Tem.Dmo.DmoTemAbonelikUrunPlan(this.dataContext);  /*auto generated*//*27.12.2020 01:16:34*/
-            this.Areas_Tem_RepTemKullaniciAbonelik = new Areas.Tem.Dmo.DmoTemKullaniciAbonelik(this.dataContext);  /*auto generated*//*27.12.2020 01:19:57*/
-            this.Areas_Tem_RepTemKullaniciAbonelikOdeme = new Areas.Tem.Dmo.DmoTemKullaniciAbonelikOdeme(this.dataContext);  /*auto generated*//*03.01.2021 14:16:48*/
             this.Areas_Tem_RepTemMesaj = new Areas.Tem.Dmo.DmoTemMesaj(this.dataContext);  /*auto generated*//*01.11.2021 23:41:45*/
             /*code_generator_constructor_end*/
         }

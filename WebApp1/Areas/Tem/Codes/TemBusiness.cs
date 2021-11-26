@@ -222,31 +222,6 @@ namespace WebApp1.Areas.Tem.Codes
                     }
 
                     #endregion
-
-                    #region TemKullaniciAbonelikOdeme
-                    var kullaniciAbonelikOdeme = this.dataContext.TemKullaniciAbonelikOdeme
-                       .Where(c => c.Durum == true && c.KullaniciAbonelik.KullaniciId == _kullaniciId);
-
-                    if (kullaniciAbonelikOdeme.Any())
-                    {
-                        // başlama ve bitiş tarihi arasındaki gün toplamı
-                        kullaniciAbonelikOdeme.Where(c => c.BitisTarihi >= DateTime.Now.Date);
-                        int gunler = 0;
-                        foreach (var item in kullaniciAbonelikOdeme)
-                        {
-                            var gun = item.BitisTarihi.Value - DateTime.Now.Date;
-                            gunler += gun.TotalDays.MyToInt();
-                        }
-                        rV += gunler;
-
-                        // Bitiş tarihi null olan bir kayıt var ise lisans bitişi intmax gündür
-                        if (kullaniciAbonelikOdeme.Where(c => c.BitisTarihi == null).Any())
-                        {
-                            rV += 365;
-                        }
-                    }
-                    #endregion
-
                 }
             }
             catch (Exception ex)

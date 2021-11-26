@@ -8,8 +8,6 @@
             <div class='dropdown-menu rounded-0 mn-default-border-color mn-default-bg-color mn-default-text-color shadow ' style='padding:5px 0px;'>
                 <button id='btnDetayTemKullaniciLisans' class='dropdown-item mn-hover-color-blue'> <span data-langkey-text='xTem.TemKullaniciLisans.Title'></span> </button>
 
-                <button id='btnDetayTemKullaniciAbonelik' class='dropdown-item mn-hover-color-blue'> <span data-langkey-text='xTem.TemKullaniciAbonelik.Title'></span> </button>
-
             </div>
         </div>
 
@@ -278,24 +276,6 @@
             });
          });
 
-         $(self.selector).find('#btnDetayTemKullaniciAbonelik').click(function (e) {
-            var dataItem = self.dataSource.at(0);
-            mnPageView.create({
-                areaName: 'Tem',
-                viewFileName: 'TemKullaniciAbonelikForGrid',
-                viewName: 'TemKullaniciAbonelikForGrid',
-                subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
-                onShow: function (e) {
-                    e.beforeShow({
-                        'ownerViewName': 'TemKullaniciForForm',
-                        'filters': [
-                            { 'filterColumnName': 'KullaniciId', 'filterOperator': 'eq', 'filterValue': dataItem.Id }
-                        ]
-                    });
-                }
-            });
-         });
-
          //Diğer Form elementleri
          $(self.selector).find('[name=KayitZaman]').kendoDateTimePicker({
              componentType: mnApp.kendoDateTimePiker_ComponentType,
@@ -392,9 +372,6 @@
              // menu buttons yetkiler için
              var btnDetayTemKullaniciLisans_R = mnUser.isYetkili('TemKullaniciLisans.D_R.');
              mnApi.controlEnable($(self.selector).find('#btnDetayTemKullaniciLisans'), btnDetayTemKullaniciLisans_R);
-
-             var btnDetayTemKullaniciAbonelik_R = mnUser.isYetkili('TemKullaniciAbonelik.D_R.');
-             mnApi.controlEnable($(self.selector).find('#btnDetayTemKullaniciAbonelik'), btnDetayTemKullaniciAbonelik_R);
 
 
          //ek yetkiler için)

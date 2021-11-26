@@ -169,7 +169,7 @@ namespace WebApp1.Models
             if (MyApp.Configs.ActiveAreas.Split(",").Where(c => c == "Tem").Any())
             {
                 LogList.Append(this.RunScript(";", MyApp.GetSqlScript("111_Tem_Create.sql")).ToString() + "Temel table create iş sonu. \n");
-                LogList.Append(this.RunScript(";", MyApp.GetSqlScript("112_Tem_Insert.sql")).ToString() + "Temel table insert iş sonu. \n");
+                //LogList.Append(this.RunScript(";", MyApp.GetSqlScript("112_Tem_Insert.sql")).ToString() + "Temel table insert iş sonu. \n");
             }
 
             // Robotik modül script

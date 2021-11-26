@@ -177,10 +177,9 @@
              {
                  locked: true,
                  title: mnLang.TranslateWithWord('xLng.Detay'),
-                 width: '155px',
+                 width: '95px',
                  command: [
                      { name: 'btnDetay_TemKullaniciLisans', buttonType: 'ImageAndText', text: mnLang.TranslateWithWord('xTem.TemKullaniciLisans.ShortTitle'), attr: 'class="btnDetay" data-langkey-title="xTem.TemKullaniciLisans.Title" ' },
-                     { name: 'btnDetay_TemKullaniciAbonelik', buttonType: 'ImageAndText', text: mnLang.TranslateWithWord('xTem.TemKullaniciAbonelik.ShortTitle'), attr: 'class="btnDetay" data-langkey-title="xTem.TemKullaniciAbonelik.Title" ' },
                  ]
              },
              {
@@ -204,7 +203,7 @@
                  title: mnLang.TranslateWithWord('xTem.TemKullanici.KayitZaman'),
                  field: 'KayitZaman',
                  format: '{0:g}',
-                 width: '135px'
+                 width: '175px'
              },
 
              {
@@ -235,8 +234,6 @@
              ],
              edit: function (e) {
                  mnApi.controlEnable(e.container.find('.k-grid-btnDetay_TemKullaniciLisans'), false);
-
-                 mnApi.controlEnable(e.container.find('.k-grid-btnDetay_TemKullaniciAbonelik'), false);
 
                  var model=e.model;
                  this.cancelRow();
@@ -305,28 +302,6 @@
                 areaName: 'Tem',
                 viewFileName: 'TemKullaniciLisansForGrid',
                 viewName: 'TemKullaniciLisansForGrid',
-                subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
-                onShow: function (e) {
-                    e.beforeShow({
-                        'ownerViewName': 'TemKullaniciForGrid',
-                        'filters': [
-                            { 'filterColumnName': 'KullaniciId', 'filterOperator': 'eq', 'filterValue': dataItem.Id }
-                        ]
-                    });
-                },
-                onClose: function (e) {
-                    self.dataSource.read();
-                }
-            });
-        });
-
-        self.grid.wrapper.on('click', '.k-grid-btnDetay_TemKullaniciAbonelik', function (e) {
-            e.preventDefault();
-            var dataItem = self.grid.dataItem($(e.currentTarget).closest('tr'));
-            mnPageView.create({
-                areaName: 'Tem',
-                viewFileName: 'TemKullaniciAbonelikForGrid',
-                viewName: 'TemKullaniciAbonelikForGrid',
                 subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
                 onShow: function (e) {
                     e.beforeShow({
@@ -445,9 +420,6 @@
              // ek yetkiler (row daki nesneler için)
              var btnDetay_TemKullaniciLisans_R = mnUser.isYetkili('TemKullaniciLisans.D_R.');
              mnApi.controlEnable(_tr.find('.k-grid-btnDetay_TemKullaniciLisans'), btnDetay_TemKullaniciLisans_R);
-
-             var btnDetay_TemKullaniciAbonelik_R = mnUser.isYetkili('TemKullaniciAbonelik.D_R.');
-             mnApi.controlEnable(_tr.find('.k-grid-btnDetay_TemKullaniciAbonelik'), btnDetay_TemKullaniciAbonelik_R);
 
 
 

@@ -22,7 +22,7 @@ namespace WebApp1.Areas.Tem.Dto
                {
                    Areas.Tem.Codes.TemBusiness temBusiness = new(this.dataContext);
                    var queryResult = this.dataContext.TemKullanici.Where(c => c.Id == this.UserId)
-                   .Select(s => new { value = s.Id, text = s.Ad })
+                   .Select(s => new { value = s.Id, text = s.Ad + " <" + temBusiness.GetKullaniciSahipAdSahipTur(s.Id) + ">" })
                    .FirstOrDefault();
 
                    if (queryResult != null)
