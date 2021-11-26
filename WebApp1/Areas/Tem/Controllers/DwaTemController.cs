@@ -80,6 +80,35 @@ namespace WebApp1.Areas.Tem.Controllers
                 });
 
             }
+            else if (_dashId == (int)EnmDashItem.ProjeSayisi)
+            {
+                //query
+                var query = this.dataContext.NftProje.Where(c => c.Id > 0);
+
+                if(this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
+                {
+                    query = query.Where(c => c.KullaniciId == this.userToken.UserId);
+                }
+
+                //sonuç
+                var data = query.ToList();
+                var aktifCount = data.Where(c => c.Durum == true).Count();
+                var pasifCount = data.Where(c => c.Durum == false).Count();
+
+                dashDataList.Add(new MyDashData()
+                {
+                    Text = MyApp.TranslateTo("xLng.viewDashBoard.Aktif", this.dataContext.Language),
+                    Value1 = aktifCount.ToString("N0"),
+                    Value2 = MyApp.TranslateTo("xLng.viewDashBoard.Adet", this.dataContext.Language)
+                });
+                dashDataList.Add(new MyDashData()
+                {
+                    Text = MyApp.TranslateTo("xLng.viewDashBoard.Pasif", this.dataContext.Language),
+                    Value1 = pasifCount.ToString("N0"),
+                    Value2 = MyApp.TranslateTo("xLng.viewDashBoard.Adet", this.dataContext.Language)
+                });
+
+            }
             else
             {
                 dashDataList.Add(new MyDashData()

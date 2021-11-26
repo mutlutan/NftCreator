@@ -48,8 +48,8 @@ namespace WebApp1.Codes
     public enum EnmYetkiGrup
     {
         Admin = 11,
-        Personel = 12,
-        Musteri = 13
+        Personel = 21,
+        Musteri = 31
     }
     public enum EnmRol
     {

@@ -49,7 +49,7 @@
                          Id: { type: 'number', defaultValue: null  },
                          GizliId: { type: 'string', editable:false },
                          Durum: { type: 'boolean' },
-                         TarihSaat: { type: 'date' },
+                         TarihSaat: { type: 'date', editable:false },
                          Ad: { type: 'string' },
                          KullaniciId: { type: 'number' },
                          CcDurum: { type: 'string' },
@@ -138,23 +138,7 @@
                  ]
              },
              {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xNft.NftProje.GizliId'),
-                 field: 'GizliId',
-                 attributes: { 'class': 'text-nowrap' },
-                 editor: function(container, options) { 
-                     var input = $('<input type="text"/>');
-                     input.attr('name', options.field);
-                     input.attr('required', 'required');
-                     $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
-                     input.appendTo(container);
-                     input.addClass('k-textbox');
-                 },
-                 width: '150px'
-             },
-
-             {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 hidden: ![11,21,31].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xNft.NftProje.Durum'),
                  field: 'Durum',
                  template: '#:CcDurum#',
@@ -169,7 +153,7 @@
              },
 
              {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 hidden: ![11,21,31].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xNft.NftProje.TarihSaat'),
                  field: 'TarihSaat',
                  format: '{0:g}',
@@ -188,7 +172,7 @@
              },
 
              {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 hidden: ![11,21,31].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xNft.NftProje.Ad'),
                  field: 'Ad',
                  attributes: { 'class': 'text-nowrap' },
@@ -202,7 +186,7 @@
              },
 
              {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 hidden: ![11,21,31].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xNft.NftProje.KullaniciId'),
                  field: 'KullaniciId',
                  template: '#:CcKullaniciIdAd#',
@@ -238,6 +222,22 @@
 
                  },
                  width: '100px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xNft.NftProje.GizliId'),
+                 field: 'GizliId',
+                 attributes: { 'class': 'text-nowrap' },
+                 editor: function(container, options) { 
+                     var input = $('<input type="text"/>');
+                     input.attr('name', options.field);
+                     input.attr('required', 'required');
+                     $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
+                     input.appendTo(container);
+                     input.addClass('k-textbox');
+                 },
+                 width: '150px'
              },
 
              {}

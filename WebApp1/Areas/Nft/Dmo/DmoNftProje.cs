@@ -37,6 +37,7 @@ namespace WebApp1.Areas.Nft.Dmo
          row.Id = 0;
          row.GizliId = Guid.NewGuid();
          row.Durum = true;
+         row.TarihSaat = DateTime.Now;
          row.KullaniciId = 0;
 
          return row;
