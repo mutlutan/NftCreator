@@ -1,7 +1,7 @@
 ﻿
 window.TemAuthority =
     {
-        id: "Tem.", text: mnLang.f("xLng.Authority.Tem"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-th fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21,31,41", items: [
+        id: "Tem.", text: mnLang.f("xLng.Authority.Tem"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-th fa-fw", expanded: true, prefix: false, menu: true, yetkiGrups: "11,21,31,41", items: [
             {
                 id: "Tem.Tanim.", text: mnLang.f("xLng.Authority.Tem.Tanim"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-newspaper-o fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21,31,41", items: [
                     {
@@ -47,22 +47,22 @@ window.TemAuthority =
                             { id: "Tem.Tanim.TemParametre.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
                         ]
                     },
-                    {
-                        id: "Tem.Tanim.TemMailAntet.", text: mnLang.f("xTem.TemMailAntet.Title"), hint: "", area: "Tem", rout: "TemMailAntet", params: "", showType: "Page", header: true, viewName: "TemMailAntetForGrid", cssClass: "fa fa-id-card-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                            { id: "Tem.Tanim.TemMailAntet.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailAntet.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailAntet.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailAntet.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailAntet.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Tanim.TemMailSablon.", text: mnLang.f("xTem.TemMailSablon.Title"), hint: "", area: "Tem", rout: "TemMailSablon", params: "", showType: "Page", header: true, viewName: "TemMailSablonForGrid", cssClass: "fa fa-wrench fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                            { id: "Tem.Tanim.TemMailSablon.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailSablon.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMailSablon.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
+                    //{
+                    //    id: "Tem.Tanim.TemMailAntet.", text: mnLang.f("xTem.TemMailAntet.Title"), hint: "", area: "Tem", rout: "TemMailAntet", params: "", showType: "Page", header: true, viewName: "TemMailAntetForGrid", cssClass: "fa fa-id-card-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemMailAntet.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailAntet.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailAntet.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailAntet.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailAntet.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
+                    //{
+                    //    id: "Tem.Tanim.TemMailSablon.", text: mnLang.f("xTem.TemMailSablon.Title"), hint: "", area: "Tem", rout: "TemMailSablon", params: "", showType: "Page", header: true, viewName: "TemMailSablonForGrid", cssClass: "fa fa-wrench fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemMailSablon.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailSablon.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMailSablon.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
                     {
                         id: "Tem.Tanim.TemRol.", text: mnLang.f("xTem.TemRol.Title"), hint: "", area: "Tem", rout: "TemRol", params: "", showType: "Page", header: true, viewName: "TemRolForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
                             { id: "Tem.Tanim.TemRol.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
@@ -72,42 +72,33 @@ window.TemAuthority =
                             { id: "Tem.Tanim.TemRol.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
                         ]
                     },
-                    {
-                        id: "Tem.Tanim.TemDepartman.", text: mnLang.f("xTem.TemDepartman.Title"), hint: "", area: "Tem", rout: "TemDepartman", params: "", showType: "Page", header: true, viewName: "TemDepartmanForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
-                            { id: "Tem.Tanim.TemDepartman.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemDepartman.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemDepartman.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemDepartman.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemDepartman.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Tanim.TemGorev.", text: mnLang.f("xTem.TemGorev.Title"), hint: "", area: "Tem", rout: "TemGorev", params: "", showType: "Page", header: true, viewName: "TemGorevForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
-                            { id: "Tem.Tanim.TemGorev.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemGorev.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemGorev.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemGorev.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemGorev.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Tanim.TemMesaj.", text: mnLang.f("xTem.TemMesaj.Title"), hint: "", area: "Tem", rout: "TemMesaj", params: "", showType: "Page", header: true, viewName: "TemMesajForTreeList", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
-                            { id: "Tem.Tanim.TemMesaj.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMesaj.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMesaj.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMesaj.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemMesaj.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Tanim.TemParaBirim.", text: mnLang.f("xTem.TemParaBirim.Title"), hint: "", area: "Tem", rout: "TemParaBirim", params: "", showType: "Page", header: true, viewName: "TemParaBirimForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
-                            { id: "Tem.Tanim.TemParaBirim.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
+                    //{
+                    //    id: "Tem.Tanim.TemDepartman.", text: mnLang.f("xTem.TemDepartman.Title"), hint: "", area: "Tem", rout: "TemDepartman", params: "", showType: "Page", header: true, viewName: "TemDepartmanForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemDepartman.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemDepartman.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemDepartman.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemDepartman.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemDepartman.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
+                    //{
+                    //    id: "Tem.Tanim.TemGorev.", text: mnLang.f("xTem.TemGorev.Title"), hint: "", area: "Tem", rout: "TemGorev", params: "", showType: "Page", header: true, viewName: "TemGorevForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemGorev.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemGorev.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemGorev.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemGorev.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemGorev.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
+                    //{
+                    //    id: "Tem.Tanim.TemMesaj.", text: mnLang.f("xTem.TemMesaj.Title"), hint: "", area: "Tem", rout: "TemMesaj", params: "", showType: "Page", header: true, viewName: "TemMesajForTreeList", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemMesaj.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMesaj.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMesaj.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMesaj.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemMesaj.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
                     {
                         id: "Tem.Tanim.TemUlke.", text: mnLang.f("xTem.TemUlke.Title"), hint: "", area: "Tem", rout: "TemUlke", params: "", showType: "Page", header: true, viewName: "TemUlkeForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
                             { id: "Tem.Tanim.TemUlke.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
@@ -135,24 +126,24 @@ window.TemAuthority =
                             }
                         ]
                     },
-                    {
-                        id: "Tem.Tanim.TemAdres.", text: mnLang.f("xTem.TemAdres.Title"), hint: "", area: "Tem", rout: "TemAdres", params: "", showType: "Page", header: true, viewName: "TemAdresForTreeList", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "", items: [
-                            { id: "Tem.Tanim.TemAdres.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemAdres.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemAdres.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemAdres.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemAdres.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Tanim.TemParaBirim.", text: mnLang.f("xTem.TemParaBirim.Title"), hint: "", area: "Tem", rout: "TemParaBirim", params: "", showType: "Page", header: true, viewName: "TemParaBirimForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "gizli", items: [
-                            { id: "Tem.Tanim.TemParaBirim.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Tanim.TemParaBirim.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
+                    //{
+                    //    id: "Tem.Tanim.TemAdres.", text: mnLang.f("xTem.TemAdres.Title"), hint: "", area: "Tem", rout: "TemAdres", params: "", showType: "Page", header: true, viewName: "TemAdresForTreeList", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemAdres.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemAdres.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemAdres.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemAdres.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemAdres.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
+                    //{
+                    //    id: "Tem.Tanim.TemParaBirim.", text: mnLang.f("xTem.TemParaBirim.Title"), hint: "", area: "Tem", rout: "TemParaBirim", params: "", showType: "Page", header: true, viewName: "TemParaBirimForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Tanim.TemParaBirim.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemParaBirim.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemParaBirim.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemParaBirim.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Tanim.TemParaBirim.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
                     {
                         id: "Tem.Tanim.Gorseller.", text: mnLang.f("xLng.viewGorseller.Title"), hint: "", area: "_", rout: "Gorseller", params: "", showType: "Page", header: true, viewName: "viewGorseller", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21", items: [
                             { id: "Tem.Tanim.Gorseller.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
@@ -163,46 +154,46 @@ window.TemAuthority =
 
                 ]
             },
-            {
-                id: "Tem.Abonelik.", text: mnLang.f("xLng.Authority.Tem.Abonelik"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-eye fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "", items: [
-                    //{
-                    //    id: "Tem.Abonelik.TemAbonelikDurum.", text: mnLang.f("xTem.TemAbonelikDurum.Title"), hint: "", area: "Tem", rout: "TemAbonelikDurum", params: "", showType: "Page", header: true, viewName: "TemAbonelikDurumForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                    //        { id: "Tem.Abonelik.TemAbonelikDurum.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDurum.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDurum.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDurum.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDurum.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                    //    ]
-                    //},
-                    {
-                        id: "Tem.Abonelik.TemAbonelikUrun.", text: mnLang.f("xTem.TemAbonelikUrun.Title"), hint: "", area: "Tem", rout: "TemAbonelikUrun", params: "", showType: "Page", header: true, viewName: "TemAbonelikUrunForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                            { id: "Tem.Abonelik.TemAbonelikUrun.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Abonelik.TemAbonelikUrun.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Abonelik.TemAbonelikUrun.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Abonelik.TemAbonelikUrun.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Abonelik.TemAbonelikUrun.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            {
-                                id: "Tem.Abonelik.TemAbonelikUrunPlan.", text: mnLang.f("xTem.TemAbonelikUrunPlan.Title"), hint: "", area: "Tem", rout: "TemAbonelikUrunPlan", params: "", showType: "Page", header: true, viewName: "TemAbonelikUrunPlanForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                                    { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                                    { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                                    { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                                    { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                                    { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                                ]
-                            }
-                        ]
-                    }
-                    //,{
-                    //    id: "Tem.Abonelik.TemAbonelikDonem.", text: mnLang.f("xTem.TemAbonelikDonem.Title"), hint: "", area: "Tem", rout: "TemAbonelikDonem", params: "", showType: "Page", header: true, viewName: "TemAbonelikDonemForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                    //        { id: "Tem.Abonelik.TemAbonelikDonem.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDonem.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDonem.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDonem.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Abonelik.TemAbonelikDonem.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                    //    ]
-                    //}                    
-                ]
-            },
+            //{
+            //    id: "Tem.Abonelik.", text: mnLang.f("xLng.Authority.Tem.Abonelik"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-eye fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21", items: [
+            //        {
+            //            id: "Tem.Abonelik.TemAbonelikDurum.", text: mnLang.f("xTem.TemAbonelikDurum.Title"), hint: "", area: "Tem", rout: "TemAbonelikDurum", params: "", showType: "Page", header: true, viewName: "TemAbonelikDurumForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "gizli", items: [
+            //                { id: "Tem.Abonelik.TemAbonelikDurum.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDurum.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDurum.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDurum.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDurum.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+            //            ]
+            //        },
+            //        {
+            //            id: "Tem.Abonelik.TemAbonelikUrun.", text: mnLang.f("xTem.TemAbonelikUrun.Title"), hint: "", area: "Tem", rout: "TemAbonelikUrun", params: "", showType: "Page", header: true, viewName: "TemAbonelikUrunForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+            //                { id: "Tem.Abonelik.TemAbonelikUrun.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikUrun.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikUrun.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikUrun.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikUrun.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                {
+            //                    id: "Tem.Abonelik.TemAbonelikUrunPlan.", text: mnLang.f("xTem.TemAbonelikUrunPlan.Title"), hint: "", area: "Tem", rout: "TemAbonelikUrunPlan", params: "", showType: "Page", header: true, viewName: "TemAbonelikUrunPlanForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+            //                        { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                        { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                        { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                        { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                        { id: "Tem.Abonelik.TemAbonelikUrunPlan.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+            //                    ]
+            //                }
+            //            ]
+            //        }
+            //        ,{
+            //            id: "Tem.Abonelik.TemAbonelikDonem.", text: mnLang.f("xTem.TemAbonelikDonem.Title"), hint: "", area: "Tem", rout: "TemAbonelikDonem", params: "", showType: "Page", header: true, viewName: "TemAbonelikDonemForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "gizli", items: [
+            //                { id: "Tem.Abonelik.TemAbonelikDonem.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDonem.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDonem.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDonem.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+            //                { id: "Tem.Abonelik.TemAbonelikDonem.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+            //            ]
+            //        }                    
+            //    ]
+            //},
             {
                 id: "Tem.Logs.", text: mnLang.f("xLng.Authority.Tem.Logs"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-eye fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21", items: [
                     //{
@@ -220,23 +211,23 @@ window.TemAuthority =
                             { id: "Tem.Logs.TemOturumLog.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
                             { id: "Tem.Logs.TemOturumLog.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
                         ]
-                    },
-                    {
-                        id: "Tem.Logs.TemAuditLog.", text: mnLang.f("xTem.TemAuditLog.Title"), hint: "", area: "Tem", rout: "TemAuditLog", params: "", showType: "Page", header: true, viewName: "TemAuditLogForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                            { id: "Tem.Logs.TemAuditLog.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemAuditLog.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemAuditLog.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemAuditLog.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemAuditLog.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
-                    },
-                    {
-                        id: "Tem.Logs.TemMailHareket.", text: mnLang.f("xTem.TemMailHareket.Title"), hint: "", area: "Tem", rout: "TemMailHareket", params: "", showType: "Page", header: true, viewName: "TemMailHareketForGrid", cssClass: "fa fa-envelope-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                            { id: "Tem.Logs.TemMailHareket.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemMailHareket.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                            { id: "Tem.Logs.TemMailHareket.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                        ]
                     }
+                    //{
+                    //    id: "Tem.Logs.TemAuditLog.", text: mnLang.f("xTem.TemAuditLog.Title"), hint: "", area: "Tem", rout: "TemAuditLog", params: "", showType: "Page", header: true, viewName: "TemAuditLogForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Logs.TemAuditLog.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemAuditLog.D_C.", text: mnLang.f("xLng.Authority.Ekleyebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-plus fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemAuditLog.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemAuditLog.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemAuditLog.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //},
+                    //{
+                    //    id: "Tem.Logs.TemMailHareket.", text: mnLang.f("xTem.TemMailHareket.Title"), hint: "", area: "Tem", rout: "TemMailHareket", params: "", showType: "Page", header: true, viewName: "TemMailHareketForGrid", cssClass: "fa fa-envelope-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                    //        { id: "Tem.Logs.TemMailHareket.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemMailHareket.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                    //        { id: "Tem.Logs.TemMailHareket.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                    //    ]
+                    //}
                 ]
             }
         ]

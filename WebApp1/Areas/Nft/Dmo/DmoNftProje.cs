@@ -35,6 +35,7 @@ namespace WebApp1.Areas.Nft.Dmo
          DtoNftProje row = new(this.dataContext) { };
          // Burada field default değerleri veriliyor...
          row.Id = 0;
+         row.GizliId = Guid.NewGuid();
          row.Durum = true;
          row.KullaniciId = 0;
 

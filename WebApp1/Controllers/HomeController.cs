@@ -18,15 +18,6 @@ namespace WebApp1.Controllers
         public HomeController(IServiceProvider _serviceProvider)
             : base(_serviceProvider) { }
 
-        
-
-        public IActionResult TestDevExtreme()
-        {
-            return View();
-        }
-
-
-        // Home/Test?abonelikId=25&jeton=d633621d-1566-4fe1-a651-eab04536e70e
         public IActionResult Test()
         {
             #region mail kit deneme
@@ -49,10 +40,12 @@ namespace WebApp1.Controllers
             //    client.Disconnect(true);
             //}
             #endregion
-            //var x = "020D03".MyToDecryptPassword();
+
             #region mail test
             //new MyMailHelper(this.dataContext).SendMail_Sifre_Bildirim("mutlutan@outlook.com", "123deneme");
             #endregion
+
+            //var x = "020D03".MyToDecryptPassword();
 
             #region translate test
             //var xx = MyApp.TranslateWithBingApiV3("Project", "tr", "en", true);

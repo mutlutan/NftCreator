@@ -1,6 +1,6 @@
 window.NftAuthority =
 {
-    id: "Nft.", text: mnLang.f("xLng.Authority.Nft"), hint: "", area: "Nft", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-th fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21", items: [
+    id: "Nft.", text: mnLang.f("xLng.Authority.Nft"), hint: "", area: "Nft", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-th fa-fw", expanded: true, prefix: false, menu: true, yetkiGrups: "11,21", items: [
         {
             id: "Nft.Tanim.", text: mnLang.f("xLng.Authority.Nft.Tanim"), hint: "", area: "Nft", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-newspaper-o fa-fw", expanded: false, prefix: false, menu: true, yetkiGrups: "11,21", items: [
                 {

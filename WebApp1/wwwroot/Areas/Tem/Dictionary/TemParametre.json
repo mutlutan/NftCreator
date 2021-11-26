@@ -39,12 +39,12 @@
      "value": {
          "tr": "Mail Sunucu"
 ,
-         "en": "Mail Sunucu"
+         "en": "Mail Server"
      }
  }
 ,
  {
-     "key" : "xTem.TemParametre.FormViewTab.V",
+     "key" : "xTem.TemParametre.FormViewTab.IV",
      "value": {
          "tr": "Log"
 ,
@@ -53,7 +53,7 @@
  }
 ,
  {
-     "key" : "xTem.TemParametre.FormViewTab.VI",
+     "key" : "xTem.TemParametre.FormViewTab.V",
      "value": {
          "tr": "Yedek"
 ,
