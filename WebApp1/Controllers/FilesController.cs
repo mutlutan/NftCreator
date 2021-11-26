@@ -183,15 +183,6 @@ namespace WebApp1.Controllers
                 {
                     System.IO.Directory.CreateDirectory(_directoryName);
 
-                    System.IO.DirectoryInfo di = new(_directoryName);
-                    if (di.Parent.Name == "tr-TR" || di.Parent.Name == "en-US")
-                    {
-                        System.IO.Directory.CreateDirectory(_directoryName + "//Anlatim");
-                        System.IO.Directory.CreateDirectory(_directoryName + "//Klavuz");
-                        System.IO.Directory.CreateDirectory(_directoryName + "//Kodlar");
-                        System.IO.Directory.CreateDirectory(_directoryName + "//Tanitim");
-                    }
-
                     rMessage += MyApp.TranslateTo("xLng.viewGorseller.DizinEklendi", this.dataContext.Language);
                 }
                 else
