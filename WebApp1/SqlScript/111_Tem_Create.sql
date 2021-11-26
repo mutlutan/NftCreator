@@ -70,8 +70,8 @@
          	
 		CONSTRAINT PK_TemParametre PRIMARY KEY (Id)
 	);
-	INSERT INTO TemParametre (Id, UniqueVisit, AuditLog, HostAddress, KurumAd, MailHost, MailPort, MailEnableSsl, MailUserName, MailPassword, DataBackupDurum, DataBackupTip, DataBackupAyGunNo, FileBackupDurum, FileBackupTip, FileBackupAyGunNo, IyzicoBaseUrl, IyzicoApiKey, IyzicoSecretKey ) 
-	VALUES (1, 0, 0, N'http://localhost:5002', N'Demo Kurum', N'smtp.live.com', 587, 0, N'', N'', 0, 0, 0, 0, 0, 0, 'https://sandbox-api.iyzipay.com', 'sandbox-4I21D4oOkDtZMjaAY0lnqP0ldP2kHwz5', 'sandbox-uN1dpl30hFsaYsVMjdiywX8jZnl9JE0J');
+	INSERT INTO TemParametre (Id, UniqueVisit, AuditLog, HostAddress, KurumAd, MailHost, MailPort, MailEnableSsl, MailUserName, MailPassword, DataBackupDurum, DataBackupTip, DataBackupAyGunNo, FileBackupDurum, FileBackupTip, FileBackupAyGunNo ) 
+	VALUES (1, 0, 0, N'http://localhost:5002', N'Demo Kurum', N'smtp.live.com', 587, 0, N'mutlutan@outlook.com', N'TwBvADEANgA1ADYAMwAxAA==', 0, 0, 0, 0, 0, 0);
 
 	/*RequestLog*/
 	CREATE SEQUENCE dbo.sqTemRequestLog AS INT START WITH 1 INCREMENT BY 1; 
@@ -401,7 +401,7 @@
 	CREATE INDEX IX_TemOturumLog_OturumGuid ON TemOturumLog (OturumGuid);
 	
 
-	CREATE SEQUENCE dbo.sqTemMailAntet AS INT START WITH 1 INCREMENT BY 1;
+	CREATE SEQUENCE dbo.sqTemMailAntet AS INT START WITH 101 INCREMENT BY 1;
 	CREATE TABLE dbo.TemMailAntet (
 		Id			INT NOT NULL,
 		
@@ -411,7 +411,6 @@
 		CONSTRAINT Pk_TemMailAntet PRIMARY KEY (Id)
 	);
 	INSERT INTO TemMailAntet (Id, Ad, Icerik) VALUES (0, N'Boş', N''); /*Boş antetli mail gerekirse*/
-	INSERT INTO TemMailAntet (Id, Ad, Icerik) VALUES (Next Value For dbo.sqTemMailAntet, N'Antet1',N'[#AntetContent#]');
 
 	CREATE TABLE dbo.TemMailSablon (
 		Id			INT NOT NULL,

@@ -77,7 +77,6 @@
     <Folder Include="wwwroot\Areas\Nft\Views\" />
     <Folder Include="wwwroot\Data\Files\" />
     <Folder Include="wwwroot\Downloads\" />
-    <Folder Include="wwwroot\img\mail\" />
     <Folder Include="wwwroot\img\file\" />
     <Folder Include="wwwroot\img\giris\" />
     <Folder Include="wwwroot\img\photo\" />
