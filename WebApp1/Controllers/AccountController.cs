@@ -56,8 +56,8 @@ namespace WebApp1.Controllers
             ViewBag.GirisImageUrl = "/img/giris/login.png?v" + WebApp1.Codes.MyApp.Version;
 
             //login buton renkleri
-            ViewBag.GririsButonFonRengi = "#164574";
-            ViewBag.GririsButonYaziRengi = "white";
+            ViewBag.GirisButonFonRengi = "#164574";
+            ViewBag.GirisButonYaziRengi = "white";
 
             if (MyApp.Env.EnvironmentName == "Development")
             {
@@ -69,8 +69,33 @@ namespace WebApp1.Controllers
             return View();
         }
 
+        [ResponseCache(Duration = 0)]
+        public IActionResult SignUp(string culture)
+        {
+            TemBusiness temBusiness = new(this.dataContext);
+            var resCaptcha = temBusiness.CreateCaptcha();
+
+            if (!string.IsNullOrEmpty(culture))
+            {
+                ViewBag.Culture = culture;
+            }
+
+            ViewBag.CaptchaImage = resCaptcha.Data.CaptchaImage;
+            ViewBag.CaptchaToken = resCaptcha.Data.CaptchaToken;
+
+            ViewBag.LogoImageUrl = "/img/logo/logoYatay.png?v" + WebApp1.Codes.MyApp.Version;
+            ViewBag.RegisterImageUrl = "/img/uyeol/uyeol.png?v" + WebApp1.Codes.MyApp.Version;
+
+            //login buton renkleri
+            ViewBag.UyeOlButonFonRengi = "#155ea8";
+            ViewBag.UyeOlButonYaziRengi = "white";
+
+            return View();
+        }
+
+
         [HttpPost]
-        public IActionResult UyeKayitTalep(string _mail, string _adSoyad, int _dogumYili, string _sifre, string _sCaptchaCode, string _sCaptchaToken)
+        public IActionResult UyeKayitTalep(string _mail, string _adSoyad, int _dogumYili, string _sifre, string _captchaCode, string _captchaToken)
         {
             Boolean rSuccess = false;
             string rMessage;
@@ -78,7 +103,7 @@ namespace WebApp1.Controllers
             {
                 var temBus = new Areas.Tem.Codes.TemBusiness(this.dataContext);
 
-                var captchaValid = MyApp.ValidateCaptchaToken(_sCaptchaCode, _sCaptchaToken);
+                var captchaValid = MyApp.ValidateCaptchaToken(_captchaCode, _captchaToken);
 
                 if (captchaValid)
                 {
@@ -117,7 +142,7 @@ namespace WebApp1.Controllers
         public IActionResult UyeKayitOnay(string prms)
         {
             //kayıt yapılacak
-            var robTem = new Areas.Tem.Codes.TemBusiness(this.dataContext);
+            var robTem = new TemBusiness(this.dataContext);
             var sonuc = robTem.KullaniciKaydet(prms);
 
             ViewBag.Message = sonuc.Message;

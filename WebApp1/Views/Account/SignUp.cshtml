@@ -21,8 +21,8 @@
             background-color: transparent;
         }
 
-    #viewAccount input,
-    #viewAccount .form-control:focus {
+    #viewAccountSignUp input,
+    #viewAccountSignUp .form-control:focus {
         border-left: none;
         border-top: none;
         border-right: none;
@@ -31,70 +31,59 @@
         background-color: transparent;
     }
 
-    #viewAccount .form-control:focus {
+    #viewAccountSignUp .form-control:focus {
         border-bottom: 1px solid #80bdff;
     }
 
-    #viewAccount #btnGiris {
-        background-color: @ViewBag.GirisButonFonRengi;
-        color: @ViewBag.GirisButonYaziRengi;
+    #viewAccountSignUp #btnUyeOl {
+        background-color: @ViewBag.UyeOlButonFonRengi;
+        color: @ViewBag.UyeOlButonYaziRengi;
     }
 
-        #viewAccount #btnGiris:hover {
+        #viewAccountSignUp #btnUyeOl:hover {
             opacity: 0.8;
         }
 </style>
 
-<div id="viewAccount" class="bg-white">
+<div id="viewAccountSignUp" class="bg-white">
 
     <div class="py-1"></div>
 
     <div class="row no-gutters">
-        <div class="col-md-1"></div>
-
         <div class="col-md-4">
-            <div class="py-3">
-                <div class="py-4"></div>
-                <img class="w-100" src="~/img/giris/login.png" />
-            </div>
         </div>
 
         <div class="col-md-4">
-            <div id="divLogin" class="py-3 ">
+            <div id="divSignUp" class="py-3 ">
                 <form onsubmit="return false;">
                     <div class="py-4"></div>
 
                     <div class="text-center">
-                        <div class="@ViewBag.SloganClass">
-                            <p class="h2 font-weight-bold text-warning">
-                                <span data-langkey-Text="xLng.AppName"></span>
-                            </p>
-                            <p class="h6 font-weight-light font-italic">
-                                <span data-langkey-Text="xLng.GirisSlogan"></span>
-                            </p>
-                        </div>
                         <div class="@ViewBag.LogoClass">
                             <img class="" src="@ViewBag.LogoImageUrl" onerror="this.onerror = null; this.style.visibility = 'hidden';" style="max-width:250px;" />
-                        </div>
-                    </div>
-
-                    <div class="text-center">
-                        <div id="languageStatus">
-                            <span id="langFlag"></span>
                         </div>
                     </div>
 
                     <div class="py-3"></div>
 
                     <p class="h2 font-weight-bold text-center">
-                        <span data-langkey-Text="xLng.GirisYap"></span>
+                        <span data-langkey-Text="xLng.UyeOl"></span>
                     </p>
 
                     <div class="px-5">
                         <div class="form-group row">
-                            <label for="sUserName" class="col-md-4 col-form-label pr-0 font-weight-light  d-none"><span data-langkey-Text="xLng.KullaniciAd"></span></label>
+                            <label for="sNameSurname" class="col-md-4 col-form-label pr-0 font-weight-light  d-none"><span data-langkey-Text="xLng.AdSoyad"></span></label>
                             <div class="col-md-12">
-                                <input name='sUserName' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.KullaniciAd" required value="@ViewBag.UserName" autocomplete="username" />
+                                <input name='sNameSurname' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.AdSoyad" required autocomplete="Name Surname" />
+                            </div>
+                        </div>
+
+                        <div class="py-1"></div>
+
+                        <div class="form-group row">
+                            <label for="sEmail" class="col-md-4 col-form-label pr-0 font-weight-light  d-none"><span data-langkey-Text="xLng.EmailAdres"></span></label>
+                            <div class="col-md-12">
+                                <input name='sEmail' type="email" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.EmailAdres" required autocomplete="Email" />
                             </div>
                         </div>
 
@@ -104,7 +93,7 @@
                             <label for="sPassword" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.Sifre"></span></label>
                             <div class="col-md-12">
                                 <div class="input-group bg-white">
-                                    <input name='sPassword' type="password" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.Sifre" required value="@ViewBag.Password" autocomplete="current-password" />
+                                    <input name='sPassword' type="password" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.Sifre" required autocomplete="off" />
                                     <div class="input-group-addon" style="padding:2px;">
                                         <button type="button" id="btnPasswordShowhide" class="btn btn-link btn-sm mn-hover-color-orange" tabindex="-1"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                     </div>
@@ -139,49 +128,27 @@
                         <div class="form-group row">
                             <label class="col-md-4 col-form-label pr-0 d-none"></label>
                             <div class="col-md-12">
-                                <button id="btnGiris" type="button" class="btn font-weight-light rounded">
-                                    <i class="fa fa-user"></i>
-                                    <span data-langkey-Text="xLng.GirisYap"></span>
+                                <button id="btnUyeOl" type="button" class="btn font-weight-light rounded">
+                                    <i class="fa fa-user-plus"></i>
+                                    <span data-langkey-Text="xLng.UyeOl"></span>
                                     <span id="loader"></span>
                                 </button>
 
-                                <a href="/Account/SignUp" class="font-weight-light float-right">
-                                    <span data-langkey-Text="xLng.UyeOl"></span>
+                                <a href="/Account" class="font-weight-light float-right">
+                                    <span data-langkey-Text="xLng.GirisYap"></span>
                                 </a>
                             </div>
-
-                            <div class="col-md-12 d-none">
-                                <div class="py-1"></div>
-                                <a href="/Ogrenci" class="btn btn-link font-weight-light pl-0">
-                                    <span data-langkey-Text="xLng.MisafirGirisButonYazisi"></span>
-                                </a>
-                            </div>
-
                         </div>
 
                     </div>
 
                     <div class="py-1"></div>
 
-                    <div class="d-none">
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <a href="/SifremiUnuttum" class="font-weight-light float-right">
-                                    <span data-langkey-Text="xLng.SifremiUnuttum"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                     <div class="px-5">
                         <div class="form-group row">
                             <div class="col-md-12">
-                                <div class="text-center">
-                                    <span class="font-weight-light small text-secondary" data-langkey-Text="xLng.TarayiciUyumMesaji"></span>
-                                </div>
-
-                                <div class="text-justify d-none">
-                                    <span class="font-weight-light text-danger" data-langkey-Text="xLng.GirisMesaji"></span>
+                                <div class="text-justify">
+                                    <span class="font-weight-light text-danger" data-langkey-Text="xLng.KayitIslemiBilgilendirmeNotu"></span>
                                 </div>
                             </div>
                         </div>
@@ -189,20 +156,20 @@
                 </form>
             </div>
         </div>
-        
-        <div class="col-md-3"></div>
+
+        <div class="col-md-4"></div>
     </div>
 </div>
 
 <script>
     window.addEventListener('load', (event) => {
         //mnLang.CreateWidget("#languageStatus #langFlag"); // dil seçimi göstermek için
-        viewAccount.prepare();
+        viewAccountSignUp.prepare();
     });
 
-    window.viewAccount = function () {
+    window.viewAccountSignUp = function () {
         var self = {};
-        self.selector = '#viewAccount';
+        self.selector = '#viewAccountSignUp';
 
         self.animateInClass = 'zoomIn fast';
         self.animateOutClass = 'zoomOut slower';
@@ -251,47 +218,51 @@
             return rV;
         }
 
-        self.fGirisYap = function (sUserName, sPassword, sSecurityCode) {
+        self.fUyeOl = function (sNameSurname, sEmail, sPassword, sSecurityCode) {
             var _data = {
-                Culture: mnLang.CurrentCulture.culture,
-                UserName: sUserName,
-                Password: sPassword,
-                CaptchaCode: sSecurityCode,
-                CaptchaToken: $(self.selector).find("[name=captchaToken]").val()
+                _mail: sEmail,
+                _adSoyad: sNameSurname,
+                _dogumYili: 0,
+                _sifre: sPassword,
+                _captchaCode: sSecurityCode,
+                _captchaToken: $(self.selector).find("[name=captchaToken]").val()
             };
 
             $.ajax({
-                url: "/Api/Tem/CreateToken",
-                data: JSON.stringify(_data),
-                type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+                url: "/Account/UyeKayitTalep",
+                data: _data,
+                type: "POST", dataType: "json",
                 beforeSend: function (jqXHR, settings) {
                     self.loaderLogin.show();
                 },
                 success: function (result, textStatus, jqXHR) {
-                    if (result.Success == true) {
-                        document.cookie = "Authorization=" + result.Data.UserToken + ";path=/";
-                        window.location = "/Home/Index";
+                    self.loaderLogin.hide();
+                    if (result.Success) {
+                        alert(result.Message);
+                        window.location = "/Account";
                         self.fAnimateOut();
                     } else {
                         $(self.selector).find('#pMessage').text(result.Message).show("slow");
                         self.loaderLogin.hide();
-                        fReadCaptcha();
                     }
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    self.loaderLogin.hide();
                     alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+                },
+                complete: function () {
+                    self.loaderLogin.hide();
+                    fReadCaptcha();
                 }
             });
         };
 
         self.fAnimateIn = function () {
-            $(self.selector).find("#divLogin").addClass(self.animateInClass);
+            $(self.selector).find("#divSignUp").addClass(self.animateInClass);
         };
 
         self.fAnimateOut = function () {
-            $(self.selector).find("#divLogin").removeClass(self.animateInClass);
-            $(self.selector).find("#divLogin").addClass(self.animateOutClass);
+            $(self.selector).find("#divSignUp").removeClass(self.animateInClass);
+            $(self.selector).find("#divSignUp").addClass(self.animateOutClass);
         };
 
         self.prepare = function () {
@@ -302,7 +273,13 @@
                 fValidate_required(e.currentTarget);
             });
 
-            $(self.selector).find("[name='sUserName']").keydown(function (e) {
+            $(self.selector).find("[name='sNameSurname']").keydown(function (e) {
+                if (e.which === 13) {
+                    $(self.selector).find("[name='sEmail']").focus();
+                }
+            });
+
+            $(self.selector).find("[name='sEmail']").keydown(function (e) {
                 if (e.which === 13) {
                     $(self.selector).find("[name='sPassword']").focus();
                 }
@@ -348,16 +325,17 @@
             });
 
             //buttons
-            $(self.selector).find("#btnGiris").click(function (e) {
+            $(self.selector).find("#btnUyeOl").click(function (e) {
                 mnApi.controlDisableWait($(e.target));
                 $(self.selector).find('#pMessage').text("").hide("slow");
-                var elmDiv = $(self.selector).find("#divLogin");
+                var elmDiv = $(self.selector).find("#divSignUp");
                 if (fValidate_All(elmDiv)) {
-                    var sUserName = $(self.selector).find("[name='sUserName']").val();
+                    var sNameSurname = $(self.selector).find("[name='sNameSurname']").val();
+                    var sEmail = $(self.selector).find("[name='sEmail']").val();
                     var sPassword = $(self.selector).find("[name='sPassword']").val();
                     var sSecurityCode = $(self.selector).find("[name='sSecurityCode']").val();
 
-                    self.fGirisYap(sUserName, sPassword, sSecurityCode);
+                    self.fUyeOl(sNameSurname, sEmail, sPassword, sSecurityCode);
 
                 } else {
                     $(self.selector).find('#pMessage').text(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar')).show("slow");

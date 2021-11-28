@@ -1001,11 +1001,6 @@ namespace WebApp1.Codes
         }
         #endregion
 
-        #region kodris
-        public static string KodrisCanliUrlPrefix { get; set; } = "https://devpanel.kodris.com";
-        public static string KodrisDemoUrlPrefix { get; set; } = "https://studio.kodris.com";
-        #endregion
-
         #region kendo filter
         public static Kendo.Mvc.UI.DataSourceRequest ApiRequestToDataSourceRequest(ApiRequest request)
         {

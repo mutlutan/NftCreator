@@ -394,11 +394,27 @@
     }
   },
   {
+    "key": "xLng.EmailAdres",
+    "value": {
+      "tr": "Email Adres",
+      "en": "Email Address",
+      "ar": "عنوان البريد الإلكتروني"
+    }
+  },
+  {
     "key": "xLng.KullaniciAd",
     "value": {
       "tr": "Kullanıcı Adı",
       "en": "User Name",
       "ar": "اسم المستخدم"
+    }
+  },
+  {
+    "key": "xLng.AdSoyad",
+    "value": {
+      "tr": "Adı Soyadı",
+      "en": "Name Surname",
+      "ar": "اسم اللقب"
     }
   },
   {
@@ -1001,11 +1017,27 @@
     }
   },
   {
+    "key": "xLng.UyeOl",
+    "value": {
+      "tr": "Üye ol",
+      "en": "Sign up",
+      "ar": "اشتراك"
+    }
+  },
+  {
     "key": "xLng.KayitIsleminizTamamlandiGirisYapabilirsiniz",
     "value": {
       "tr": "Kayıt İşleminiz Tamamlandı, Giriş Yapabilirsiniz",
       "en": "Your registration is completed, you can login",
       "ar": "تم الانتهاء من التسجيل الخاص بك ، يمكنك تسجيل الدخول"
+    }
+  },
+  {
+    "key": "xLng.KayitIslemiBilgilendirmeNotu",
+    "value": {
+      "tr": "Kayit işleminizin tamamlanması için mailinize onay bağlantısı göndereceğiz.",
+      "en": "We will send a confirmation link to your e-mail to complete your registration.",
+      "ar": "سنرسل رابط تأكيد إلى بريدك الإلكتروني لإكمال تسجيلك."
     }
   },
   {

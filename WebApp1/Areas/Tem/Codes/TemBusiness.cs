@@ -18,30 +18,11 @@ namespace WebApp1.Areas.Tem.Codes
 
         public TemBusiness(DataContext _dataContext)
         {
-            if (_dataContext != null)
-            {
-                this.dataContext = new DataContext(new DbContextOptions<DataContext>());
-                this.dataContext.Database.GetDbConnection().ConnectionString = _dataContext.Database.GetDbConnection().ConnectionString;
-                this.dataContext.IPAddress = _dataContext.IPAddress;
-                this.dataContext.KurulusKod = _dataContext.KurulusKod;
-                this.dataContext.ConStrings = _dataContext.ConStrings;
-                this.dataContext.UserId = _dataContext.UserId;
-                this.dataContext.UserName = _dataContext.UserName;
-
-                this.rep = new Models._Rep(this.dataContext);
-            }
+            this.dataContext = _dataContext;
+            this.rep = new Models._Rep(this.dataContext);
         }
 
         #region kullanıcı metodları
-        //public void SetCulture(string culture)
-        //{
-        //    if (!string.IsNullOrEmpty(culture))
-        //    {
-        //        System.Globalization.CultureInfo.DefaultThreadCurrentCulture = new System.Globalization.CultureInfo(culture);
-        //        System.Globalization.CultureInfo.DefaultThreadCurrentUICulture = new System.Globalization.CultureInfo(culture);
-        //    }
-        //}
-
         public MoResponse<MoCreateCaptchaResponse> CreateCaptcha()
         {
             MoResponse<MoCreateCaptchaResponse> response = new() { Data = new MoCreateCaptchaResponse() };
@@ -282,13 +263,12 @@ namespace WebApp1.Areas.Tem.Codes
                 string dogumYili = jsonObj.DogumYili.ToString();
 
                 // kullanıcı kaydı
-                var dtoKullanici = new Tem.Dto.DtoTemKullanici(this.dataContext)
-                {
-                    Durum = true,
-                    KayitZaman = DateTime.Now,
-                    Ad = jsonObj.Mail.ToString(),
-                    Sifre = jsonObj.Sifre.ToString()
-                };
+                var dtoKullanici = rep.Areas_Tem_RepTemKullanici.GetByNew();
+                dtoKullanici.Durum = true;
+                dtoKullanici.KayitZaman = DateTime.Now;
+                dtoKullanici.Ad = jsonObj.Mail.ToString();
+                dtoKullanici.Sifre = jsonObj.Sifre.ToString();
+
                 int kullaniciId = rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dtoKullanici);
                 var sonuc = this.rep.SaveChanges();
 
