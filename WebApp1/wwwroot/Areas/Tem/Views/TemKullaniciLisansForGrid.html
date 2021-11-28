@@ -32,6 +32,8 @@
                      else if (operation === 'create' || operation === 'update') {
                          data.BaslamaTarihi = kendo.toString(data.BaslamaTarihi, 's');
                          data.BitisTarihi = kendo.toString(data.BitisTarihi, 's');
+                         data.InsertDateTime = kendo.toString(data.InsertDateTime, 's');
+                         data.UpdateDateTime = kendo.toString(data.UpdateDateTime, 's');
                          return kendo.stringify(data);
                      }
                      else if (operation === 'destroy') {
@@ -52,8 +54,14 @@
                          Durum: { type: 'boolean' },
                          BaslamaTarihi: { type: 'date' },
                          BitisTarihi: { type: 'date' },
+                         InsertUserId: { type: 'number', editable:false },
+                         UpdateUserId: { type: 'number', editable:false },
+                         InsertDateTime: { type: 'date', editable:false },
+                         UpdateDateTime: { type: 'date', editable:false },
                          CcKullaniciIdAd: { type: 'string' },
-                         CcDurum: { type: 'string' }
+                         CcDurum: { type: 'string' },
+                         CcInsertUserId: { type: 'string' },
+                         CcUpdateUserId: { type: 'string' }
                      }
                  }
              },
@@ -90,9 +98,15 @@
                                  e.items[0].Durum = result.Durum;
                                  e.items[0].BaslamaTarihi = kendo.parseDate(result.BaslamaTarihi);
                                  e.items[0].BitisTarihi = kendo.parseDate(result.BitisTarihi);
+                                 e.items[0].InsertUserId = result.InsertUserId;
+                                 e.items[0].UpdateUserId = result.UpdateUserId;
+                                 e.items[0].InsertDateTime = kendo.parseDate(result.InsertDateTime);
+                                 e.items[0].UpdateDateTime = kendo.parseDate(result.UpdateDateTime);
                                  //computed alanların tanımlanması
                                  e.items[0].CcKullaniciIdAd = result.CcKullaniciIdAd;
                                  e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcInsertUserId = result.CcInsertUserId;
+                                 e.items[0].CcUpdateUserId = result.CcUpdateUserId;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
                                      if (row.filterColumnName !== 'Id') {

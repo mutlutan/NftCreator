@@ -62,7 +62,9 @@
                          return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
                      }
                      else if (operation === 'create' || operation === 'update') {
-                         data.KayitZaman = kendo.toString(data.KayitZaman, 's');
+                         data.DogumTarihi = kendo.toString(data.DogumTarihi, 's');
+                         data.InsertDateTime = kendo.toString(data.InsertDateTime, 's');
+                         data.UpdateDateTime = kendo.toString(data.UpdateDateTime, 's');
                          return kendo.stringify(data);
                      }
                      else if (operation === 'destroy') {
@@ -72,7 +74,6 @@
              },
              pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
              sort: [
-                 { field: 'KayitZaman', dir: 'desc' }
              ],
              schema: {
                  errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
@@ -80,15 +81,21 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null  },
-                         GizliId: { type: 'string', editable:false },
                          Durum: { type: 'boolean' },
-                         KayitZaman: { type: 'date', editable:false },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
                          Resim: { type: 'string' },
+                         AdSoyad: { type: 'string' },
+                         DogumTarihi: { type: 'date' },
+                         InsertUserId: { type: 'number', editable:false },
+                         UpdateUserId: { type: 'number', editable:false },
+                         InsertDateTime: { type: 'date', editable:false },
+                         UpdateDateTime: { type: 'date', editable:false },
                          CcDurum: { type: 'string' },
-                         CcRolsAd: { type: 'string' }
+                         CcRolsAd: { type: 'string' },
+                         CcInsertUserId: { type: 'string' },
+                         CcUpdateUserId: { type: 'string' }
                      }
                  }
              },
@@ -121,16 +128,22 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
-                                 e.items[0].GizliId = result.GizliId;
                                  e.items[0].Durum = result.Durum;
-                                 e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
                                  e.items[0].Resim = result.Resim;
+                                 e.items[0].AdSoyad = result.AdSoyad;
+                                 e.items[0].DogumTarihi = kendo.parseDate(result.DogumTarihi);
+                                 e.items[0].InsertUserId = result.InsertUserId;
+                                 e.items[0].UpdateUserId = result.UpdateUserId;
+                                 e.items[0].InsertDateTime = kendo.parseDate(result.InsertDateTime);
+                                 e.items[0].UpdateDateTime = kendo.parseDate(result.UpdateDateTime);
                                  //computed alanların tanımlanması
                                  e.items[0].CcDurum = result.CcDurum;
                                  e.items[0].CcRolsAd = result.CcRolsAd;
+                                 e.items[0].CcInsertUserId = result.CcInsertUserId;
+                                 e.items[0].CcUpdateUserId = result.CcUpdateUserId;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
                                      if (row.filterColumnName !== 'Id') {
@@ -184,26 +197,10 @@
              },
              {
                  hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xTem.TemKullanici.GizliId'),
-                 field: 'GizliId',
-                 attributes: { 'class': 'text-nowrap' },
-                 width: '150px'
-             },
-
-             {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
                  title: mnLang.TranslateWithWord('xTem.TemKullanici.Durum'),
                  field: 'Durum',
                  template: '#:CcDurum#',
                  width: '95px'
-             },
-
-             {
-                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
-                 title: mnLang.TranslateWithWord('xTem.TemKullanici.KayitZaman'),
-                 field: 'KayitZaman',
-                 format: '{0:g}',
-                 width: '175px'
              },
 
              {
@@ -228,6 +225,23 @@
                  template:"<img name='Resim' src='#:Resim || ''#' class='' style='width:28px; height:30px;' />", 
                  attributes: { 'class': 'text-nowrap' },
                  width: '45px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.AdSoyad'),
+                 field: 'AdSoyad',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.DogumTarihi'),
+                 field: 'DogumTarihi',
+                 format: '{0:d}',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '110px'
              },
 
              {}

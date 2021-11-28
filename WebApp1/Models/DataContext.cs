@@ -240,8 +240,6 @@ namespace WebApp1.Models
 
             modelBuilder.Entity<TemKullanici>(entity =>
             {
-                entity.HasIndex(e => e.GizliId, "IX_TemKullanici_GizliId");
-
                 entity.HasIndex(e => e.Ad, "UX_TemKullanici_Ad")
                     .IsUnique();
 
@@ -249,9 +247,15 @@ namespace WebApp1.Models
 
                 entity.Property(e => e.Ad).HasMaxLength(50);
 
-                entity.Property(e => e.KayitZaman).HasColumnType("datetime");
+                entity.Property(e => e.AdSoyad).HasMaxLength(50);
+
+                entity.Property(e => e.DogumTarihi).HasColumnType("datetime");
+
+                entity.Property(e => e.InsertDateTime).HasColumnType("datetime");
 
                 entity.Property(e => e.Sifre).HasMaxLength(100);
+
+                entity.Property(e => e.UpdateDateTime).HasColumnType("datetime");
             });
 
             modelBuilder.Entity<TemKullaniciLisans>(entity =>
@@ -263,6 +267,10 @@ namespace WebApp1.Models
                 entity.Property(e => e.BaslamaTarihi).HasColumnType("date");
 
                 entity.Property(e => e.BitisTarihi).HasColumnType("date");
+
+                entity.Property(e => e.InsertDateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.UpdateDateTime).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Kullanici)
                     .WithMany(p => p.TemKullaniciLisans)
@@ -580,7 +588,7 @@ namespace WebApp1.Models
 
             modelBuilder.HasSequence<int>("sqTemKullaniciSifre");
 
-            modelBuilder.HasSequence<int>("sqTemMailAntet");
+            modelBuilder.HasSequence<int>("sqTemMailAntet").StartsAt(101);
 
             modelBuilder.HasSequence<int>("sqTemMailHareket");
 

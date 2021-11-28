@@ -265,7 +265,7 @@ namespace WebApp1.Areas.Tem.Codes
                 // kullanıcı kaydı
                 var dtoKullanici = rep.Areas_Tem_RepTemKullanici.GetByNew();
                 dtoKullanici.Durum = true;
-                dtoKullanici.KayitZaman = DateTime.Now;
+                dtoKullanici.AdSoyad = jsonObj.AdSoyad.ToString();
                 dtoKullanici.Ad = jsonObj.Mail.ToString();
                 dtoKullanici.Sifre = jsonObj.Sifre.ToString();
 

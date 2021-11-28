@@ -36,6 +36,48 @@ namespace WebApp1.Areas.Tem.Dto
                 return rV;
             }
         }
+        public string CcInsertUserId
+        {
+           get
+           {
+               string rV = string.Empty;
+               try
+               {
+                   Areas.Tem.Codes.TemBusiness temBusiness = new(this.dataContext);
+                   var queryResult = this.dataContext.TemKullanici.Where(c => c.Id == this.InsertUserId)
+                   .Select(s => new { value = s.Id, text = s.Ad + " <" + temBusiness.GetKullaniciSahipAdSahipTur(s.Id) + ">" })
+                   .FirstOrDefault();
+
+                   if (queryResult != null)
+                   {
+                       rV = queryResult.text;
+                   }
+               }
+               catch { }
+               return rV;
+           }
+        }
+        public string CcUpdateUserId
+        {
+           get
+           {
+               string rV = string.Empty;
+               try
+               {
+                   Areas.Tem.Codes.TemBusiness temBusiness = new(this.dataContext);
+                   var queryResult = this.dataContext.TemKullanici.Where(c => c.Id == this.UpdateUserId)
+                   .Select(s => new { value = s.Id, text = s.Ad + " <" + temBusiness.GetKullaniciSahipAdSahipTur(s.Id) + ">" })
+                   .FirstOrDefault();
+
+                   if (queryResult != null)
+                   {
+                       rV = queryResult.text;
+                   }
+               }
+               catch { }
+               return rV;
+           }
+        }
 
         //Constructor
         public DtoTemKullanici(DataContext dataContext)

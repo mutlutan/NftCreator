@@ -328,7 +328,6 @@
 		Id			INT NOT NULL,
 
 		Durum		BIT NOT NULL,
-		KayitZaman	DATETIME, /*Kayıt tarihi*/
 		
 		Ad			NVARCHAR(50), /*email adres olabilir, tcno olabilir*/
 		Sifre		NVARCHAR(100),	/*Bu alan her update olduğunda, TemKullaniciSifre tablosuna insert edilecek, history için*/
@@ -336,20 +335,19 @@
 		
 		Resim		NVARCHAR(MAX),
 		AdSoyad		NVARCHAR(50),
-		DogumTarihi	DATETIME, 
+		DogumTarihi	DATE, 
 	
-
-		InsertUserId				INT,
-		UpdateUserId				INT,
-		InsertDateTime			DATETIME,
-		UpdateDateTime			DATETIME,
+		InsertUserId	INT,
+		UpdateUserId	INT,
+		InsertDateTime	DATETIME,
+		UpdateDateTime	DATETIME,
 
 		CONSTRAINT PK_TemKullanici PRIMARY KEY (Id)
 	);
 	CREATE UNIQUE INDEX UX_TemKullanici_Ad ON TemKullanici (Ad);
 	INSERT INTO TemKullanici (Id, Durum, Rols, Ad, Sifre) VALUES (0, 0, N'', N'', N'');
-	INSERT INTO TemKullanici (Id, KayitZaman, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, getdate(), 1, N'1001', N'admin', N'admin', N'07');
-	INSERT INTO TemKullanici (Id, KayitZaman, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, getdate(), 1, N'1101', N'personel',N'personel', N'07');
+	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'admin', N'admin', N'07');
+	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'personel',N'personel', N'07');
 
 	/* Kullanici Şifre history*/
 	CREATE SEQUENCE dbo.sqTemKullaniciSifre AS INT START WITH 1 INCREMENT BY 1;
@@ -376,11 +374,10 @@
 		BaslamaTarihi	DATE,		/*Lisans başlama*/
 		BitisTarihi		DATE,		/*Lisans bitiş - bitiş tarihi geçen demo olur*/
 
-		/*Eklenecek*/
-		--InsertUserId				INT,
-		--UpdateUserId				INT,
-		--InsertDateTime			DATETIME,
-		--UpdateDateTime			DATETIME,
+		InsertUserId	INT,
+		UpdateUserId	INT,
+		InsertDateTime	DATETIME,
+		UpdateDateTime	DATETIME,
 		
 		CONSTRAINT PK_TemKullaniciLisans PRIMARY KEY (Id),
 		CONSTRAINT FK_TemKullaniciLisans_KullaniciId FOREIGN KEY (KullaniciId) REFERENCES TemKullanici (Id)

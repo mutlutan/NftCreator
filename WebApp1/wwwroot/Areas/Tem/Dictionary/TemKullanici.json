@@ -44,29 +44,11 @@
  }
 ,
  {
-     "key" : "xTem.TemKullanici.GizliId",
-     "value": {
-         "tr": "Gizli Id"
-,
-         "en": "Hidden Id"
-     }
- }
-,
- {
      "key" : "xTem.TemKullanici.Durum",
      "value": {
          "tr": "Durum"
 ,
          "en": "Status"
-     }
- }
-,
- {
-     "key" : "xTem.TemKullanici.KayitZaman",
-     "value": {
-         "tr": "Kayıt Zamanı"
-,
-         "en": "Registration Date"
      }
  }
 ,
@@ -103,6 +85,60 @@
          "tr": " "
 ,
          "en": " "
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.AdSoyad",
+     "value": {
+         "tr": "Ad Soyad"
+,
+         "en": "Name Surname"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.DogumTarihi",
+     "value": {
+         "tr": "Doğum Tarihi"
+,
+         "en": "Birth Date"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.InsertUserId",
+     "value": {
+         "tr": "Ekleyen Kullanıcı"
+,
+         "en": "User Who Added"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.UpdateUserId",
+     "value": {
+         "tr": "Değiştiren Kullanıcı"
+,
+         "en": "User Who Changed"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.InsertDateTime",
+     "value": {
+         "tr": "Eklenme Zamanı"
+,
+         "en": "Time To Add"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.UpdateDateTime",
+     "value": {
+         "tr": "Değiştirme Zamanı"
+,
+         "en": "Update Time"
      }
  }
 ]

@@ -26,13 +26,6 @@
                     </div>
 
                      <div class='col-lg-6 col-md-12'>
-                     <div name='divGizliId' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.GizliId'></label>
-                         <div class='col-sm-8'>
-                             <input name='GizliId' type='text' class='k-textbox' data-bind='value:GizliId' data-langkey-placeholder='xTem.TemKullanici.GizliId'  disabled  autocomplete='off' />
-                         </div>
-                     </div>
-
                      <div name='divDurum' class='mnFormElementDiv form-group row'>
                          <label class='col-sm-4 col-form-label'></label>
                          <div class='col-sm-8'>
@@ -40,14 +33,6 @@
                                 <input name='Durum' type='checkbox' data-bind='checked:Durum' style='width: 24px; height: 24px; vertical-align: middle;'  />
                                 <span data-langkey-Text='xTem.TemKullanici.Durum'></span>
                             </label>
-                         </div>
-                     </div>
-
-                     <div name='divKayitZaman' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.KayitZaman'></label>
-                         <div class='col-sm-8'>
-                             <input name='KayitZaman' data-bind='value:KayitZaman'  disabled />
-                             <span class='k-invalid-msg' data-for='KayitZaman'></span>
                          </div>
                      </div>
 
@@ -74,6 +59,21 @@
                          <div class='col-sm-8'>
                              <input name='Rols' type='text' />
                              <span class='k-invalid-msg' data-for='Rols'></span>
+                         </div>
+                     </div>
+
+                     <div name='divAdSoyad' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.AdSoyad'></label>
+                         <div class='col-sm-8'>
+                             <input name='AdSoyad' type='text' class='k-textbox' data-bind='value:AdSoyad' data-langkey-placeholder='xTem.TemKullanici.AdSoyad'  autocomplete='off' />
+                         </div>
+                     </div>
+
+                     <div name='divDogumTarihi' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.DogumTarihi'></label>
+                         <div class='col-sm-8'>
+                             <input name='DogumTarihi' data-bind='value:DogumTarihi' />
+                             <span class='k-invalid-msg' data-for='DogumTarihi'></span>
                          </div>
                      </div>
 
@@ -120,7 +120,9 @@
                          return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
                      }
                      else if (operation === 'create' || operation === 'update') {
-                         data.KayitZaman = kendo.toString(data.KayitZaman, 's');
+                         data.DogumTarihi = kendo.toString(data.DogumTarihi, 's');
+                         data.InsertDateTime = kendo.toString(data.InsertDateTime, 's');
+                         data.UpdateDateTime = kendo.toString(data.UpdateDateTime, 's');
                          return kendo.stringify(data);
                      }
                      else if (operation === 'destroy') {
@@ -135,15 +137,21 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null },
-                         GizliId: { type: 'string', editable:false },
                          Durum: { type: 'boolean' },
-                         KayitZaman: { type: 'date', editable:false },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
                          Resim: { type: 'string' },
+                         AdSoyad: { type: 'string' },
+                         DogumTarihi: { type: 'date' },
+                         InsertUserId: { type: 'number', editable:false },
+                         UpdateUserId: { type: 'number', editable:false },
+                         InsertDateTime: { type: 'date', editable:false },
+                         UpdateDateTime: { type: 'date', editable:false },
                          CcDurum: { type: 'string' },
-                         CcRolsAd: { type: 'string' }
+                         CcRolsAd: { type: 'string' },
+                         CcInsertUserId: { type: 'string' },
+                         CcUpdateUserId: { type: 'string' }
                      }
                  }
              },
@@ -191,16 +199,22 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
-                                 e.items[0].GizliId = result.GizliId;
                                  e.items[0].Durum = result.Durum;
-                                 e.items[0].KayitZaman = kendo.parseDate(result.KayitZaman);
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
                                  e.items[0].Resim = result.Resim;
+                                 e.items[0].AdSoyad = result.AdSoyad;
+                                 e.items[0].DogumTarihi = kendo.parseDate(result.DogumTarihi);
+                                 e.items[0].InsertUserId = result.InsertUserId;
+                                 e.items[0].UpdateUserId = result.UpdateUserId;
+                                 e.items[0].InsertDateTime = kendo.parseDate(result.InsertDateTime);
+                                 e.items[0].UpdateDateTime = kendo.parseDate(result.UpdateDateTime);
                                  //computed alanların tanımlanması
                                  e.items[0].CcDurum = result.CcDurum;
                                  e.items[0].CcRolsAd = result.CcRolsAd;
+                                 e.items[0].CcInsertUserId = result.CcInsertUserId;
+                                 e.items[0].CcUpdateUserId = result.CcUpdateUserId;
                                  //filterdan gelen default value set için
                                  $(self.opt.filters).each(function (index, row) {
                                      if (row.filterColumnName !== 'Id') {
@@ -277,11 +291,6 @@
          });
 
          //Diğer Form elementleri
-         $(self.selector).find('[name=KayitZaman]').kendoDateTimePicker({
-             componentType: mnApp.kendoDateTimePiker_ComponentType,
-             dateInput: mnApp.kendoDateTimePiker_DateInput
-         }).getKendoDateTimePicker();
-
          $(self.selector).find('[name=ExternalResetPasswordButtonWrapperSifre] [name=btnResetPassword]').click(function (e) {
             e.stopPropagation();
             if (confirm(mnLang.TranslateWithWord('xLng.SifreyiSifirlamakIstediginizdenEminmisiniz'))) {
@@ -355,11 +364,14 @@
              $elmImg.click();
          });
 
+         $(self.selector).find('[name=DogumTarihi]').kendoDatePicker({
+            componentType: mnApp.kendoDatePiker_ComponentType,
+            dateInput: mnApp.kendoDatePiker_DateInput
+         }).getKendoDatePicker();
+
      }
 
      function fSetAtributeFormElements() {
-         $(self.selector).find('[name=GizliId]').attr('required', 'required');
-         $(self.selector).find('[name=KayitZaman]').attr('required', 'required');
          $(self.selector).find('[name=Ad]').attr('required', 'required');
      }
 
@@ -386,13 +398,13 @@
 
         //form element görünümleri
         var fieldList = [];
-        fieldList.push({ 'Name': 'GizliId', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'KayitZaman', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Sifre', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Resim', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'AdSoyad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'DogumTarihi', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
 
         for (var i in fieldList) {
             var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');

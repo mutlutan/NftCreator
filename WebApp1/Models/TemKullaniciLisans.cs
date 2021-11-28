@@ -12,6 +12,10 @@ namespace WebApp1.Models
         public bool Durum { get; set; }
         public DateTime? BaslamaTarihi { get; set; }
         public DateTime? BitisTarihi { get; set; }
+        public int? InsertUserId { get; set; }
+        public int? UpdateUserId { get; set; }
+        public DateTime? InsertDateTime { get; set; }
+        public DateTime? UpdateDateTime { get; set; }
 
         public virtual TemKullanici Kullanici { get; set; }
     }

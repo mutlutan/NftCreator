@@ -20,13 +20,17 @@ namespace WebApp1.Areas.Tem.Dmo
              .Select(s => new DtoTemKullanici(this.dataContext)
              {
                  Id = s.Id,
-                 GizliId = s.GizliId,
                  Durum = s.Durum,
-                 KayitZaman = s.KayitZaman,
                  Ad = s.Ad,
                  Sifre = string.Empty,
                  Rols = s.Rols,
-                 Resim = s.Resim
+                 Resim = s.Resim,
+                 AdSoyad = s.AdSoyad,
+                 DogumTarihi = s.DogumTarihi,
+                 InsertUserId = s.InsertUserId,
+                 UpdateUserId = s.UpdateUserId,
+                 InsertDateTime = s.InsertDateTime,
+                 UpdateDateTime = s.UpdateDateTime
              });
      }
 
@@ -36,9 +40,10 @@ namespace WebApp1.Areas.Tem.Dmo
          DtoTemKullanici row = new(this.dataContext) { };
          // Burada field default değerleri veriliyor...
          row.Id = 0;
-         row.GizliId = Guid.NewGuid();
          row.Durum = true;
-         row.KayitZaman = DateTime.Now;
+         row.InsertUserId = this.dataContext.UserId;
+         row.UpdateUserId = 0;
+         row.InsertDateTime = DateTime.Now;
 
          return row;
      }
@@ -68,9 +73,7 @@ namespace WebApp1.Areas.Tem.Dmo
              }
          }
          
-         row.GizliId = _model.GizliId;
          row.Durum = _model.Durum;
-         row.KayitZaman = _model.KayitZaman;
          row.Ad = _model.Ad;
 
          if (!string.IsNullOrEmpty(_model.Sifre))
@@ -80,6 +83,12 @@ namespace WebApp1.Areas.Tem.Dmo
 
          row.Rols = _model.Rols;
          row.Resim = _model.Resim;
+         row.AdSoyad = _model.AdSoyad;
+         row.DogumTarihi = _model.DogumTarihi;
+         row.InsertUserId = _model.InsertUserId;
+         row.UpdateUserId = this.dataContext.UserId;
+         row.InsertDateTime = _model.InsertDateTime;
+         row.UpdateDateTime = DateTime.Now;
 
          if (!isNew)
          {

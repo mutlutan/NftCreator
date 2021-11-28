@@ -24,6 +24,10 @@ namespace WebApp1.Areas.Tem.Dmo
                  Durum = s.Durum,
                  BaslamaTarihi = s.BaslamaTarihi,
                  BitisTarihi = s.BitisTarihi,
+                 InsertUserId = s.InsertUserId,
+                 UpdateUserId = s.UpdateUserId,
+                 InsertDateTime = s.InsertDateTime,
+                 UpdateDateTime = s.UpdateDateTime,
                  CcKullaniciIdAd = s.Kullanici.Ad.MyToTrim()
              });
      }
@@ -36,6 +40,9 @@ namespace WebApp1.Areas.Tem.Dmo
          row.Id = 0;
          row.KullaniciId = 0;
          row.Durum = true;
+         row.InsertUserId = this.dataContext.UserId;
+         row.UpdateUserId = 0;
+         row.InsertDateTime = DateTime.Now;
 
          return row;
      }
@@ -69,6 +76,10 @@ namespace WebApp1.Areas.Tem.Dmo
          row.Durum = _model.Durum;
          row.BaslamaTarihi = _model.BaslamaTarihi;
          row.BitisTarihi = _model.BitisTarihi;
+         row.InsertUserId = _model.InsertUserId;
+         row.UpdateUserId = this.dataContext.UserId;
+         row.InsertDateTime = _model.InsertDateTime;
+         row.UpdateDateTime = DateTime.Now;
 
          if (!isNew)
          {
