@@ -42,7 +42,7 @@ namespace WebApp1.Controllers
             #endregion
 
             #region mail test
-            //new MyMailHelper(this.dataContext).SendMail_Sifre_Bildirim("mutlutan@outlook.com", "123deneme");
+            //var x = new MyMailHelper(this.dataContext).SendMail_Sifre_Bildirim("mutlutan@outlook.com", "123deneme");
             #endregion
 
             //var x = "020D03".MyToDecryptPassword();
@@ -53,7 +53,7 @@ namespace WebApp1.Controllers
 
             return null; // Json(sonuc);
         }
-        
+
         // GET: /<controller>/
         public IActionResult Index()
         {
@@ -61,11 +61,11 @@ namespace WebApp1.Controllers
             {
                 return RedirectToAction("Index", "Account");
             }
-            else if(this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
+            else if (this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
             {
                 return RedirectToAction("Index", "Home");
             }
-            else 
+            else
             {
                 return RedirectToAction("Index", "Manage");
             }

@@ -153,7 +153,7 @@ window.TemAuthority =
                             { id: "Tem.Logs.TemOturumLog.D_D.", text: mnLang.f("xLng.Authority.Silebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-trash-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
                             { id: "Tem.Logs.TemOturumLog.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
                         ]
-                    }
+                    },
                     //{
                     //    id: "Tem.Logs.TemAuditLog.", text: mnLang.f("xTem.TemAuditLog.Title"), hint: "", area: "Tem", rout: "TemAuditLog", params: "", showType: "Page", header: true, viewName: "TemAuditLogForGrid", cssClass: "fa fa-tint fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
                     //        { id: "Tem.Logs.TemAuditLog.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
@@ -163,13 +163,13 @@ window.TemAuthority =
                     //        { id: "Tem.Logs.TemAuditLog.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
                     //    ]
                     //},
-                    //{
-                    //    id: "Tem.Logs.TemMailHareket.", text: mnLang.f("xTem.TemMailHareket.Title"), hint: "", area: "Tem", rout: "TemMailHareket", params: "", showType: "Page", header: true, viewName: "TemMailHareketForGrid", cssClass: "fa fa-envelope-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
-                    //        { id: "Tem.Logs.TemMailHareket.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Logs.TemMailHareket.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
-                    //        { id: "Tem.Logs.TemMailHareket.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
-                    //    ]
-                    //}
+                    {
+                        id: "Tem.Logs.TemMailHareket.", text: mnLang.f("xTem.TemMailHareket.Title"), hint: "", area: "Tem", rout: "TemMailHareket", params: "", showType: "Page", header: true, viewName: "TemMailHareketForGrid", cssClass: "fa fa-envelope-o fa-fw", expanded: false, prefix: true, menu: true, yetkiGrups: "11,21", items: [
+                            { id: "Tem.Logs.TemMailHareket.D_R.", text: mnLang.f("xLng.Authority.Gorebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-search fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                            { id: "Tem.Logs.TemMailHareket.D_U.", text: mnLang.f("xLng.Authority.Duzeltebilir"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-pencil fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] },
+                            { id: "Tem.Logs.TemMailHareket.D_E.", text: mnLang.f("xLng.Authority.SaveAsExcel"), hint: "", area: "Tem", rout: "", params: "", showType: "Page", header: false, viewName: "", cssClass: "fa fa-file-excel-o fa-fw", expanded: false, prefix: false, menu: false, yetkiGrups: "11,21", items: [] }
+                        ]
+                    }
                 ]
             }
         ]

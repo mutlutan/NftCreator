@@ -1,6 +1,4 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿@{ Layout = "_Layout"; }
 
 <style>
     .form-control {
@@ -23,8 +21,8 @@
             background-color: transparent;
         }
 
-    #viewLogin input,
-    #viewLogin .form-control:focus {
+    #viewAccount input,
+    #viewAccount .form-control:focus {
         border-left: none;
         border-top: none;
         border-right: none;
@@ -33,21 +31,21 @@
         background-color: transparent;
     }
 
-    #viewLogin .form-control:focus {
+    #viewAccount .form-control:focus {
         border-bottom: 1px solid #80bdff;
     }
 
-    #viewLogin #btnGiris {
+    #viewAccount #btnGiris {
         background-color: @ViewBag.GririsButonFonRengi;
         color: @ViewBag.GririsButonYaziRengi;
     }
 
-    #viewLogin #btnGiris:hover {
-        opacity:0.8;
-    }
+        #viewAccount #btnGiris:hover {
+            opacity: 0.8;
+        }
 </style>
 
-<div id="viewLogin" class="bg-white">
+<div id="viewAccount" class="bg-white">
 
     <div class="py-1"></div>
 
@@ -115,7 +113,7 @@
                                         <button id="btnSecurityCode" class="btn btn-link btn-sm mn-hover-color-orange" type="button" tabindex="-1" style="cursor:pointer; padding: 5px 9px;"><i class="fa fa-refresh"></i></button>
                                     </span>
                                 </div>
-                                <input name='captchaToken' type="hidden" value="@ViewBag.CaptchaToken"/>
+                                <input name='captchaToken' type="hidden" value="@ViewBag.CaptchaToken" />
                                 <input name='sSecurityCode' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.GuvenlikKodu" style="position: relative; z-index: 2;" required value="@ViewBag.SecurityCode" autocomplete="off" />
                             </div>
                         </div>
@@ -183,188 +181,188 @@
 </div>
 
 <script>
-window.addEventListener('load', (event) => {
-    //mnLang.CreateWidget("#languageStatus #langFlag"); // dil seçimi göstermek için
-    viewLogin.prepare();
-});
+    window.addEventListener('load', (event) => {
+        //mnLang.CreateWidget("#languageStatus #langFlag"); // dil seçimi göstermek için
+        viewAccount.prepare();
+    });
 
-window.viewLogin = function () {
-    var self = {};
-    self.selector = '#viewLogin';
+    window.viewAccount = function () {
+        var self = {};
+        self.selector = '#viewAccount';
 
-    self.animateInClass = 'zoomIn fast';
-    self.animateOutClass = 'zoomOut slower';
+        self.animateInClass = 'zoomIn fast';
+        self.animateOutClass = 'zoomOut slower';
 
-    function fReadCaptcha() {
-        $.ajax({
-            url: "Api/Tem/CreateCaptcha",
-            type: "POST", dataType: "json",
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success) {
-                    $(self.selector).find("[name=captchaToken]").val(result.Data.CaptchaToken);
-                    $(self.selector).find("#captchaImage").attr("src", result.Data.CaptchaImage);
-                } else {
-                    mnAlert.warning(result.Message);
+        function fReadCaptcha() {
+            $.ajax({
+                url: "Api/Tem/CreateCaptcha",
+                type: "POST", dataType: "json",
+                success: function (result, textStatus, jqXHR) {
+                    if (result.Success) {
+                        $(self.selector).find("[name=captchaToken]").val(result.Data.CaptchaToken);
+                        $(self.selector).find("#captchaImage").attr("src", result.Data.CaptchaImage);
+                    } else {
+                        mnAlert.warning(result.Message);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    mnAlert.error(jqXHR.responseText);
                 }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                mnAlert.error(jqXHR.responseText);
-            }
-        });
-    }
-
-    function fValidate_required(elm) {
-        var rV = false;
-        if ($(elm).attr("required")) {
-            if ($(elm).val().length > 0) {
-                rV = true;
-                $(elm).closest(".form-group").addClass("has-success").removeClass("has-error");
-            } else {
-                rV = false;
-                $(elm).closest(".form-group").addClass("has-error").removeClass("has-success");
-            }
-        } else {
-            rV = true;
+            });
         }
-        return rV;
-    }
 
-    function fValidate_All() {
-        var rV = true;
-        $(self.selector).find("#divLogin input").each(function (index, elm) {
-            if (!fValidate_required(elm)) {
-                rV = false;
+        function fValidate_required(elm) {
+            var rV = false;
+            if ($(elm).attr("required")) {
+                if ($(elm).val().length > 0) {
+                    rV = true;
+                    $(elm).closest(".form-group").addClass("has-success").removeClass("has-error");
+                } else {
+                    rV = false;
+                    $(elm).closest(".form-group").addClass("has-error").removeClass("has-success");
+                }
+            } else {
+                rV = true;
             }
-        });
-        return rV;
-    }
+            return rV;
+        }
 
-    self.fGirisYap = function (sUserName, sPassword, sSecurityCode) {
-        var _data = {
-            Culture: mnLang.CurrentCulture.culture,
-            UserName: sUserName,
-            Password: sPassword,
-            CaptchaCode: sSecurityCode,
-            CaptchaToken: $(self.selector).find("[name=captchaToken]").val()
+        function fValidate_All(elmDiv) {
+            var rV = true;
+            elmDiv.find("input").each(function (index, elm) {
+                if (!fValidate_required(elm)) {
+                    rV = false;
+                }
+            });
+            return rV;
+        }
+
+        self.fGirisYap = function (sUserName, sPassword, sSecurityCode) {
+            var _data = {
+                Culture: mnLang.CurrentCulture.culture,
+                UserName: sUserName,
+                Password: sPassword,
+                CaptchaCode: sSecurityCode,
+                CaptchaToken: $(self.selector).find("[name=captchaToken]").val()
+            };
+
+            $.ajax({
+                url: "/Api/Tem/CreateToken",
+                data: JSON.stringify(_data),
+                type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+                beforeSend: function (jqXHR, settings) {
+                    self.loaderLogin.show();
+                },
+                success: function (result, textStatus, jqXHR) {
+                    if (result.Success == true) {
+                        document.cookie = "Authorization=" + result.Data.UserToken + ";path=/";
+                        window.location = "/Home/Index";
+                        self.fAnimateOut();
+                    } else {
+                        $(self.selector).find('#pMessage').text(result.Message).show("slow");
+                        self.loaderLogin.hide();
+                        fReadCaptcha();
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    self.loaderLogin.hide();
+                    alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+                }
+            });
         };
 
-        $.ajax({
-            url: "/Api/Tem/CreateToken",
-            data: JSON.stringify(_data),
-            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
-            beforeSend: function (jqXHR, settings) {
-                self.loaderLogin.show();
-            },
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success == true) {
-                    document.cookie = "Authorization=" + result.Data.UserToken + ";path=/";
-                    window.location = "/Home/Index";
-                    self.fAnimateOut();
-                } else {
-                    $(self.selector).find('#pMessage').text(result.Message).show("slow");
-                    self.loaderLogin.hide();
-                    fReadCaptcha();
+        self.fAnimateIn = function () {
+            $(self.selector).find("#divLogin").addClass(self.animateInClass);
+        };
+
+        self.fAnimateOut = function () {
+            $(self.selector).find("#divLogin").removeClass(self.animateInClass);
+            $(self.selector).find("#divLogin").addClass(self.animateOutClass);
+        };
+
+        self.prepare = function () {
+
+            self.fAnimateIn();
+
+            $(self.selector).find("input").on("click blur change", function (e) {
+                fValidate_required(e.currentTarget);
+            });
+
+            $(self.selector).find("[name='sUserName']").keydown(function (e) {
+                if (e.which === 13) {
+                    $(self.selector).find("[name='sPassword']").focus();
                 }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                self.loaderLogin.hide();
-                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            }
-        });
-    };
+            });
 
-    self.fAnimateIn = function () {
-        $(self.selector).find("#divLogin").addClass(self.animateInClass);
-    };
+            $(self.selector).find("[name='sPassword']").keydown(function (e) {
+                if (e.which === 13) {
+                    if ($(self.selector).find("[name='sSecurityCode']").is(":visible")) {
+                        $(self.selector).find("[name='sSecurityCode']").focus();
+                    } else {
+                        $(self.selector).find("#btnGiris").click();
+                    }
+                }
+            });
 
-    self.fAnimateOut = function () {
-        $(self.selector).find("#divLogin").removeClass(self.animateInClass);
-        $(self.selector).find("#divLogin").addClass(self.animateOutClass);
-    };
+            // parolaların göster gizle için
+            $(self.selector).find("#btnPasswordShowhide").click(function (e) {
+                console.log("btnPasswordShowhide", e);
+                e.preventDefault();
+                $elmInput = $(self.selector).find("[name='sPassword']");
+                $elmButton = $(self.selector).find("#btnPasswordShowhide");
 
-    self.prepare = function () {
+                if ($elmInput.attr("type") == "text") {
+                    $elmInput.attr('type', 'password');
+                    $elmButton.find('i').addClass("fa-eye-slash");
+                    $elmButton.find('i').removeClass("fa-eye");
+                } else if ($elmInput.attr("type") == "password") {
+                    $elmInput.attr('type', 'text');
+                    $elmButton.find('i').removeClass("fa-eye-slash");
+                    $elmButton.find('i').addClass("fa-eye");
+                }
+            });
 
-        self.fAnimateIn();
+            //Captcha
+            $(self.selector).find("#btnSecurityCode").click(function () {
+                fReadCaptcha();
+            });
 
-        $(self.selector).find("input").on("click blur change", function (e) {
-            fValidate_required(e.currentTarget);
-        });
-
-        $(self.selector).find("[name='sUserName']").keydown(function (e) {
-            if (e.which === 13) {
-                $(self.selector).find("[name='sPassword']").focus();
-            }
-        });
-
-        $(self.selector).find("[name='sPassword']").keydown(function (e) {
-            if (e.which === 13) {
-                if ($(self.selector).find("[name='sSecurityCode']").is(":visible")) {
-                    $(self.selector).find("[name='sSecurityCode']").focus();
-                } else {
+            $(self.selector).find("[name='sSecurityCode']").keydown(function (e) {
+                if (e.which === 13) {
                     $(self.selector).find("#btnGiris").click();
                 }
-            }
-        });
+            });
 
-        // parolaların göster gizle için
-        $(self.selector).find("#btnPasswordShowhide").click(function (e) {
-            console.log("btnPasswordShowhide", e);
-            e.preventDefault();
-            $elmInput = $(self.selector).find("[name='sPassword']");
-            $elmButton = $(self.selector).find("#btnPasswordShowhide");
+            //buttons
+            $(self.selector).find("#btnGiris").click(function (e) {
+                mnApi.controlDisableWait($(e.target));
+                $(self.selector).find('#pMessage').text("").hide("slow");
+                var elmDiv = $(self.selector).find("#divLogin");
+                if (fValidate_All(elmDiv)) {
+                    var sUserName = $(self.selector).find("[name='sUserName']").val();
+                    var sPassword = $(self.selector).find("[name='sPassword']").val();
+                    var sSecurityCode = $(self.selector).find("[name='sSecurityCode']").val();
 
-            if ($elmInput.attr("type") == "text") {
-                $elmInput.attr('type', 'password');
-                $elmButton.find('i').addClass("fa-eye-slash");
-                $elmButton.find('i').removeClass("fa-eye");
-            } else if ($elmInput.attr("type") == "password") {
-                $elmInput.attr('type', 'text');
-                $elmButton.find('i').removeClass("fa-eye-slash");
-                $elmButton.find('i').addClass("fa-eye");
-            }
-        });
+                    self.fGirisYap(sUserName, sPassword, sSecurityCode);
 
-        //Captcha
-        $(self.selector).find("#btnSecurityCode").click(function () {
-            fReadCaptcha();
-        });
+                } else {
+                    $(self.selector).find('#pMessage').text(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar')).show("slow");
+                }
+            });
 
-        $(self.selector).find("[name='sSecurityCode']").keydown(function (e) {
-            if (e.which === 13) {
-                $(self.selector).find("#btnGiris").click();
-            }
-        });
+            self.loaderLogin = $(self.selector).find('#loader').kendoLoader({
+                visible: false,
+                size: "small",
+                themeColor: 'primary',
+                type: 'pulsing' //"pulsing", "infinite-spinner", "converging-spinner"
+            }).getKendoLoader();
 
-        //buttons
-        $(self.selector).find("#btnGiris").click(function (e) {
-            mnApi.controlDisableWait($(e.target));
-            $(self.selector).find('#pMessage').text("").hide("slow");
+            // Language
+            mnLang.TranslateWithSelector($(self.selector));
+        };
 
-            if (fValidate_All()) {
-                var sUserName = $(self.selector).find("[name='sUserName']").val();
-                var sPassword = $(self.selector).find("[name='sPassword']").val();
-                var sSecurityCode = $(self.selector).find("[name='sSecurityCode']").val();
-
-                self.fGirisYap(sUserName, sPassword, sSecurityCode);
-
-            } else {
-                $(self.selector).find('#pMessage').text(mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar')).show("slow");
-            }
-        });
-
-        self.loaderLogin = $(self.selector).find('#loader').kendoLoader({
-            visible: false,
-            size: "small",
-            themeColor: 'primary',
-            type: 'pulsing' //"pulsing", "infinite-spinner", "converging-spinner"
-        }).getKendoLoader();
-
-        // Language
-        mnLang.TranslateWithSelector($(self.selector));
-    };
-
-    return self;
-}();
+        return self;
+    }();
 
 
 
