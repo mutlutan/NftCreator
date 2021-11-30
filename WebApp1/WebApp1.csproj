@@ -74,7 +74,7 @@
     <Folder Include="Areas\Nft\Dto\" />
     <Folder Include="Areas\Nft\Models\" />
     <Folder Include="wwwroot\Areas\Tem\Comps\" />
-    <Folder Include="wwwroot\Data\Files\" />
+    <Folder Include="wwwroot\Data\Files\21M001\" />
     <Folder Include="wwwroot\Downloads\" />
     <Folder Include="wwwroot\img\file\" />
     <Folder Include="wwwroot\img\giris\" />

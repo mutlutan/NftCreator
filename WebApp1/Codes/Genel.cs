@@ -78,6 +78,7 @@ namespace WebApp1.Codes
         public string Culture { get; set; } = "en-US";
         public string Host { get; set; }
         public int UserId { get; set; }
+        public string UserCode { get; set; }
         public string UserName { get; set; }
         public int LisansGun { get; set; }
         public string NameSurname { get; set; } = "";
@@ -626,36 +627,31 @@ namespace WebApp1.Codes
         public static string AppDataDirectory { get; set; } = "Data";
 
         public static string AppFilesDirectory { get; set; } = MyApp.AppDataDirectory + "\\" + "Files";
-        public static string AppThumbsDirectory { get; set; } = MyApp.AppDataDirectory + "\\" + "Thumbs";
+        public static string UserFilesDirectory(string userCode)
+        {
+            return MyApp.Env.WebRootPath + "\\" + MyApp.AppFilesDirectory + "\\" + userCode;
+        }
 
+        public static string AppThumbsDirectory { get; set; } = MyApp.AppDataDirectory + "\\" + "Thumbs";
+        public static string UserThumbsDirectory(string userCode)
+        {
+            return MyApp.Env.WebRootPath + "\\" + MyApp.AppThumbsDirectory + "\\" + userCode;
+        }
 
         #endregion
 
         #region nft dir
 
-        public static string RootFilesDirectory
+
+
+        public static string UserImportDirectory(string userCode, string projectName)
         {
-            get { return MyApp.Env.WebRootPath + "\\" + MyApp.AppFilesDirectory; }
+            return MyApp.UserFilesDirectory(userCode) + "\\" + projectName + "\\" + "import";
         }
 
-        public static string RootThumbsDirectory
+        public static string UserExportDirectory(string userCode, string projectName)
         {
-            get { return MyApp.Env.WebRootPath + "\\" + MyApp.AppThumbsDirectory; }
-        }
-
-        public static string RootProjectsDirectory
-        {
-            get { return MyApp.RootFilesDirectory + "\\projects"; }
-        }
-
-        public static string RootImportDirectory(string projectName)
-        {
-            return MyApp.RootProjectsDirectory + "\\" + projectName + "\\import";
-        }
-
-        public static string RootExportDirectory(string projectName)
-        {
-            return MyApp.RootProjectsDirectory + "\\" + projectName + "\\export";
+            return MyApp.UserFilesDirectory(userCode) + "\\" + projectName + "\\" + "export";
         }
         #endregion
 

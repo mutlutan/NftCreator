@@ -35,6 +35,15 @@
  }
 ,
  {
+     "key" : "xTem.TemKullanici.SearchFindTab.I",
+     "value": {
+         "tr": ""
+,
+         "en": ""
+     }
+ }
+,
+ {
      "key" : "xTem.TemKullanici.Id",
      "value": {
          "tr": "Id"
@@ -49,6 +58,15 @@
          "tr": "Durum"
 ,
          "en": "Status"
+     }
+ }
+,
+ {
+     "key" : "xTem.TemKullanici.Kod",
+     "value": {
+         "tr": "Kod"
+,
+         "en": "Code"
      }
  }
 ,

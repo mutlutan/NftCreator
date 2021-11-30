@@ -197,31 +197,49 @@
                      input.attr('required', 'required');
                      $('<span class="k-invalid-msg" data-for="' + options.field + '"></span>').appendTo(container);
                      input.appendTo(container);
-                     input.kendoDropDownList({
-                         valuePrimitive: true,
-                         optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
-                         dataValueField: 'value',
-                         dataTextField: 'text',
-                         dataSource: mnLookup.listLoad({
-                             TableName: 'TemKullanici',
-                             ValueField: 'Id',
-                             TextField: 'Ad',
-                             OtherFields: '',
-                             Filters: [
-                                 { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
-                             ],
-                             Sorts: [
-                                 { Field: 'Ad', Dir: 'asc' }
-                             ]
-                         }),
-                         open: function (e) {
-                         },
-                         close: function (e) {
-                         }
+                     input.attr('type', 'hidden');
+
+                     var tempInput = '';
+                     tempInput += '<span name="ExternalSearchButtonWrapper' + options.field + '" class="mnSearchEdit k-textbox k-space-right w-100">';
+                     tempInput += ' <input class="font-weight-light" type="text" data-bind="value:CcKullaniciIdAd" data-langkey-placeholder="xNft.NftProje.KullaniciId" disabled>';
+                     tempInput += ' <button name="btnClear" class="btn btn-light fa fa-close"></button>';
+                     tempInput += ' <button name="btnSearch" class="btn btn-light fa fa-search"></button>';
+                     tempInput += '</span>';
+                     $(tempInput).appendTo(container);
+
+                     setTimeout(function () {
+                        $(container).find('[data-bind="value:CcKullaniciIdAd"]').val(options.model.CcKullaniciIdAd);
                      });
 
+                     $(container).find('[name="ExternalSearchButtonWrapper' + options.field + '"]').click(function (e) {
+                        var dataItem = options.model;
+                        mnPageView.create({
+                            areaName: 'Tem',
+                            viewFileName: 'TemKullaniciForSearch',
+                            viewName: 'TemKullaniciForSearch',
+                            subTitle: mnLang.TranslateWithWord('xLng.AramaIslemleri'),
+                            onShow: function (e) {
+                                e.beforeShow({
+                                    'ownerViewName':'NftProjeForGrid',
+                                });
+                           },
+                           onClose: function (e) {
+                               if (e.opt.isSelected) {
+                                   dataItem.set('KullaniciId', e.opt.selectedDataItem.Id);
+                                   dataItem.set('CcKullaniciIdAd', e.opt.selectedDataItem.Ad);
+                               }
+                           }
+                        });
+                     });
+
+                     $(container).find('[name="ExternalSearchButtonWrapper' + options.field + '"] [name=btnClear]').click(function (e) {
+                         var dataItem = options.model;
+                         e.stopPropagation();
+                         dataItem.set('KullaniciId', 0);
+                         dataItem.set('CcKullaniciIdAd', '');
+                     });
                  },
-                 width: '100px'
+                 width: '300px'
              },
 
              {

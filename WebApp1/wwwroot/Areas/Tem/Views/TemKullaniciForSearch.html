@@ -1,0 +1,480 @@
+
+<!-- Auto Generated user1 -->
+
+<div id='TemKullaniciForSearch'>
+    <div>
+        <div id='divButtonGroup' class='mnButtonGroup float-right' >
+            <button id='btnAra' type='button' class='btn btn-outline-warning text-nowrap mn-hover-color-white' data-langkey-title='xLng.Ara' style='position:absolute; right:0px;' > <i class='fa fa-binoculars'></i> <small data-langkey-text='xLng.Ara'></small> </button>
+        </div>
+    </div>
+    <div>
+        <div id='tabstrip' class='mnFindTab'>
+            <ul>
+                <li> <span data-langkey-text='xTem.TemKullanici.SearchFindTab.I'></span> </li>
+            </ul>
+
+            <div style='padding:5px 0px;'>
+                <div class='form-inline mnFindElementContainer'>
+                    <span name='divDurum' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.Durum'></label>
+                        <input type='text' style='width:119px' data-find_option='auto' data-find_type='System.Boolean' data-find_field='Durum' data-find_operator='eq' />
+                    </span>
+
+                    <span name='divKod' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.Kod'></label>
+                        <input type='text' class='k-textbox' style='width:130px' data-find_option='auto' data-find_type='System.String' data-find_field='Kod' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divAd' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.Ad'></label>
+                        <input type='text' class='k-textbox' style='width:250px' data-find_option='auto' data-find_type='System.String' data-find_field='Ad' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                    <span name='divRols' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.Rols'></label>
+                        <input type='text' style='width:219px' data-find_option='auto' data-find_type='StringArray' data-find_field='Rols' data-find_operator='contains' />
+                    </span>
+
+                    <span name='divAdSoyad' class='mnFindElementDiv form-inline'>
+                        <label class='col-form-label mr-2' data-langkey-text='xTem.TemKullanici.AdSoyad'></label>
+                        <input type='text' class='k-textbox' style='width:130px' data-find_option='auto' data-find_type='System.String' data-find_field='AdSoyad' data-find_operator='contains' autocomplete='off' />
+                    </span>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div id='divGrid'></div>
+    </div>
+</div>
+
+<script>
+ window.TemKullaniciForSearch = function () {
+     var self = {};
+     self.opt = null;
+     self.area = 'Tem';
+     self.title = 'xTem.TemKullanici.Title';
+     self.selector = '#TemKullaniciForSearch';
+     self.primaryKey = 'Id';
+     self.tableName = 'TemKullanici';
+     self.apiUrlPrefix = '/' + self.area + '/Dwa' + self.tableName;
+
+     function fCreateDataSource() {
+         self.dataSource = new kendo.data.DataSource({
+             transport: {
+                 read: { type: 'GET', url: self.apiUrlPrefix + '/Read', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 create: { type: 'POST', url: self.apiUrlPrefix + '/Create', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 update: { type: 'POST', url: self.apiUrlPrefix + '/Update', dataType: 'json', contentType: 'application/json; charset=utf-8' },
+                 destroy: { type: 'POST', url: self.apiUrlPrefix + '/Delete', dataType: 'json' },
+                 parameterMap: function (data, operation) {
+                     if (operation === 'read') {
+                         return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
+                     }
+                     else if (operation === 'create' || operation === 'update') {
+                         data.DogumTarihi = kendo.toString(data.DogumTarihi, 's');
+                         data.InsertDateTime = kendo.toString(data.InsertDateTime, 's');
+                         data.UpdateDateTime = kendo.toString(data.UpdateDateTime, 's');
+                         return kendo.stringify(data);
+                     }
+                     else if (operation === 'destroy') {
+                         return { _id: data[self.primaryKey] };
+                     }
+                 }
+             },
+             pageSize: 10, serverPaging: true, serverSorting: true, serverFiltering: true, serverGrouping: true, serverAggregates: true,
+             sort: [
+             ],
+             schema: {
+                 errors: 'Errors', data: 'Data', total: 'Total', aggregates: 'AggregateResults',
+                 model: {
+                     id: self.primaryKey,
+                     fields: {
+                         Id: { type: 'number', defaultValue: null  },
+                         Durum: { type: 'boolean' },
+                         Kod: { type: 'string', editable:false },
+                         Ad: { type: 'string' },
+                         Sifre: { type: 'string' },
+                         Rols: { type: 'string' },
+                         Resim: { type: 'string' },
+                         AdSoyad: { type: 'string' },
+                         DogumTarihi: { type: 'date' },
+                         InsertUserId: { type: 'number', editable:false },
+                         UpdateUserId: { type: 'number', editable:false },
+                         InsertDateTime: { type: 'date', editable:false },
+                         UpdateDateTime: { type: 'date', editable:false },
+                         CcDurum: { type: 'string' },
+                         CcRolsAd: { type: 'string' },
+                         CcInsertUserId: { type: 'string' },
+                         CcUpdateUserId: { type: 'string' }
+                     }
+                 }
+             },
+             error: function (e) {
+                 if (e.xhr === null) { mnNotification.warning(e.errors); } else { mnErrorHandler.Handle(e.xhr); }
+                 this.cancelChanges();
+             },
+             requestStart: function (e) {
+             },
+             requestEnd: function (e) {
+                 if (e.response !== undefined && e.response.Errors === null) {
+                     if (e.type === 'create' || e.type === 'update' || e.type === 'destroy') {
+                         mnLookup.listRead(self.tableName);
+                     }
+                     if (e.type === 'create') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitEklendi'));
+                     }
+                     if (e.type === 'update') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitDuzeltildi'));
+                     }
+                     if (e.type === 'destroy') {
+                         mnNotification.success(mnLang.TranslateWithWord('xLng.KayitSilindi'));
+                     }
+                 }
+             },
+             change: function (e) {
+                 if (e.items[0] !== undefined) {
+                     if (e.items[0].get(self.primaryKey) === null) {
+                         $.ajax({
+                             url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
+                             success: function (result) {
+                                 e.items[0].Id = result.Id;
+                                 e.items[0].Durum = result.Durum;
+                                 e.items[0].Kod = result.Kod;
+                                 e.items[0].Ad = result.Ad;
+                                 e.items[0].Sifre = result.Sifre;
+                                 e.items[0].Rols = result.Rols;
+                                 e.items[0].Resim = result.Resim;
+                                 e.items[0].AdSoyad = result.AdSoyad;
+                                 e.items[0].DogumTarihi = kendo.parseDate(result.DogumTarihi);
+                                 e.items[0].InsertUserId = result.InsertUserId;
+                                 e.items[0].UpdateUserId = result.UpdateUserId;
+                                 e.items[0].InsertDateTime = kendo.parseDate(result.InsertDateTime);
+                                 e.items[0].UpdateDateTime = kendo.parseDate(result.UpdateDateTime);
+                                 //computed alanların tanımlanması
+                                 e.items[0].CcDurum = result.CcDurum;
+                                 e.items[0].CcRolsAd = result.CcRolsAd;
+                                 e.items[0].CcInsertUserId = result.CcInsertUserId;
+                                 e.items[0].CcUpdateUserId = result.CcUpdateUserId;
+                                 //filterdan gelen default value set için
+                                 $(self.opt.filters).each(function (index, row) {
+                                     if (row.filterColumnName !== 'Id') {
+                                        e.items[0].set(row.filterColumnName, row.filterValue);
+                                     }
+                                 });
+
+                             },
+                             error: function (xhr, status) {
+                                 mnErrorHandler.Handle(xhr);
+                             }
+                         });
+                     }
+                 }
+                 // ve gerekebilecek diğer işlemler
+                 // ...
+             }
+         });
+     }
+
+     function fCreateGrid() {
+         self.grid = $(self.selector).find('#divGrid').kendoGrid({
+             excel: { allPages: true },
+             excelExport: mnApp.exportGridWithTemplatesContentForKendo,
+             autoBind: false, resizable: true, reorderable: true,
+             sortable: { mode: 'multiple', allowUnsort: true, showIndexes: true },
+             pageable: {
+                 refresh: true, pageSizes: mnApp.gridPageSizes_default, buttonCount: 5, input: true,
+                 messages: { itemsPerPage: '' }
+             },
+             editable: {
+                 confirmation: true, mode: 'inline', createAt: 'bottom'
+             },
+             columns: [
+             {
+                 locked: true,
+                 title: '',
+                 width: '35px',
+                 command: [
+                     { template: '<button id="btnSecDon" class="btn btn-link btn-xs fa fa-download" style="padding:0px;" title="' + mnLang.TranslateWithWord("xLng.SecDon") + '"> </button>' }
+                 ]
+             },
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.Durum'),
+                 field: 'Durum',
+                 template: '#:CcDurum#',
+                 width: '95px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.Kod'),
+                 field: 'Kod',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.Resim'),
+                 field: 'Resim',
+                 template:"<img name='Resim' src='#:Resim || ''#' class='' style='width:28px; height:30px;' />", 
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '45px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.AdSoyad'),
+                 field: 'AdSoyad',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.DogumTarihi'),
+                 field: 'DogumTarihi',
+                 format: '{0:d}',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '110px'
+             },
+
+             {}
+             ],
+             edit: function (e) {
+                 mnApi.controlEnable(e.container.find('#btnSecDon'), false);
+
+                 var model=e.model;
+                 this.cancelRow();
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemKullaniciForForm',
+                     viewName: 'TemKullaniciForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': model.Id };
+                         e.beforeShow({'ownerViewName':'TemKullaniciForSearch', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             },
+             cancel: function (e) {
+                 if (e.model.id !== null) {
+                     e.sender.refresh(); //databound da renklendirme ve button set etme var ise ,cancelden sonra databound çalışmıyor(yetki,renk style ayarlanamıyor) bununla refresh ediyosun
+                 }
+             },
+             dataBound: function (e) {
+                var data = e.sender.dataSource.data();
+                 //yetki
+                 self.YetkiUygula(data);
+
+                 // Language
+                 mnLang.TranslateWithSelector(e.sender.wrapper);
+
+                 //SearchView selector enable/disable
+                 for (var i = 0; i < data.length; i++) {
+                     var dataItem = data[i];
+                     var bDisable = false;
+
+                     if (bDisable) {
+                        var tr = e.sender.wrapper.find('[data-uid=' + dataItem.uid + ']');
+                        mnApi.controlEnable(tr.find('#btnSecDon'), false);
+                        tr.find('#btnSecDon').closest('td').attr('title', mnLang.TranslateWithWord('xLng.DoldurulmasiGerekenAlanlarVar'));
+                     }
+                 }
+
+                 //row style
+                 $.each(data, function (i, dataItem) {
+                    if (dataItem.Durum === false) {
+                        var tr = e.sender.wrapper.find('tr[data-uid=' + dataItem.uid + ']');
+                        tr.css('color', 'silver');
+                    }
+                 });
+
+             },
+             dataSource: self.dataSource
+         }).getKendoGrid();
+
+         self.grid.wrapper.find('#btnEkle').kendoButton({
+             icon: 'plus',
+             click: function () {
+                 mnPageView.create({
+                     areaName: 'Tem',
+                     viewFileName: 'TemKullaniciForForm',
+                     viewName: 'TemKullaniciForForm',
+                     subTitle: mnLang.TranslateWithWord('xLng.DuzenlemeIslemleri'),
+                     onShow: function (e) {
+                        var qprms = { 'Id': null };
+                         e.beforeShow({'ownerViewName':'TemKullaniciForSearch', 'qprms': qprms });
+                     },
+                     onClose: function (e) {
+                         self.dataSource.read();
+                     }
+                 });
+             }
+         });
+
+         self.grid.wrapper.on('click', '#btnSecDon', function (e) {
+             e.preventDefault();
+             self.opt.isSelected = true;
+             var dataItem = self.grid.dataItem($(e.currentTarget).closest('tr'));
+             self.opt.selectedDataItem = dataItem;
+             self.close();
+         });
+
+         self.grid.wrapper.find('#btnSaveAsExcel').kendoButton({
+             icon: 'excel',
+             click: function () {
+                 kendo.ui.progress(self.grid.wrapper, true); //progress On
+                 self.grid.saveAsExcel();
+             }
+         });
+     }
+
+     function fCreateFindElements() {
+         // tabstrip
+         self.tabstrip = $(self.selector).find('#tabstrip').kendoTabStrip({
+             animation: false, tabPosition: 'top'
+         }).getKendoTabStrip();
+         self.tabstrip.select(0);
+
+         // filter buton
+         $(self.selector).find('#btnAra').click(function (e) {
+             self.filter();
+         });
+
+         // filter tetikleyicileri
+         $(self.selector).find('[data-find_option]').keydown(function (e) {
+             if (e.which === 13) {
+                 e.preventDefault();
+                 self.filter();
+             }
+         });
+
+         // Filter elementleri
+         $(self.selector).find('[data-find_field=Durum]').kendoDropDownList({
+             valuePrimitive: true,
+             optionLabel: mnLang.TranslateWithWord('xLng.Seciniz'),
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.list.dsAktifPasif
+         }).getKendoDropDownList();
+
+         self.msRols = $(self.selector).find('[data-find_field=Rols]').kendoMultiSelect({
+             valuePrimitive: true,
+             autoClose: false,
+             optionLabel: { value: '', text: mnLang.TranslateWithWord('xLng.Seciniz') },
+             dataValueField: 'value',
+             dataTextField: 'text',
+             dataSource: mnLookup.listLoad({
+                 TableName: 'TemRol',
+                 ValueField: 'Id',
+                 TextField: 'Ad',
+                 OtherFields: '',
+                 Filters: [
+                     { Field: 'Id', Operator: '>=', Value: '0', ValueType: 'Int' }
+                 ],
+                 Sorts: [
+                 ]
+             }),
+             change: function (e) {
+             }
+         }).getKendoMultiSelect();
+
+     }
+
+     self.YetkiUygula = function (_data) {
+         //Standart Yetkiler
+         var _C = mnUser.isYetkili(self.tableName + '.D_C.');
+         var _U = mnUser.isYetkili(self.tableName + '.D_U.');
+         var _D = mnUser.isYetkili(self.tableName + '.D_D.');
+         var _E = mnUser.isYetkili(self.tableName + '.D_E.');
+
+         //ek yetkiler için
+         //...
+
+        //form element görünümleri
+        var fieldList = [];
+        fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Kod', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'AdSoyad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+
+        for (var i in fieldList) {
+            var $elm = $(self.selector).find('.mnFindElementContainer .mnFindElementDiv[name=div' + fieldList[i].Name + ']');
+            if (fieldList[i].Visible) {
+                $elm.show();
+            } else {
+                $elm.hide();
+            }
+        }
+
+         //grid ekle button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnEkle'), _C);
+         //grid exel button için
+         mnApi.controlShowHide(self.grid.wrapper.find('#btnSaveAsExcel'), _E);
+
+         //grid rows için
+         $.each(_data, function (i, row) {
+             var _tr = self.grid.wrapper.find('tr[data-uid=' + row.uid + ']');
+             var tr_U = _U;
+             var tr_D = _D;
+
+             //update-delete button için
+             mnApi.controlEnable(_tr.find('.k-grid-delete'), tr_D);
+
+             // ek yetkiler (row daki nesneler için)
+             var btnDetay_TemKullaniciLisans_R = mnUser.isYetkili('TemKullaniciLisans.D_R.');
+             mnApi.controlEnable(_tr.find('.k-grid-btnDetay_TemKullaniciLisans'), btnDetay_TemKullaniciLisans_R);
+
+
+
+             //row değerine göre yetkiler
+             //...
+
+         });
+     };
+
+     self.prepare = function () {
+         // DataSource
+         fCreateDataSource();
+
+         // find Elementler
+         fCreateFindElements();
+
+         // Grid
+         fCreateGrid();
+
+         // Language
+         mnLang.TranslateWithSelector(self.selector);
+     };
+
+     self.beforeShow = function (_opt) {
+         self.opt = $.extend({}, _opt);
+         self.opt.isSelected = false;
+
+         self.filter();
+
+         self.tabstrip.select(0);
+
+     };
+
+     self.filter = function (_data) {
+         self.dataSource.filter(mnApp.find_options_ToFilterList(self));
+     };
+
+     self.close = function () {
+         if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+             $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+         } else {
+             $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+         }
+     };
+
+     return self;
+ }();
+</script>

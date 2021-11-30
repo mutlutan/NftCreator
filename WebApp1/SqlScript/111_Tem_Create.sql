@@ -328,6 +328,7 @@
 
 		Durum		BIT NOT NULL,
 		
+		Kod			NVARCHAR(20), /*email adres olabilir, tcno olabilir*/
 		Ad			NVARCHAR(50), /*email adres olabilir, tcno olabilir*/
 		Sifre		NVARCHAR(100),	/*Bu alan her update olduğunda, TemKullaniciSifre tablosuna insert edilecek, history için*/
 		Rols		NVARCHAR(MAX), /*bu row da silme olduğunda foreign key olmadığından manuel Rol tablosu kontrol edilecek, ve sildirilmeyecek */
@@ -343,11 +344,12 @@
 
 		CONSTRAINT PK_TemKullanici PRIMARY KEY (Id)
 	);
+	CREATE UNIQUE INDEX UX_TemKullanici_Kod ON TemKullanici (Kod) WHERE Kod IS NOT NULL AND Kod <> '';
 	CREATE UNIQUE INDEX UX_TemKullanici_Ad ON TemKullanici (Ad);
-	INSERT INTO TemKullanici (Id, Durum, Rols, Ad, Sifre) VALUES (0, 0, N'', N'', N'');
-	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'admin', N'admin', N'07');
-	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'Employee',N'employee', N'07');
-	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'', N'Customer',N'customer', N'07');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre) VALUES (0, 0, N'', N'', N'', N'');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'01', N'admin', N'07', N'Admin ADMIN');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'02', N'Employee', N'07', N'Employee EMPLOYEE');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'',     N'*',  N'Customer', N'07', N'Customer CUSTOMER');
 
 	/* Kullanici Şifre history*/
 	CREATE SEQUENCE dbo.sqTemKullaniciSifre AS INT START WITH 1 INCREMENT BY 1;

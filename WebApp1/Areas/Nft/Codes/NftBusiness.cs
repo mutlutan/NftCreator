@@ -24,14 +24,14 @@ namespace WebApp1.Areas.Nft.Codes
 
 
         #region generate Bitmap
-        public System.IO.MemoryStream CreateBitmapStream(MoProjectInfo projectInfo, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
+        public System.IO.MemoryStream CreateBitmapStream(string userCode, MoProjectInfo projectInfo, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
         {
             System.Drawing.Bitmap bmp = new(_width, _height);
             System.Drawing.Graphics grap = System.Drawing.Graphics.FromImage(bmp);
 
             foreach (var layer in projectInfo.LayerList.Where(c => c.Status == true))
             {
-                System.IO.DirectoryInfo directoryInfo = new(MyApp.RootImportDirectory(projectInfo.ProjectName) + "\\" + layer.Name);
+                System.IO.DirectoryInfo directoryInfo = new(MyApp.UserImportDirectory(userCode, projectInfo.ProjectName) + "\\" + layer.Name);
 
                 var randomFile = directoryInfo
                     .EnumerateFiles("*.png", System.IO.SearchOption.TopDirectoryOnly)
@@ -55,14 +55,14 @@ namespace WebApp1.Areas.Nft.Codes
             return memoryStream;
         }
 
-        public System.IO.MemoryStream CreateBitmapStream(MoMetaData metaData, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
+        public System.IO.MemoryStream CreateBitmapStream(string userCode, MoMetaData metaData, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
         {
             System.Drawing.Bitmap bmp = new(_width, _height);
             System.Drawing.Graphics grap = System.Drawing.Graphics.FromImage(bmp);
 
             foreach (var attribute in metaData.Attributes)
             {
-                string imageFileFullName = MyApp.RootImportDirectory(metaData.ProjectName) + "\\" + attribute.TraitType + "\\" + attribute.ImageName;
+                string imageFileFullName = MyApp.UserImportDirectory(userCode, metaData.ProjectName) + "\\" + attribute.TraitType + "\\" + attribute.ImageName;
 
                 var img = System.Drawing.Image.FromFile(imageFileFullName);
                 grap.DrawImage(img, 0, 0, _width, _height);
@@ -79,7 +79,7 @@ namespace WebApp1.Areas.Nft.Codes
             return memoryStream;
         }
 
-        public void GenerateImages(List<MoMetaData> metaDataList, string exportDirectory)
+        public void GenerateImages(string userCode, List<MoMetaData> metaDataList, string exportDirectory)
         {
             string imageDirectory = exportDirectory + "\\" + "images";
             if (!System.IO.Directory.Exists(imageDirectory))
@@ -96,7 +96,7 @@ namespace WebApp1.Areas.Nft.Codes
             foreach (var metaData in metaDataList)
             {
                 //image
-                var bmpStream = this.CreateBitmapStream(metaData, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
+                var bmpStream = this.CreateBitmapStream(userCode, metaData, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
                 System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaData.ImageName, bmpStream.ToArray());
                 //json
                 System.IO.File.WriteAllText(jsonDirectory + "\\" + metaData.Edition + ".json", metaData.MyObjToJsonText());
@@ -106,7 +106,7 @@ namespace WebApp1.Areas.Nft.Codes
             System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
         }
 
-        public void GenerateImagesForParalel(MoProjectInfo projectInfo, int quantity, string exportDirectory)
+        public void GenerateImagesForParalel(string userCode, MoProjectInfo projectInfo, int quantity, string exportDirectory)
         {
             string imageDirectory = exportDirectory + "\\" + "images";
             if (!System.IO.Directory.Exists(imageDirectory))
@@ -140,7 +140,7 @@ namespace WebApp1.Areas.Nft.Codes
 
                 for (int i = startIndex; i < endIndex; i++)
                 {
-                    var bmpStream = this.CreateBitmapStream(projectInfo, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
+                    var bmpStream = this.CreateBitmapStream(userCode, projectInfo, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
                     string fileName = (1 + i).ToString().PadLeft(quantity.MyToStr().Length, '0') + ".png";
                     string pathFileName = imageDirectory + "\\" + fileName;
                     System.IO.File.WriteAllBytes(pathFileName, bmpStream.ToArray());
@@ -155,19 +155,19 @@ namespace WebApp1.Areas.Nft.Codes
 
         #region PreviewGenerate & StartGenerateImages
 
-        public MoResponse<object> PreviewGenerateImages(MoGenerateImageInput generateImageInput)
+        public MoResponse<object> PreviewGenerateImages(string userCode, MoGenerateImageInput generateImageInput)
         {
             MoResponse<object> response = new();
 
             try
             {
-                var metaDataList = this.CreateMetaData(generateImageInput);
+                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
                 if (metaDataList.Success)
                 {
                     List<string> images = new();
                     foreach (var metaData in metaDataList.Data)
                     {
-                        using var bmpStream = this.CreateBitmapStream(metaData, 250, 250, System.Drawing.Imaging.ImageFormat.Png);
+                        using var bmpStream = this.CreateBitmapStream(userCode, metaData, 250, 250, System.Drawing.Imaging.ImageFormat.Png);
 
                         var str = "data:image/png;base64," + Convert.ToBase64String(bmpStream.ToArray());
                         images.Add(str);
@@ -189,19 +189,19 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> StartGenerateImages(MoGenerateImageInput generateImageInput)
+        public MoResponse<object> StartGenerateImages(string userCode, MoGenerateImageInput generateImageInput)
         {
             MoResponse<object> response = new();
 
             try
             {
-                string exportDirectoryName = MyApp.RootExportDirectory(generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
-                var metaDataList = this.CreateMetaData(generateImageInput);
+                string exportDirectoryName = MyApp.UserExportDirectory(userCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
+                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
                 if (metaDataList.Success)
                 {
                     var task = Task.Run(() =>
                     {
-                        this.GenerateImages(metaDataList.Data, exportDirectoryName);
+                        this.GenerateImages(userCode, metaDataList.Data, exportDirectoryName);
                     });
 
                     //Dosyalar oluşturuluyor, tamamlandığında dosyalar bölümünden indirip dışa aktarabilirsiniz.
@@ -225,7 +225,7 @@ namespace WebApp1.Areas.Nft.Codes
         #endregion
 
         #region metadata 
-        public MoResponse<List<MoMetaData>> CreateMetaData(MoGenerateImageInput generateImageInput)
+        public MoResponse<List<MoMetaData>> CreateMetaData(string userCode, MoGenerateImageInput generateImageInput)
         {
             MoResponse<List<MoMetaData>> response = new();
 
@@ -235,7 +235,7 @@ namespace WebApp1.Areas.Nft.Codes
                 stopwatch1.Start();
                 response.Data = new List<MoMetaData>();
 
-                List<MoLayerInfo> layerInfoList = this.GetLayerInfoListForStatusTrue(generateImageInput).Data;
+                List<MoLayerInfo> layerInfoList = this.GetLayerInfoListForStatusTrue(userCode, generateImageInput).Data;
 
                 stopwatch1.Stop();
 
@@ -318,20 +318,20 @@ namespace WebApp1.Areas.Nft.Codes
 
         #region Projects method
 
-        public MoResponse<List<MoProject>> GetProjectList()
+        public MoResponse<List<MoProject>> GetProjectList(string userCode)
         {
             MoResponse<List<MoProject>> response = new();
             try
             {
-                if (System.IO.Directory.Exists(MyApp.RootProjectsDirectory))
+                if (System.IO.Directory.Exists(MyApp.UserFilesDirectory(userCode)))
                 {
-                    var data = new System.IO.DirectoryInfo(MyApp.RootProjectsDirectory)
+                    var data = new System.IO.DirectoryInfo(MyApp.UserFilesDirectory(userCode))
                          .GetDirectories()
                          .OrderBy(o => o.Name)
                          .Select(s => new MoProject
                          {
                              Name = s.Name,
-                             ImageUrl = (MyApp.RootImportDirectory(s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
+                             ImageUrl = (MyApp.UserImportDirectory(userCode, s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
                          }).ToList();
 
                     response.Success = true;
@@ -352,13 +352,13 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<List<MoLayer>> GetProjectLayerList(string projectName)
+        public MoResponse<List<MoLayer>> GetProjectLayerList(string userCode, string projectName)
         {
             MoResponse<List<MoLayer>> response = new();
 
             try
             {
-                var data = new System.IO.DirectoryInfo(MyApp.RootImportDirectory(projectName))
+                var data = new System.IO.DirectoryInfo(MyApp.UserImportDirectory(userCode, projectName))
                      .GetDirectories()
                      .OrderBy(o => o.Name)
                      .Select(s => new MoLayer
@@ -377,7 +377,7 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<MoProjectInfo> GetProjectInfo(string projectName)
+        public MoResponse<MoProjectInfo> GetProjectInfo(string userCode, string projectName)
         {
             MoResponse<MoProjectInfo> response = new() { Data = new MoProjectInfo() };
 
@@ -385,16 +385,16 @@ namespace WebApp1.Areas.Nft.Codes
             {
                 if (!string.IsNullOrEmpty(projectName))
                 {
-                    var projectLayerList = this.GetProjectLayerList(projectName);
+                    var projectLayerList = this.GetProjectLayerList(userCode,projectName);
 
-                    string jsonFileName = MyApp.RootImportDirectory(projectName) + "//project.json";
+                    string jsonFileName = MyApp.UserImportDirectory(userCode,projectName) + "//project.json";
 
                     //json dosya yok ise oluşturuluyor
                     if (!System.IO.File.Exists(jsonFileName))
                     {
                         response.Data.ProjectName = projectName;
                         response.Data.LayerList = projectLayerList.Data;
-                        this.SetProjectInfo(response.Data);
+                        this.SetProjectInfo(userCode, response.Data);
                     }
                     else
                     {
@@ -440,13 +440,13 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> SetProjectInfo(MoProjectInfo projectInfo)
+        public MoResponse<object> SetProjectInfo(string userCode, MoProjectInfo projectInfo)
         {
             MoResponse<object> response = new();
 
             try
             {
-                string jsonFileName = MyApp.RootImportDirectory(projectInfo.ProjectName) + "//project.json";
+                string jsonFileName = MyApp.UserImportDirectory(userCode, projectInfo.ProjectName) + "//project.json";
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(projectInfo);
 
                 System.IO.File.WriteAllText(jsonFileName, jsonString);
@@ -465,11 +465,11 @@ namespace WebApp1.Areas.Nft.Codes
 
         #region layer methods
 
-        public MoResponse<List<MoImage>> GetLayerImage(string projectName, string layerName)
+        public MoResponse<List<MoImage>> GetLayerImage(string userCode, string projectName, string layerName)
         {
             MoResponse<List<MoImage>> response = new();
 
-            var files = new System.IO.DirectoryInfo(MyApp.RootImportDirectory(projectName) + "\\" + layerName)
+            var files = new System.IO.DirectoryInfo(MyApp.UserImportDirectory(userCode, projectName) + "\\" + layerName)
                     .EnumerateFiles("*.*", System.IO.SearchOption.TopDirectoryOnly)
                     .OrderBy(p => p.Name).ToArray();
 
@@ -484,7 +484,7 @@ namespace WebApp1.Areas.Nft.Codes
 
             foreach (var item in data)
             {
-                string fileUrl = MyApp.RootImportDirectory(projectName) + "\\" + layerName + "\\" + item.Name;
+                string fileUrl = MyApp.UserImportDirectory(userCode, projectName) + "\\" + layerName + "\\" + item.Name;
 
                 if (System.IO.File.Exists(fileUrl))
                 {
@@ -494,7 +494,7 @@ namespace WebApp1.Areas.Nft.Codes
                     item.ImageHeight = img.Height;
                 }
 
-                item.ImageUrl = MyApp.RootImportDirectory(projectName) + "\\" + layerName + "\\" + item.Name + "?v." + DateTime.Now.ToString("yyyyMMddHHmmss");
+                item.ImageUrl = MyApp.UserImportDirectory(userCode, projectName) + "\\" + layerName + "\\" + item.Name + "?v." + DateTime.Now.ToString("yyyyMMddHHmmss");
                 item.ImageUrl = item.ImageUrl.Replace(MyApp.Env.WebRootPath, "");
                 item.ImageUrl = item.ImageUrl.Replace("\\", "/");
             }
@@ -506,7 +506,7 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<MoLayerInfo> GetLayerInfo(MoLayerInfoInput layerInfoInput)
+        public MoResponse<MoLayerInfo> GetLayerInfo(string userCode, MoLayerInfoInput layerInfoInput)
         {
             MoResponse<MoLayerInfo> response = new() { Data = new MoLayerInfo() };
 
@@ -514,9 +514,9 @@ namespace WebApp1.Areas.Nft.Codes
             {
                 if (!string.IsNullOrEmpty(layerInfoInput.ProjectName))
                 {
-                    var layerImageList = this.GetLayerImage(layerInfoInput.ProjectName, layerInfoInput.LayerName);
+                    var layerImageList = this.GetLayerImage(userCode, layerInfoInput.ProjectName, layerInfoInput.LayerName);
 
-                    string jsonFileName = MyApp.RootImportDirectory(layerInfoInput.ProjectName) + "//" + layerInfoInput.LayerName + ".json";
+                    string jsonFileName = MyApp.UserImportDirectory(userCode, layerInfoInput.ProjectName) + "//" + layerInfoInput.LayerName + ".json";
 
                     //json dosya yok ise oluşturuluyor
                     if (!System.IO.File.Exists(jsonFileName))
@@ -524,7 +524,7 @@ namespace WebApp1.Areas.Nft.Codes
                         response.Data.ProjectName = layerInfoInput.ProjectName;
                         response.Data.LayerName = layerInfoInput.LayerName;
                         response.Data.ImageList = layerImageList.Data;
-                        this.SetLayerInfo(response.Data);
+                        this.SetLayerInfo(userCode, response.Data);
                     }
                     else
                     {
@@ -582,18 +582,18 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<List<MoLayerInfo>> GetLayerInfoListForStatusTrue(MoGenerateImageInput generateImageInput)
+        public MoResponse<List<MoLayerInfo>> GetLayerInfoListForStatusTrue(string userCode, MoGenerateImageInput generateImageInput)
         {
             MoResponse<List<MoLayerInfo>> response = new() { Data = new List<MoLayerInfo>() };
 
             try
             {
                 //üretimde kullanılacak bir metot
-                var layerList = this.GetProjectInfo(generateImageInput.ProjectName).Data.LayerList.Where(c => c.Status == true).ToList();
+                var layerList = this.GetProjectInfo(userCode, generateImageInput.ProjectName).Data.LayerList.Where(c => c.Status == true).ToList();
 
                 foreach (var layer in layerList)
                 {
-                    var res = this.GetLayerInfo(new MoLayerInfoInput()
+                    var res = this.GetLayerInfo(userCode, new MoLayerInfoInput()
                     {
                         ProjectName = generateImageInput.ProjectName,
                         LayerName = layer.Name
@@ -643,13 +643,13 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> SetLayerInfo(MoLayerInfo layerInfo)
+        public MoResponse<object> SetLayerInfo(string userCode, MoLayerInfo layerInfo)
         {
             MoResponse<object> response = new();
 
             try
             {
-                string jsonFileName = MyApp.RootImportDirectory(layerInfo.ProjectName) + "//" + layerInfo.LayerName + ".json";
+                string jsonFileName = MyApp.UserImportDirectory(userCode, layerInfo.ProjectName) + "//" + layerInfo.LayerName + ".json";
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(layerInfo);
 
                 System.IO.File.WriteAllText(jsonFileName, jsonString);
@@ -664,17 +664,17 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> ChangeLayerName(MoLayerNameChangeInput layerNameChangeInput)
+        public MoResponse<object> ChangeLayerName(string userCode, MoLayerNameChangeInput layerNameChangeInput)
         {
             MoResponse<object> response = new();
 
             try
             {
-                var resGetProjectInfo = this.GetProjectInfo(layerNameChangeInput.ProjectName);
+                var resGetProjectInfo = this.GetProjectInfo(userCode, layerNameChangeInput.ProjectName);
                 if (resGetProjectInfo.Success)
                 {
-                    string oldLayerDirectory = MyApp.RootImportDirectory(layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.OldLayerName;
-                    string newLayerDirectory = MyApp.RootImportDirectory(layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.NewLayerName;
+                    string oldLayerDirectory = MyApp.UserImportDirectory(userCode, layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.OldLayerName;
+                    string newLayerDirectory = MyApp.UserImportDirectory(userCode, layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.NewLayerName;
 
                     //layer directory değişecek
                     System.IO.DirectoryInfo di = new(oldLayerDirectory);
@@ -683,8 +683,8 @@ namespace WebApp1.Areas.Nft.Codes
                         di.MoveTo(newLayerDirectory);
 
                         //layer json değişecek
-                        string oldLayerFileName = MyApp.RootImportDirectory(layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.OldLayerName + ".json";
-                        string newLayerFileName = MyApp.RootImportDirectory(layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.NewLayerName + ".json";
+                        string oldLayerFileName = MyApp.UserImportDirectory(userCode, layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.OldLayerName + ".json";
+                        string newLayerFileName = MyApp.UserImportDirectory(userCode, layerNameChangeInput.ProjectName) + "//" + layerNameChangeInput.NewLayerName + ".json";
                         System.IO.FileInfo fi = new(oldLayerFileName);
                         if (fi.Exists)
                         {
@@ -693,7 +693,7 @@ namespace WebApp1.Areas.Nft.Codes
                             //project infoda değişecek
                             var layerItem = resGetProjectInfo.Data.LayerList.Where(c => c.Name == layerNameChangeInput.OldLayerName).FirstOrDefault();
                             layerItem.Name = layerNameChangeInput.NewLayerName;
-                            var resSetProjectInfo = this.SetProjectInfo(resGetProjectInfo.Data);
+                            var resSetProjectInfo = this.SetProjectInfo(userCode, resGetProjectInfo.Data);
                             if (resSetProjectInfo.Success)
                             {
                                 response.Success = true;
@@ -726,13 +726,13 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> ChangeImageName(MoImageNameChangeInput imageNameChangeInput)
+        public MoResponse<object> ChangeImageName(string userCode, MoImageNameChangeInput imageNameChangeInput)
         {
             MoResponse<object> response = new();
 
             try
             {
-                var resGetLayerInfo = this.GetLayerInfo(new MoLayerInfoInput()
+                var resGetLayerInfo = this.GetLayerInfo(userCode, new MoLayerInfoInput()
                 {
                     ProjectName = imageNameChangeInput.ProjectName,
                     LayerName = imageNameChangeInput.LayerName
@@ -741,8 +741,8 @@ namespace WebApp1.Areas.Nft.Codes
                 if (resGetLayerInfo.Success)
                 {
                     //layer json değişecek
-                    string oldImageFileName = MyApp.RootImportDirectory(imageNameChangeInput.ProjectName) + "//" + imageNameChangeInput.LayerName + "//" + imageNameChangeInput.OldImageName;
-                    string newImageFileName = MyApp.RootImportDirectory(imageNameChangeInput.ProjectName) + "//" + imageNameChangeInput.LayerName + "//" + imageNameChangeInput.NewImageName;
+                    string oldImageFileName = MyApp.UserImportDirectory(userCode, imageNameChangeInput.ProjectName) + "//" + imageNameChangeInput.LayerName + "//" + imageNameChangeInput.OldImageName;
+                    string newImageFileName = MyApp.UserImportDirectory(userCode, imageNameChangeInput.ProjectName) + "//" + imageNameChangeInput.LayerName + "//" + imageNameChangeInput.NewImageName;
                     System.IO.FileInfo fi = new(oldImageFileName);
                     if (fi.Exists)
                     {
@@ -751,7 +751,7 @@ namespace WebApp1.Areas.Nft.Codes
                         //layer infoda değişecek
                         var layerItem = resGetLayerInfo.Data.ImageList.Where(c => c.Name == imageNameChangeInput.OldImageName).FirstOrDefault();
                         layerItem.Name = imageNameChangeInput.NewImageName;
-                        var resSetProjectInfo = this.SetLayerInfo(resGetLayerInfo.Data);
+                        var resSetProjectInfo = this.SetLayerInfo(userCode, resGetLayerInfo.Data);
                         if (resSetProjectInfo.Success)
                         {
                             response.Success = true;

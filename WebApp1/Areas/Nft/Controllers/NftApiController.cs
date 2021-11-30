@@ -31,7 +31,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            MoResponse<object> response = nftBusiness.PreviewGenerateImages(generateImageInput);
+            MoResponse<object> response = nftBusiness.PreviewGenerateImages(this.userToken.UserCode, generateImageInput);
 
             return Json(response);
         }
@@ -41,7 +41,7 @@ namespace WebApp1.Areas.Nft.Controllers
         public ActionResult StartGenerateImages([FromBody] MoGenerateImageInput generateImageInput)
         {
             var nftBusiness = new NftBusiness(this.dataContext);
-            MoResponse<object> response = nftBusiness.StartGenerateImages(generateImageInput);
+            MoResponse<object> response = nftBusiness.StartGenerateImages(this.userToken.UserCode, generateImageInput);
 
             return Json(response);
         }
@@ -56,7 +56,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            var response = nftBusiness.GetProjectList();
+            var response = nftBusiness.GetProjectList(this.userToken.UserCode);
 
             return Json(response);
         }
@@ -70,7 +70,7 @@ namespace WebApp1.Areas.Nft.Controllers
             dynamic jsonResponse = Newtonsoft.Json.Linq.JObject.Parse(obj.ToString());
             string projectName = jsonResponse.projectName;
 
-            var response = nftBusiness.GetProjectInfo(projectName);
+            var response = nftBusiness.GetProjectInfo(this.userToken.UserCode, projectName);
 
             return Json(response);
         }
@@ -81,7 +81,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            MoResponse<object> response = nftBusiness.SetProjectInfo(projectInfo);
+            MoResponse<object> response = nftBusiness.SetProjectInfo(this.userToken.UserCode, projectInfo);
 
             return Json(response);
         }
@@ -96,7 +96,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            var response = nftBusiness.GetLayerInfo(layerInfoInput);
+            var response = nftBusiness.GetLayerInfo(this.userToken.UserCode, layerInfoInput);
 
             return Json(response);
         }
@@ -107,7 +107,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            MoResponse<object> response = nftBusiness.SetLayerInfo(layerInfo);
+            MoResponse<object> response = nftBusiness.SetLayerInfo(this.userToken.UserCode, layerInfo);
 
             return Json(response);
         }
@@ -118,7 +118,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            MoResponse<object> response = nftBusiness.ChangeLayerName(layerNameChangeInput);
+            MoResponse<object> response = nftBusiness.ChangeLayerName(this.userToken.UserCode, layerNameChangeInput);
 
             return Json(response);
         }
@@ -129,7 +129,7 @@ namespace WebApp1.Areas.Nft.Controllers
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
-            MoResponse<object> response = nftBusiness.ChangeImageName(imageNameChangeInput);
+            MoResponse<object> response = nftBusiness.ChangeImageName(this.userToken.UserCode, imageNameChangeInput);
 
             return Json(response);
         }

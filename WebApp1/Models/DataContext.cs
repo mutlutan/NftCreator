@@ -243,15 +243,21 @@ namespace WebApp1.Models
                 entity.HasIndex(e => e.Ad, "UX_TemKullanici_Ad")
                     .IsUnique();
 
+                entity.HasIndex(e => e.Kod, "UX_TemKullanici_Kod")
+                    .IsUnique()
+                    .HasFilter("([Kod] IS NOT NULL AND [Kod]<>'')");
+
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
                 entity.Property(e => e.Ad).HasMaxLength(50);
 
                 entity.Property(e => e.AdSoyad).HasMaxLength(50);
 
-                entity.Property(e => e.DogumTarihi).HasColumnType("datetime");
+                entity.Property(e => e.DogumTarihi).HasColumnType("date");
 
                 entity.Property(e => e.InsertDateTime).HasColumnType("datetime");
+
+                entity.Property(e => e.Kod).HasMaxLength(20);
 
                 entity.Property(e => e.Sifre).HasMaxLength(100);
 

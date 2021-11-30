@@ -25,8 +25,14 @@ namespace WebApp1.Controllers
 
             try
             {
+                string userDir = "\\" + this.userToken.UserCode;
+                if (this.userToken.YetkiGrup == EnmYetkiGrup.Admin)
+                {
+                    userDir = "";
+                }
+
                 //thumbs dir
-                string thumbsDirectoryPath = MyApp.EnvWebRootPath + "\\" + MyApp.AppThumbsDirectory;
+                string thumbsDirectoryPath = MyApp.EnvWebRootPath + "\\" + MyApp.AppThumbsDirectory + userDir;
                 if (!System.IO.Directory.Exists(thumbsDirectoryPath))
                 {
                     var newDir = System.IO.Directory.CreateDirectory(thumbsDirectoryPath);
@@ -34,7 +40,7 @@ namespace WebApp1.Controllers
                 }
 
                 //files dir
-                string rootDirectoryPath = MyApp.EnvWebRootPath + "\\" + MyApp.AppFilesDirectory;
+                string rootDirectoryPath = MyApp.EnvWebRootPath + "\\" + MyApp.AppFilesDirectory + userDir;
                 if (!System.IO.Directory.Exists(rootDirectoryPath))
                 {
                     System.IO.Directory.CreateDirectory(rootDirectoryPath);
@@ -102,7 +108,7 @@ namespace WebApp1.Controllers
                         string thumbFileName = file.FullName.Replace(MyApp.EnvWebRootPath + "\\" + MyApp.AppFilesDirectory, MyApp.EnvWebRootPath + "\\" + MyApp.AppThumbsDirectory);
                         string thumbUrl = thumbFileName.Replace(MyApp.EnvWebRootPath, "");
 
-                        string extension = file.Extension.MyToLower().Replace(".","");// ".xxx" => "xxx"
+                        string extension = file.Extension.MyToLower().Replace(".", "");// ".xxx" => "xxx"
                         string[] imgExtensions = new string[] { "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "apng", "webp", "gif", "svg" };
                         string[] imgExtensionsForVersion = new string[] { "jpg", "jpeg", "png", "gif" };
                         string[] imgExtensionsForthumb = new string[] { "jpg", "jpeg", "jfif", "pjpeg", "pjp", "png", "apng", "webp", "gif" }; //thumbu oluşacak olan dosyalar
@@ -292,8 +298,8 @@ namespace WebApp1.Controllers
                 if (System.IO.Directory.Exists(_directoryName))
                 {
                     System.IO.DirectoryInfo directoryInfo = new(_directoryName);
-                    var dirs = directoryInfo.GetDirectories("*.*",System.IO.SearchOption.TopDirectoryOnly);
-                    
+                    var dirs = directoryInfo.GetDirectories("*.*", System.IO.SearchOption.TopDirectoryOnly);
+
                     if (!dirs.Any())
                     {
                         directoryInfo.EnumerateFiles("*.*", System.IO.SearchOption.TopDirectoryOnly)

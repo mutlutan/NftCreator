@@ -36,6 +36,13 @@
                          </div>
                      </div>
 
+                     <div name='divKod' class='mnFormElementDiv form-group row'>
+                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Kod'></label>
+                         <div class='col-sm-8'>
+                             <input name='Kod' type='text' class='k-textbox' data-bind='value:Kod' data-langkey-placeholder='xTem.TemKullanici.Kod'  disabled  autocomplete='off' />
+                         </div>
+                     </div>
+
                      <div name='divAd' class='mnFormElementDiv form-group row'>
                          <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemKullanici.Ad'></label>
                          <div class='col-sm-8'>
@@ -138,6 +145,7 @@
                      fields: {
                          Id: { type: 'number', defaultValue: null },
                          Durum: { type: 'boolean' },
+                         Kod: { type: 'string', editable:false },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
@@ -200,6 +208,7 @@
                              success: function (result) {
                                  e.items[0].Id = result.Id;
                                  e.items[0].Durum = result.Durum;
+                                 e.items[0].Kod = result.Kod;
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
@@ -399,6 +408,7 @@
         //form element görünümleri
         var fieldList = [];
         fieldList.push({ 'Name': 'Durum', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
+        fieldList.push({ 'Name': 'Kod', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Ad', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Sifre', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'Rols', 'Visible': '11,21'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });

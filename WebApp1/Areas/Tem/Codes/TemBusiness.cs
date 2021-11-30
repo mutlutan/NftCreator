@@ -72,6 +72,7 @@ namespace WebApp1.Areas.Tem.Codes
                 {
                     s.Id,
                     s.Durum,
+                    s.Kod,
                     s.Ad,
                     s.Resim,
                     s.Rols
@@ -85,6 +86,7 @@ namespace WebApp1.Areas.Tem.Codes
                     {
                         response.Data.Culture = input.Culture;
                         response.Data.UserId = userModel.Id;
+                        response.Data.UserCode = userModel.Kod;
                         response.Data.UserName = userModel.Ad;
                         response.Data.NameSurname = userModel.Ad;
                         response.Data.LisansGun = this.GetKullaniciLisansGun(userModel.Id);

@@ -82,6 +82,7 @@
                      fields: {
                          Id: { type: 'number', defaultValue: null  },
                          Durum: { type: 'boolean' },
+                         Kod: { type: 'string', editable:false },
                          Ad: { type: 'string' },
                          Sifre: { type: 'string' },
                          Rols: { type: 'string' },
@@ -129,6 +130,7 @@
                              success: function (result) {
                                  e.items[0].Id = result.Id;
                                  e.items[0].Durum = result.Durum;
+                                 e.items[0].Kod = result.Kod;
                                  e.items[0].Ad = result.Ad;
                                  e.items[0].Sifre = result.Sifre;
                                  e.items[0].Rols = result.Rols;
@@ -201,6 +203,14 @@
                  field: 'Durum',
                  template: '#:CcDurum#',
                  width: '95px'
+             },
+
+             {
+                 hidden: ![11,21,31,41].includes(mnUser.Info.nYetkiGrup),
+                 title: mnLang.TranslateWithWord('xTem.TemKullanici.Kod'),
+                 field: 'Kod',
+                 attributes: { 'class': 'text-nowrap' },
+                 width: '130px'
              },
 
              {

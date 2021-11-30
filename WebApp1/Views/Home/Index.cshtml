@@ -27,6 +27,12 @@
                             <a href="#/Files" class="nav-link text-dark">Files</a>
                         </li>
                     </ul>
+
+                    <div class="my-2 my-lg-0">
+                        <a id="btnCikis" class="btn btn-link my-2 my-sm-0" title="sign out">
+                            <i class="fa fa-power-off"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -47,6 +53,7 @@
 
     window.addEventListener('load', (event) => {
 
+        viewHome.prepare();
         //Router
         mnRouter.init();
     });
@@ -56,6 +63,11 @@
         self.selector = "#viewHome";
 
         self.prepare = function () {
+
+            $(self.selector).find("#btnCikis").click(function (e) {
+                mnUser.logout(false);
+            });
+
             // Language
             mnLang.TranslateWithSelector(self.selector);
         };

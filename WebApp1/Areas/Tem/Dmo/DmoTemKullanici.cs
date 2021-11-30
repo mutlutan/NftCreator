@@ -21,6 +21,7 @@ namespace WebApp1.Areas.Tem.Dmo
              {
                  Id = s.Id,
                  Durum = s.Durum,
+                 Kod = s.Kod,
                  Ad = s.Ad,
                  Sifre = string.Empty,
                  Rols = s.Rols,
@@ -41,6 +42,7 @@ namespace WebApp1.Areas.Tem.Dmo
          // Burada field default değerleri veriliyor...
          row.Id = 0;
          row.Durum = true;
+         row.Kod = "*";
          row.InsertUserId = this.dataContext.UserId;
          row.UpdateUserId = 0;
          row.InsertDateTime = DateTime.Now;
@@ -74,6 +76,26 @@ namespace WebApp1.Areas.Tem.Dmo
          }
          
          row.Durum = _model.Durum;
+
+         if (_model.Kod.MyToTrim() == "*" )
+         {
+            string yilAy = DateTime.Now.ToString("yy") + DateTime.Now.ToString("MM").MyMoonToStr();
+            int inc = 0;
+
+            var lastDataRow = this.dataContext.TemKullanici.AsNoTracking().Where(c => c.Kod.StartsWith(yilAy)).OrderBy(o => o.Kod).LastOrDefault();
+            if (lastDataRow != null)
+            {
+                inc = lastDataRow.Kod.Replace(yilAy, "").MyToInt();
+            }
+
+            inc++;
+            row.Kod = yilAy + inc.MyToStr().PadLeft(3, '0');
+         }
+         else
+         {
+             row.Kod = _model.Kod;
+         }
+
          row.Ad = _model.Ad;
 
          if (!string.IsNullOrEmpty(_model.Sifre))

@@ -19,6 +19,7 @@ namespace WebApp1.Models
 
         public int Id { get; set; }
         public bool Durum { get; set; }
+        public string Kod { get; set; }
         public string Ad { get; set; }
         public string Sifre { get; set; }
         public string Rols { get; set; }
