@@ -1,26 +1,35 @@
 
-@{
-    Layout = "_Layout";
-}
+@{ Layout = "_Layout"; }
+
+<style>
+    #viewManage #topMenu .topMenuItem {
+        /*    font-weight:lighter;*/
+        font-size: 20px;
+        vertical-align: middle;
+        display: inline-flex;
+        user-select: none;
+        padding-top: 6px;
+    }
+</style>
 
 @*Burada popupView lar olacak*@
 <div id="mnPopupViewContainer" style="clear:both; position:absolute;">
 </div>
 
 <div id="viewManage" class="mn-default-bg-color mn-default-text-color" style="height:100%;">
-    <div class="mb-1" style="box-shadow: 0px 0px 6px #2a266c;">
+    <div class="mb-1" style="box-shadow: 0px 0px 5px black;">
         <table style="width:100%;" class="">
-            <tr id="trHeader" style="background-color: #cbcbce;">
+            <tr id="trHeader" style="background-color: gainsboro;">
                 <td style="width:255px; padding-left:15px;">
                     <div class="row no-gutters">
                         <div class="col">
                             <a href="/Manage">
-                                <img src="@ViewBag.LogoImageUrl" alt="" style="height:35px; padding:3px;" class="mr-auto">
+                                <img src="@ViewBag.LogoImageUrl" alt="" style="height: 35px; padding: 3px;" class="mr-auto">
                             </a>
                         </div>
 
                         <div class="col">
-                            <nav class="navbar navbar-expand-md navbar-light">
+                            <nav class="navbar navbar-expand-md navbar-dark">
                                 <button id="btnLeftMenuGosterGizle" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#sideBar" aria-controls="sideBar" aria-expanded="false" aria-label="Toggle navigation">
                                     <span class="navbar-toggler-icon"></span>
                                 </button>
@@ -30,35 +39,30 @@
                 </td>
                 <td class="pr-1">
 
-                    <div class="row no-gutters">
-
-                        <div class="col d-none d-md-block">
-                            <a href="#/" class="font-weight-light">
-                                <span class="" style="font-size:20px; vertical-align: middle; display: inline-flex; user-select: none; padding-top:6px;">
-                                    <span style="color:darkblue;">@WebApp1.Codes.MyApp.AppName1</span>
-                                    <span style="color:deepskyblue;">@WebApp1.Codes.MyApp.AppName2</span>
-                                </span>
+                    <div class="row no-gutters ">
+                        <div id="topMenu" class="col d-none d-md-block pl-2">
+                            <a href="#/" class="topMenuItem">
+                                <span data-langkey-text="xTem.viewManage.Anasayfa"></span>
                             </a>
                         </div>
 
                         <div class="col pr-3">
                             <div class="btn-group pull-right pr-3">
-
                                 @*<button id="btnBildirim" type="button" class="btn user-select-none mr-2 mn-opacity-050 mn-opacity-hover-1">
-                                    <i class="fa fa-bell-o" style=""></i>
-                                </button>*@
+                                        <i class="fa fa-bell-o" style=""></i>
+                                    </button>*@
 
-                                <button type="button" class="btn dropdown-toggle text-white" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <button type="button" class="btn dropdown-toggle " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span id="spanUserName" class="pr-1 font-weight-light"></span>
                                 </button>
 
                                 <div class="dropdown-menu dropdown-menu-right shadow mn-default-bg-color mn-default-text-color">
-
                                     @*<div class="text-center pt-2 pb-3">
-                <img name="imgKullaniciResim" style="max-width:100px; max-height:123px;">
-            </div>
+                                            <img name="imgKullaniciResim" style="max-width:100px; max-height:123px;">
+                                        </div>
 
-            <div class="dropdown-divider"></div>*@
+                                        <div class="dropdown-divider"></div>
+                                    *@
 
                                     <a id="btnSifreDegistir" class="dropdown-item mn-default-bg-color mn-default-text-color font-weight-light" href="javascript:void(0)">
                                         <i class="fa fa-key"></i> <span data-langkey-text="xLng.SifreDegistir"></span>
@@ -77,7 +81,6 @@
 
                             </div>
                         </div>
-
                     </div>
 
 
@@ -151,7 +154,7 @@
         // screensaver gibi belli bir zamanda logine düşer
         mnUser.idleLogout(1000 * 60 * 30);
 
-        //mesaj 
+        //mesaj
         let compBildirim1 = compBildirim(document.querySelector('#btnBildirim'));
         compBildirim1.prepare();
 
@@ -370,7 +373,7 @@
                 borderwWidth: '0px',
                 boxShadow: 'none',
                 onShow: function (e) {
-                    var qprms = { 'Id': parseInt(projeId), 'Ad': projeAd, 'DetayTur': detayTur};
+                    var qprms = { 'Id': parseInt(projeId), 'Ad': projeAd, 'DetayTur': detayTur };
                     e.beforeShow({ 'ownerViewName': ownerViewName, 'qprms': qprms });
                     $(e.selector).find("#divProjeHavuzuLink").hide();
                     $(e.selector).find("#divProjeTamamla").hide();

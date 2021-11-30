@@ -1,19 +1,22 @@
-﻿@{
-    Layout = "_Layout";
-}
+﻿@{ Layout = "_Layout"; }
 
 <div id="viewUyeKayitOnay">
+    <div class="py-5"></div>
+
     <div class="container">
+        <div>
+            <img src="~/img/logo/logoYatay.png" style="max-width:250px;" />
+        </div>
+
+        <div class="py-3"></div>
+
         <p class="h3">@ViewBag.Message</p>
+
+        <br />
+        <a href="/Account" class="btn btn-link">
+            <span data-langkey-text="xLng.GirisSayfasiIcinTiklayiniz"></span>
+        </a>
     </div>
-    <br />
-    <a href="/tr/iletisim.html" class="btn btn-link">
-        <span data-langkey-text="xLng.IletisimIcinTiklayiniz"></span>
-    </a>
-    <br />
-    <a href="/tr/index.html" class="btn btn-link">
-        <span data-langkey-text="xLng.GirisSayfasiIcinTiklayiniz"></span>
-    </a>
 </div>
 
 

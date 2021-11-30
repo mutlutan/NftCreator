@@ -61,20 +61,18 @@ namespace WebApp1.Controllers
             {
                 return RedirectToAction("Index", "Account");
             }
-            else if (this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
-            {
-                return RedirectToAction("Index", "Home");
-            }
-            else
+            else if (this.userToken.YetkiGrup != EnmYetkiGrup.Musteri)
             {
                 return RedirectToAction("Index", "Manage");
             }
+
+            return View();
         }
 
         [HttpPost]
         public IActionResult IletisimGonder(string _kurumAd, string _adSoyad, string _email, string _telefon, string _mesaj, string _sCaptchaCode, string _sCaptchaToken)
         {
-            var response = new MoResponse();
+            var response = new MoResponse<object>();
 
             var captchaValid = MyApp.ValidateCaptchaToken(_sCaptchaCode, _sCaptchaToken);
 
@@ -83,13 +81,13 @@ namespace WebApp1.Controllers
                 try
                 {
                     var sonuc = new MyMailHelper(this.dataContext).SendMail_Iletisim_Bildirim(_kurumAd, _adSoyad, _email, _telefon, _mesaj);
-                    //rMessage = MyApp.TranslateTo("xLng.MesajinizUlastiEnKisaZamandaIletisimeGecilecektir");
+                    response.Message.Add(MyApp.TranslateTo("xLng.MesajinizUlastiEnKisaZamandaIletisimeGecilecektir", this.dataContext.Language));
                 }
-                catch
+                catch (Exception ex)
                 {
-                    //rMessage = MyApp.TranslateTo("xLng.IsleminizYapilamadiDahaSonraTekrarDeneyebilirsiniz");
+                    response.Message.Add(MyApp.TranslateTo("xLng.IsleminizYapilamadiDahaSonraTekrarDeneyebilirsiniz", this.dataContext.Language));
+                    MyApp.WriteLogForMethodExceptionMessage(System.Reflection.MethodBase.GetCurrentMethod(), ex);
                 }
-                response.Message.Add(MyApp.TranslateTo("xLng.MesajinizUlastiEnKisaZamandaIletisimeGecilecektir", this.dataContext.Language));
             }
             else
             {

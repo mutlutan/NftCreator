@@ -61,8 +61,12 @@ namespace WebApp1.Controllers
 
             if (MyApp.Env.EnvironmentName == "Development")
             {
-                ViewBag.UserName = "admin"; 
-                ViewBag.Password = "1";
+                //ViewBag.UserName = "admin"; 
+                //ViewBag.Password = "1";
+
+                ViewBag.UserName = "mutlutan@outlook.com"; 
+                ViewBag.Password = "123";
+
                 ViewBag.SecurityCode = "1111";
             }
 
@@ -145,7 +149,7 @@ namespace WebApp1.Controllers
             var robTem = new TemBusiness(this.dataContext);
             var sonuc = robTem.KullaniciKaydet(prms);
 
-            ViewBag.Message = sonuc.Message;
+            ViewBag.Message = sonuc.Message[0];
 
             return View();
         }

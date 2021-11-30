@@ -70,10 +70,10 @@
 	<PackageReference Include="Telerik.UI.for.AspNet.Core" Version="2021.3.914" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Areas\Nft\Controllers\" />
     <Folder Include="Areas\Nft\Dmo\" />
     <Folder Include="Areas\Nft\Dto\" />
     <Folder Include="Areas\Nft\Models\" />
+    <Folder Include="wwwroot\Areas\Nft\Comps\" />
     <Folder Include="wwwroot\Areas\Nft\Views\" />
     <Folder Include="wwwroot\Areas\Tem\Comps\" />
     <Folder Include="wwwroot\Data\Files\" />

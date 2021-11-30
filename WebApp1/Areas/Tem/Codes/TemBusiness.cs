@@ -252,9 +252,9 @@ namespace WebApp1.Areas.Tem.Codes
             return rV;
         }
 
-        public MoResponse KullaniciKaydet(string prms)
+        public MoResponse<object> KullaniciKaydet(string prms)
         {
-            var response = new MoResponse();
+            var response = new MoResponse<object>();
             try
             {
                 //uyelik bilgileri şifrelenip link haline getirilmiş ve buraya linkden düşmüştür,şifre açılıp kullanınıcı kaydı yapılacak
@@ -262,22 +262,29 @@ namespace WebApp1.Areas.Tem.Codes
                 var jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject<dynamic>(jsonText);
                 string dogumYili = jsonObj.DogumYili.ToString();
 
-                // kullanıcı kaydı
-                var dtoKullanici = rep.Areas_Tem_RepTemKullanici.GetByNew();
-                dtoKullanici.Durum = true;
-                dtoKullanici.AdSoyad = jsonObj.AdSoyad.ToString();
-                dtoKullanici.Ad = jsonObj.Mail.ToString();
-                dtoKullanici.Sifre = jsonObj.Sifre.ToString();
+                if (!this.KullaniciMailAdresVarmi(jsonObj.Mail.ToString()))
+                {
+                    // kullanıcı kaydı
+                    var dtoKullanici = rep.Areas_Tem_RepTemKullanici.GetByNew();
+                    dtoKullanici.Durum = true;
+                    dtoKullanici.AdSoyad = jsonObj.AdSoyad.ToString();
+                    dtoKullanici.Ad = jsonObj.Mail.ToString();
+                    dtoKullanici.Sifre = jsonObj.Sifre.ToString();
 
-                int kullaniciId = rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dtoKullanici);
-                var sonuc = this.rep.SaveChanges();
+                    int kullaniciId = rep.Areas_Tem_RepTemKullanici.CreateOrUpdate(dtoKullanici);
+                    var sonuc = this.rep.SaveChanges();
 
-                response.Message.Add($"{MyApp.TranslateTo("xLng.Sayin", this.dataContext.Language)} {jsonObj.AdSoyad.ToString()} {MyApp.TranslateTo("xLng.KayitIslemiBasariylaYapilmistir", this.dataContext.Language)}");
+                    response.Message.Add($"{MyApp.TranslateTo("xLng.Sayin", this.dataContext.Language)} {jsonObj.AdSoyad.ToString()}, {MyApp.TranslateTo("xLng.KayitIslemiBasariylaYapilmistir", this.dataContext.Language)}");
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message.Add(MyApp.TranslateTo("xLng.GridiginizMailAdresiDahaOnceSistemeKaydedilmis", this.dataContext.Language));
+                }
 
             }
             catch (Exception ex)
             {
-                response.Error = true;
                 MyApp.WriteLogForMethodExceptionMessage(MethodBase.GetCurrentMethod(), ex);
             }
 

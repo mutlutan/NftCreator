@@ -47,150 +47,147 @@
 
 <div id="viewAccount" class="bg-white">
 
-    <div class="py-1"></div>
+    <div class="py-md-5"></div>
 
     <div class="row no-gutters">
-        <div class="col-md-1"></div>
+        <div class="col-md-2"></div>
 
-        <div class="col-md-4">
-            <div class="py-3">
-                <div class="py-4"></div>
+        <div class="col-md-4 border">
+            <div class="py-3 px-2">
                 <img class="w-100" src="~/img/giris/login.png" />
             </div>
         </div>
 
-        <div class="col-md-4">
-            <div id="divLogin" class="py-3 ">
-                <form onsubmit="return false;">
-                    <div class="py-4"></div>
+        <div class="col-md-4 border">
+            <div id="divLogin" class="py-3 px-2">
 
-                    <div class="text-center">
-                        <div class="@ViewBag.SloganClass">
-                            <p class="h2 font-weight-bold text-warning">
-                                <span data-langkey-Text="xLng.AppName"></span>
-                            </p>
-                            <p class="h6 font-weight-light font-italic">
-                                <span data-langkey-Text="xLng.GirisSlogan"></span>
-                            </p>
-                        </div>
-                        <div class="@ViewBag.LogoClass">
-                            <img class="" src="@ViewBag.LogoImageUrl" onerror="this.onerror = null; this.style.visibility = 'hidden';" style="max-width:250px;" />
-                        </div>
+                <div class="text-center">
+                    <div class="@ViewBag.SloganClass">
+                        <p class="h2 font-weight-bold text-warning">
+                            <span data-langkey-Text="xLng.AppName"></span>
+                        </p>
+                        <p class="h6 font-weight-light font-italic">
+                            <span data-langkey-Text="xLng.GirisSlogan"></span>
+                        </p>
                     </div>
-
-                    <div class="text-center">
-                        <div id="languageStatus">
-                            <span id="langFlag"></span>
-                        </div>
+                    <div class="@ViewBag.LogoClass">
+                        <img class="" src="@ViewBag.LogoImageUrl" onerror="this.onerror = null; this.style.visibility = 'hidden';" style="max-width:250px;" />
                     </div>
+                </div>
 
-                    <div class="py-3"></div>
+                <div class="text-center">
+                    <div id="languageStatus">
+                        <span id="langFlag"></span>
+                    </div>
+                </div>
 
-                    <p class="h2 font-weight-bold text-center">
-                        <span data-langkey-Text="xLng.GirisYap"></span>
-                    </p>
+                <div class="py-3"></div>
 
-                    <div class="px-5">
-                        <div class="form-group row">
-                            <label for="sUserName" class="col-md-4 col-form-label pr-0 font-weight-light  d-none"><span data-langkey-Text="xLng.KullaniciAd"></span></label>
-                            <div class="col-md-12">
-                                <input name='sUserName' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.KullaniciAd" required value="@ViewBag.UserName" autocomplete="username" />
-                            </div>
+                <p class="h2 font-weight-bold text-center">
+                    <span data-langkey-Text="xLng.GirisYap"></span>
+                </p>
+
+                <div class="px-5">
+                    <div class="form-group row">
+                        <label for="sUserName" class="col-md-4 col-form-label pr-0 font-weight-light  d-none"><span data-langkey-Text="xLng.KullaniciAd"></span></label>
+                        <div class="col-md-12">
+                            <input name='sUserName' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.KullaniciAd" required value="@ViewBag.UserName" autocomplete="username" />
                         </div>
-
-                        <div class="py-1"></div>
-
-                        <div class="form-group row">
-                            <label for="sPassword" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.Sifre"></span></label>
-                            <div class="col-md-12">
-                                <div class="input-group bg-white">
-                                    <input name='sPassword' type="password" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.Sifre" required value="@ViewBag.Password" autocomplete="current-password" />
-                                    <div class="input-group-addon" style="padding:2px;">
-                                        <button type="button" id="btnPasswordShowhide" class="btn btn-link btn-sm mn-hover-color-orange" tabindex="-1"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="py-1"></div>
-
-                        <div id="divSecurityCode" class="form-group row">
-                            <label for="sSecurityCode" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.GuvenlikKodu"></span></label>
-                            <div class="col-md-12">
-                                <div class="input-group" style="">
-                                    <input id="captchaImage" type="image" class="form-control" tabindex="-1" style="cursor:default; padding:1px; border:none; box-shadow:none; height:45px;" src="@ViewBag.CaptchaImage">
-                                    <span class="input-group-btn" style="padding:2px;">
-                                        <button id="btnSecurityCode" class="btn btn-link btn-sm mn-hover-color-orange" type="button" tabindex="-1" style="cursor:pointer; padding: 5px 9px;"><i class="fa fa-refresh"></i></button>
-                                    </span>
-                                </div>
-                                <input name='captchaToken' type="hidden" value="@ViewBag.CaptchaToken" />
-                                <input name='sSecurityCode' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.GuvenlikKodu" style="position: relative; z-index: 2;" required value="@ViewBag.SecurityCode" autocomplete="off" />
-                            </div>
-                        </div>
-
-                        <div class="py-1"></div>
-
-                        <div class="form-group row">
-                            <div class="col-md-12 text-center" style="max-width:410px;">
-                                <p id="pMessage" class="h6 text-danger font-weight-light" style="display:none;"></p>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-md-4 col-form-label pr-0 d-none"></label>
-                            <div class="col-md-12">
-                                <button id="btnGiris" type="button" class="btn font-weight-light rounded">
-                                    <i class="fa fa-user"></i>
-                                    <span data-langkey-Text="xLng.GirisYap"></span>
-                                    <span id="loader"></span>
-                                </button>
-
-                                <a href="/Account/SignUp" class="font-weight-light float-right">
-                                    <span data-langkey-Text="xLng.UyeOl"></span>
-                                </a>
-                            </div>
-
-                            <div class="col-md-12 d-none">
-                                <div class="py-1"></div>
-                                <a href="/Ogrenci" class="btn btn-link font-weight-light pl-0">
-                                    <span data-langkey-Text="xLng.MisafirGirisButonYazisi"></span>
-                                </a>
-                            </div>
-
-                        </div>
-
                     </div>
 
                     <div class="py-1"></div>
 
-                    <div class="d-none">
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <a href="/SifremiUnuttum" class="font-weight-light float-right">
-                                    <span data-langkey-Text="xLng.SifremiUnuttum"></span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="px-5">
-                        <div class="form-group row">
-                            <div class="col-md-12">
-                                <div class="text-center">
-                                    <span class="font-weight-light small text-secondary" data-langkey-Text="xLng.TarayiciUyumMesaji"></span>
-                                </div>
-
-                                <div class="text-justify d-none">
-                                    <span class="font-weight-light text-danger" data-langkey-Text="xLng.GirisMesaji"></span>
+                    <div class="form-group row">
+                        <label for="sPassword" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.Sifre"></span></label>
+                        <div class="col-md-12">
+                            <div class="input-group bg-white">
+                                <input name='sPassword' type="password" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.Sifre" required value="@ViewBag.Password" autocomplete="current-password" />
+                                <div class="input-group-addon" style="padding:2px;">
+                                    <button type="button" id="btnPasswordShowhide" class="btn btn-link btn-sm mn-hover-color-orange" tabindex="-1"><i class="fa fa-eye-slash" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </form>
+
+                    <div class="py-1"></div>
+
+                    <div id="divSecurityCode" class="form-group row">
+                        <label for="sSecurityCode" class="col-md-4 col-form-label pr-0 font-weight-light d-none"><span data-langkey-Text="xLng.GuvenlikKodu"></span></label>
+                        <div class="col-md-12">
+                            <div class="input-group" style="">
+                                <input id="captchaImage" type="image" class="form-control" tabindex="-1" style="cursor:default; padding:1px; border:none; box-shadow:none; height:45px;" src="@ViewBag.CaptchaImage">
+                                <span class="input-group-btn" style="padding:2px;">
+                                    <button id="btnSecurityCode" class="btn btn-link btn-sm mn-hover-color-orange" type="button" tabindex="-1" style="cursor:pointer; padding: 5px 9px;"><i class="fa fa-refresh"></i></button>
+                                </span>
+                            </div>
+                            <input name='captchaToken' type="hidden" value="@ViewBag.CaptchaToken" />
+                            <input name='sSecurityCode' type="text" class='form-control rounded-0 font-weight-light' data-langkey-placeholder="xLng.GuvenlikKodu" style="position: relative; z-index: 2;" required value="@ViewBag.SecurityCode" autocomplete="off" />
+                        </div>
+                    </div>
+
+                    <div class="py-1"></div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12 text-center" style="max-width:410px;">
+                            <p id="pMessage" class="h6 text-danger font-weight-light" style="display:none;"></p>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-md-4 col-form-label pr-0 d-none"></label>
+                        <div class="col-md-12">
+                            <button id="btnGiris" type="button" class="btn font-weight-light rounded">
+                                <i class="fa fa-user"></i>
+                                <span data-langkey-Text="xLng.GirisYap"></span>
+                                <span id="loader"></span>
+                            </button>
+
+                            <a href="/Account/SignUp" class="font-weight-light float-right">
+                                <span data-langkey-Text="xLng.UyeOl"></span>
+                            </a>
+                        </div>
+
+                        <div class="col-md-12 d-none">
+                            <div class="py-1"></div>
+                            <a href="/Ogrenci" class="btn btn-link font-weight-light pl-0">
+                                <span data-langkey-Text="xLng.MisafirGirisButonYazisi"></span>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="py-1"></div>
+
+                <div class="d-none">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <a href="/SifremiUnuttum" class="font-weight-light float-right">
+                                <span data-langkey-Text="xLng.SifremiUnuttum"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="px-5">
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <div class="text-center">
+                                <span class="font-weight-light small text-secondary" data-langkey-Text="xLng.TarayiciUyumMesaji"></span>
+                            </div>
+
+                            <div class="text-justify d-none">
+                                <span class="font-weight-light text-danger" data-langkey-Text="xLng.GirisMesaji"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
-        
-        <div class="col-md-3"></div>
+
+        <div class="col-md-2"></div>
     </div>
 </div>
 
@@ -270,7 +267,7 @@
                 success: function (result, textStatus, jqXHR) {
                     if (result.Success == true) {
                         document.cookie = "Authorization=" + result.Data.UserToken + ";path=/";
-                        window.location = "/Home/Index";
+                        window.location = "/";
                         self.fAnimateOut();
                     } else {
                         $(self.selector).find('#pMessage').text(result.Message).show("slow");

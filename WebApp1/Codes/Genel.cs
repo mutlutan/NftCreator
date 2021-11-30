@@ -85,7 +85,7 @@ namespace WebApp1.Codes
         public Boolean UserIsGuest { get; set; } = false;
         public string UserRols { get; set; } = "";
 
-        public EnmYetkiGrup YetkiGrup { get; set; } 
+        public EnmYetkiGrup YetkiGrup { get; set; }
     }
     #endregion
 
@@ -117,18 +117,12 @@ namespace WebApp1.Codes
     #endregion
 
     #region Temel modleller
+
     public class MoResponse<T> where T : class, new()
     {
         public Boolean Success { get; set; } = false;
         public List<string> Message { get; set; } = new List<string>();
         public T Data { get; set; }
-    }
-
-    public class MoResponse
-    {
-        public Boolean Error { get; set; } = false;
-        public List<string> Message { get; set; } = new List<string>();
-        public Object Data { get; set; }
     }
 
     public class MoCreateCaptchaResponse

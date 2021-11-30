@@ -41,7 +41,7 @@ namespace WebApp1.Areas.Tem.Controllers
                 Title = MyApp.TranslateTo("xLng.viewDashBoard.ProjeSayisi", this.dataContext.Language),
                 RefreshTables = "NftProje",
                 YetkiGrups = "11,21",
-                Url = "#/RobOgrenci"
+                Url = "#/NftProje"
             });
 
             dashList = dashList.Where(c => c.YetkiGrups.Contains(((int)this.userToken.YetkiGrup).MyToStr())).ToList();
