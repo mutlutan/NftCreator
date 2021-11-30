@@ -625,14 +625,38 @@ namespace WebApp1.Codes
 
         public static string AppDataDirectory { get; set; } = "Data";
 
-        public static string AppDerslerDirectory { get; set; } = AppDataDirectory + "\\" + "Dersler";
+        public static string AppFilesDirectory { get; set; } = MyApp.AppDataDirectory + "\\" + "Files";
+        public static string AppThumbsDirectory { get; set; } = MyApp.AppDataDirectory + "\\" + "Thumbs";
 
-        public static string AppFilesDirectory { get; set; } = AppDataDirectory + "\\" + "Files";
-        public static string AppThumbsDirectory { get; set; } = AppDataDirectory + "\\" + "Thumbs";
-        public static string AppGaleriDirectory { get; set; } = AppFilesDirectory + "\\" + "Galeri";
-        public static string AppProjeDirectory { get; set; } = AppFilesDirectory + "\\" + "Proje";
-        public static string AppTempDirectory { get; set; } = AppFilesDirectory + "\\" + "Temp";
 
+        #endregion
+
+        #region nft dir
+
+        public static string RootFilesDirectory
+        {
+            get { return MyApp.Env.WebRootPath + "\\" + MyApp.AppFilesDirectory; }
+        }
+
+        public static string RootThumbsDirectory
+        {
+            get { return MyApp.Env.WebRootPath + "\\" + MyApp.AppThumbsDirectory; }
+        }
+
+        public static string RootProjectsDirectory
+        {
+            get { return MyApp.RootFilesDirectory + "\\projects"; }
+        }
+
+        public static string RootImportDirectory(string projectName)
+        {
+            return MyApp.RootProjectsDirectory + "\\" + projectName + "\\import";
+        }
+
+        public static string RootExportDirectory(string projectName)
+        {
+            return MyApp.RootProjectsDirectory + "\\" + projectName + "\\export";
+        }
         #endregion
 
         #region Sabitler

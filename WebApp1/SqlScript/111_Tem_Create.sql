@@ -131,8 +131,7 @@
 	CREATE UNIQUE INDEX UX_TemRol_Ad ON TemRol (Ad);
 	INSERT INTO TemRol (Id, Sira, Ad) VALUES (0,    -9, N'');
 	INSERT INTO TemRol (Id, Sira, Ad) VALUES (1001, -8, N'Admin');
-	INSERT INTO TemRol (Id, Sira, Ad) VALUES (Next Value For dbo.sqTemRol, 1, N'Personel');
-	INSERT INTO TemRol (Id, Sira, Ad) VALUES (Next Value For dbo.sqTemRol, 2, N'Öğretmen');
+	INSERT INTO TemRol (Id, Sira, Ad) VALUES (Next Value For dbo.sqTemRol, 1, N'Employee');
 
 	/*Para Birim Merkez bankasından güncellenir*/
 	CREATE SEQUENCE dbo.sqTemParaBirim AS INT START WITH 1 INCREMENT BY 1;
@@ -347,7 +346,8 @@
 	CREATE UNIQUE INDEX UX_TemKullanici_Ad ON TemKullanici (Ad);
 	INSERT INTO TemKullanici (Id, Durum, Rols, Ad, Sifre) VALUES (0, 0, N'', N'', N'');
 	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'admin', N'admin', N'07');
-	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'personel',N'personel', N'07');
+	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'Employee',N'employee', N'07');
+	INSERT INTO TemKullanici (Id, Durum, Rols, AdSoyad, Ad, Sifre) VALUES (Next Value For dbo.sqTemKullanici, 1, N'', N'Customer',N'customer', N'07');
 
 	/* Kullanici Şifre history*/
 	CREATE SEQUENCE dbo.sqTemKullaniciSifre AS INT START WITH 1 INCREMENT BY 1;
