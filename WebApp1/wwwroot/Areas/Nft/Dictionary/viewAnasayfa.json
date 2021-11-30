@@ -1,0 +1,16 @@
+[
+  {
+    "key": "xNft.viewAnasayfa.Title",
+    "value": {
+      "tr": "Anasayfa",
+      "en": "Home"
+    }
+  },
+  {
+    "key": "xNft.viewAnasayfa.ShortTitle",
+    "value": {
+      "tr": "Anasayfa",
+      "en": "Home"
+    }
+  }
+]

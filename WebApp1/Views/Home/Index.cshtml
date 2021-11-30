@@ -1,11 +1,13 @@
 ﻿
-@{
-    Layout = "_Layout";
-}
+@{ Layout = "_Layout"; }
+
+@*Burada popupView lar olacak*@
+<div id="mnPopupViewContainer" style="clear:both; position:absolute;" oncontextmenu="return false;">
+</div>
 
 <div id="viewHome" style="">
 
-    <header>
+    <header >
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
@@ -18,11 +20,11 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between pl-4">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a href="#/Home" class="nav-link text-dark">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Files" asp-action="Index">Files</a>
+                            <a href="#/Files" class="nav-link text-dark">Files</a>
                         </li>
                     </ul>
                 </div>
@@ -30,26 +32,28 @@
         </nav>
     </header>
 
-
+    <div id="contentAnasayfa" class="container">
+        @*Burada pageView lar olacak*@
+        <div id="mnPageViewContainer" style="overflow: auto;"></div>
+    </div>
 </div>
 
 <style>
-    #viewHome .mnPageViewContent {
-        padding: 0px;
-    }
+
 </style>
 
 
 <script>
 
     window.addEventListener('load', (event) => {
-        viewHome.prepare();
+
+        //Router
+        mnRouter.init();
     });
 
     window.viewHome = function () {
         var self = {};
         self.selector = "#viewHome";
-
 
         self.prepare = function () {
             // Language
@@ -59,6 +63,84 @@
         $(window).on("resize", function () {
 
         });
+
+        return self;
+    }();
+
+    window.mnRouter = function () {
+        var self = {};
+
+        self.fnShowView = function (_showType, _areaName, _viewName, _header, _params) {
+            if (_showType == "Popup") {
+                mnPopupView.create({
+                    areaName: _areaName,
+                    viewFileName: _viewName,
+                    viewName: _viewName,
+                    header: _header,
+                    onShow: function (e) {
+                        e.beforeShow(_params);
+                    }
+                });
+            } else {
+                mnPageView.create({
+                    areaName: _areaName,
+                    viewFileName: _viewName,
+                    viewName: _viewName,
+                    header: _header,
+                    onShow: function (e) {
+                        e.beforeShow(_params);
+                    }
+                });
+            }
+        };
+
+        self.fnCreateRouter = function () {
+            self.router = new kendo.Router({
+                root: "/#/",
+                change: function (e) {
+                    //console.log("router change event", e);
+                },
+                routeMissing: function (e) {
+                    //tanımlı olmayan adres çağrıldı
+                    e.preventDefault();
+                    //console.log("missing", e.url, e.params);
+                    setTimeout(function () {
+                        self.router.navigate("/Error?code=404");
+                    });
+                }
+            });
+
+            //Custom routlar
+            var routeList = [
+                { areaName: "_", routName: "/Error", showType: "Page", header: false, viewName: "viewError", yetkiId: "" },
+
+                { areaName: "Nft", routName: "/", showType: "Page", header: false, viewName: "viewAnasayfa", yetkiId: "" },
+                { areaName: "Nft", routName: "/Home", showType: "Page", header: false, viewName: "viewAnasayfa", yetkiId: "" },
+
+                { areaName: "_", routName: "/Files", showType: "Page", header: false, viewName: "viewGorseller", yetkiId: "" },
+            ];
+
+            //routing işlemleri
+            for (let i in routeList) {
+                self.router.route(routeList[i].routName, function (prms) {
+                    //console.log(prms);
+                    let _showType = routeList[i].showType;
+                    let _areaName = routeList[i].areaName;
+                    let _viewName = routeList[i].viewName;
+                    let _header = routeList[i].header;
+                    let _params = { 'qprms': prms };
+                    //let _yetkiId = routeList[i].yetkiId;
+
+                    self.fnShowView(_showType, _areaName, _viewName, _header, _params);
+                });
+            }
+
+            self.router.start();
+        };
+
+        self.init = function () {
+            self.fnCreateRouter();
+        };
 
         return self;
     }();

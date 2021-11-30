@@ -26,10 +26,11 @@ namespace WebApp1.Codes
             if (userToken.UserIsLogon)
             {
                 //AuthorityKeys boş ise yetki key kontrol edilmeyecek anlamındadır
+                Boolean keyGecerli = false;
                 if (AuthorityKeys.MyToTrim().Length > 0)
                 {
                     //Key kontrolü yapılıyor
-                    Boolean keyGecerli = false;
+                    
                     foreach (string key in AuthorityKeys.MyToTrim().Split(","))
                     {
                         if (key.MyToTrim().Length > 0 && temBusiness.UserIsAuthorized(userToken.UserId, key.MyToTrim()))
@@ -37,18 +38,17 @@ namespace WebApp1.Codes
                             keyGecerli = true;
                         }
                     }
-
-                    if (!keyGecerli)
-                    {
-                        actionContext.Result = new BadRequestObjectResult(MyApp.TranslateTo("xLng.IslemIcinYetkiGerekli", dataContext.Language));
-                    }
+                }
+                else
+                {
+                    keyGecerli = true;
                 }
 
                 //AuthorityGrups boş ise yetki grup kontrol edilmeyecek anlamındadır
+                Boolean grupGecerli = false;
                 if (AuthorityGrups.MyToTrim().Length > 0)
                 {
                     //Grup kontrolü yapılıyor
-                    Boolean grupGecerli = false;
                     foreach (string grup in AuthorityGrups.MyToTrim().Split(","))
                     {
                         if (grup.MyToTrim().Length > 0)
@@ -59,13 +59,16 @@ namespace WebApp1.Codes
                             }
                         }
                     }
-
-                    if (!grupGecerli)
-                    {
-                        actionContext.Result = new BadRequestObjectResult(MyApp.TranslateTo("xLng.IslemIcinYetkiGerekli", dataContext.Language));
-                    }
+                }
+                else
+                {
+                    grupGecerli = true;
                 }
 
+                if (!(grupGecerli || keyGecerli))
+                {
+                    actionContext.Result = new BadRequestObjectResult(MyApp.TranslateTo("xLng.IslemIcinYetkiGerekli", dataContext.Language));
+                }
 
             }
             else

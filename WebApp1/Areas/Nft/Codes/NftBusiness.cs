@@ -19,6 +19,7 @@ namespace WebApp1.Areas.Nft.Codes
         {
             this.dataContext = _dataContext;
             this.rep = new Models._Rep(this.dataContext);
+            
         }
 
 
@@ -322,17 +323,26 @@ namespace WebApp1.Areas.Nft.Codes
             MoResponse<List<MoProject>> response = new();
             try
             {
-                var data = new System.IO.DirectoryInfo(MyApp.RootProjectsDirectory)
-                     .GetDirectories()
-                     .OrderBy(o => o.Name)
-                     .Select(s => new MoProject
-                     {
-                         Name = s.Name,
-                         ImageUrl = (MyApp.RootImportDirectory(s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
-                     }).ToList();
+                if (System.IO.Directory.Exists(MyApp.RootProjectsDirectory))
+                {
+                    var data = new System.IO.DirectoryInfo(MyApp.RootProjectsDirectory)
+                         .GetDirectories()
+                         .OrderBy(o => o.Name)
+                         .Select(s => new MoProject
+                         {
+                             Name = s.Name,
+                             ImageUrl = (MyApp.RootImportDirectory(s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
+                         }).ToList();
 
-                response.Success = true;
-                response.Data = data;
+                    response.Success = true;
+                    response.Data = data;
+                }
+                else
+                {
+                    response.Success = true;
+                    response.Data = new List<MoProject>();
+                }
+
             }
             catch (Exception ex)
             {

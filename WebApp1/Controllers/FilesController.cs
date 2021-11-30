@@ -18,7 +18,7 @@ namespace WebApp1.Controllers
             : base(_serviceProvider) { }
 
         [HttpGet]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_R.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_R.")]
         public IActionResult ReadDirectoryList(string id)
         {
             DataSourceResult dsr = new();
@@ -67,7 +67,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpGet]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_R.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_R.")]
         public IActionResult ReadFilesInDirectory(string _DirectoryName)
         {
             DataSourceResult dsr = new();
@@ -172,7 +172,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
         public IActionResult AddDirectory(string _directoryName)
         {
             Boolean rError = false;
@@ -199,7 +199,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpGet]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
         public IActionResult DownloadDirectory(string directoryName)
         {
             string rMessage = "";
@@ -245,7 +245,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
         public IActionResult DeleteDirectory(string _directoryName)
         {
             Boolean rError = false;
@@ -282,7 +282,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
         public IActionResult ClearDirectory(string _directoryName)
         {
             Boolean rError = false;
@@ -322,7 +322,7 @@ namespace WebApp1.Controllers
 
 
         [HttpPost]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_C.")]
         [RequestSizeLimit(52428800 * 3)] //150mb
         public IActionResult UploadFile(string _directoryName, string _fileName, string _fileContent)
         {
@@ -364,7 +364,7 @@ namespace WebApp1.Controllers
         }
 
         [HttpPost]
-        [AuthenticateRequired(AuthorityGrups = "Admin,Personel", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
+        [AuthenticateRequired(AuthorityGrups = "Admin,Personel,Musteri", AuthorityKeys = "Tem.Tanim.Gorseller.D_D.")]
         public IActionResult RemoveFile(string _fileId)
         {
             Boolean rError = false;

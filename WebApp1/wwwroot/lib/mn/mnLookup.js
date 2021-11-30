@@ -148,24 +148,12 @@ window.mnLookup = function () {
 
                 //sunucudan alınması gerekebilir (log tabloları seçimi için)
                 dsTables: [
-                    { value: "TemKullanici", text: "Kullanıcı" },
-                    { value: "TemOturumLog", text: "Oturum" },
-                    { value: "TemMailAntet", text: "MailAntet" },
-                    { value: "TemMailSablon", text: "MailSablon" },
-                    { value: "TemParametre", text: "Parametre" },
-                    { value: "TemRol", text: "Rol" },
-                    { value: "TemParaBirim", text: "ParaBirim" },
-                    { value: "TemUlke", text: "Ulke" },
-                    { value: "TemSehir", text: "Sehir" },
-                    { value: "TemIlce", text: "Ilce" },
-                    { value: "TemDepartman", text: "Departman" },
-                    { value: "TemGorev", text: "Gorev" },
-                    { value: "TemEgitimDurum", text: "EgitimDurum" },
-                    { value: "TemAdres", text: "Adres" },
-                    { value: "TemKisi", text: "Kisi" },
-                    { value: "TemKisiDepartmanGorev", text: "KisiDepartmanGorev" },
-                    { value: "BacOgretmen", text: "Ogretmen" },
-                    { value: "BacOgrenci", text: "Öğrenci" },
+                    { value: "TemRol", text: "Role" },
+                    { value: "TemKullanici", text: "User" },
+                    { value: "TemOturumLog", text: "Session" },
+                    { value: "TemParametre", text: "Parameter" },
+                    { value: "TemMailAntet", text: "MailLetterhead" },
+                    { value: "TemMailSablon", text: "MailTemplate" },
                 ],
 
                 // Kan grupları

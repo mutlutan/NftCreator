@@ -1,0 +1,52 @@
+
+
+<div id='viewAnasayfa'>
+    <div class="row">
+        <div class="col">
+            <div class="">
+                <div id="compProjects"></div>
+            </div>
+
+            <div class="">
+                <div id="compProjectEditor"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    window.viewAnasayfa = function () {
+        var self = {};
+        self.opt = null;
+        self.area = 'Nft';
+        self.title = 'xNft.viewAnasayfa.Title';
+        self.selector = '#viewAnasayfa';
+
+        self.prepare = function () {
+            let projects1 = compProjects($(self.selector).find('#compProjects'));
+            projects1.prepare();
+
+            let projectEditor1 = compProjectEditor($(self.selector).find('#compProjectEditor'));
+            projects1.onChange = function (e) { projectEditor1.ShowProjectLayers(e.name, e.layers); };
+            projectEditor1.prepare();
+
+            // Language
+            mnLang.TranslateWithSelector(self.selector);
+        };
+
+        self.beforeShow = function (_opt) {
+            self.opt = $.extend({}, _opt);
+
+        };
+
+        self.close = function () {
+            if ($(self.selector).closest('.k-window-content').getKendoWindow()) {
+                $(self.selector).closest('.k-window-content').getKendoWindow().close(); // popup ise
+            } else {
+                $(self.selector).closest('.mnPageView').find('#btnGeri').click(); // page ise
+            }
+        };
+
+        return self;
+    }();
+</script>
