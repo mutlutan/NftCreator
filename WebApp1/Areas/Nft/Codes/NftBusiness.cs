@@ -387,7 +387,7 @@ namespace WebApp1.Areas.Nft.Codes
                 {
                     var projectLayerList = this.GetProjectLayerList(userCode,projectName);
 
-                    string jsonFileName = MyApp.UserImportDirectory(userCode,projectName) + "//project.json";
+                    string jsonFileName = MyApp.UserProjectDirectory(userCode,projectName) + "//project.json";
 
                     //json dosya yok ise oluşturuluyor
                     if (!System.IO.File.Exists(jsonFileName))
@@ -446,7 +446,7 @@ namespace WebApp1.Areas.Nft.Codes
 
             try
             {
-                string jsonFileName = MyApp.UserImportDirectory(userCode, projectInfo.ProjectName) + "//project.json";
+                string jsonFileName = MyApp.UserProjectDirectory(userCode, projectInfo.ProjectName) + "//project.json";
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(projectInfo);
 
                 System.IO.File.WriteAllText(jsonFileName, jsonString);
