@@ -363,4 +363,5 @@ MigrationBackup/
 FodyWeavers.xsd
 
 WebApp1/logs
+WebApp1/wwwroot/Data/Files
 WebApp1/wwwroot/Data/Thumbs
