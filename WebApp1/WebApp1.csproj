@@ -73,8 +73,8 @@
     <Folder Include="Areas\Nft\Dmo\" />
     <Folder Include="Areas\Nft\Dto\" />
     <Folder Include="Areas\Nft\Models\" />
+    <Folder Include="Views\Ogrenci\" />
     <Folder Include="wwwroot\Areas\Tem\Comps\" />
-    <Folder Include="wwwroot\Data\Files\21M001\" />
     <Folder Include="wwwroot\Downloads\" />
     <Folder Include="wwwroot\img\file\" />
     <Folder Include="wwwroot\img\giris\" />
@@ -90,9 +90,6 @@
     <None Include="wwwroot\lib\magnify\js\jquery.magnify.js" />
   </ItemGroup>
   <ItemGroup>
-    <Content Update="Views\Ogrenci\Index.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Update\Index.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>

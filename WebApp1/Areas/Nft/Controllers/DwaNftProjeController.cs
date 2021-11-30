@@ -22,7 +22,7 @@ namespace WebApp1.Areas.Nft.Controllers
         [HttpGet]
         [ResponseCache(Duration = 0)]
         [AuthenticateRequired(AuthorityKeys = "NftProje.D_R.")]
-        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult Read([DataSourceRequest] DataSourceRequest request)
         {
             DataSourceResult dsr = new();
             try
@@ -42,13 +42,13 @@ namespace WebApp1.Areas.Nft.Controllers
         [AuthenticateRequired(AuthorityKeys = "NftProje.D_C.")]
         public ActionResult GetByNew()
         {
-             return Json(this.rep.Areas_Nft_RepNftProje.GetByNew());
+            return Json(this.rep.Areas_Nft_RepNftProje.GetByNew());
         }
 
         [HttpPost]
         [ResponseCache(Duration = 0)]
         [AuthenticateRequired(AuthorityKeys = "NftProje.D_C.")]
-        public ActionResult Create([FromBody]Areas.Nft.Dto.DtoNftProje dto)
+        public ActionResult Create([FromBody] Areas.Nft.Dto.DtoNftProje dto)
         {
             DataSourceResult dsr = new();
             try
@@ -62,14 +62,14 @@ namespace WebApp1.Areas.Nft.Controllers
             {
                 dsr.Errors = ex.MyLastInner().Message;
             }
-            
+
             return Json(dsr);
         }
 
         [HttpPost]
         [ResponseCache(Duration = 0)]
         [AuthenticateRequired(AuthorityKeys = "NftProje.D_U.")]
-        public ActionResult Update([FromBody]Areas.Nft.Dto.DtoNftProje dto)
+        public ActionResult Update([FromBody] Areas.Nft.Dto.DtoNftProje dto)
         {
             DataSourceResult dsr = new();
             try
@@ -82,7 +82,7 @@ namespace WebApp1.Areas.Nft.Controllers
             {
                 dsr.Errors = ex.MyLastInner().Message;
             }
-            
+
             return Json(dsr);
         }
 

@@ -331,7 +331,7 @@ namespace WebApp1.Areas.Nft.Codes
                          .Select(s => new MoProject
                          {
                              Name = s.Name,
-                             ImageUrl = (MyApp.UserImportDirectory(userCode, s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
+                             ImageUrl = (MyApp.UserProjectDirectory(userCode, s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
                          }).ToList();
 
                     response.Success = true;

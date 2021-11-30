@@ -3,13 +3,11 @@
 <div id='viewAnasayfa'>
     <div class="row">
         <div class="col">
-            <div class="">
-                <div id="compProjects"></div>
-            </div>
+            <div id="compProjectList"></div>
 
-            <div class="">
-                <div id="compProjectEditor"></div>
-            </div>
+            <div id="compProjects"></div>
+
+            <div id="compProjectEditor"></div>
         </div>
     </div>
 </div>
@@ -23,6 +21,9 @@
         self.selector = '#viewAnasayfa';
 
         self.prepare = function () {
+            let projectList1 = compProjectList($(self.selector).find('#compProjectList'));
+            projectList1.prepare();
+
             let projects1 = compProjects($(self.selector).find('#compProjects'));
             projects1.prepare();
 

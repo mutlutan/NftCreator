@@ -47,13 +47,20 @@
 
 <div id="viewAccount" class="bg-white">
 
-    <div class="py-md-5"></div>
+    <div class="py-md-4"></div>
+
+    <div class="text-center py-3">
+        <div class="@ViewBag.LogoClass">
+            <img class="" src="@ViewBag.LogoImageUrl" onerror="this.onerror = null; this.style.visibility = 'hidden';" style="max-width:250px;" />
+        </div>
+    </div>
 
     <div class="row no-gutters">
         <div class="col-md-2"></div>
 
         <div class="col-md-4 border">
             <div class="py-3 px-2">
+                <div class="py-1"></div>
                 <img class="w-100" src="~/img/giris/login.png" />
             </div>
         </div>
@@ -61,19 +68,11 @@
         <div class="col-md-4 border">
             <div id="divLogin" class="py-3 px-2">
 
-                <div class="text-center">
-                    <div class="@ViewBag.SloganClass">
-                        <p class="h2 font-weight-bold text-warning">
-                            <span data-langkey-Text="xLng.AppName"></span>
-                        </p>
-                        <p class="h6 font-weight-light font-italic">
-                            <span data-langkey-Text="xLng.GirisSlogan"></span>
-                        </p>
-                    </div>
-                    <div class="@ViewBag.LogoClass">
-                        <img class="" src="@ViewBag.LogoImageUrl" onerror="this.onerror = null; this.style.visibility = 'hidden';" style="max-width:250px;" />
-                    </div>
-                </div>
+                <p class="h2 font-weight-bold text-center">
+                    <span data-langkey-Text="xLng.GirisYap"></span>
+                </p>
+
+                <div class="py-1"></div>
 
                 <div class="text-center">
                     <div id="languageStatus">
@@ -81,11 +80,7 @@
                     </div>
                 </div>
 
-                <div class="py-3"></div>
-
-                <p class="h2 font-weight-bold text-center">
-                    <span data-langkey-Text="xLng.GirisYap"></span>
-                </p>
+                <div class="py-1"></div>
 
                 <div class="px-5">
                     <div class="form-group row">
@@ -364,7 +359,7 @@
             self.loaderLogin = $(self.selector).find('#loader').kendoLoader({
                 visible: false,
                 size: "small",
-                themeColor: 'primary',
+                themeColor: 'text-white',
                 type: 'pulsing' //"pulsing", "infinite-spinner", "converging-spinner"
             }).getKendoLoader();
 

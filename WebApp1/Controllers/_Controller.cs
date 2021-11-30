@@ -1,14 +1,9 @@
 ﻿
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.SignalR;
-using Microsoft.Extensions.Options;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
 using WebApp1.Codes;
-using Microsoft.EntityFrameworkCore;
 using Shyjus.BrowserDetection;
 using Microsoft.Extensions.Caching.Memory;
 

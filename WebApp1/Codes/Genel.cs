@@ -642,16 +642,19 @@ namespace WebApp1.Codes
 
         #region nft dir
 
-
+        public static string UserProjectDirectory(string userCode, string projectName)
+        {
+            return MyApp.UserFilesDirectory(userCode) + "\\" + projectName;
+        }
 
         public static string UserImportDirectory(string userCode, string projectName)
         {
-            return MyApp.UserFilesDirectory(userCode) + "\\" + projectName + "\\" + "import";
+            return MyApp.UserProjectDirectory(userCode, projectName) + "\\" + "import";
         }
 
         public static string UserExportDirectory(string userCode, string projectName)
         {
-            return MyApp.UserFilesDirectory(userCode) + "\\" + projectName + "\\" + "export";
+            return MyApp.UserProjectDirectory(userCode, projectName) + "\\" + "export";
         }
         #endregion
 

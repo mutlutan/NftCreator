@@ -5,7 +5,7 @@
 <div id="mnPopupViewContainer" style="clear:both; position:absolute;" oncontextmenu="return false;">
 </div>
 
-<div id="viewHome" style="">
+<div id="viewHome">
 
     <header >
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
@@ -17,7 +17,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between pl-4">
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between pl-5">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a href="#/Home" class="nav-link text-dark">Home</a>
@@ -28,11 +28,15 @@
                         </li>
                     </ul>
 
-                    <div class="my-2 my-lg-0">
-                        <a id="btnCikis" class="btn btn-link my-2 my-sm-0" title="sign out">
-                            <i class="fa fa-power-off"></i>
-                        </a>
-                    </div>
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a id="btnCikis" class="nav-link text-dark" data-langkey-title="xLng.Cikis">
+                                <i class="fa fa-power-off"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    
                 </div>
             </div>
         </nav>
@@ -130,6 +134,7 @@
                 { areaName: "Nft", routName: "/Home", showType: "Page", header: false, viewName: "viewAnasayfa", yetkiId: "" },
 
                 { areaName: "_", routName: "/Files", showType: "Page", header: false, viewName: "viewGorseller", yetkiId: "" },
+                { areaName: "Nft", routName: "/Projects", showType: "Page", header: false, viewName: "NftProjeForGrid", yetkiId: "" },
             ];
 
             //routing işlemleri

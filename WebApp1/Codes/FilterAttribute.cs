@@ -1,11 +1,10 @@
-﻿using Kendo.Mvc.Extensions;
+﻿using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
+//using Kendo.Mvc.Extensions;
+
 
 namespace WebApp1.Codes
 {
@@ -15,8 +14,8 @@ namespace WebApp1.Codes
         public string AuthorityGrups { get; set; } = "";
         public override void OnActionExecuting(ActionExecutingContext actionContext)
         {
-            //var svc = actionContext.HttpContext.RequestServices;
-            var dataContext = actionContext.HttpContext.GetService<Models.DataContext>();
+            var svc = actionContext.HttpContext.RequestServices;
+            var dataContext = (Models.DataContext)svc.GetService(typeof(Models.DataContext));
             var temBusiness = new Areas.Tem.Codes.TemBusiness(dataContext);
 
             actionContext.HttpContext.Request.Headers.TryGetValue("Authorization", out Microsoft.Extensions.Primitives.StringValues tokenHeader);
@@ -25,51 +24,47 @@ namespace WebApp1.Codes
 
             if (userToken.UserIsLogon)
             {
-                //AuthorityKeys boş ise yetki key kontrol edilmeyecek anlamındadır
-                Boolean keyGecerli = false;
-                if (AuthorityKeys.MyToTrim().Length > 0)
+                //AuthorityKeys veya AuthorityGrups dan biri doluysa
+                if (AuthorityKeys.MyToTrim().Length > 0 || AuthorityGrups.MyToTrim().Length > 0)
                 {
-                    //Key kontrolü yapılıyor
-                    
-                    foreach (string key in AuthorityKeys.MyToTrim().Split(","))
+                    //AuthorityKeys boş ise yetki key kontrol edilmeyecek anlamındadır
+                    Boolean keyGecerli = false;
+                    if (AuthorityKeys.MyToTrim().Length > 0)
                     {
-                        if (key.MyToTrim().Length > 0 && temBusiness.UserIsAuthorized(userToken.UserId, key.MyToTrim()))
-                        {
-                            keyGecerli = true;
-                        }
-                    }
-                }
-                else
-                {
-                    keyGecerli = true;
-                }
+                        //Key kontrolü yapılıyor
 
-                //AuthorityGrups boş ise yetki grup kontrol edilmeyecek anlamındadır
-                Boolean grupGecerli = false;
-                if (AuthorityGrups.MyToTrim().Length > 0)
-                {
-                    //Grup kontrolü yapılıyor
-                    foreach (string grup in AuthorityGrups.MyToTrim().Split(","))
-                    {
-                        if (grup.MyToTrim().Length > 0)
+                        foreach (string key in AuthorityKeys.MyToTrim().Split(","))
                         {
-                            if (grup.MyToTrim() == userToken.YetkiGrup.MyToStr())
+                            if (key.MyToTrim().Length > 0 && temBusiness.UserIsAuthorized(userToken.UserId, key.MyToTrim()))
                             {
-                                grupGecerli = true;
+                                keyGecerli = true;
                             }
                         }
                     }
-                }
-                else
-                {
-                    grupGecerli = true;
-                }
 
-                if (!(grupGecerli || keyGecerli))
-                {
-                    actionContext.Result = new BadRequestObjectResult(MyApp.TranslateTo("xLng.IslemIcinYetkiGerekli", dataContext.Language));
-                }
+                    //AuthorityGrups boş ise yetki grup kontrol edilmeyecek anlamındadır
+                    Boolean grupGecerli = false;
+                    if (AuthorityGrups.MyToTrim().Length > 0)
+                    {
+                        //Grup kontrolü yapılıyor
+                        foreach (string grup in AuthorityGrups.MyToTrim().Split(","))
+                        {
+                            if (grup.MyToTrim().Length > 0)
+                            {
+                                if (grup.MyToTrim() == userToken.YetkiGrup.MyToStr())
+                                {
+                                    grupGecerli = true;
+                                }
+                            }
+                        }
+                    }
 
+                    // grup veya key den biri geçerli değilse mesaj
+                    if (!(grupGecerli || keyGecerli))
+                    {
+                        actionContext.Result = new BadRequestObjectResult(MyApp.TranslateTo("xLng.IslemIcinYetkiGerekli", dataContext.Language));
+                    }
+                }
             }
             else
             {

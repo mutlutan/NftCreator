@@ -49,8 +49,6 @@ namespace WebApp1.Controllers
 
             ViewBag.CaptchaImage = resCaptcha.Data.CaptchaImage;
             ViewBag.CaptchaToken = resCaptcha.Data.CaptchaToken;
-            ViewBag.LogoClass = "";
-            ViewBag.SloganClass = "d-none";
 
             ViewBag.LogoImageUrl = "/img/logo/logoYatay.png?v" + WebApp1.Codes.MyApp.Version;
             ViewBag.GirisImageUrl = "/img/giris/login.png?v" + WebApp1.Codes.MyApp.Version;
