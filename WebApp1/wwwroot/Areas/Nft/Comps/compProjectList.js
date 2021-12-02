@@ -59,10 +59,10 @@ function compProjectList(_elm, _opt) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
             var projectName = $elm.attr("data-project-name");
             var quantity = $elm.find("[name=quantity]").val();
-            if (quantity > 0 && quantity <= 999) {
+            if (quantity > 0 && quantity <= 1000) {
                 fnPreviewImage(projectName, quantity);
             } else {
-                alert("You can create a maximum of 999 images while previewing.");
+                alert("You can create a maximum of 1000 images while previewing.");
             }
         });
 

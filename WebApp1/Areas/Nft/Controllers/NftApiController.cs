@@ -41,7 +41,7 @@ namespace WebApp1.Areas.Nft.Controllers
         public ActionResult StartGenerateImages([FromBody] MoGenerateImageInput generateImageInput)
         {
             var nftBusiness = new NftBusiness(this.dataContext);
-            MoResponse<object> response = nftBusiness.StartGenerateImages(this.userToken.UserCode, generateImageInput);
+            MoResponse<object> response = nftBusiness.StartGenerateImages(this.userToken, generateImageInput);
 
             return Json(response);
         }

@@ -189,29 +189,36 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-        public MoResponse<object> StartGenerateImages(string userCode, MoGenerateImageInput generateImageInput)
+        public MoResponse<object> StartGenerateImages(MoUserToken userToken, MoGenerateImageInput generateImageInput)
         {
             MoResponse<object> response = new();
 
             try
             {
-                string exportDirectoryName = MyApp.UserExportDirectory(userCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
-                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
-                if (metaDataList.Success)
+                if (userToken.LisansGun > 0 || generateImageInput.Quantity <= 1000)
                 {
-                    var task = Task.Run(() =>
+                    string exportDirectoryName = MyApp.UserExportDirectory(userToken.UserCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
+                    var metaDataList = this.CreateMetaData(userToken.UserCode, generateImageInput);
+                    if (metaDataList.Success)
                     {
-                        this.GenerateImages(userCode, metaDataList.Data, exportDirectoryName);
-                    });
+                        var task = Task.Run(() =>
+                        {
+                            this.GenerateImages(userToken.UserCode, metaDataList.Data, exportDirectoryName);
+                        });
 
-                    //Dosyalar oluşturuluyor, tamamlandığında dosyalar bölümünden indirip dışa aktarabilirsiniz.
-                    response.Message.Add("The files are being created, when completed, you can download and export them from the Files section.");
-                    response.Success = true;
-                    response.Data = new { ExportDirectoryName = exportDirectoryName };
+                        //Dosyalar oluşturuluyor, tamamlandığında dosyalar bölümünden indirip dışa aktarabilirsiniz.
+                        response.Message.Add("The files are being created, when completed, you can download and export them from the Files section.");
+                        response.Success = true;
+                        response.Data = new { ExportDirectoryName = exportDirectoryName };
+                    }
+                    else
+                    {
+                        response.Message = metaDataList.Message;
+                    }
                 }
                 else
                 {
-                    response.Message = metaDataList.Message;
+                    response.Message.Add("Free users can generate 1000 images");
                 }
             }
             catch (Exception ex)
