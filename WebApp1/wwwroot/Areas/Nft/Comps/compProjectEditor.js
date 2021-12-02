@@ -12,11 +12,10 @@ function compProjectEditor(_elm, _opt) {
     function fnHtmlAppend() {
         var temp = `
             <div class="row">
-                <div class="col">
+                <div class="col-md-6">
                     <div id="divProject"></div>
                 </div>
-                <div class="col">
-                    <div id="divImages" class="row p-2"></div>
+                <div class="col-md-6">
                 </div>
             </div>
         `;
@@ -146,48 +145,23 @@ function compProjectEditor(_elm, _opt) {
 
     function fnShowProjectLayer(projectInfo) {
         var temp = `
-                <div name="projectItem" class="border w-100 p-3" >
+                <div>
                     <div class="d-flex flex-row p-2">
-                        <div class="">
-                            <div class="p-1">
-                                <span>Quantity</span>
-                                <input name="quantity" type="text" style="width:100px;" />
-                                <a name="btnPreview" class="k-button" title="Preview Images">Preview</a>
-                                <a name="btnGenerate" class="k-button" title="Generate Images">Generate</a>
-
-                            </div>
+                        <div>
+                            <a name="btnImport" class="btn btn-sm btn-link d-none" >Import</a>
                         </div>
                     </div>
-                    <div class="p-2">
+                    <div>
                         <select id="selectLayers" class="w-100" style="height:450px" ></select>
                     </div>
                 </div>
             `;
 
         self.$elm.find("#divProject").html(temp);
+
         //header elements
-        self.$elm.find("#divProject").find("[name=btnPreview]").click(function (e) {
-            var $elm = $(e.currentTarget).closest("[name=projectItem]");
-            var quantity = $elm.find("[name=quantity]").val();
-            if (quantity > 999) {
-
-                alert("You can create a maximum of 999 images while previewing.");
-            } else {
-                fnPreviewImage(quantity);
-            }
-        });
-
-        self.$elm.find("#divProject").find("[name=btnGenerate]").click(function (e) {
-            var $elm = $(e.currentTarget).closest("[name=projectItem]");
-            var quantity = $elm.find("[name=quantity]").val();
-            fnGenerateImages(quantity);
-        });
-
-        self.$elm.find("#divProject").find("[name=quantity]").kendoNumericTextBox({
-            format: "n0",
-            value: 1,
-            min: 1,
-            max: 10000
+        self.$elm.find("#divProject").find("[name=btnImport]").click(function (e) {
+            
         });
 
         //layer
@@ -224,7 +198,7 @@ function compProjectEditor(_elm, _opt) {
                         <input name="cbStatus" type="checkbox" class="k-checkbox" `+ attributes + ` />
                         <input name="Name" type="hidden" value="`+ d.Name + `" />
                         <label>`+ d.Name + `</label>
-                        <button name="btnNameEdit" class="btn btn-sm btn-link " type="button">Edit</button>
+                        <button name="btnRename" class="btn btn-sm btn-link " type="button">Rename</button>
                         <button name="btnDetail" class="btn btn-sm btn-link " type="button">Detail</button>
                     </div>
                 `;
@@ -238,7 +212,7 @@ function compProjectEditor(_elm, _opt) {
                 e.sender.wrapper.on("click", ".itemLayer [name=cbStatus]", function () {
                     fnSetProjectInfo();
                 });
-                e.sender.wrapper.on("click", ".itemLayer [name=btnNameEdit]", function (e) {
+                e.sender.wrapper.on("click", ".itemLayer [name=btnRename]", function (e) {
                     let $itemLayer = $(e.currentTarget).closest(".itemLayer");
                     let oldName = $itemLayer.find("input[name=Name]").val();
 
@@ -271,78 +245,6 @@ function compProjectEditor(_elm, _opt) {
         }).getKendoWindow();
 
         popup.center().open();
-    }
-
-    function fnPreviewImage(quantity) {
-
-        var _data = {
-            projectName: self.projectName,
-            quantity: quantity
-        };
-
-        $.ajax({
-            url: "/api/Nft/PreviewGenerateImages",
-            data: JSON.stringify(_data),
-            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
-            beforeSend: function (jqXHR, settings) {
-                kendo.ui.progress(self.$elm, true); //progress On
-            },
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success == true) {
-                    var imagesContainer = self.$elm.find("#divImages");
-                    imagesContainer.empty();
-
-                    for (const imgsrc of result.Data.Images) {
-                        var temp = '';
-                        temp += '<div class="col-md-6 p-2">';
-                        temp += '   <img src="' + imgsrc + '" width="250" height="250">';
-                        temp += '<div>';
-                        imagesContainer.append(temp);
-                    }
-                } else {
-                    alert(result.Message);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            },
-            complete: function (jqXHR, textStatus) {
-                setTimeout(function () {
-                    kendo.ui.progress(self.$elm, false); //progress Off
-                });
-            }
-        });
-    }
-
-    function fnGenerateImages(quantity) {
-        var _data = {
-            projectName: self.projectName,
-            quantity: quantity
-        };
-
-        $.ajax({
-            url: "/api/Nft/StartGenerateImages",
-            data: JSON.stringify(_data),
-            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
-            beforeSend: function (jqXHR, settings) {
-                kendo.ui.progress(self.$elm, true); //progress On
-            },
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success == true) {
-                    alert(result.Message);
-                } else {
-                    alert(result.Message);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            },
-            complete: function (jqXHR, textStatus) {
-                setTimeout(function () {
-                    kendo.ui.progress(self.$elm, false); //progress Off
-                });
-            }
-        });
     }
 
     self.ShowProjectLayers = function (_projectName) {

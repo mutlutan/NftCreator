@@ -361,6 +361,7 @@ namespace WebApp1.Areas.Nft.Codes
 
                     foreach (var project in projectList)
                     {
+
                         string exportPath = MyApp.UserExportDirectory(userCode, project.Name);
                         var diExport = new System.IO.DirectoryInfo(exportPath);
                         if (diExport.Exists)
@@ -374,7 +375,14 @@ namespace WebApp1.Areas.Nft.Codes
 
                                 string downloadFile = exportPath.Replace(MyApp.EnvWebRootPath, "") + export.DownloadFileName;
                                 export.DownloadUrl = downloadFile.Replace("\\", "/");
-                                
+
+                                string imagesPath = dir.FullName + "\\images";
+                                var diImages = new System.IO.DirectoryInfo(imagesPath);
+                                if (diImages.Exists)
+                                {
+                                    export.CreatedImageQuantity = diImages.GetFiles().Length;
+                                }
+
                                 project.ExportList.Add(export);
                             }
                         }

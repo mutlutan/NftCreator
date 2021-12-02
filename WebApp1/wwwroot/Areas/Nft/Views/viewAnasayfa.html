@@ -1,13 +1,7 @@
 
 
 <div id='viewAnasayfa'>
-    <div>
-        <div class="row">
-            <div class="col-md-12 col-xl-6">
-                <div id="compProjectList"></div>
-            </div>
-        </div>
-    </div>
+    <div id="compProjectList"></div>
 </div>
 
 <script>
@@ -29,6 +23,7 @@
         self.beforeShow = function (_opt) {
             self.opt = $.extend({}, _opt);
 
+            self.projectList1.refresh();
         };
 
         self.close = function () {

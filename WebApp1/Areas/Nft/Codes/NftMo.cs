@@ -14,7 +14,6 @@ namespace WebApp1.Areas.Nft.Codes
         public string DownloadFileName { get; set; }
         public int PlannedImageQuantity { get; set; } = 0; //palalalan image sayısı
         public int CreatedImageQuantity { get; set; } = 0; //Oluşan image sayısı
-        public int RemainderImageQuantity { get; set; } = 0; //Kalan image sayısı
     }
     public class MoProject
     {

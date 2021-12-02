@@ -115,7 +115,7 @@ function compLayerEditor(_elm, _opt) {
                         <label>`+ d.Name + `</label>
                         <label class="pl-2">`+ "" + `%</label>
                         <input class="form-control d-inline form-control-sm" name="UsagePercentage" type="number" value=` + d.UsagePercentage + ` style="width:60px;" min="0" max="100">
-                        <button name="btnNameEdit" class="btn btn-sm btn-link " type="button">Edit</button>
+                        <button name="btnRename" class="btn btn-sm btn-link " type="button">Rename</button>
                     </div>
                 `;
                 return temp;
@@ -137,7 +137,7 @@ function compLayerEditor(_elm, _opt) {
                     fnSetLayerInfo();
                 });
 
-                e.sender.wrapper.on("click", ".itemImage [name=btnNameEdit]", function (e) {
+                e.sender.wrapper.on("click", ".itemImage [name=btnRename]", function (e) {
                     let $itemLayer = $(e.currentTarget).closest(".itemImage");
                     let oldName = $itemLayer.find("input[name=Name]").val();
 

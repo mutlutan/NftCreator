@@ -132,7 +132,7 @@ html, body {
 
 /* kendoListBox */
 .k-list .k-item.k-state-selected {
-    background-color: rgba(0,123,255,.5);
+    /*background-color: rgba(0,123,255,.5);*/
 }
 
 /*kendo--grid  */
