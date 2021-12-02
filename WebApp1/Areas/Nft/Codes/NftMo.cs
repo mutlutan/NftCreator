@@ -7,11 +7,20 @@ using System.Threading.Tasks;
 namespace WebApp1.Areas.Nft.Codes
 {
     #region Modeller
-
+    public class MoProjectExport
+    {
+        public string DirectoryName { get; set; }
+        public string DownloadUrl { get; set; }
+        public string DownloadFileName { get; set; }
+        public int PlannedImageQuantity { get; set; } = 0; //palalalan image sayısı
+        public int CreatedImageQuantity { get; set; } = 0; //Oluşan image sayısı
+        public int RemainderImageQuantity { get; set; } = 0; //Kalan image sayısı
+    }
     public class MoProject
     {
         public string Name { get; set; }
         public string ImageUrl { get; set; }
+        public List<MoProjectExport> ExportList { get; set; } = new List<MoProjectExport>();
     }
 
     public class MoLayer

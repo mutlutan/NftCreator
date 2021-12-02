@@ -1,26 +1,27 @@
 
 
-<div id='viewAnasayfa'>
+<div id='viewProjectEditor'>
     <div>
-        <div class="row">
-            <div class="col-md-12 col-xl-6">
-                <div id="compProjectList"></div>
-            </div>
-        </div>
+        <label class="h4" id="labelProjectName"></label>
     </div>
+
+    <div class="py-1"></div>
+
+    <div id="compProjectEditor"></div>
 </div>
 
 <script>
-    window.viewAnasayfa = function () {
+    window.viewProjectEditor = function () {
         var self = {};
         self.opt = null;
         self.area = 'Nft';
-        self.title = 'xNft.viewAnasayfa.Title';
-        self.selector = '#viewAnasayfa';
+        self.title = 'xNft.viewProjectEditor.Title';
+        self.selector = '#viewProjectEditor';
 
         self.prepare = function () {
-            self.projectList1 = compProjectList($(self.selector).find('#compProjectList'));
-            self.projectList1.prepare();
+            //editor
+            self.projectEditor1 = compProjectEditor($(self.selector).find('#compProjectEditor'));
+            self.projectEditor1.prepare();
 
             // Language
             mnLang.TranslateWithSelector(self.selector);
@@ -29,6 +30,8 @@
         self.beforeShow = function (_opt) {
             self.opt = $.extend({}, _opt);
 
+            $(self.selector).find('#labelProjectName').html(self.opt.qprms.p1);
+            self.projectEditor1.ShowProjectLayers(self.opt.qprms.p1);
         };
 
         self.close = function () {

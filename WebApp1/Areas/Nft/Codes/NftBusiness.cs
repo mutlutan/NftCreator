@@ -19,7 +19,7 @@ namespace WebApp1.Areas.Nft.Codes
         {
             this.dataContext = _dataContext;
             this.rep = new Models._Rep(this.dataContext);
-            
+
         }
 
 
@@ -317,6 +317,31 @@ namespace WebApp1.Areas.Nft.Codes
         #endregion
 
         #region Projects method
+        public MoResponse<object> AddProject(string userCode, string projectName)
+        {
+            MoResponse<object> response = new();
+            try
+            {
+                string projectDirectory = MyApp.UserProjectDirectory(userCode, projectName);
+                if (!System.IO.Directory.Exists(projectDirectory))
+                {
+                    System.IO.Directory.CreateDirectory(projectDirectory);
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Success = false;
+                    response.Message.Add("The project has already been added");
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Error: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
 
         public MoResponse<List<MoProject>> GetProjectList(string userCode)
         {
@@ -325,7 +350,7 @@ namespace WebApp1.Areas.Nft.Codes
             {
                 if (System.IO.Directory.Exists(MyApp.UserFilesDirectory(userCode)))
                 {
-                    var data = new System.IO.DirectoryInfo(MyApp.UserFilesDirectory(userCode))
+                    var projectList = new System.IO.DirectoryInfo(MyApp.UserFilesDirectory(userCode))
                          .GetDirectories()
                          .OrderBy(o => o.Name)
                          .Select(s => new MoProject
@@ -334,8 +359,29 @@ namespace WebApp1.Areas.Nft.Codes
                              ImageUrl = (MyApp.UserProjectDirectory(userCode, s.Name) + "\\" + "project.png").Replace(MyApp.Env.WebRootPath, "").Replace("\\", "/")
                          }).ToList();
 
+                    foreach (var project in projectList)
+                    {
+                        string exportPath = MyApp.UserExportDirectory(userCode, project.Name);
+                        var diExport = new System.IO.DirectoryInfo(exportPath);
+                        if (diExport.Exists)
+                        {
+                            var exportDirectories = diExport.GetDirectories();
+                            foreach (var dir in exportDirectories)
+                            {
+                                MoProjectExport export = new();
+                                export.DirectoryName = dir.Name;
+                                export.DownloadFileName = dir.Name + ".zip";
+
+                                string downloadFile = exportPath.Replace(MyApp.EnvWebRootPath, "") + export.DownloadFileName;
+                                export.DownloadUrl = downloadFile.Replace("\\", "/");
+                                
+                                project.ExportList.Add(export);
+                            }
+                        }
+                    }
+
                     response.Success = true;
-                    response.Data = data;
+                    response.Data = projectList;
                 }
                 else
                 {
@@ -354,7 +400,7 @@ namespace WebApp1.Areas.Nft.Codes
 
         public MoResponse<List<MoLayer>> GetProjectLayerList(string userCode, string projectName)
         {
-            MoResponse<List<MoLayer>> response = new();
+            MoResponse<List<MoLayer>> response = new() { Data = new List<MoLayer>() };
 
             try
             {
@@ -385,9 +431,9 @@ namespace WebApp1.Areas.Nft.Codes
             {
                 if (!string.IsNullOrEmpty(projectName))
                 {
-                    var projectLayerList = this.GetProjectLayerList(userCode,projectName);
+                    var projectLayerList = this.GetProjectLayerList(userCode, projectName);
 
-                    string jsonFileName = MyApp.UserProjectDirectory(userCode,projectName) + "//project.json";
+                    string jsonFileName = MyApp.UserProjectDirectory(userCode, projectName) + "\\project.json";
 
                     //json dosya yok ise oluşturuluyor
                     if (!System.IO.File.Exists(jsonFileName))
@@ -446,7 +492,7 @@ namespace WebApp1.Areas.Nft.Codes
 
             try
             {
-                string jsonFileName = MyApp.UserProjectDirectory(userCode, projectInfo.ProjectName) + "//project.json";
+                string jsonFileName = MyApp.UserProjectDirectory(userCode, projectInfo.ProjectName) + "\\project.json";
                 string jsonString = System.Text.Json.JsonSerializer.Serialize(projectInfo);
 
                 System.IO.File.WriteAllText(jsonFileName, jsonString);

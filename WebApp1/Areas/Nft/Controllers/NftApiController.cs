@@ -61,6 +61,20 @@ namespace WebApp1.Areas.Nft.Controllers
             return Json(response);
         }
 
+        [HttpPost("AddProject")]
+        [ResponseCache(Duration = 0)]
+        public ActionResult AddProject([FromBody] object obj)
+        {
+            var nftBusiness = new NftBusiness(this.dataContext);
+
+            dynamic jsonResponse = Newtonsoft.Json.Linq.JObject.Parse(obj.ToString());
+            string projectName = jsonResponse.projectName;
+
+            var response = nftBusiness.AddProject(this.userToken.UserCode, projectName);
+
+            return Json(response);
+        }
+
         [HttpPost("GetProjectInfo")]
         [ResponseCache(Duration = 0)]
         public ActionResult GetProjectInfo([FromBody] object obj)

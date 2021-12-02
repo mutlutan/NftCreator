@@ -75,6 +75,7 @@
     <Folder Include="Areas\Nft\Models\" />
     <Folder Include="Views\Ogrenci\" />
     <Folder Include="wwwroot\Areas\Tem\Comps\" />
+    <Folder Include="wwwroot\Data\Files\21M001\project02\" />
     <Folder Include="wwwroot\Downloads\" />
     <Folder Include="wwwroot\img\file\" />
     <Folder Include="wwwroot\img\giris\" />

@@ -150,7 +150,7 @@ function compProjectEditor(_elm, _opt) {
                     <div class="d-flex flex-row p-2">
                         <div class="">
                             <div class="p-1">
-                                <span>quantity</span>
+                                <span>Quantity</span>
                                 <input name="quantity" type="text" style="width:100px;" />
                                 <a name="btnPreview" class="k-button" title="Preview Images">Preview</a>
                                 <a name="btnGenerate" class="k-button" title="Generate Images">Generate</a>
