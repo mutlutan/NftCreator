@@ -11,10 +11,17 @@ function compLayerEditor(_elm, _opt) {
 
     function fnHtmlAppend() {
         var temp = `
-            <div>
-                <label>Total Percentage : %</label>
-                <span id="spanTotalUsagePercentageValue"></span>
-                <span id="spanTotalUsagePercentageMessage"></span>
+            <div class="row">
+                <div class="col">
+                    <div style="width:500px;">
+                        <label>Total Percentage : %</label>
+                        <span id="spanTotalUsagePercentageValue"></span>
+                        <span id="spanTotalUsagePercentageMessage"></span>
+
+                        <a name="btnEqualPercentage" class="btn btn-sm btn-link pull-right">Equal %</a>
+                    </div>
+                </div>
+                <div class="col"></div>
             </div>
             <div class="row">
                 <div class="col">
@@ -51,7 +58,20 @@ function compLayerEditor(_elm, _opt) {
     }
 
     function fnCreateElements() {
+        self.$elm.find("[name=btnEqualPercentage]").click(function (e) {
 
+            let itemLength = self.lbSelectImages.wrapper.find(".itemImage").length;
+            let percentageValue = parseInt(100 / itemLength);
+            let differencePercentage = 100 - (percentageValue * itemLength);
+
+            self.lbSelectImages.wrapper.find(".itemImage").each(function () {
+                $(this).find("input[name=UsagePercentage]").val(percentageValue);
+            });
+            
+            $(self.lbSelectImages.wrapper.find(".itemImage").get(0)).find("input[name=UsagePercentage]").val(percentageValue + differencePercentage);
+
+            fnSetLayerInfo();
+        });
     }
 
     function fnGetLayerInfo() {

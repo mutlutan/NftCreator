@@ -154,6 +154,36 @@ namespace WebApp1.Areas.Nft.Codes
         #endregion
 
         #region PreviewGenerate & StartGenerateImages
+        public MoResponse<object> SetProjectIcon(string userCode, string projectName)
+        {
+            MoResponse<object> response = new();
+
+            try
+            {
+                MoGenerateImageInput generateImageInput = new() { ProjectName = projectName, Quantity = 1 };
+                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
+
+                if (metaDataList.Success)
+                {
+                    string imageFileName = MyApp.UserProjectDirectory(userCode, projectName) + "\\project.png";
+                    //image
+                    var bmpStream = this.CreateBitmapStream(userCode, metaDataList.Data.FirstOrDefault(), 300, 300, System.Drawing.Imaging.ImageFormat.Png);
+                    System.IO.File.WriteAllBytes(imageFileName, bmpStream.ToArray());
+
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message = metaDataList.Message;
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Error: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
 
         public MoResponse<object> PreviewGenerateImages(string userCode, MoGenerateImageInput generateImageInput)
         {
@@ -526,6 +556,29 @@ namespace WebApp1.Areas.Nft.Codes
 
         #region layer methods
 
+        //resimlerin yüzdesini eşitle
+        public MoResponse<List<MoImage>> GetLayerImageEqualPercentage(List<MoImage> data)
+        {
+            MoResponse<List<MoImage>> response = new();
+            response.Data = data;
+
+            if (data.Count > 0)
+            {
+                int percentageValue = 100 / data.Count;
+
+                foreach (var item in data)
+                {
+                    item.UsagePercentage = percentageValue;
+                }
+
+                int differencePercentage = 100 - data.Sum(s => s.UsagePercentage).MyToInt();
+                data.FirstOrDefault().UsagePercentage += differencePercentage;
+            }
+
+            response.Success = true;
+            return response;
+        }
+
         public MoResponse<List<MoImage>> GetLayerImage(string userCode, string projectName, string layerName)
         {
             MoResponse<List<MoImage>> response = new();
@@ -542,6 +595,8 @@ namespace WebApp1.Areas.Nft.Codes
                  UsagePercentage = 0
              })
             .ToList();
+
+            //data = this.GetLayerImageEqualPercentage(data).Data;
 
             foreach (var item in data)
             {
@@ -585,6 +640,7 @@ namespace WebApp1.Areas.Nft.Codes
                         response.Data.ProjectName = layerInfoInput.ProjectName;
                         response.Data.LayerName = layerInfoInput.LayerName;
                         response.Data.ImageList = layerImageList.Data;
+
                         this.SetLayerInfo(userCode, response.Data);
                     }
                     else

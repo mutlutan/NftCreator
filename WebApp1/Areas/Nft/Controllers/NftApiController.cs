@@ -24,6 +24,19 @@ namespace WebApp1.Areas.Nft.Controllers
             : base(_serviceProvider) { }
 
         #region resim işlemelri
+        [HttpPost("SetProjectIcon")]
+        [ResponseCache(Duration = 0)]
+        public ActionResult SetProjectIcon([FromBody] object obj)
+        {
+            var nftBusiness = new NftBusiness(this.dataContext);
+
+            dynamic jsonResponse = Newtonsoft.Json.Linq.JObject.Parse(obj.ToString());
+            string projectName = jsonResponse.projectName;
+
+            MoResponse<object> response = nftBusiness.SetProjectIcon(userToken.UserCode, projectName);
+
+            return Json(response);
+        }
 
         [HttpPost("PreviewGenerateImages")]
         [ResponseCache(Duration = 0)]

@@ -17,7 +17,7 @@ function compProjectList(_elm, _opt) {
         var temp = `
             <div >
                 <div>
-                    <a name="btnAddProject" class="btn btn-sm btn-link " type="button">Add Project</a>
+                    <a name="btnAddProject" class="btn btn-sm btn-link">Add Project</a>
                 </div>
 
                 <div class="py-1"></div>
@@ -53,6 +53,44 @@ function compProjectList(_elm, _opt) {
             kendo.prompt("Please, enter a new value:", "").then(function (data) {
                 fnAddProject(data);
             });
+        });
+
+        //imgProjectIcon
+        self.$elm.find("#divProjectList").on("click", "[name=imgProjectIcon]", function (e) {
+            var $elm = $(e.currentTarget).closest("[name=projectItem]");
+            var projectName = $elm.attr("data-project-name");
+            var img = $elm.find("[name=imgProjectIcon]");
+
+            var _data = {
+                projectName: projectName
+            };
+
+            $.ajax({
+                url: "/api/Nft/SetProjectIcon",
+                data: JSON.stringify(_data),
+                type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+                beforeSend: function (jqXHR, settings) {
+                    kendo.ui.progress(self.$elm, true); //progress On
+                },
+                success: function (result, textStatus, jqXHR) {
+                    if (result.Success == true) {
+                        let imgUrl = $elm.find("[name=imgProjectIcon]").attr("data-image-url");
+                        $elm.find("[name=imgProjectIcon]").attr("src", imgUrl +"?"+ new Date());
+                    } else {
+                        alert(result.Message);
+                    }
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+                },
+                complete: function (jqXHR, textStatus) {
+                    setTimeout(function () {
+                        kendo.ui.progress(self.$elm, false); //progress Off
+                    });
+                }
+            });
+
+            
         });
 
         self.$elm.find("#divProjectList").on("click", "[name=btnPreview]", function (e) {
@@ -105,14 +143,14 @@ function compProjectList(_elm, _opt) {
                                     <table>
                                         <tr>
                                             <td>
-                                                <img class="" src="` + project.ImageUrl + `" onerror="if (this.src != 'img/photo/noimage.png') this.src = 'img/photo/noimage.png';" style="width: 90px;">
+                                                <img name="imgProjectIcon" class="" src="` + project.ImageUrl + "?" + new Date() + `" data-image-url="` + project.ImageUrl + `" onerror="if (this.src != 'img/photo/noimage.png') this.src = 'img/photo/noimage.png';" style="width: 90px; cursor: pointer;">
                                             </td>
                                             <td class="w-100 pl-2">
-                                                <span class="h4 text-truncate d-block">`+ project.Name + `</span>
-                                                <a href="#/ProjectEditor?p1=`+ project.Name + `" class="btn btn-sm btn-link pl-0">Edit</a>
+                                                <span class="h4 text-truncate d-block" style="max-width:200px;" title="`+ project.Name + `">`+ project.Name + `</span>
+                                                <a href="#/ProjectEditor?p1=`+ project.Name + `" class="btn btn-sm btn-link pl-0"> Project Detail</a>
                                             </td>
                                             <td>
-                                                <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity" />
+                                                <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity..." style="width:90px;" />
                                                 <a name="btnPreview" class="btn btn-sm btn-link" title="Preview Images">Preview</a>
                                                 <a name="btnGenerate" class="btn btn-sm btn-link" title="Generate Images">Generate</a>
                                             </td>
