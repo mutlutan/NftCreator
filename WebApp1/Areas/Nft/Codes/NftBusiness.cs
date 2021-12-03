@@ -323,7 +323,7 @@ namespace WebApp1.Areas.Nft.Codes
         }
 
 
-        public MoResponse<List<MoMetaData>> AddMetadata(MoUserToken userToken, string projectName, int quantity)
+        public MoResponse<List<MoMetaData>> AddExport(MoUserToken userToken, string projectName, int quantity)
         {
             MoResponse<List<MoMetaData>> response = new();
 

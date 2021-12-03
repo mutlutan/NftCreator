@@ -118,22 +118,33 @@ function compProjectList(_elm, _opt) {
             var projectName = $elm.attr("data-project-name");
             var quantity = $elm.find("[name=quantity]").val();
             if (quantity > 0 && quantity <= 10000) {
-                fnGenerateImages(projectName, quantity);
+                fnStartGenerateImages(projectName, quantity);
             } else {
                 alert("You can create a maximum of 10k images while previewing.");
             }
         });
 
-        //btnAddMetedata
-        self.$elm.find("#divProjectList").on("click", "[name=btnAddMetedata]", function (e) {
+        //btnAddExport
+        self.$elm.find("#divProjectList").on("click", "[name=btnAddExport]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
             var projectName = $elm.attr("data-project-name");
             var quantity = $elm.find("[name=quantity]").val();
             if (quantity > 0 && quantity <= 10000) {
-                fnAddMetedata(projectName, quantity);
+                fnAddExport(projectName, quantity);
             } else {
                 alert("You can create a maximum of 10k images while previewing.");
             }
+        });
+
+        //btnGenerateImage
+        self.$elm.find("#divProjectList").on("click", "[name=btnGenerateImage]", function (e) {
+            var $elm = $(e.currentTarget).closest("[name=projectItem]");
+            var projectName = $elm.attr("data-project-name");
+            var directoryName = $(e.currentTarget).attr("data-directory-name");
+            var quantity = $elm.find("[name=plannedImageQuantity]").val();
+            kendo.confirm("Do you want to create pictures?").then(function () {
+                //...
+            });
         });
 
         //btnDelete
@@ -162,10 +173,13 @@ function compProjectList(_elm, _opt) {
                                         ${item.DirectoryName}
                                     </td>
                                     <td>
-                                        ${item.PlannedImageQuantity}
+                                        <input name="plannedImageQuantity" class="form-control form-control-sm" type="number" value="${item.PlannedImageQuantity}" disabled />
                                     </td>
                                     <td>
                                         ${item.CreatedImageQuantity}
+                                    </td>
+                                    <td>
+                                        <a name="btnGenerateImage" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Generate"> <i class="fa fa-play fa-fw"></i> </a>
                                     </td>
                                     <td>
                                         <a href="#/Files?p1=${item.DownloadUrl}" class="btn btn-sm btn-link ${visibleClass}" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
@@ -192,9 +206,9 @@ function compProjectList(_elm, _opt) {
                                             </td>
                                             <td>
                                                 <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity..." style="width:90px;" />
-                                                <a name="btnPreview" class="btn btn-sm btn-link" title="Preview Images">Preview</a>
-                                                <a name="btnGenerate" class="btn btn-sm btn-link" title="Generate Images">Generate</a>
-                                                <a name="btnAddMetedata" class="btn btn-sm btn-link" title="Add Metedata">Add Metedata</a>
+                                                <a name="btnPreview" class="btn btn-sm btn-link d-none" title="Preview Images">Preview</a>
+                                                <a name="btnGenerate" class="btn btn-sm btn-link d-none" title="Generate Images">Generate</a>
+                                                <a name="btnAddExport" class="btn btn-sm btn-link" title="Add Export">Add Export</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -206,6 +220,7 @@ function compProjectList(_elm, _opt) {
                                                 <th class="font-weight-normal">Export Name</th>
                                                 <th class="font-weight-normal">Planned</th>
                                                 <th class="font-weight-normal">Created</th>
+                                                <th class="font-weight-normal"></th>
                                                 <th class="font-weight-normal"></th>
                                                 <th class="font-weight-normal"></th>
                                             </tr>
@@ -330,7 +345,7 @@ function compProjectList(_elm, _opt) {
         });
     }
 
-    function fnGenerateImages(projectName, quantity) {
+    function fnStartGenerateImages(projectName, quantity) {
         var _data = {
             projectName: projectName,
             quantity: quantity
@@ -362,14 +377,14 @@ function compProjectList(_elm, _opt) {
     }
 
     
-    function fnAddMetedata(projectName, quantity) {
+    function fnAddExport(projectName, quantity) {
         var _data = {
             projectName: projectName,
             quantity: quantity
         };
 
         $.ajax({
-            url: "/api/Nft/AddMetadata",
+            url: "/api/Nft/AddExport",
             data: JSON.stringify(_data),
             type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
             beforeSend: function (jqXHR, settings) {

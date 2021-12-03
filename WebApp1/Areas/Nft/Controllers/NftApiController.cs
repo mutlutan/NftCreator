@@ -61,10 +61,10 @@ namespace WebApp1.Areas.Nft.Controllers
 
         #endregion
 
-        #region metedata
-        [HttpPost("AddMetadata")]
+        #region export planlama
+        [HttpPost("AddExport")]
         [ResponseCache(Duration = 0)]
-        public ActionResult AddMetadata([FromBody] object obj)
+        public ActionResult AddExport([FromBody] object obj)
         {
             var nftBusiness = new NftBusiness(this.dataContext);
 
@@ -72,21 +72,7 @@ namespace WebApp1.Areas.Nft.Controllers
             string projectName = jsonResponse.projectName;
             int quantity = jsonResponse.quantity;
 
-            var response = nftBusiness.AddMetadata(this.userToken, projectName, quantity);
-
-            return Json(response);
-        }
-        #endregion
-
-        #region proje işlemelri
-
-        [HttpGet("GetProjectList")]
-        [ResponseCache(Duration = 0)]
-        public ActionResult GetProjectList()
-        {
-            var nftBusiness = new NftBusiness(this.dataContext);
-
-            var response = nftBusiness.GetProjectList(this.userToken.UserCode);
+            var response = nftBusiness.AddExport(this.userToken, projectName, quantity);
 
             return Json(response);
         }
@@ -105,6 +91,22 @@ namespace WebApp1.Areas.Nft.Controllers
 
             return Json(response);
         }
+
+        #endregion
+
+        #region proje işlemelri
+
+        [HttpGet("GetProjectList")]
+        [ResponseCache(Duration = 0)]
+        public ActionResult GetProjectList()
+        {
+            var nftBusiness = new NftBusiness(this.dataContext);
+
+            var response = nftBusiness.GetProjectList(this.userToken.UserCode);
+
+            return Json(response);
+        }
+
 
         [HttpPost("AddProject")]
         [ResponseCache(Duration = 0)]
