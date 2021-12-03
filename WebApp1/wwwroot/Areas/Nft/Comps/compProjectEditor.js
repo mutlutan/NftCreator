@@ -25,7 +25,7 @@ function compProjectEditor(_elm, _opt) {
     function fnStyleAppend() {
         var style = `
             <style>
-                `+ self.$elm.selector + ` div {
+                ${self.$elm.selector} div {
 
                 }
             </style>
@@ -161,7 +161,7 @@ function compProjectEditor(_elm, _opt) {
 
         //header elements
         self.$elm.find("#divProject").find("[name=btnImport]").click(function (e) {
-            
+
         });
 
         //layer
@@ -194,10 +194,10 @@ function compProjectEditor(_elm, _opt) {
                 var attributes = d.Status == true ? "checked" : "";
 
                 var temp = `
-                    <div class="itemLayer" data-layer-name="` + d.Name + `">
-                        <input name="cbStatus" type="checkbox" class="k-checkbox" `+ attributes + ` />
-                        <input name="Name" type="hidden" value="`+ d.Name + `" />
-                        <label>`+ d.Name + `</label>
+                    <div class="itemLayer" data-layer-name="${d.Name}">
+                        <input name="cbStatus" type="checkbox" class="k-checkbox" ${attributes}/>
+                        <input name="Name" type="hidden" value="${d.Name}" />
+                        <label>${d.Name}</label>
                         <button name="btnRename" class="btn btn-sm btn-link " type="button">Rename</button>
                         <button name="btnDetail" class="btn btn-sm btn-link " type="button">Detail</button>
                     </div>

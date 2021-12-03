@@ -9,7 +9,6 @@ namespace WebApp1.Models
     {
         public TemKullanici()
         {
-            NftProje = new HashSet<NftProje>();
             TemKullaniciLisans = new HashSet<TemKullaniciLisans>();
             TemKullaniciSifre = new HashSet<TemKullaniciSifre>();
             TemMesajAlici = new HashSet<TemMesaj>();
@@ -31,7 +30,6 @@ namespace WebApp1.Models
         public DateTime? InsertDateTime { get; set; }
         public DateTime? UpdateDateTime { get; set; }
 
-        public virtual ICollection<NftProje> NftProje { get; set; }
         public virtual ICollection<TemKullaniciLisans> TemKullaniciLisans { get; set; }
         public virtual ICollection<TemKullaniciSifre> TemKullaniciSifre { get; set; }
         public virtual ICollection<TemMesaj> TemMesajAlici { get; set; }

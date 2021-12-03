@@ -49,7 +49,7 @@ function compLayerEditor(_elm, _opt) {
     function fnStyleAppend() {
         var style = `
             <style>
-                `+ self.$elm.selector + ` div {
+                ${self.$elm.selector} div {
 
                 }
             </style>
@@ -127,14 +127,14 @@ function compLayerEditor(_elm, _opt) {
                 var attributes = d.Status == true ? "checked" : "";
 
                 var temp = `
-                    <div class="itemImage w-100" data-image-name="` + d.Name + `" data-image-url="` + encodeURIComponent(d.ImageUrl.toString()) + `">
-                        <input name="Name" type="hidden" value="` + d.Name + `">
-                        <input name="ImageWidth" type="hidden" value="` + d.ImageWidth + `">
-                        <input name="ImageHeight" type="hidden" value="` + d.ImageHeight + `">
-                        <input name="cbStatus" type="checkbox" class="k-checkbox" `+ attributes + ` />
-                        <label>`+ d.Name + `</label>
-                        <label class="pl-2">`+ "" + `%</label>
-                        <input class="form-control d-inline form-control-sm" name="UsagePercentage" type="number" value=` + d.UsagePercentage + ` style="width:60px;" min="0" max="100">
+                    <div class="itemImage w-100" data-image-name="${d.Name}" data-image-url="${encodeURIComponent(d.ImageUrl.toString())}">
+                        <input name="Name" type="hidden" value="${d.Name}">
+                        <input name="ImageWidth" type="hidden" value="${d.ImageWidth}">
+                        <input name="ImageHeight" type="hidden" value="${d.ImageHeight}">
+                        <input name="cbStatus" type="checkbox" class="k-checkbox" ${attributes} />
+                        <label>${d.Name}</label>
+                        <label class="pl-2">%</label>
+                        <input class="form-control d-inline form-control-sm" name="UsagePercentage" type="number" value="${d.UsagePercentage}" style="width:60px;" min="0" max="100">
                         <button name="btnRename" class="btn btn-sm btn-link " type="button">Rename</button>
                     </div>
                 `;

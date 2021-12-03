@@ -46,7 +46,7 @@ function compProjectList(_elm, _opt) {
     function fnStyleAppend() {
         var style = `
             <style>
-                `+ self.$elm.selector + ` div {
+                ${self.$elm.selector} div {
 
                 }
             </style>
@@ -124,6 +124,18 @@ function compProjectList(_elm, _opt) {
             }
         });
 
+        //btnAddMetedata
+        self.$elm.find("#divProjectList").on("click", "[name=btnAddMetedata]", function (e) {
+            var $elm = $(e.currentTarget).closest("[name=projectItem]");
+            var projectName = $elm.attr("data-project-name");
+            var quantity = $elm.find("[name=quantity]").val();
+            if (quantity > 0 && quantity <= 10000) {
+                fnAddMetedata(projectName, quantity);
+            } else {
+                alert("You can create a maximum of 10k images while previewing.");
+            }
+        });
+
         //btnDelete
         self.$elm.find("#divProjectList").on("click", "[name=btnDelete]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
@@ -147,19 +159,19 @@ function compProjectList(_elm, _opt) {
                 var tempExport = `
                                 <tr>
                                     <td>
-                                        ` + item.DirectoryName + `
+                                        ${item.DirectoryName}
                                     </td>
                                     <td>
-                                        `+ item.PlannedImageQuantity + `
+                                        ${item.PlannedImageQuantity}
                                     </td>
                                     <td>
-                                        `+ item.CreatedImageQuantity + `
+                                        ${item.CreatedImageQuantity}
                                     </td>
                                     <td>
-                                        <a href="#/Files?p1=`+ item.DownloadUrl + `" class="btn btn-sm btn-link ` + visibleClass + `" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
+                                        <a href="#/Files?p1=${item.DownloadUrl}" class="btn btn-sm btn-link ${visibleClass}" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
                                     </td>
                                     <td>
-                                        <a name="btnDelete" data-directory-name="` + item.DirectoryName + `" class="btn btn-sm btn-link" title="Delete"> <i class="fa fa-trash-o fa-fw"></i> </a>
+                                        <a name="btnDelete" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Delete"> <i class="fa fa-trash-o fa-fw"></i> </a>
                                     </td>
                                 </tr>
                             `;
@@ -167,21 +179,22 @@ function compProjectList(_elm, _opt) {
             }
 
             var temp = `
-                            <div name="projectItem" class="row border border-secondary mb-3 p-1 " data-project-name="`+ project.Name + `">
+                            <div name="projectItem" class="row border border-secondary mb-3 p-1 " data-project-name="${project.Name}">
                                 <div class="col-md-12">
                                     <table>
                                         <tr>
                                             <td>
-                                                <img name="imgProjectIcon" class="" src="` + project.ImageUrl + "?" + new Date() + `" data-image-url="` + project.ImageUrl + `" onerror="if (this.src != 'img/photo/noimage.png') this.src = 'img/photo/noimage.png';" style="width: 90px; cursor: pointer;">
+                                                <img name="imgProjectIcon" title="Create project icon" src="${project.ImageUrl + "?" + new Date()}" data-image-url="${project.ImageUrl}" onerror="if (this.src != 'img/photo/noimage.png') this.src = 'img/photo/noimage.png';" style="width: 90px; cursor: pointer;">
                                             </td>
                                             <td class="w-100 pl-2">
-                                                <span class="h4 text-truncate d-block" style="max-width:200px;" title="`+ project.Name + `">`+ project.Name + `</span>
-                                                <a href="#/ProjectEditor?p1=`+ project.Name + `" class="btn btn-sm btn-link pl-0"> Project Detail</a>
+                                                <span class="h4 text-truncate d-block" style="max-width:200px;" title="${project.Name}">${project.Name}</span>
+                                                <a href="#/ProjectEditor?p1=${project.Name}" class="btn btn-sm btn-link pl-0"> Project Detail</a>
                                             </td>
                                             <td>
                                                 <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity..." style="width:90px;" />
                                                 <a name="btnPreview" class="btn btn-sm btn-link" title="Preview Images">Preview</a>
                                                 <a name="btnGenerate" class="btn btn-sm btn-link" title="Generate Images">Generate</a>
+                                                <a name="btnAddMetedata" class="btn btn-sm btn-link" title="Add Metedata">Add Metedata</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -198,7 +211,7 @@ function compProjectList(_elm, _opt) {
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            `+ tempExportList + `
+                                            ${tempExportList}
                                         </tbody>
                                     </table>
                                 </div>
@@ -297,7 +310,7 @@ function compProjectList(_elm, _opt) {
                     for (const imgsrc of result.Data.Images) {
                         var temp = `
                             <div class="col-md-6 p-2">
-                                <img src="`+ imgsrc + `" style="width:250px;">
+                                <img src="${imgsrc}" style="width:250px;">
                             <div>
                         `;
                         imagesContainer.append(temp);
@@ -333,6 +346,38 @@ function compProjectList(_elm, _opt) {
             success: function (result, textStatus, jqXHR) {
                 if (result.Success == true) {
                     kendo.alert(result.Message);
+                } else {
+                    kendo.alert(result.Message);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+            },
+            complete: function (jqXHR, textStatus) {
+                setTimeout(function () {
+                    kendo.ui.progress(self.$elm, false); //progress Off
+                });
+            }
+        });
+    }
+
+    
+    function fnAddMetedata(projectName, quantity) {
+        var _data = {
+            projectName: projectName,
+            quantity: quantity
+        };
+
+        $.ajax({
+            url: "/api/Nft/AddMetadata",
+            data: JSON.stringify(_data),
+            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+            beforeSend: function (jqXHR, settings) {
+                kendo.ui.progress(self.$elm, true); //progress On
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (result.Success == true) {
+                    self.refresh();
                 } else {
                     kendo.alert(result.Message);
                 }

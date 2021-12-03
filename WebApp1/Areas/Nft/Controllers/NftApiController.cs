@@ -61,6 +61,23 @@ namespace WebApp1.Areas.Nft.Controllers
 
         #endregion
 
+        #region metedata
+        [HttpPost("AddMetadata")]
+        [ResponseCache(Duration = 0)]
+        public ActionResult AddMetadata([FromBody] object obj)
+        {
+            var nftBusiness = new NftBusiness(this.dataContext);
+
+            dynamic jsonResponse = Newtonsoft.Json.Linq.JObject.Parse(obj.ToString());
+            string projectName = jsonResponse.projectName;
+            int quantity = jsonResponse.quantity;
+
+            var response = nftBusiness.AddMetadata(this.userToken, projectName, quantity);
+
+            return Json(response);
+        }
+        #endregion
+
         #region proje işlemelri
 
         [HttpGet("GetProjectList")]

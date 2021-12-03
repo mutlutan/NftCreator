@@ -1,0 +1,16 @@
+[
+  {
+    "key": "xNft.viewProjectEditor.Title",
+    "value": {
+      "tr": "Proje Editörü",
+      "en": "Project Editor"
+    }
+  },
+  {
+    "key": "xNft.viewProjectEditor.ShortTitle",
+    "value": {
+      "tr": "Proje Editörü",
+      "en": "Project Editor"
+    }
+  }
+]

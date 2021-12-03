@@ -133,7 +133,6 @@ namespace WebApp1.Areas.Nft.Codes
         public string Compiler { get; set; }
     }
 
-
     #endregion
 
     #region Gorseller model

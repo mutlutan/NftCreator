@@ -32,17 +32,17 @@ namespace WebApp1.Areas.Tem.Controllers
                 Url = "#/TemKullanici"
             });
 
-            dashList.Add(new MyDashItem()
-            {
-                Id = (int)EnmDashItem.ProjeSayisi,
-                TemplateName = "tn1",
-                IconClass = "fa-child",
-                IconStyle = "color:deepskyblue;",
-                Title = MyApp.TranslateTo("xLng.viewDashBoard.ProjeSayisi", this.dataContext.Language),
-                RefreshTables = "NftProje",
-                YetkiGrups = "11,21",
-                Url = "#/NftProje"
-            });
+            //dashList.Add(new MyDashItem()
+            //{
+            //    Id = (int)EnmDashItem.ProjeSayisi,
+            //    TemplateName = "tn1",
+            //    IconClass = "fa-child",
+            //    IconStyle = "color:deepskyblue;",
+            //    Title = MyApp.TranslateTo("xLng.viewDashBoard.ProjeSayisi", this.dataContext.Language),
+            //    RefreshTables = "NftProje",
+            //    YetkiGrups = "11,21",
+            //    Url = "#/NftProje"
+            //});
 
             dashList = dashList.Where(c => c.YetkiGrups.Contains(((int)this.userToken.YetkiGrup).MyToStr())).ToList();
 
@@ -83,12 +83,7 @@ namespace WebApp1.Areas.Tem.Controllers
             else if (_dashId == (int)EnmDashItem.ProjeSayisi)
             {
                 //query
-                var query = this.dataContext.NftProje.Where(c => c.Id > 0);
-
-                if(this.userToken.YetkiGrup == EnmYetkiGrup.Musteri)
-                {
-                    query = query.Where(c => c.KullaniciId == this.userToken.UserId);
-                }
+                var query = this.dataContext.TemKullanici.Where(c => c.Id > 0);
 
                 //sonuç
                 var data = query.ToList();

@@ -23,9 +23,7 @@ namespace WebApp1.Areas.Nft.Codes
             this.rep = new Models._Rep(this.dataContext);
         }
 
-
-        #region generate Bitmap
-
+        #region Bitmap
         public System.IO.MemoryStream CreateBitmapStream(string userCode, MoMetaData metaData, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
         {
             System.Drawing.Bitmap bmp = new(_width, _height);
@@ -50,6 +48,9 @@ namespace WebApp1.Areas.Nft.Codes
             return memoryStream;
         }
 
+        #endregion
+
+        #region generate Bitmap
         public void GenerateImages(string userCode, List<MoMetaData> metaDataList, string exportDirectory)
         {
             string imageDirectory = exportDirectory + "\\" + "images";
@@ -77,49 +78,49 @@ namespace WebApp1.Areas.Nft.Codes
             System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
         }
 
-        //public void GenerateImagesForParalel(string userCode, List<MoMetaData> metaDataList, int quantity, string exportDirectory)
-        //{
-        //    string imageDirectory = exportDirectory + "\\" + "images";
-        //    if (!System.IO.Directory.Exists(imageDirectory))
-        //    {
-        //        System.IO.Directory.CreateDirectory(imageDirectory);
-        //    }
+        public void GenerateImagesForParalel(string userCode, List<MoMetaData> metaDataList, int quantity, string exportDirectory)
+        {
+            string imageDirectory = exportDirectory + "\\" + "images";
+            if (!System.IO.Directory.Exists(imageDirectory))
+            {
+                System.IO.Directory.CreateDirectory(imageDirectory);
+            }
 
-        //    string jsonDirectory = exportDirectory + "\\" + "json";
-        //    if (!System.IO.Directory.Exists(jsonDirectory))
-        //    {
-        //        System.IO.Directory.CreateDirectory(jsonDirectory);
-        //    }
+            string jsonDirectory = exportDirectory + "\\" + "json";
+            if (!System.IO.Directory.Exists(jsonDirectory))
+            {
+                System.IO.Directory.CreateDirectory(jsonDirectory);
+            }
 
-        //    int islemciAdet = 10; // Environment.ProcessorCount;
-        //    var islemciler = new double[islemciAdet];
-        //    for (int x = 1; x <= islemciAdet; x++)
-        //    {
-        //        islemciler[x - 1] = Math.Pow(2, x - 1); //işlemci numaraları üstel olduğundan ceviriyorum
-        //    }
+            int islemciAdet = 10; // Environment.ProcessorCount;
+            var islemciler = new double[islemciAdet];
+            for (int x = 1; x <= islemciAdet; x++)
+            {
+                islemciler[x - 1] = Math.Pow(2, x - 1); //işlemci numaraları üstel olduğundan ceviriyorum
+            }
 
-        //    ParallelOptions parOpts = new();
-        //    parOpts.MaxDegreeOfParallelism = islemciAdet;
+            ParallelOptions parOpts = new();
+            parOpts.MaxDegreeOfParallelism = islemciAdet;
 
-        //    Parallel.ForEach(islemciler, parOpts, p =>
-        //    {
-        //        int x = Array.IndexOf(islemciler, p);
-        //        x += 1;
+            Parallel.ForEach(islemciler, parOpts, p =>
+            {
+                int x = Array.IndexOf(islemciler, p);
+                x += 1;
 
-        //        var startIndex = quantity / islemciAdet * (x - 1);
-        //        var endIndex = quantity / islemciAdet * x;
+                var startIndex = quantity / islemciAdet * (x - 1);
+                var endIndex = quantity / islemciAdet * x;
 
-        //        for (int i = startIndex; i < endIndex; i++)
-        //        {
-        //            var bmpStream = this.CreateBitmapStream(userCode, metaDataList[i], 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
-        //            System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaDataList[i].ImageName, bmpStream.ToArray());
-        //            //json
-        //            System.IO.File.WriteAllText(jsonDirectory + "\\" + metaDataList[i].Edition + ".json", metaDataList[i].MyObjToJsonText());
-        //        }
-        //    });
+                for (int i = startIndex; i < endIndex; i++)
+                {
+                    var bmpStream = this.CreateBitmapStream(userCode, metaDataList[i], 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
+                    System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaDataList[i].ImageName, bmpStream.ToArray());
+                    //json
+                    System.IO.File.WriteAllText(jsonDirectory + "\\" + metaDataList[i].Edition + ".json", metaDataList[i].MyObjToJsonText());
+                }
+            });
 
-        //    System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
-        //}
+            System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
+        }
 
         #endregion
 
@@ -131,7 +132,7 @@ namespace WebApp1.Areas.Nft.Codes
             try
             {
                 MoGenerateImageInput generateImageInput = new() { ProjectName = projectName, Quantity = 1 };
-                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
+                var metaDataList = this.BuildMetadata(userCode, generateImageInput);
 
                 if (metaDataList.Success)
                 {
@@ -161,7 +162,7 @@ namespace WebApp1.Areas.Nft.Codes
 
             try
             {
-                var metaDataList = this.CreateMetaData(userCode, generateImageInput);
+                var metaDataList = this.BuildMetadata(userCode, generateImageInput);
                 if (metaDataList.Success)
                 {
                     List<string> images = new();
@@ -198,7 +199,7 @@ namespace WebApp1.Areas.Nft.Codes
                 if (userToken.LisansGun > 0 || generateImageInput.Quantity <= 1000)
                 {
                     string exportDirectoryName = MyApp.UserExportDirectory(userToken.UserCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
-                    var metaDataList = this.CreateMetaData(userToken.UserCode, generateImageInput);
+                    var metaDataList = this.BuildMetadata(userToken.UserCode, generateImageInput);
                     if (metaDataList.Success)
                     {
                         var task = Task.Run(() =>
@@ -232,10 +233,10 @@ namespace WebApp1.Areas.Nft.Codes
         #endregion
 
         #region metadata 
-        public MoResponse<List<MoMetaData>> CreateMetaData(string userCode, MoGenerateImageInput generateImageInput)
+        public MoResponse<List<MoMetaData>> BuildMetadata(string userCode, MoGenerateImageInput generateImageInput)
         {
             MoResponse<List<MoMetaData>> response = new();
-
+            //metatdatayı memoryde oluşturur
             try
             {
                 System.Diagnostics.Stopwatch stopwatch1 = new();
@@ -320,6 +321,53 @@ namespace WebApp1.Areas.Nft.Codes
 
             return response;
         }
+
+
+        public MoResponse<List<MoMetaData>> AddMetadata(MoUserToken userToken, string projectName, int quantity)
+        {
+            MoResponse<List<MoMetaData>> response = new();
+
+            try
+            {
+                MoGenerateImageInput generateImageInput = new() { ProjectName = projectName, Quantity = quantity };
+                var metaDataList = this.BuildMetadata(userToken.UserCode, generateImageInput);
+
+                if (metaDataList.Success)
+                {
+                    string exportDirectory = MyApp.UserExportDirectory(userToken.UserCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yy.MM.dd_HH_mm_ss");
+
+                    string jsonDirectory = exportDirectory + "\\" + "json";
+                    if (!System.IO.Directory.Exists(jsonDirectory))
+                    {
+                        System.IO.Directory.CreateDirectory(jsonDirectory);
+                    }
+
+                    //json metadata all
+                    System.IO.File.WriteAllText(jsonDirectory + "\\" + "_metadata.json", metaDataList.MyObjToJsonText());
+
+                    foreach (var metaData in metaDataList.Data)
+                    {
+                        //json
+                        System.IO.File.WriteAllText(jsonDirectory + "\\" + metaData.Edition + ".json", metaData.MyObjToJsonText());
+                    }
+
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message = metaDataList.Message;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Warning: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
+
+
 
         #endregion
 
@@ -415,6 +463,15 @@ namespace WebApp1.Areas.Nft.Codes
                                     export.DownloadUrl = "";
                                 }
 
+                                // planlanan image sayısı
+                                string jsonsPath = exportDir.FullName + "\\json";
+                                var diJsons = new System.IO.DirectoryInfo(jsonsPath);
+                                if (diJsons.Exists)
+                                {
+                                    export.PlannedImageQuantity = diJsons.GetFiles().Length-1;
+                                }
+
+                                //oluşturulan image sayısı
                                 string imagesPath = exportDir.FullName + "\\images";
                                 var diImages = new System.IO.DirectoryInfo(imagesPath);
                                 if (diImages.Exists)

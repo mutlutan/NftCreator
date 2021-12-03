@@ -17,7 +17,6 @@ namespace WebApp1.Models
         {
         }
 
-        public virtual DbSet<NftProje> NftProje { get; set; }
         public virtual DbSet<TemAdres> TemAdres { get; set; }
         public virtual DbSet<TemAuditLog> TemAuditLog { get; set; }
         public virtual DbSet<TemCinsiyet> TemCinsiyet { get; set; }
@@ -46,27 +45,6 @@ namespace WebApp1.Models
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.HasAnnotation("Relational:Collation", "Turkish_CI_AS");
-
-            modelBuilder.Entity<NftProje>(entity =>
-            {
-                entity.HasIndex(e => e.Durum, "IX_NftProje_Durum");
-
-                entity.HasIndex(e => e.GizliId, "IX_NftProje_GizliId");
-
-                entity.HasIndex(e => e.TarihSaat, "IX_NftProje_TarihSaat");
-
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Ad).HasMaxLength(250);
-
-                entity.Property(e => e.TarihSaat).HasColumnType("datetime");
-
-                entity.HasOne(d => d.Kullanici)
-                    .WithMany(p => p.NftProje)
-                    .HasForeignKey(d => d.KullaniciId)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_NftProje_KullaniciId");
-            });
 
             modelBuilder.Entity<TemAdres>(entity =>
             {
@@ -573,8 +551,6 @@ namespace WebApp1.Models
 
                 entity.Property(e => e.Tarih).HasColumnType("datetime");
             });
-
-            modelBuilder.HasSequence<int>("sqNftProje");
 
             modelBuilder.HasSequence<int>("sqTemAdres");
 
