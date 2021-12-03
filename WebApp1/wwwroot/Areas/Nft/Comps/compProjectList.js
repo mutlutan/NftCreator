@@ -16,8 +16,15 @@ function compProjectList(_elm, _opt) {
     function fnHtmlAppend() {
         var temp = `
             <div >
-                <div>
-                    <a name="btnAddProject" class="btn btn-sm btn-link">Add Project</a>
+                <div class="row">
+                    <div class="col-md-6">
+                        <a name="btnAddProject" class="btn btn-sm btn-link">Add Project</a>
+
+                        <a name="btnRefreshProjects" class="btn btn-sm btn-link pull-right" title="refresh"> <i class="fa fa-refresh"></i> </a>
+                    </div>
+                    <div class="col-md-6">
+                        
+                    </div>
                 </div>
 
                 <div class="py-1"></div>
@@ -55,6 +62,10 @@ function compProjectList(_elm, _opt) {
             });
         });
 
+        self.$elm.find("[name=btnRefreshProjects]").click(function (e) {
+            self.refresh();
+        });
+
         //imgProjectIcon
         self.$elm.find("#divProjectList").on("click", "[name=imgProjectIcon]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
@@ -88,9 +99,7 @@ function compProjectList(_elm, _opt) {
                         kendo.ui.progress(self.$elm, false); //progress Off
                     });
                 }
-            });
-
-            
+            });                        
         });
 
         self.$elm.find("#divProjectList").on("click", "[name=btnPreview]", function (e) {
@@ -114,6 +123,17 @@ function compProjectList(_elm, _opt) {
                 alert("You can create a maximum of 10k images while previewing.");
             }
         });
+
+        //btnDelete
+        self.$elm.find("#divProjectList").on("click", "[name=btnDelete]", function (e) {
+            var $elm = $(e.currentTarget).closest("[name=projectItem]");
+            var projectName = $elm.attr("data-project-name");
+            var directoryName = $(e.currentTarget).attr("data-directory-name");
+
+            kendo.confirm("Do you want to delete the export directory?").then(function () {
+                fnDeleteExportDirectory(projectName, directoryName);
+            });
+        });
     }
 
     function fnRenderProjectList(_data) {
@@ -121,16 +141,25 @@ function compProjectList(_elm, _opt) {
         for (const project of _data) {
             var tempExportList = "";
             for (const item of project.ExportList) {
+
+                let visibleClass = item.DownloadUrl == "" ? "d-none" : "";
+
                 var tempExport = `
                                 <tr>
                                     <td>
-                                        <a href="#/Files?p1=`+ item.DownloadUrl + `" class="btn btn-sm btn-link">` + item.DownloadFileName + `</a>
+                                        ` + item.DirectoryName + `
                                     </td>
-                                    <td class="d-none">
+                                    <td>
                                         `+ item.PlannedImageQuantity + `
                                     </td>
                                     <td>
                                         `+ item.CreatedImageQuantity + `
+                                    </td>
+                                    <td>
+                                        <a href="#/Files?p1=`+ item.DownloadUrl + `" class="btn btn-sm btn-link ` + visibleClass + `" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
+                                    </td>
+                                    <td>
+                                        <a name="btnDelete" data-directory-name="` + item.DirectoryName + `" class="btn btn-sm btn-link" title="Delete"> <i class="fa fa-trash-o fa-fw"></i> </a>
                                     </td>
                                 </tr>
                             `;
@@ -138,7 +167,7 @@ function compProjectList(_elm, _opt) {
             }
 
             var temp = `
-                            <div name="projectItem" class="row border border-secondary m-2 p-1 " data-project-name="`+ project.Name + `">
+                            <div name="projectItem" class="row border border-secondary mb-3 p-1 " data-project-name="`+ project.Name + `">
                                 <div class="col-md-12">
                                     <table>
                                         <tr>
@@ -158,12 +187,14 @@ function compProjectList(_elm, _opt) {
                                     </table>
                                 </div>
                                 <div class="col-md-12">
-                                    <table class="table table-sm">
+                                    <table name="tableExport" class="table table-sm">
                                         <thead class="thead-light">
                                             <tr>
-                                                <th class="font-weight-normal">Downloads</th>
-                                                <th class="font-weight-normal d-none">Planned</th>
+                                                <th class="font-weight-normal">Export Name</th>
+                                                <th class="font-weight-normal">Planned</th>
                                                 <th class="font-weight-normal">Created</th>
+                                                <th class="font-weight-normal"></th>
+                                                <th class="font-weight-normal"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -301,7 +332,38 @@ function compProjectList(_elm, _opt) {
             },
             success: function (result, textStatus, jqXHR) {
                 if (result.Success == true) {
-                    alert(result.Message);
+                    kendo.alert(result.Message);
+                } else {
+                    kendo.alert(result.Message);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+            },
+            complete: function (jqXHR, textStatus) {
+                setTimeout(function () {
+                    kendo.ui.progress(self.$elm, false); //progress Off
+                });
+            }
+        });
+    }
+
+    function fnDeleteExportDirectory(projectName, directoryName) {
+        var _data = {
+            projectName: projectName,
+            directoryName: directoryName
+        };
+
+        $.ajax({
+            url: "/api/Nft/DeleteExportDirectory",
+            data: JSON.stringify(_data),
+            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+            beforeSend: function (jqXHR, settings) {
+                kendo.ui.progress(self.$elm, true); //progress On
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (result.Success == true) {
+                    self.refresh();
                 } else {
                     alert(result.Message);
                 }

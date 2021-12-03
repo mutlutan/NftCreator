@@ -13,47 +13,18 @@ namespace WebApp1.Areas.Nft.Codes
     public class NftBusiness
     {
         private readonly DataContext dataContext;
-        private readonly _Rep rep = null;
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("CodeQuality", "IDE0052:Remove unread private members", Justification = "<Pending>")]
+        private readonly _Rep rep;
 
         public NftBusiness(DataContext _dataContext)
         {
             this.dataContext = _dataContext;
             this.rep = new Models._Rep(this.dataContext);
-
         }
 
 
         #region generate Bitmap
-        public System.IO.MemoryStream CreateBitmapStream(string userCode, MoProjectInfo projectInfo, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
-        {
-            System.Drawing.Bitmap bmp = new(_width, _height);
-            System.Drawing.Graphics grap = System.Drawing.Graphics.FromImage(bmp);
-
-            foreach (var layer in projectInfo.LayerList.Where(c => c.Status == true))
-            {
-                System.IO.DirectoryInfo directoryInfo = new(MyApp.UserImportDirectory(userCode, projectInfo.ProjectName) + "\\" + layer.Name);
-
-                var randomFile = directoryInfo
-                    .EnumerateFiles("*.png", System.IO.SearchOption.TopDirectoryOnly)
-                    .OrderBy(o => Guid.NewGuid()).FirstOrDefault();
-
-                if (randomFile != null)
-                {
-                    var img = System.Drawing.Image.FromFile(randomFile.FullName);
-                    grap.DrawImage(img, 0, 0, _width, _height);
-                    img.Dispose();
-                }
-            }
-
-            grap.Dispose();
-
-            System.IO.MemoryStream memoryStream = new();
-            bmp.Save(memoryStream, imageFormat);
-
-            bmp.Dispose();
-
-            return memoryStream;
-        }
 
         public System.IO.MemoryStream CreateBitmapStream(string userCode, MoMetaData metaData, int _width, int _height, System.Drawing.Imaging.ImageFormat imageFormat)
         {
@@ -106,50 +77,49 @@ namespace WebApp1.Areas.Nft.Codes
             System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
         }
 
-        public void GenerateImagesForParalel(string userCode, MoProjectInfo projectInfo, int quantity, string exportDirectory)
-        {
-            string imageDirectory = exportDirectory + "\\" + "images";
-            if (!System.IO.Directory.Exists(imageDirectory))
-            {
-                System.IO.Directory.CreateDirectory(imageDirectory);
-            }
+        //public void GenerateImagesForParalel(string userCode, List<MoMetaData> metaDataList, int quantity, string exportDirectory)
+        //{
+        //    string imageDirectory = exportDirectory + "\\" + "images";
+        //    if (!System.IO.Directory.Exists(imageDirectory))
+        //    {
+        //        System.IO.Directory.CreateDirectory(imageDirectory);
+        //    }
 
-            string jsonDirectory = exportDirectory + "\\" + "json";
-            if (!System.IO.Directory.Exists(jsonDirectory))
-            {
-                System.IO.Directory.CreateDirectory(jsonDirectory);
-            }
+        //    string jsonDirectory = exportDirectory + "\\" + "json";
+        //    if (!System.IO.Directory.Exists(jsonDirectory))
+        //    {
+        //        System.IO.Directory.CreateDirectory(jsonDirectory);
+        //    }
 
-            int islemciAdet = 10; // Environment.ProcessorCount;
-            var islemciler = new double[islemciAdet];
-            for (int x = 1; x <= islemciAdet; x++)
-            {
-                islemciler[x - 1] = Math.Pow(2, x - 1); //işlemci numaraları üstel olduğundan ceviriyorum
-            }
+        //    int islemciAdet = 10; // Environment.ProcessorCount;
+        //    var islemciler = new double[islemciAdet];
+        //    for (int x = 1; x <= islemciAdet; x++)
+        //    {
+        //        islemciler[x - 1] = Math.Pow(2, x - 1); //işlemci numaraları üstel olduğundan ceviriyorum
+        //    }
 
-            ParallelOptions parOpts = new();
-            parOpts.MaxDegreeOfParallelism = islemciAdet;
+        //    ParallelOptions parOpts = new();
+        //    parOpts.MaxDegreeOfParallelism = islemciAdet;
 
-            Parallel.ForEach(islemciler, parOpts, p =>
-            {
-                int x = Array.IndexOf(islemciler, p);
-                x += 1;
+        //    Parallel.ForEach(islemciler, parOpts, p =>
+        //    {
+        //        int x = Array.IndexOf(islemciler, p);
+        //        x += 1;
 
-                var startIndex = quantity / islemciAdet * (x - 1);
-                var endIndex = quantity / islemciAdet * x;
+        //        var startIndex = quantity / islemciAdet * (x - 1);
+        //        var endIndex = quantity / islemciAdet * x;
 
-                for (int i = startIndex; i < endIndex; i++)
-                {
-                    var bmpStream = this.CreateBitmapStream(userCode, projectInfo, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
-                    string fileName = (1 + i).ToString().PadLeft(quantity.MyToStr().Length, '0') + ".png";
-                    string pathFileName = imageDirectory + "\\" + fileName;
-                    System.IO.File.WriteAllBytes(pathFileName, bmpStream.ToArray());
-                }
+        //        for (int i = startIndex; i < endIndex; i++)
+        //        {
+        //            var bmpStream = this.CreateBitmapStream(userCode, metaDataList[i], 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
+        //            System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaDataList[i].ImageName, bmpStream.ToArray());
+        //            //json
+        //            System.IO.File.WriteAllText(jsonDirectory + "\\" + metaDataList[i].Edition + ".json", metaDataList[i].MyObjToJsonText());
+        //        }
+        //    });
 
-            });
-
-            System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
-        }
+        //    System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
+        //}
 
         #endregion
 
@@ -286,7 +256,7 @@ namespace WebApp1.Areas.Nft.Codes
                     metaData.ImageName = $"{i}.png";
                     metaData.Name = $"#{i}";
                     metaData.Description = $"The {generateImageInput.ProjectName}  are a pack of {generateImageInput.Quantity} unique Crypto in NFT form";
-                    metaData.Image = $"http://194.233.64.57/Data/Files/{generateImageInput.ProjectName}/images/{i}.png";
+                    metaData.Image = $"https://app.nftcreator.click/Data/Files/{generateImageInput.ProjectName}/images/{i}.png";
                     metaData.Edition = i;
                     metaData.Date = DateTime.Now.Ticks;
 
@@ -353,6 +323,32 @@ namespace WebApp1.Areas.Nft.Codes
 
         #endregion
 
+        #region exports
+        public MoResponse<object> DeleteExportDirectory(string userCode, string projectName, string directoryName)
+        {
+            MoResponse<object> response = new();
+            try
+            {
+                string exportDirectory = MyApp.UserExportDirectory(userCode, projectName) + "\\" + directoryName;
+                if (System.IO.Directory.Exists(exportDirectory))
+                {
+                    System.IO.Directory.Delete(exportDirectory, true);
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message.Add("directory not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Error: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
+        #endregion
+
         #region Projects method
         public MoResponse<object> AddProject(string userCode, string projectName)
         {
@@ -404,16 +400,22 @@ namespace WebApp1.Areas.Nft.Codes
                         if (diExport.Exists)
                         {
                             var exportDirectories = diExport.GetDirectories();
-                            foreach (var dir in exportDirectories)
+                            foreach (var exportDir in exportDirectories)
                             {
                                 MoProjectExport export = new();
-                                export.DirectoryName = dir.Name;
-                                export.DownloadFileName = dir.Name + ".zip";
+                                export.DirectoryName = exportDir.Name;
 
-                                string downloadFile = exportPath.Replace(MyApp.EnvWebRootPath, "") + export.DownloadFileName;
-                                export.DownloadUrl = downloadFile.Replace("\\", "/");
+                                string downloadFile = exportDir.FullName.Replace(MyApp.EnvWebRootPath, "") + ".zip";
+                                if (System.IO.File.Exists(exportDir.FullName + ".zip"))
+                                {
+                                    export.DownloadUrl = downloadFile.Replace("\\", "/");
+                                }
+                                else
+                                {
+                                    export.DownloadUrl = "";
+                                }
 
-                                string imagesPath = dir.FullName + "\\images";
+                                string imagesPath = exportDir.FullName + "\\images";
                                 var diImages = new System.IO.DirectoryInfo(imagesPath);
                                 if (diImages.Exists)
                                 {
@@ -555,10 +557,9 @@ namespace WebApp1.Areas.Nft.Codes
         #endregion
 
         #region layer methods
-
-        //resimlerin yüzdesini eşitle
         public MoResponse<List<MoImage>> GetLayerImageEqualPercentage(List<MoImage> data)
         {
+            //resimlerin yüzdesini eşitle
             MoResponse<List<MoImage>> response = new();
             response.Data = data;
 

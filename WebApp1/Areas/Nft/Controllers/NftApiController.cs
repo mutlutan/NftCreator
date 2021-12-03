@@ -74,6 +74,21 @@ namespace WebApp1.Areas.Nft.Controllers
             return Json(response);
         }
 
+        [HttpPost("DeleteExportDirectory")]
+        [ResponseCache(Duration = 0)]
+        public ActionResult DeleteExportDirectory([FromBody] object obj)
+        {
+            var nftBusiness = new NftBusiness(this.dataContext);
+
+            dynamic jsonResponse = Newtonsoft.Json.Linq.JObject.Parse(obj.ToString());
+            string projectName = jsonResponse.projectName;
+            string directoryName = jsonResponse.directoryName;
+
+            var response = nftBusiness.DeleteExportDirectory(this.userToken.UserCode, projectName, directoryName);
+
+            return Json(response);
+        }
+
         [HttpPost("AddProject")]
         [ResponseCache(Duration = 0)]
         public ActionResult AddProject([FromBody] object obj)

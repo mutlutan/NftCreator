@@ -11,7 +11,6 @@ namespace WebApp1.Areas.Nft.Codes
     {
         public string DirectoryName { get; set; }
         public string DownloadUrl { get; set; }
-        public string DownloadFileName { get; set; }
         public int PlannedImageQuantity { get; set; } = 0; //palalalan image sayısı
         public int CreatedImageQuantity { get; set; } = 0; //Oluşan image sayısı
     }
