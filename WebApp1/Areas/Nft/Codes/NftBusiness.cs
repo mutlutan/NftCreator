@@ -59,22 +59,14 @@ namespace WebApp1.Areas.Nft.Codes
                 System.IO.Directory.CreateDirectory(imageDirectory);
             }
 
-            string jsonDirectory = exportDirectory + "\\" + "json";
-            if (!System.IO.Directory.Exists(jsonDirectory))
-            {
-                System.IO.Directory.CreateDirectory(jsonDirectory);
-            }
-
             foreach (var metaData in metaDataList)
             {
                 //image
                 var bmpStream = this.CreateBitmapStream(userCode, metaData, 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
                 System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaData.ImageName, bmpStream.ToArray());
-                //json
-                System.IO.File.WriteAllText(jsonDirectory + "\\" + metaData.Edition + ".json", metaData.MyObjToJsonText());
             }
-            //json metadata all
-            System.IO.File.WriteAllText(jsonDirectory + "\\" + "_metadata.json", metaDataList.MyObjToJsonText());
+
+            //zip
             System.IO.Compression.ZipFile.CreateFromDirectory(exportDirectory, exportDirectory + ".zip");
         }
 
@@ -322,7 +314,35 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
+        public MoResponse<List<MoMetaData>> GetMetadata(string directoryName)
+        {
+            MoResponse<List<MoMetaData>> response = new();
+            try
+            {
+                string fileName = directoryName + "\\json\\_metadata.json";
+                if (System.IO.File.Exists(fileName))
+                {
+                    string jsonText = System.IO.File.ReadAllText(fileName);
 
+                    response.Data = Newtonsoft.Json.JsonConvert.DeserializeObject<List<MoMetaData>>(jsonText);
+                    response.Success = true;
+                }
+                else
+                {
+                    response.Message.Add("Metadata not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Warning: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
+
+        #endregion
+
+        #region exports
         public MoResponse<List<MoMetaData>> AddExport(MoUserToken userToken, string projectName, int quantity)
         {
             MoResponse<List<MoMetaData>> response = new();
@@ -343,7 +363,7 @@ namespace WebApp1.Areas.Nft.Codes
                     }
 
                     //json metadata all
-                    System.IO.File.WriteAllText(jsonDirectory + "\\" + "_metadata.json", metaDataList.MyObjToJsonText());
+                    System.IO.File.WriteAllText(jsonDirectory + "\\" + "_metadata.json", metaDataList.Data.MyObjToJsonText());
 
                     foreach (var metaData in metaDataList.Data)
                     {
@@ -367,12 +387,7 @@ namespace WebApp1.Areas.Nft.Codes
             return response;
         }
 
-
-
-        #endregion
-
-        #region exports
-        public MoResponse<object> DeleteExportDirectory(string userCode, string projectName, string directoryName)
+        public MoResponse<object> DeleteExport(string userCode, string projectName, string directoryName)
         {
             MoResponse<object> response = new();
             try
@@ -395,6 +410,48 @@ namespace WebApp1.Areas.Nft.Codes
 
             return response;
         }
+
+        public MoResponse<object> GenerateExport(MoUserToken userToken, string projectName, string directoryName, int quantity)
+        {
+            MoResponse<object> response = new();
+
+            try
+            {
+                if (userToken.LisansGun > 0 || quantity <= 1000)
+                {
+                    string exportDirectoryName = MyApp.UserExportDirectory(userToken.UserCode, projectName) + "\\" + directoryName;
+                    MoGenerateImageInput generateImageInput = new() { ProjectName = projectName, Quantity = quantity };
+                    var metaDataList = this.GetMetadata(exportDirectoryName);
+                    if (metaDataList.Success)
+                    {
+                        var task = Task.Run(() =>
+                        {
+                            this.GenerateImages(userToken.UserCode, metaDataList.Data, exportDirectoryName);
+                        });
+
+                        //Dosyalar oluşturuluyor, tamamlandığında dosyalar bölümünden indirip dışa aktarabilirsiniz.
+                        response.Message.Add("The files are being created, when completed, you can download and export them from the Files section.");
+                        response.Success = true;
+                        response.Data = new { ExportDirectoryName = exportDirectoryName };
+                    }
+                    else
+                    {
+                        response.Message = metaDataList.Message;
+                    }
+                }
+                else
+                {
+                    response.Message.Add("Free users can generate 1000 images");
+                }
+            }
+            catch (Exception ex)
+            {
+                response.Message.Add("Error: " + ex.MyLastInner().Message);
+            }
+
+            return response;
+        }
+
         #endregion
 
         #region Projects method
@@ -468,7 +525,7 @@ namespace WebApp1.Areas.Nft.Codes
                                 var diJsons = new System.IO.DirectoryInfo(jsonsPath);
                                 if (diJsons.Exists)
                                 {
-                                    export.PlannedImageQuantity = diJsons.GetFiles().Length-1;
+                                    export.PlannedImageQuantity = diJsons.GetFiles().Length - 1;
                                 }
 
                                 //oluşturulan image sayısı

@@ -86,7 +86,7 @@ function compProjectList(_elm, _opt) {
                 success: function (result, textStatus, jqXHR) {
                     if (result.Success == true) {
                         let imgUrl = $elm.find("[name=imgProjectIcon]").attr("data-image-url");
-                        $elm.find("[name=imgProjectIcon]").attr("src", imgUrl +"?"+ new Date());
+                        $elm.find("[name=imgProjectIcon]").attr("src", imgUrl + "?" + new Date());
                     } else {
                         alert(result.Message);
                     }
@@ -99,7 +99,7 @@ function compProjectList(_elm, _opt) {
                         kendo.ui.progress(self.$elm, false); //progress Off
                     });
                 }
-            });                        
+            });
         });
 
         self.$elm.find("#divProjectList").on("click", "[name=btnPreview]", function (e) {
@@ -136,14 +136,14 @@ function compProjectList(_elm, _opt) {
             }
         });
 
-        //btnGenerateImage
-        self.$elm.find("#divProjectList").on("click", "[name=btnGenerateImage]", function (e) {
+        //btnGenerateExport
+        self.$elm.find("#divProjectList").on("click", "[name=btnGenerateExport]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
             var projectName = $elm.attr("data-project-name");
             var directoryName = $(e.currentTarget).attr("data-directory-name");
             var quantity = $elm.find("[name=plannedImageQuantity]").val();
             kendo.confirm("Do you want to create pictures?").then(function () {
-                //...
+                fnGenerateExport(projectName, directoryName, quantity);
             });
         });
 
@@ -154,7 +154,7 @@ function compProjectList(_elm, _opt) {
             var directoryName = $(e.currentTarget).attr("data-directory-name");
 
             kendo.confirm("Do you want to delete the export directory?").then(function () {
-                fnDeleteExportDirectory(projectName, directoryName);
+                fnDeleteExport(projectName, directoryName);
             });
         });
     }
@@ -179,7 +179,7 @@ function compProjectList(_elm, _opt) {
                                         ${item.CreatedImageQuantity}
                                     </td>
                                     <td>
-                                        <a name="btnGenerateImage" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Generate"> <i class="fa fa-play fa-fw"></i> </a>
+                                        <a name="btnGenerateExport" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Generate"> <i class="fa fa-play fa-fw"></i> </a>
                                     </td>
                                     <td>
                                         <a href="#/Files?p1=${item.DownloadUrl}" class="btn btn-sm btn-link ${visibleClass}" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
@@ -376,7 +376,40 @@ function compProjectList(_elm, _opt) {
         });
     }
 
-    
+    function fnGenerateExport(projectName, directoryName, quantity) {
+        var _data = {
+            projectName: projectName,
+            directoryName: directoryName,
+            quantity: quantity
+        };
+
+        $.ajax({
+            url: "/api/Nft/GenerateExport",
+            data: JSON.stringify(_data),
+            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
+            beforeSend: function (jqXHR, settings) {
+                kendo.ui.progress(self.$elm, true); //progress On
+            },
+            success: function (result, textStatus, jqXHR) {
+                if (result.Success == true) {
+                    kendo.alert(result.Message);
+                    self.refresh();
+                } else {
+                    kendo.alert(result.Message);
+                }
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
+            },
+            complete: function (jqXHR, textStatus) {
+                setTimeout(function () {
+                    kendo.ui.progress(self.$elm, false); //progress Off
+                });
+            }
+        });
+    }
+
+
     function fnAddExport(projectName, quantity) {
         var _data = {
             projectName: projectName,
@@ -408,14 +441,14 @@ function compProjectList(_elm, _opt) {
         });
     }
 
-    function fnDeleteExportDirectory(projectName, directoryName) {
+    function fnDeleteExport(projectName, directoryName) {
         var _data = {
             projectName: projectName,
             directoryName: directoryName
         };
 
         $.ajax({
-            url: "/api/Nft/DeleteExportDirectory",
+            url: "/api/Nft/DeleteExport",
             data: JSON.stringify(_data),
             type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
             beforeSend: function (jqXHR, settings) {
