@@ -62,11 +62,8 @@ namespace WebApp1.Controllers
                 //ViewBag.UserName = "admin"; 
                 //ViewBag.Password = "1";
 
-                ViewBag.UserName = "customer";
+                ViewBag.UserName = "mutlutan@nftcreator.click";
                 ViewBag.Password = "1";
-
-                //ViewBag.UserName = "mutlutan@outlook.com"; 
-                //ViewBag.Password = "123";
 
                 ViewBag.SecurityCode = "1111";
             }

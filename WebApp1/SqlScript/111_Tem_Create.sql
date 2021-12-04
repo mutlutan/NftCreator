@@ -348,8 +348,9 @@
 	CREATE UNIQUE INDEX UX_TemKullanici_Ad ON TemKullanici (Ad);
 	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre) VALUES (0, 0, N'', N'', N'', N'');
 	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'01', N'admin', N'07', N'Admin ADMIN');
-	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1101', N'02', N'Employee', N'07', N'Employee EMPLOYEE');
-	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'',     N'*',  N'Customer', N'07', N'Customer CUSTOMER');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'1001', N'02', N'harold', N'07', N'Harold ADMIN');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'',     N'21N01',  N'harold@nftcreator.click', N'07', N'Harold CUSTOMER');
+	INSERT INTO TemKullanici (Id, Durum, Rols, Kod, Ad, Sifre, AdSoyad) VALUES (Next Value For dbo.sqTemKullanici, 1, N'',     N'21N02',  N'mutlutan@nftcreator.click', N'07', N'Mutlu CUSTOMER');
 
 	/* Kullanici Şifre history*/
 	CREATE SEQUENCE dbo.sqTemKullaniciSifre AS INT START WITH 1 INCREMENT BY 1;

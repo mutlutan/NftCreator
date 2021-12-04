@@ -75,6 +75,8 @@ namespace WebApp1.Controllers
 
             ViewBag.LogoImageUrl = "/img/logo/logoYatay.png?v" + WebApp1.Codes.MyApp.Version;
 
+            ViewBag.UserName = userToken.UserName;
+
             base.OnActionExecuting(context);
         }
 

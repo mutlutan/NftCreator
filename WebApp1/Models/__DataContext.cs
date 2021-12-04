@@ -111,7 +111,7 @@ namespace WebApp1.Models
             DateTime startTime = DateTime.Now;
 
             string _sInitialCatalog = this.Database.GetDbConnection().Database;
-            string _sCollate = "TURKISH_CI_AS"; //burası seçilebilir birşey olmalı
+            string _sCollate = "SQL_Latin1_General_CP1_CI_AS"; //burası seçilebilir birşey olmalıTURKISH_CI_AS
             string _SQLText = "CREATE DATABASE " + _sInitialCatalog + " COLLATE " + _sCollate + ";";
 
             using (var Con1 = new SqlConnection(this.ConStrings.MasterConnectionString))
