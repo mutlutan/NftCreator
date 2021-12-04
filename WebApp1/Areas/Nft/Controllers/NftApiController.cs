@@ -38,27 +38,6 @@ namespace WebApp1.Areas.Nft.Controllers
             return Json(response);
         }
 
-        [HttpPost("PreviewGenerateImages")]
-        [ResponseCache(Duration = 0)]
-        public ActionResult PreviewGenerateImages([FromBody] MoGenerateImageInput generateImageInput)
-        {
-            var nftBusiness = new NftBusiness(this.dataContext);
-
-            MoResponse<object> response = nftBusiness.PreviewGenerateImages(this.userToken.UserCode, generateImageInput);
-
-            return Json(response);
-        }
-
-        [HttpPost("StartGenerateImages")]
-        [ResponseCache(Duration = 0)]
-        public ActionResult StartGenerateImages([FromBody] MoGenerateImageInput generateImageInput)
-        {
-            var nftBusiness = new NftBusiness(this.dataContext);
-            MoResponse<object> response = nftBusiness.StartGenerateImages(this.userToken, generateImageInput);
-
-            return Json(response);
-        }
-
         #endregion
 
         #region export planlama

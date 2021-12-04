@@ -102,28 +102,6 @@ function compProjectList(_elm, _opt) {
             });
         });
 
-        self.$elm.find("#divProjectList").on("click", "[name=btnPreview]", function (e) {
-            var $elm = $(e.currentTarget).closest("[name=projectItem]");
-            var projectName = $elm.attr("data-project-name");
-            var quantity = $elm.find("[name=quantity]").val();
-            if (quantity > 0 && quantity <= 1000) {
-                fnPreviewImage(projectName, quantity);
-            } else {
-                alert("You can create a maximum of 1000 images while previewing.");
-            }
-        });
-
-        self.$elm.find("#divProjectList").on("click", "[name=btnGenerate]", function (e) {
-            var $elm = $(e.currentTarget).closest("[name=projectItem]");
-            var projectName = $elm.attr("data-project-name");
-            var quantity = $elm.find("[name=quantity]").val();
-            if (quantity > 0 && quantity <= 10000) {
-                fnStartGenerateImages(projectName, quantity);
-            } else {
-                alert("You can create a maximum of 10k images while previewing.");
-            }
-        });
-
         //btnAddExport
         self.$elm.find("#divProjectList").on("click", "[name=btnAddExport]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
@@ -208,7 +186,6 @@ function compProjectList(_elm, _opt) {
                                             </td>
                                             <td>
                                                 <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity..." style="width:90px;" />
-                                                <a name="btnPreview" class="btn btn-sm btn-link d-none" title="Preview Images">Preview</a>
                                                 <a name="btnGenerate" class="btn btn-sm btn-link d-none" title="Generate Images">Generate</a>
                                                 <a name="btnAddExport" class="btn btn-sm btn-link" title="Add Export">Add Export</a>
                                             </td>
@@ -220,8 +197,8 @@ function compProjectList(_elm, _opt) {
                                         <thead class="thead-light">
                                             <tr>
                                                 <th class="font-weight-normal">Export Name</th>
-                                                <th class="font-weight-normal">Planned</th>
-                                                <th class="font-weight-normal">Created</th>
+                                                <th class="font-weight-normal">Planned Quantity</th>
+                                                <th class="font-weight-normal">Created Q.</th>
                                                 <th class="font-weight-normal"></th>
                                                 <th class="font-weight-normal"></th>
                                                 <th class="font-weight-normal"></th>
@@ -301,79 +278,6 @@ function compProjectList(_elm, _opt) {
             },
             error: function (jqXHR, textStatus, errorThrown) {
                 alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            }
-        });
-    }
-
-    function fnPreviewImage(projectName, quantity) {
-
-        var _data = {
-            projectName: projectName,
-            quantity: quantity
-        };
-
-        $.ajax({
-            url: "/api/Nft/PreviewGenerateImages",
-            data: JSON.stringify(_data),
-            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
-            beforeSend: function (jqXHR, settings) {
-                kendo.ui.progress(self.$elm, true); //progress On
-            },
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success == true) {
-                    var imagesContainer = self.$elm.find("#divProjectPreview");
-                    imagesContainer.empty();
-
-                    for (const imgsrc of result.Data.Images) {
-                        var temp = `
-                            <div class="col-md-6 p-2">
-                                <img src="${imgsrc}" style="width:250px;">
-                            <div>
-                        `;
-                        imagesContainer.append(temp);
-                    }
-                } else {
-                    alert(result.Message);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            },
-            complete: function (jqXHR, textStatus) {
-                setTimeout(function () {
-                    kendo.ui.progress(self.$elm, false); //progress Off
-                });
-            }
-        });
-    }
-
-    function fnStartGenerateImages(projectName, quantity) {
-        var _data = {
-            projectName: projectName,
-            quantity: quantity
-        };
-
-        $.ajax({
-            url: "/api/Nft/StartGenerateImages",
-            data: JSON.stringify(_data),
-            type: "POST", dataType: "json", contentType: "application/json; charset=utf-8",
-            beforeSend: function (jqXHR, settings) {
-                kendo.ui.progress(self.$elm, true); //progress On
-            },
-            success: function (result, textStatus, jqXHR) {
-                if (result.Success == true) {
-                    kendo.alert(result.Message);
-                } else {
-                    kendo.alert(result.Message);
-                }
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-                alert("(" + jqXHR.status + ") " + jqXHR.statusText + "\n" + this.url);
-            },
-            complete: function (jqXHR, textStatus) {
-                setTimeout(function () {
-                    kendo.ui.progress(self.$elm, false); //progress Off
-                });
             }
         });
     }

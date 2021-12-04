@@ -78,12 +78,6 @@ namespace WebApp1.Areas.Nft.Codes
                 System.IO.Directory.CreateDirectory(imageDirectory);
             }
 
-            string jsonDirectory = exportDirectory + "\\" + "json";
-            if (!System.IO.Directory.Exists(jsonDirectory))
-            {
-                System.IO.Directory.CreateDirectory(jsonDirectory);
-            }
-
             int islemciAdet = 10; // Environment.ProcessorCount;
             var islemciler = new double[islemciAdet];
             for (int x = 1; x <= islemciAdet; x++)
@@ -106,8 +100,6 @@ namespace WebApp1.Areas.Nft.Codes
                 {
                     var bmpStream = this.CreateBitmapStream(userCode, metaDataList[i], 3000, 3000, System.Drawing.Imaging.ImageFormat.Png);
                     System.IO.File.WriteAllBytes(imageDirectory + "\\" + metaDataList[i].ImageName, bmpStream.ToArray());
-                    //json
-                    System.IO.File.WriteAllText(jsonDirectory + "\\" + metaDataList[i].Edition + ".json", metaDataList[i].MyObjToJsonText());
                 }
             });
 
@@ -138,80 +130,6 @@ namespace WebApp1.Areas.Nft.Codes
                 else
                 {
                     response.Message = metaDataList.Message;
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Message.Add("Error: " + ex.MyLastInner().Message);
-            }
-
-            return response;
-        }
-
-        public MoResponse<object> PreviewGenerateImages(string userCode, MoGenerateImageInput generateImageInput)
-        {
-            MoResponse<object> response = new();
-
-            try
-            {
-                var metaDataList = this.BuildMetadata(userCode, generateImageInput);
-                if (metaDataList.Success)
-                {
-                    List<string> images = new();
-                    foreach (var metaData in metaDataList.Data)
-                    {
-                        using var bmpStream = this.CreateBitmapStream(userCode, metaData, 250, 250, System.Drawing.Imaging.ImageFormat.Png);
-
-                        var str = "data:image/png;base64," + Convert.ToBase64String(bmpStream.ToArray());
-                        images.Add(str);
-                    }
-
-                    response.Success = true;
-                    response.Data = new { Images = images };
-                }
-                else
-                {
-                    response.Message = metaDataList.Message;
-                }
-            }
-            catch (Exception ex)
-            {
-                response.Message.Add("Error: " + ex.MyLastInner().Message);
-            }
-
-            return response;
-        }
-
-        public MoResponse<object> StartGenerateImages(MoUserToken userToken, MoGenerateImageInput generateImageInput)
-        {
-            MoResponse<object> response = new();
-
-            try
-            {
-                if (userToken.LisansGun > 0 || generateImageInput.Quantity <= 1000)
-                {
-                    string exportDirectoryName = MyApp.UserExportDirectory(userToken.UserCode, generateImageInput.ProjectName) + "\\" + DateTime.Now.ToString("yyyy.MM.dd_HH_mm_ss");
-                    var metaDataList = this.BuildMetadata(userToken.UserCode, generateImageInput);
-                    if (metaDataList.Success)
-                    {
-                        var task = Task.Run(() =>
-                        {
-                            this.GenerateImages(userToken.UserCode, metaDataList.Data, exportDirectoryName);
-                        });
-
-                        //Dosyalar oluşturuluyor, tamamlandığında dosyalar bölümünden indirip dışa aktarabilirsiniz.
-                        response.Message.Add("The files are being created, when completed, you can download and export them from the Files section.");
-                        response.Success = true;
-                        response.Data = new { ExportDirectoryName = exportDirectoryName };
-                    }
-                    else
-                    {
-                        response.Message = metaDataList.Message;
-                    }
-                }
-                else
-                {
-                    response.Message.Add("Free users can generate 1000 images");
                 }
             }
             catch (Exception ex)
