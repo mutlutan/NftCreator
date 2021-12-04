@@ -143,6 +143,7 @@ function compProjectList(_elm, _opt) {
             var directoryName = $(e.currentTarget).attr("data-directory-name");
             var quantity = $elm.find("[name=plannedImageQuantity]").val();
             kendo.confirm("Do you want to create pictures?").then(function () {
+                $(e.currentTarget).hide();
                 fnGenerateExport(projectName, directoryName, quantity);
             });
         });
@@ -165,7 +166,8 @@ function compProjectList(_elm, _opt) {
             var tempExportList = "";
             for (const item of project.ExportList) {
 
-                let visibleClass = item.DownloadUrl == "" ? "d-none" : "";
+                let visibleDownload = item.DownloadUrl == "" ? "d-none" : "";
+                let visibleGenerate = item.CreatedImageQuantity > 0 ? "d-none" : "";
 
                 var tempExport = `
                                 <tr>
@@ -179,10 +181,10 @@ function compProjectList(_elm, _opt) {
                                         ${item.CreatedImageQuantity}
                                     </td>
                                     <td>
-                                        <a name="btnGenerateExport" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Generate"> <i class="fa fa-play fa-fw"></i> </a>
+                                        <a name="btnGenerateExport" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link ${visibleGenerate}" title="Generate"> <i class="fa fa-play fa-fw"></i> </a>
                                     </td>
                                     <td>
-                                        <a href="#/Files?p1=${item.DownloadUrl}" class="btn btn-sm btn-link ${visibleClass}" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
+                                        <a href="#/Files?p1=${item.DownloadUrl}" class="btn btn-sm btn-link ${visibleDownload}" title="Download"> <i class="fa fa-download fa-fw"></i> </a>
                                     </td>
                                     <td>
                                         <a name="btnDelete" data-directory-name="${item.DirectoryName}" class="btn btn-sm btn-link" title="Delete"> <i class="fa fa-trash-o fa-fw"></i> </a>
@@ -393,7 +395,6 @@ function compProjectList(_elm, _opt) {
             success: function (result, textStatus, jqXHR) {
                 if (result.Success == true) {
                     kendo.alert(result.Message);
-                    self.refresh();
                 } else {
                     kendo.alert(result.Message);
                 }
