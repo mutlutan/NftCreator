@@ -71,15 +71,6 @@
  }
 ,
  {
-     "key" : "xTem.TemParametre.UniqueVisit",
-     "value": {
-         "tr": "Tekil Giriş"
-,
-         "en": "Unique Visit"
-     }
- }
-,
- {
      "key" : "xTem.TemParametre.HostAddress",
      "value": {
          "tr": "Web Adresi"

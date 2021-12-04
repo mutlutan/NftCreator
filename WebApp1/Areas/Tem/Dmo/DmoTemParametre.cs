@@ -20,7 +20,6 @@ namespace WebApp1.Areas.Tem.Dmo
              .Select(s => new DtoTemParametre(this.dataContext)
              {
                  Id = s.Id,
-                 UniqueVisit = s.UniqueVisit,
                  HostAddress = s.HostAddress,
                  LisansData = s.LisansData,
                  AuditLog = s.AuditLog,
@@ -62,7 +61,6 @@ namespace WebApp1.Areas.Tem.Dmo
          DtoTemParametre row = new(this.dataContext) { };
          // Burada field default değerleri veriliyor...
          row.Id = 0;
-         row.UniqueVisit = false;
          row.AuditLog = false;
          row.MailPort = 0;
          row.MailEnableSsl = false;
@@ -101,7 +99,6 @@ namespace WebApp1.Areas.Tem.Dmo
              }
          }
          
-         row.UniqueVisit = _model.UniqueVisit;
          row.HostAddress = _model.HostAddress;
          row.LisansData = _model.LisansData;
          row.AuditLog = _model.AuditLog;

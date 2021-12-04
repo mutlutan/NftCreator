@@ -129,16 +129,6 @@
                     </div>
 
                      <div class='col-lg-6 col-md-12'>
-                     <div name='divUniqueVisit' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label'></label>
-                         <div class='col-sm-8'>
-                            <label style='font-weight:normal;'>
-                                <input name='UniqueVisit' type='checkbox' data-bind='checked:UniqueVisit' style='width: 24px; height: 24px; vertical-align: middle;'  />
-                                <span data-langkey-Text='xTem.TemParametre.UniqueVisit'></span>
-                            </label>
-                         </div>
-                     </div>
-
                      <div name='divHostAddress' class='mnFormElementDiv form-group row'>
                          <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemParametre.HostAddress'></label>
                          <div class='col-sm-8'>
@@ -390,7 +380,6 @@
                      id: self.primaryKey,
                      fields: {
                          Id: { type: 'number', defaultValue: null },
-                         UniqueVisit: { type: 'boolean' },
                          HostAddress: { type: 'string' },
                          LisansData: { type: 'string' },
                          AuditLog: { type: 'boolean' },
@@ -477,7 +466,6 @@
                              url: self.apiUrlPrefix + '/GetByNew', type: 'GET', dataType: 'json', async: false,
                              success: function (result) {
                                  e.items[0].Id = result.Id;
-                                 e.items[0].UniqueVisit = result.UniqueVisit;
                                  e.items[0].HostAddress = result.HostAddress;
                                  e.items[0].LisansData = result.LisansData;
                                  e.items[0].AuditLog = result.AuditLog;
@@ -709,7 +697,6 @@
 
         //form element görünümleri
         var fieldList = [];
-        fieldList.push({ 'Name': 'UniqueVisit', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'HostAddress', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'AuditLog', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'AuditLogTables', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });

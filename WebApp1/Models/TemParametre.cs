@@ -8,7 +8,6 @@ namespace WebApp1.Models
     public partial class TemParametre
     {
         public int Id { get; set; }
-        public bool UniqueVisit { get; set; }
         public string HostAddress { get; set; }
         public string LisansData { get; set; }
         public bool AuditLog { get; set; }
