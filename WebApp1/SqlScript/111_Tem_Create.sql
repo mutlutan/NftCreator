@@ -63,10 +63,6 @@
 		FileBackupGun		NVARCHAR(15), /*haftalık gönderimde, hangi gün gönderilecek Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday*/
 		FileBackupAyGunNo	INT NOT NULL, /*Aylık gönderimde, ayın kaçıncı günü gönderilecek*/
 
-		/*Genel ayarlar*/
-		IyzicoBaseUrl		NVARCHAR(50), 
-		IyzicoApiKey		NVARCHAR(50),  
-		IyzicoSecretKey		NVARCHAR(50), 
          	
 		CONSTRAINT PK_TemParametre PRIMARY KEY (Id)
 	);

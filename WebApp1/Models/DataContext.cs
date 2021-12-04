@@ -44,7 +44,7 @@ namespace WebApp1.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("Relational:Collation", "Turkish_CI_AS");
+            modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
             modelBuilder.Entity<TemAdres>(entity =>
             {
@@ -429,12 +429,6 @@ namespace WebApp1.Models
                 entity.Property(e => e.HostAddress)
                     .IsRequired()
                     .HasMaxLength(100);
-
-                entity.Property(e => e.IyzicoApiKey).HasMaxLength(50);
-
-                entity.Property(e => e.IyzicoBaseUrl).HasMaxLength(50);
-
-                entity.Property(e => e.IyzicoSecretKey).HasMaxLength(50);
 
                 entity.Property(e => e.KurumAd).HasMaxLength(100);
 

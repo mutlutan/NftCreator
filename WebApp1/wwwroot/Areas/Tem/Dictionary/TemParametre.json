@@ -296,15 +296,6 @@
  }
 ,
  {
-     "key" : "xTem.TemParametre.IyzicoBaseUrl",
-     "value": {
-         "tr": "Iyzico Base Url"
-,
-         "en": "Iyzico Base Url"
-     }
- }
-,
- {
      "key" : "xTem.TemParametre.DataBackupTip",
      "value": {
          "tr": "Tip"
@@ -314,29 +305,11 @@
  }
 ,
  {
-     "key" : "xTem.TemParametre.IyzicoApiKey",
-     "value": {
-         "tr": "Iyzico Api Key"
-,
-         "en": "Iyzico Api Key"
-     }
- }
-,
- {
      "key" : "xTem.TemParametre.DataBackupGun",
      "value": {
          "tr": "Gün"
 ,
          "en": "Day"
-     }
- }
-,
- {
-     "key" : "xTem.TemParametre.IyzicoSecretKey",
-     "value": {
-         "tr": "Iyzico Secret Key"
-,
-         "en": "Iyzico Secret Key"
      }
  }
 ,

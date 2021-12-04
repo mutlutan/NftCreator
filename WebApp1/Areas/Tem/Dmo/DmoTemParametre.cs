@@ -52,10 +52,7 @@ namespace WebApp1.Areas.Tem.Dmo
                  FileBackupSaat = s.FileBackupSaat,
                  FileBackupTip = s.FileBackupTip,
                  FileBackupGun = s.FileBackupGun,
-                 FileBackupAyGunNo = s.FileBackupAyGunNo,
-                 IyzicoBaseUrl = s.IyzicoBaseUrl,
-                 IyzicoApiKey = s.IyzicoApiKey,
-                 IyzicoSecretKey = s.IyzicoSecretKey
+                 FileBackupAyGunNo = s.FileBackupAyGunNo
              });
      }
 
@@ -137,9 +134,6 @@ namespace WebApp1.Areas.Tem.Dmo
          row.FileBackupTip = _model.FileBackupTip;
          row.FileBackupGun = _model.FileBackupGun;
          row.FileBackupAyGunNo = _model.FileBackupAyGunNo;
-         row.IyzicoBaseUrl = _model.IyzicoBaseUrl;
-         row.IyzicoApiKey = _model.IyzicoApiKey;
-         row.IyzicoSecretKey = _model.IyzicoSecretKey;
 
          if (!isNew)
          {

@@ -41,8 +41,5 @@ namespace WebApp1.Models
         public int FileBackupTip { get; set; }
         public string FileBackupGun { get; set; }
         public int FileBackupAyGunNo { get; set; }
-        public string IyzicoBaseUrl { get; set; }
-        public string IyzicoApiKey { get; set; }
-        public string IyzicoSecretKey { get; set; }
     }
 }

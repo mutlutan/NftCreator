@@ -352,7 +352,8 @@ namespace WebApp1.Areas.CodeGen.Codes
                         if (column.DataType.NetDataType == "System.TimeSpan")
                         {
                             sComponentType = "TimePicker";
-                            sGridComponentFormat = "";
+                            sFormComponentFormat = "HH:mm";
+                            sGridComponentFormat = "HH:mm";
                             nGridComponentWidth = 80;
                         }
                         else if (column.DataType.NetDataType == "System.DateTime")
@@ -2526,7 +2527,7 @@ namespace WebApp1.Areas.CodeGen.Codes
                 }
                 if (col.ColumnDbType == "time")
                 {
-                    sbCodes.AppendLine("                         data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 't');");
+                    sbCodes.AppendLine("                         data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 'HH:mm');");
                 }
             }
 
@@ -2899,7 +2900,8 @@ namespace WebApp1.Areas.CodeGen.Codes
                 {
                     sbCodes.AppendLine("         $(self.selector).find('[name=" + col.ColumnName + "]').kendoTimePicker({");
                     sbCodes.AppendLine("             componentType: mnApp.kendoTimePiker_ComponentType,");
-                    sbCodes.AppendLine("             dateInput: mnApp.kendoTimePiker_DateInput");
+                    sbCodes.AppendLine("             dateInput: mnApp.kendoTimePiker_DateInput,");
+                    sbCodes.AppendLine("             format: '" + col.FormComponentFormat + "'");
                     sbCodes.AppendLine("         }).getKendoTimePicker();");
                     sbCodes.AppendLine("");
                 }
@@ -3547,7 +3549,7 @@ namespace WebApp1.Areas.CodeGen.Codes
                     }
                     if (col.ColumnDbType == "time")
                     {
-                        sbCodes.AppendLine("                         data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 't');");
+                        sbCodes.AppendLine("                         data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 'HH:mm');");
                     }
                 }
 
@@ -3946,7 +3948,8 @@ namespace WebApp1.Areas.CodeGen.Codes
                     {
                         sbCodes.AppendLine("                     input.kendoTimePicker({");
                         sbCodes.AppendLine("                         componentType: mnApp.kendoTimePiker_ComponentType,");
-                        sbCodes.AppendLine("                         dateInput: mnApp.kendoTimePiker_DateInput");
+                        sbCodes.AppendLine("                         dateInput: mnApp.kendoTimePiker_DateInput,");
+                        sbCodes.AppendLine("                         format: '" + col.GridComponentFormat + "'");
                         sbCodes.AppendLine("                     });");
                         sbCodes.AppendLine("");
                     }
@@ -4668,7 +4671,8 @@ namespace WebApp1.Areas.CodeGen.Codes
                         {
                             sbCodes.AppendLine("         $(self.selector).find('[data-find_field=" + col.ColumnName + "]').kendoTimePicker({");
                             sbCodes.AppendLine("             componentType: mnApp.kendoTimePiker_ComponentType,");
-                            sbCodes.AppendLine("             dateInput: mnApp.kendoTimePiker_DateInput");
+                            sbCodes.AppendLine("             dateInput: mnApp.kendoTimePiker_DateInput,");
+                            sbCodes.AppendLine("             format: '" + col.FormComponentFormat + "'");
                             sbCodes.AppendLine("         }).getKendoTimePicker();");
                             sbCodes.AppendLine("");
 
@@ -5244,7 +5248,7 @@ namespace WebApp1.Areas.CodeGen.Codes
                 }
                 if (col.ColumnDbType == "time")
                 {
-                    sbCodes.AppendLine("                            data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 't');");
+                    sbCodes.AppendLine("                            data." + col.ColumnName + " = kendo.toString(data." + col.ColumnName + ", 'HH:mm');");
                 }
             }
 
@@ -5651,7 +5655,8 @@ namespace WebApp1.Areas.CodeGen.Codes
                         {
                             sbCodes.AppendLine("            $(self.selector).find('[data-find_field=" + col.ColumnName + "]').kendoTimePicker({");
                             sbCodes.AppendLine("                componentType: mnApp.kendoTimePiker_ComponentType,");
-                            sbCodes.AppendLine("                dateInput: mnApp.kendoTimePiker_DateInput");
+                            sbCodes.AppendLine("                dateInput: mnApp.kendoTimePiker_DateInput,");
+                            sbCodes.AppendLine("                format: '" + col.FormComponentFormat + "'");
                             sbCodes.AppendLine("            }).getKendoTimePicker();");
                             sbCodes.AppendLine("");
                         }

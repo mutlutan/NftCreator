@@ -146,27 +146,6 @@
                          </div>
                      </div>
 
-                     <div name='divIyzicoBaseUrl' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemParametre.IyzicoBaseUrl'></label>
-                         <div class='col-sm-8'>
-                             <input name='IyzicoBaseUrl' type='text' class='k-textbox' data-bind='value:IyzicoBaseUrl' data-langkey-placeholder='xTem.TemParametre.IyzicoBaseUrl'  autocomplete='off' />
-                         </div>
-                     </div>
-
-                     <div name='divIyzicoApiKey' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemParametre.IyzicoApiKey'></label>
-                         <div class='col-sm-8'>
-                             <input name='IyzicoApiKey' type='text' class='k-textbox' data-bind='value:IyzicoApiKey' data-langkey-placeholder='xTem.TemParametre.IyzicoApiKey'  autocomplete='off' />
-                         </div>
-                     </div>
-
-                     <div name='divIyzicoSecretKey' class='mnFormElementDiv form-group row'>
-                         <label class='col-sm-4 col-form-label' data-langkey-text='xTem.TemParametre.IyzicoSecretKey'></label>
-                         <div class='col-sm-8'>
-                             <input name='IyzicoSecretKey' type='text' class='k-textbox' data-bind='value:IyzicoSecretKey' data-langkey-placeholder='xTem.TemParametre.IyzicoSecretKey'  autocomplete='off' />
-                         </div>
-                     </div>
-
 
                     </div>
 
@@ -395,8 +374,8 @@
                          return (new kendo.data.transports['aspnetmvc-ajax']({})).options.parameterMap(data);
                      }
                      else if (operation === 'create' || operation === 'update') {
-                         data.DataBackupSaat = kendo.toString(data.DataBackupSaat, 't');
-                         data.FileBackupSaat = kendo.toString(data.FileBackupSaat, 't');
+                         data.DataBackupSaat = kendo.toString(data.DataBackupSaat, 'HH:mm');
+                         data.FileBackupSaat = kendo.toString(data.FileBackupSaat, 'HH:mm');
                          return kendo.stringify(data);
                      }
                      else if (operation === 'destroy') {
@@ -444,9 +423,6 @@
                          FileBackupTip: { type: 'number' },
                          FileBackupGun: { type: 'string' },
                          FileBackupAyGunNo: { type: 'number' },
-                         IyzicoBaseUrl: { type: 'string' },
-                         IyzicoApiKey: { type: 'string' },
-                         IyzicoSecretKey: { type: 'string' },
                          CcAuditLogTables: { type: 'string' },
                          CcDataBackupTip: { type: 'string' },
                          CcDataBackupGun: { type: 'string' },
@@ -534,9 +510,6 @@
                                  e.items[0].FileBackupTip = result.FileBackupTip;
                                  e.items[0].FileBackupGun = result.FileBackupGun;
                                  e.items[0].FileBackupAyGunNo = result.FileBackupAyGunNo;
-                                 e.items[0].IyzicoBaseUrl = result.IyzicoBaseUrl;
-                                 e.items[0].IyzicoApiKey = result.IyzicoApiKey;
-                                 e.items[0].IyzicoSecretKey = result.IyzicoSecretKey;
                                  //computed alanların tanımlanması
                                  e.items[0].CcAuditLogTables = result.CcAuditLogTables;
                                  e.items[0].CcDataBackupTip = result.CcDataBackupTip;
@@ -630,7 +603,8 @@
 
          $(self.selector).find('[name=DataBackupSaat]').kendoTimePicker({
              componentType: mnApp.kendoTimePiker_ComponentType,
-             dateInput: mnApp.kendoTimePiker_DateInput
+             dateInput: mnApp.kendoTimePiker_DateInput,
+             format: 'HH:mm'
          }).getKendoTimePicker();
 
          $(self.selector).find('[name=DataBackupTip]').kendoDropDownList({
@@ -671,7 +645,8 @@
 
          $(self.selector).find('[name=FileBackupSaat]').kendoTimePicker({
              componentType: mnApp.kendoTimePiker_ComponentType,
-             dateInput: mnApp.kendoTimePiker_DateInput
+             dateInput: mnApp.kendoTimePiker_DateInput,
+             format: 'HH:mm'
          }).getKendoTimePicker();
 
          $(self.selector).find('[name=FileBackupTip]').kendoDropDownList({
@@ -766,9 +741,6 @@
         fieldList.push({ 'Name': 'FileBackupTip', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'FileBackupGun', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
         fieldList.push({ 'Name': 'FileBackupAyGunNo', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'IyzicoBaseUrl', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'IyzicoApiKey', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
-        fieldList.push({ 'Name': 'IyzicoSecretKey', 'Visible': '11,21,31,41'.indexOf(mnUser.Info.nYetkiGrup) >= 0 });
 
         for (var i in fieldList) {
             var $elm = $(self.selector).find('.mnFormElementContainer .mnFormElementDiv[name=div' + fieldList[i].Name + ']');
