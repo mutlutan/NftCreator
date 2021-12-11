@@ -193,6 +193,10 @@ namespace WebApp1.Codes
                     string backupFileName = dbName + "_" + now.DayOfWeek.ToString() + ".bak";
                     MyJobs.FnDataBackup(context, dbName, backupFileName);
                 }
+                else
+                {
+                    MyApp.WriteLogForMethod(MethodBase.GetCurrentMethod(), EnmLogTur.Genel, $" TimeCheck..." + parametre.DataBackupSaat + "" + now);
+                }
             }
             catch (Exception ex)
             {
@@ -330,7 +334,7 @@ namespace WebApp1.Codes
             MyConfigs cfg = (MyConfigs)sender;
 
             using Models.DataContext context = new(new DbContextOptions<Models.DataContext>());
-            context.SetConnectionString(cfg, new System.Globalization.CultureInfo("tr-TR"));
+            context.SetConnectionString(cfg, new System.Globalization.CultureInfo("en-US"));
             //görev fonksiyonları çağrılıyor
             //Gorev_LocalWebRequest(kurulusKod, context, now).Wait();
             Gorev_DatabaseBackup(context, now);
