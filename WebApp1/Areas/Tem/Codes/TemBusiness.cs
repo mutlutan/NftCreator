@@ -287,6 +287,7 @@ namespace WebApp1.Areas.Tem.Codes
             }
             catch (Exception ex)
             {
+                response.Message.Add(ex.Message);
                 MyApp.WriteLogForMethodExceptionMessage(MethodBase.GetCurrentMethod(), ex);
             }
 

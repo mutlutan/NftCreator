@@ -14,9 +14,9 @@ namespace WebApp1.Codes
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2211:Non-constant fields should not be visible", Justification = "<Pending>")]
         public static System.Threading.Timer MyTimer = null;
 
-        private static readonly string baseBackupFolder = "C:\\ProgramData\\" + "SerçeAkademi";
-        private static readonly string dbBackupFolder = MyJobs.baseBackupFolder + "\\" + "VeriTabani";
-        private static readonly string fileBackupFolder = MyJobs.baseBackupFolder + "\\" + "Dosya";
+        private static readonly string baseBackupFolder = "C:\\ProgramData\\" + MyApp.AppName1 + MyApp.AppName2;
+        private static readonly string dbBackupFolder = MyJobs.baseBackupFolder + "\\" + "BackupDatabase";
+        private static readonly string fileBackupFolder = MyJobs.baseBackupFolder + "\\" + "BackupFile";
 
         #region Yardımcı fonksiyonlar
         public static Boolean FnTimeCheck(DateTime now, Boolean backupDurum, int backupTip, TimeSpan? backupSaat, string backupGun, int backupAyGunNo)

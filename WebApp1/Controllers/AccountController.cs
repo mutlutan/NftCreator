@@ -147,7 +147,7 @@ namespace WebApp1.Controllers
             var robTem = new TemBusiness(this.dataContext);
             var sonuc = robTem.KullaniciKaydet(prms);
 
-            ViewBag.Message = sonuc.Message[0];
+            ViewBag.Message = string.Join(", ", sonuc.Message);
 
             return View();
         }
