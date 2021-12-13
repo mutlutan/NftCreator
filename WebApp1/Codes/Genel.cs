@@ -279,7 +279,7 @@ namespace WebApp1.Codes
         {
             get
             {
-                string Version = "1.0.0.6";
+                string Version = "1.0.0.7";
                 if (Env.EnvironmentName == "Development")
                 {
                     Version += "_";

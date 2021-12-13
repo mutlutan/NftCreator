@@ -102,8 +102,7 @@ function compProjectList(_elm, _opt) {
             });
         });
 
-        //btnAddExport
-        self.$elm.find("#divProjectList").on("click", "[name=btnAddExport]", function (e) {
+        self.$elm.find("#divProjectList").on("click", "[name=btnGeneratePlan]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
             var projectName = $elm.attr("data-project-name");
             var quantity = $elm.find("[name=quantity]").val();
@@ -114,13 +113,13 @@ function compProjectList(_elm, _opt) {
             }
         });
 
-        //btnGenerateExport
         self.$elm.find("#divProjectList").on("click", "[name=btnGenerateExport]", function (e) {
             var $elm = $(e.currentTarget).closest("[name=projectItem]");
             var projectName = $elm.attr("data-project-name");
             var directoryName = $(e.currentTarget).attr("data-directory-name");
             var quantity = $elm.find("[name=plannedImageQuantity]").val();
-            kendo.confirm("Do you want to create pictures?").then(function () {
+
+            kendo.confirm("Do you want to generate pictures?").then(function () {
                 $(e.currentTarget).hide();
                 fnGenerateExport(projectName, directoryName, quantity);
             });
@@ -153,7 +152,7 @@ function compProjectList(_elm, _opt) {
                                         ${item.DirectoryName}
                                     </td>
                                     <td>
-                                        <input name="plannedImageQuantity" class="form-control form-control-sm" type="number" value="${item.PlannedImageQuantity}" disabled />
+                                        <input name="plannedImageQuantity" class="k-textbox w-75 h-75" type="number" value="${item.PlannedImageQuantity}" disabled />
                                     </td>
                                     <td>
                                         ${item.CreatedImageQuantity}
@@ -174,7 +173,7 @@ function compProjectList(_elm, _opt) {
 
             var temp = `
                             <div name="projectItem" class="row border border-secondary mb-3 p-1 " data-project-name="${project.Name}">
-                                <div class="col-md-12">
+                                <div class="col-md-12 mb-1">
                                     <table>
                                         <tr>
                                             <td>
@@ -185,23 +184,22 @@ function compProjectList(_elm, _opt) {
                                                 <a href="#/ProjectEditor?p1=${project.Name}" class="btn btn-sm btn-link pl-0"> Project Detail</a>
                                             </td>
                                             <td>
-                                                <input name="quantity" class="form-control form-control-sm" type="text" placeholder="Quantity..." style="width:90px;" />
-                                                <a name="btnGenerate" class="btn btn-sm btn-link d-none" title="Generate Images">Generate</a>
-                                                <a name="btnAddExport" class="btn btn-sm btn-link" title="Add Export">Add Export</a>
+                                                <input name="quantity" class="form-control form-control-sm w-100" type="text" placeholder="Quantity..." style="width:90px;" />
+                                                <a name="btnGeneratePlan" class="btn btn-sm btn-primary text-nowrap mt-1" >Start Generating</a>
                                             </td>
                                         </tr>
                                     </table>
                                 </div>
                                 <div class="col-md-12">
                                     <table name="tableExport" class="table table-sm">
-                                        <thead class="thead-light">
+                                        <thead class="" style="background-color: #87c2eb; color: white;">
                                             <tr>
-                                                <th class="font-weight-normal">Export Name</th>
-                                                <th class="font-weight-normal">Planned Quantity</th>
-                                                <th class="font-weight-normal">Created Q.</th>
-                                                <th class="font-weight-normal"></th>
-                                                <th class="font-weight-normal"></th>
-                                                <th class="font-weight-normal"></th>
+                                                <th class="font-weight-normal text-truncate">Export Name</th>
+                                                <th class="font-weight-normal text-truncate">Planned Quantity</th>
+                                                <th class="font-weight-normal text-truncate">Created Q.</th>
+                                                <th class="font-weight-normal text-truncate"></th>
+                                                <th class="font-weight-normal text-truncate"></th>
+                                                <th class="font-weight-normal text-truncate"></th>
                                             </tr>
                                         </thead>
                                         <tbody>
