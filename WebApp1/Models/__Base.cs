@@ -7,17 +7,6 @@ namespace WebApp1.Models
     //    DataContext DataContext { get; set; }
     //}
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public class _Dmo
-    {
-        protected readonly DataContext dataContext;
-
-        public _Dmo(DataContext context)
-        {
-            this.dataContext = context;
-        }
-    }
-
     public class BaseDmo
     {
         protected readonly DataContext dataContext;
