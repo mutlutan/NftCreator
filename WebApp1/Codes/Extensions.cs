@@ -127,7 +127,7 @@ namespace WebApp1.Codes
                         String rest = "";
                         if (words[i].Length > 1)
                         {
-                            rest = words[i].Substring(1).ToLower();
+                            rest = words[i][1..].ToLower();
                         }
                         words[i] = firstChar + rest;
                     }
@@ -154,7 +154,7 @@ namespace WebApp1.Codes
                         String rest = "";
                         if (words[i].Length > 1)
                         {
-                            rest = "".PadRight(words[i].Substring(1).Length, '*');
+                            rest = "".PadRight(words[i][1..].Length, '*');
                         }
                         words[i] = firstChar + rest;
                     }
@@ -233,7 +233,7 @@ namespace WebApp1.Codes
             int rValue = 0;
             if (!String.IsNullOrEmpty(_str))
             {
-                int.TryParse(_str, out rValue);
+                _ = int.TryParse(_str, out rValue);
             }
             return rValue;
         }
@@ -260,7 +260,7 @@ namespace WebApp1.Codes
             decimal rValue = 0;
             if (!String.IsNullOrEmpty(_str))
             {
-                decimal.TryParse(_str, out rValue);
+                _ = decimal.TryParse(_str, out rValue);
             }
             return rValue;
         }
@@ -297,7 +297,7 @@ namespace WebApp1.Codes
 
         public static int MyRomanToInt(this string roman)
         {
-            Dictionary<char, int> RomanMap = new Dictionary<char, int>() { { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
+            Dictionary<char, int> RomanMap = new() { { 'I', 1 }, { 'V', 5 }, { 'X', 10 }, { 'L', 50 }, { 'C', 100 }, { 'D', 500 }, { 'M', 1000 } };
             int number = 0;
             char previousChar = roman[0];
             foreach (char currentChar in roman)
@@ -392,15 +392,6 @@ namespace WebApp1.Codes
             return new MyCipher().Decrypt(_str.MyToStr(), "6856", MyCipher.EnmSCType.Hex, Encoding.UTF8);
         }
 
-        public static string MyIdToJWT(this int _id)
-        {
-            var claims = new System.Security.Claims.Claim[]{
-                new System.Security.Claims.Claim(JwtRegisteredClaimNames.Jti,_id.ToString())
-            };
-
-            return "";
-        }
-
         #endregion
 
         #region Hex
@@ -441,7 +432,7 @@ namespace WebApp1.Codes
             if ((memberInfo != null && memberInfo.Length > 0))
             {
                 var _Attribs = memberInfo[0].GetCustomAttributes(typeof(System.ComponentModel.DescriptionAttribute), false);
-                if ((_Attribs != null && _Attribs.Count() > 0))
+                if ((_Attribs != null && _Attribs.Length > 0))
                 {
                     return ((System.ComponentModel.DescriptionAttribute)_Attribs.ElementAt(0)).Description;
                 }
@@ -535,7 +526,7 @@ namespace WebApp1.Codes
         #region Veri dili için
         public static string MyVeriDiliToStr(this string _jsonText, string _lang, string _field, string _filedCurrentValue)
         {
- 
+
             String rValue = _filedCurrentValue.MyToTrim();
             try
             {
@@ -599,30 +590,5 @@ namespace WebApp1.Codes
             }
         }
     }
-    #endregion
-
-    #region Session Extensions
-    public static class SessionExtensions
-    {
-        public static async Task Set<T>(this ISession session, string key, T value)
-        {
-            if (!session.IsAvailable)
-            {
-                await session.LoadAsync();
-            }
-            session.SetString(key, JsonConvert.SerializeObject(value));
-        }
-
-        public static async Task<T> Get<T>(this ISession session, string key)
-        {
-            if (!session.IsAvailable)
-            {
-                await session.LoadAsync();
-            }
-            var value = session.GetString(key);
-            return value == null ? default : JsonConvert.DeserializeObject<T>(value);
-        }
-    }
-
     #endregion
 }

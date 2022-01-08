@@ -8,8 +8,6 @@ using System.IO;
 
 namespace WebApp1.Areas.CodeGen.Codes
 {
-
-
     public enum EnmComponentType
     {
         TextBox, PasswordTextBox, TextArea, TextAreaForJson, NumericTextBox, DropDownList, DatePicker, TimePicker,
@@ -33,7 +31,7 @@ namespace WebApp1.Areas.CodeGen.Codes
         public static string CodeGenRootNameSpace { get; set; } = "WebApp1";
         public static string CodeGenAreasDirectory { get; set; } = MyApp.AppAreasDirectory;
         public static string CodeGenDataDirectory { get; set; } = MyCodeGen.CodeGenAreasDirectory + "\\CodeGen\\Data";
-        public static string CodeGenDataFileExtension { get; set; } = ".dat";
+        public static string CodeGenDataFileExtension { get; set; } = "dat";
         public static string CodeGenDataTransferObjectDirectory { get; set; } = "Dto";
         public static string CodeGenDataManipulationObjectDirectory { get; set; } = "Dmo";
         public static string CodeGenRepositoryDirectory { get; set; } = "Models";
@@ -70,7 +68,7 @@ namespace WebApp1.Areas.CodeGen.Codes
             DirectoryInfo diList = new(MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory);
             if (diList.Exists)
             {
-                IEnumerable<FileInfo> files = diList.EnumerateFiles("*_" + _TableName + "_" + MyCodeGen.CodeGenDataFileExtension, SearchOption.TopDirectoryOnly);
+                IEnumerable<FileInfo> files = diList.EnumerateFiles("*_" + _TableName + "_" + "." + MyCodeGen.CodeGenDataFileExtension, SearchOption.TopDirectoryOnly);
                 SL.AddRange(files.Select(s => s.Name));
             }
             return SL;
@@ -245,6 +243,10 @@ namespace WebApp1.Areas.CodeGen.Codes
             {
                 columnJsonType = "number";
             }
+            else if (columnNetType == "System.DateTimeOffset")
+            {
+                columnJsonType = "date";
+            }
             else if (columnNetType == "System.DateTime")
             {
                 columnJsonType = "date";
@@ -270,7 +272,7 @@ namespace WebApp1.Areas.CodeGen.Codes
             MyTableOption rTableOption = new();
 
 
-            string optionsFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + ".dat";
+            string optionsFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + "." + MyCodeGen.CodeGenDataFileExtension;
             if (File.Exists(optionsFileName))
             {
                 rTableOption = Newtonsoft.Json.JsonConvert.DeserializeObject<MyTableOption>(File.ReadAllText(optionsFileName));
@@ -349,7 +351,14 @@ namespace WebApp1.Areas.CodeGen.Codes
                     }
                     else if (!column.IsPrimaryKey)
                     {
-                        if (column.DataType.NetDataType == "System.TimeSpan")
+                        if (column.DataType.NetDataType == "System.DateTimeOffset")
+                        {
+                            sComponentType = "DateTimePicker";
+                            sFormComponentFormat = "";
+                            sGridComponentFormat = "{0:g}";
+                            nGridComponentWidth = 145;
+                        }
+                        else if (column.DataType.NetDataType == "System.TimeSpan")
                         {
                             sComponentType = "TimePicker";
                             sFormComponentFormat = "HH:mm";
@@ -578,7 +587,7 @@ namespace WebApp1.Areas.CodeGen.Codes
                     f.ColumnStatus = "Mevcut";
                 }
 
-                string TableOptionFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + ".dat";
+                string TableOptionFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + "." + MyCodeGen.CodeGenDataFileExtension;
 
                 _TableOption.LangKeyRoot = "x" + _TableOption.AreaName + "." + _TableOption.TableName;
 
@@ -615,7 +624,7 @@ namespace WebApp1.Areas.CodeGen.Codes
         #region functions II
         public MyTableOption TableOptionLoad(string _TableOptionName)
         {
-            string optionsFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + ".dat";
+            string optionsFileName = MyApp.EnvContentRootPath + "\\" + MyCodeGen.CodeGenDataDirectory + "\\" + _TableOptionName + "." + MyCodeGen.CodeGenDataFileExtension;
             MyTableOption tableOptions = Newtonsoft.Json.JsonConvert.DeserializeObject<MyTableOption>(File.ReadAllText(optionsFileName));
             return tableOptions;
         }
@@ -2646,7 +2655,11 @@ namespace WebApp1.Areas.CodeGen.Codes
 
             foreach (var col in dataSourceFileds)
             {
-                if (col.ColumnNetType == "System.DateTime")
+                if (col.ColumnNetType == "System.DateTimeOffset")
+                {
+                    sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
+                }
+                else if (col.ColumnNetType == "System.DateTime")
                 {
                     sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
                 }
@@ -3663,7 +3676,11 @@ namespace WebApp1.Areas.CodeGen.Codes
 
                 foreach (var col in dataSourceFileds)
                 {
-                    if (col.ColumnNetType == "System.DateTime")
+                    if (col.ColumnNetType == "System.DateTimeOffset")
+                    {
+                        sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
+                    }
+                    else if (col.ColumnNetType == "System.DateTime")
                     {
                         sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
                     }
@@ -5342,7 +5359,11 @@ namespace WebApp1.Areas.CodeGen.Codes
             sbCodes.AppendLine("                                success: function (result) {");
             foreach (var col in dataSourceFileds)
             {
-                if (col.ColumnNetType == "System.DateTime")
+                if (col.ColumnNetType == "System.DateTimeOffset")
+                {
+                    sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
+                }
+                else if (col.ColumnNetType == "System.DateTime")
                 {
                     sbCodes.AppendLine("                                 e.items[0]." + col.ColumnName + " = kendo.parseDate(result." + col.ColumnName + ");");
                 }
