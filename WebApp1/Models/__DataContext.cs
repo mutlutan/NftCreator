@@ -91,10 +91,17 @@ namespace WebApp1.Models
         }
 
         #region Shema bilgileri
+        public static DatabaseSchemaReader.DataSchema.DatabaseSchema DatabaseSchema = null;
+
         public DatabaseSchemaReader.DataSchema.DatabaseSchema GetDBSchema()
         {
-            using var dbReader = new DatabaseSchemaReader.DatabaseReader(this.Database.GetDbConnection());
-            return dbReader.ReadAll();
+            if (DatabaseSchema == null)
+            {
+                using var dbReader = new DatabaseSchemaReader.DatabaseReader(this.Database.GetDbConnection());
+                DatabaseSchema = dbReader.ReadAll();
+            }
+
+            return DatabaseSchema;
         }
 
         public DatabaseSchemaReader.DataSchema.DatabaseTable GetTableInfo(string _sTableName)
