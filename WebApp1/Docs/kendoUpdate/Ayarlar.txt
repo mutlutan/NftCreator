@@ -1,0 +1,1 @@
+{"ProjectFolder":"C:\\Users\\user1\\source\\repos\\NftCreator\\WebApp1\\wwwroot\\lib\\kendo","DownloadUrl":"https://kendo.cdn.telerik.com/2021.3.1207"}
