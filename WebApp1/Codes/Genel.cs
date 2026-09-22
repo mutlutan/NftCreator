@@ -370,7 +370,7 @@ namespace WebApp1.Codes
         {
             get
             {
-                string key = "NFT-JWT-KEY-00000000000000001" + "-" + "v.01"; //JWT key;
+                string key = "NFT-JWT-KEY-00000000000000001" + "-" + "v.01" + "-EXTRA-SECRET-KEY-2026-VERY-LONG-AND-SAFE-123456789"; //JWT key;
                 return key;
             }
         }
